@@ -50,7 +50,7 @@ public class JDBCUtil {
 	
 	public static Connection getConnection() throws SQLException{
 		Connection conn = null;
-		String jdbcDriver = "jdbc:apache:commons:dbcp:test";
+		String jdbcDriver = "jdbc:apache:commons:dbcp:yi_java3st_1team";
 	 	conn = DriverManager.getConnection(jdbcDriver);
 	 	return conn;
 	}

@@ -13,7 +13,7 @@
 		Connection conn = null;
 	
 		try {
-			String jdbcDriver = "jdbc:apache:commons:dbcp:test";
+			String jdbcDriver = "jdbc:apache:commons:dbcp:yi_java3st_1team";
 			conn = DriverManager.getConnection(jdbcDriver);
 			if (conn != null) {
 				out.println("커넥션에 연결되었습니다");
