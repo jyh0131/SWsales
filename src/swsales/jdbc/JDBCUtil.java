@@ -1,5 +1,6 @@
 package swsales.jdbc;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +13,16 @@ public class JDBCUtil {
 		if(pstmt !=null) {
 			try {
 				pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void close(CallableStatement cstmt) {
+		if(cstmt !=null) {
+			try {
+				cstmt.close();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
@@ -50,7 +61,7 @@ public class JDBCUtil {
 	
 	public static Connection getConnection() throws SQLException{
 		Connection conn = null;
-		String jdbcDriver = "jdbc:apache:commons:dbcp:test";
+		String jdbcDriver = "jdbc:apache:commons:dbcp:yi_java3st_1team";
 	 	conn = DriverManager.getConnection(jdbcDriver);
 	 	return conn;
 	}
