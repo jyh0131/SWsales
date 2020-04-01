@@ -1,5 +1,6 @@
 package swsales.jdbc;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -12,6 +13,16 @@ public class JDBCUtil {
 		if(pstmt !=null) {
 			try {
 				pstmt.close();
+			}catch(SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
+	public static void close(CallableStatement cstmt) {
+		if(cstmt !=null) {
+			try {
+				cstmt.close();
 			}catch(SQLException e) {
 				e.printStackTrace();
 			}
