@@ -3,5 +3,4 @@
 <%@include file="../include/header.jsp"%>
 <section>
 </section>
-</div>
 <%@include file="../include/footer.jsp"%>
