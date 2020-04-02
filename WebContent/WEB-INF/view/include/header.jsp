@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>NAMBAWAN IT 공식 홈페이지</title>
 <style>
 	*{
 		margin: 0;
@@ -22,13 +22,13 @@
 	}
 	header img#h_logo{
 		margin-left: 10px;
-		margin-top: 5px;
+		margin-top: 15px;
 	}
 	header ul#h_menu{
 		width: 700px;
 		position: absolute;
 		left: 170px;
-		top: 20px;
+		top: 30px;
 	}
 	header ul#h_menu li{
 		float: left;
@@ -47,7 +47,7 @@
 		width: 250px;
 		position: absolute;
 		right: 0;
-		top: 20px;
+		top: 35px;
 	}
 	header ul#h_login li{
 		float: left;

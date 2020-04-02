@@ -57,6 +57,7 @@
 		font-size: 13px;
 	}		
 </style>
+</div>
 	<footer>
 		<div id="f_dummy1">
 			<ul class="dummy">
