@@ -8,7 +8,7 @@
 		padding: 0;
 	}
 	#imgDiv{
-		width: 85%;
+		width: 100%;
 		height: 400px;
 		border: 1px solid red;
 		margin: 0 auto;
@@ -114,60 +114,60 @@
 	});
 </script>
 
-<section>
-	<div id="imgDiv">
-		<!-- 이미지추가부분 -->
-	</div>
-	<div id="container">
-		<form action="supplierSearch.do" method="post">
-			<div id="search">
-				<select id="selSearch" name="selSearch">
-					<option selected>선택해주세요</option>
-					<option value="sName">회사명</option>
-					<option value="sBln">사업자등록번호</option>
-					<option value="sTel">전화번호</option>
-				</select>
-				<input type="text" name="search" id="ipSearch">
-				<input type="submit" value="검색" id="btnSearch">
-				<input type="reset" value="초기화" id="btnClear">
-				<input type="button" value="전체" id="btnAll">
-			</div>
-		</form>
-		<table id="tbl">
-			<tr>
-				<th>회사번호</th>
-				<th>회사명</th>
-				<th>사업자 등록번호</th>
-				<th>주 소</th>
-				<th>전화번호</th>
-				<th>FAX번호</th>
-				<th>수정/삭제</th>
-			</tr>
-			<c:forEach var="supplier" items="${list }">
+	<section>
+		<div id="imgDiv">
+			<!-- 이미지추가부분 -->
+		</div>
+		<div id="container">
+			<form action="supplierSearch.do" method="post">
+				<div id="search">
+					<select id="selSearch" name="selSearch">
+						<option selected>선택해주세요</option>
+						<option value="sName">회사명</option>
+						<option value="sBln">사업자등록번호</option>
+						<option value="sTel">전화번호</option>
+					</select>
+					<input type="text" name="search" id="ipSearch">
+					<input type="submit" value="검색" id="btnSearch">
+					<input type="reset" value="초기화" id="btnClear">
+					<input type="button" value="전체" id="btnAll">
+				</div>
+			</form>
+			<table id="tbl">
 				<tr>
-					<td>
-						<c:choose>
-							<c:when test="${supplier.sNo < 10 }">
-								S000${supplier.sNo }
-							</c:when>
-							<c:when test="${supplier.sNo >= 10 }">
-								S00${supplier.sNo }
-							</c:when>
-						</c:choose>
-					</td>
-					<td>${supplier.sName }</td>
-					<td>${supplier.sBln }</td>
-					<td>${supplier.sAddress }</td>
-					<td>${supplier.sTel }</td>
-					<td>${supplier.sFax }</td>
-					<td>
-						<a href="#"><button>수정</button></a>
-						<a href="#"><button>삭제</button></a>
-					</td>
+					<th>회사번호</th>
+					<th>회사명</th>
+					<th>사업자 등록번호</th>
+					<th>주 소</th>
+					<th>전화번호</th>
+					<th>FAX번호</th>
+					<th>수정/삭제</th>
 				</tr>
-			</c:forEach>
-		</table>
-		<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd">등 록</button></a>
-	</div>
-</section>
+				<c:forEach var="supplier" items="${list }">
+					<tr>
+						<td>
+							<c:choose>
+								<c:when test="${supplier.sNo < 10 }">
+									S000${supplier.sNo }
+								</c:when>
+								<c:when test="${supplier.sNo >= 10 }">
+									S00${supplier.sNo }
+								</c:when>
+							</c:choose>
+						</td>
+						<td>${supplier.sName }</td>
+						<td>${supplier.sBln }</td>
+						<td>${supplier.sAddress }</td>
+						<td>${supplier.sTel }</td>
+						<td>${supplier.sFax }</td>
+						<td>
+							<a href="#"><button>수정</button></a>
+							<a href="#"><button>삭제</button></a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd">등 록</button></a>
+		</div>
+	</section>
 <%@ include file="../include/footer.jsp" %>
