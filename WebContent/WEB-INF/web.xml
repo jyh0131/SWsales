@@ -5,7 +5,7 @@
   
    <servlet>
   	<servlet-name>ContorllerUsingURI</servlet-name>
-  	<servlet-class>swsales.mvc.ContorllerUsingURI</servlet-class>
+  	<servlet-class>swsales.mvc.ControllerUsingURI</servlet-class>
   	<init-param>
   		<param-name>configFile</param-name>
   		<param-value>/WEB-INF/commandHandler.properties</param-value>
