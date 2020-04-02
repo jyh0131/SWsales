@@ -23,5 +23,4 @@ $(function(){
 		<div><img src="${pageContext.request.contextPath}/images/main/test2.jpg"></div>
 	</div>
 </section>
-</div>
 <%@include file="../include/footer.jsp"%>
