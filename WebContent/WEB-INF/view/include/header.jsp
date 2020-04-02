@@ -84,3 +84,4 @@
 				<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
 			</ul>		
 		</header>
+	</div>

@@ -1,16 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
-</head>
+<%@ include file="../include/header.jsp" %>
 <style>
 	*{
 		margin: 0;
 		padding: 0;
+	}
+	#imgDiv{
+		width: 85%;
+		height: 400px;
+		border: 1px solid red;
+		margin: 0 auto;
+		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 	#search{
 		margin: 10px;
@@ -110,7 +113,11 @@
 		})
 	});
 </script>
-<body>
+
+<section>
+	<div id="imgDiv">
+		<!-- 이미지추가부분 -->
+	</div>
 	<div id="container">
 		<form action="supplierSearch.do" method="post">
 			<div id="search">
@@ -162,5 +169,5 @@
 		</table>
 		<a href="#"><button id="btnAdd">등 록</button></a>
 	</div>
-</body>
-</html>
+</section>
+<%@ include file="../include/footer.jsp" %>
