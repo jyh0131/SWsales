@@ -167,7 +167,7 @@
 				</tr>
 			</c:forEach>
 		</table>
-		<a href="#"><button id="btnAdd">등 록</button></a>
+		<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd">등 록</button></a>
 	</div>
 </section>
 <%@ include file="../include/footer.jsp" %>

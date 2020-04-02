@@ -27,7 +27,7 @@ public class SupplierListHandler implements CommandHandler {
 		}finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/client/supplyList.jsp";
+		return "/WEB-INF/view/client/supplierList.jsp";
 	}
 
 }

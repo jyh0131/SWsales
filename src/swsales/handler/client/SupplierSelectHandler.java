@@ -37,7 +37,7 @@ public class SupplierSelectHandler implements CommandHandler {
 					List<Supplier> list = dao.selectSupplierListByTel(conn, selectSupplier);
 					req.setAttribute("list", list);
 				}
-				return "/WEB-INF/view/client/supplyList.jsp";
+				return "/WEB-INF/view/client/supplierList.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {
