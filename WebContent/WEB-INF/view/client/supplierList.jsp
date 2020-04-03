@@ -111,6 +111,15 @@
 		$("#btnAll").click(function() {
 			location.href="supplierList.do";
 		})
+		
+		$(".btnDel").click(function() {
+			var no = $(this).attr("data-sNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/client/supplierDel.do?no="+no;
+			}
+		})
 	});
 </script>
 
@@ -161,8 +170,8 @@
 						<td>${supplier.sTel }</td>
 						<td>${supplier.sFax }</td>
 						<td>
-							<a href="#"><button style="cursor: pointer">수정</button></a>
-							<a href="#"><button style="cursor: pointer">삭제</button></a>
+							<a href="${pageContext.request.contextPath}/client/supplierMod.do?no=${supplier.sNo}"><button style="cursor: pointer">수정</button></a>
+							<button class="btnDel" style="cursor: pointer" data-sNo="${supplier.sNo }">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
