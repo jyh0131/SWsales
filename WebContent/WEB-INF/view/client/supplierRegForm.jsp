@@ -70,7 +70,17 @@
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script>
+	function openDaumZipAddress() {
+		new daum.Postcode({
+			oncomplete:function(data) {
+				jQuery("#sAddress").val(data.address);
+				jQuery("#sAddress").focus();
+				console.log(data);
+			}
+		}).open();
+	}
 	$(function () {
 		$("#btnSname").click(function () {
 			var sName = $("#sName").val();
@@ -93,6 +103,7 @@
 				})
 			}
 		})
+		
 	})
 </script>
 	<section>
@@ -102,7 +113,7 @@
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="">
+		<form action="${pageContext.request.contextPath}/client/supplierAdd.do" method="post">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>회사번호</label>
@@ -110,14 +121,14 @@
 					
 					<label><span class="red">* </span>회사명</label>
 					<input type="text" name="sName" class="text" id="sName" placeholder=" >> 중복확인">
-					<input type="button" value="중복확인" id="btnSname"><br>
+					<input type="button" value="중복확인" id="btnSname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>사업자등록번호</label>
 					<input type="text" name="sBln" class="text" placeholder=" 000-00-00000"><br>
 					
 					<label>&nbsp&nbsp주소</label>
-					<input type="text" name="sAddress" class="text" placeholder=" >> 주소검색">
-					<input type="button" value="주소검색" id="btnSaddress"><br>
+					<input type="text" name="sAddress" id="sAddress"class="text" placeholder=" >> 주소검색">
+					<input type="button" value="주소검색" id="btnSaddress" onclick="openDaumZipAddress();" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>전화번호</label>
 					<input type="text" name="sTel" class="text" placeholder=" '-'로 구분하여 입력"><br>
@@ -127,7 +138,7 @@
 				</div>
 			</div>
 			<div id="add">
-				<input type="submit" value="등록" id="btnAdd">
+				<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
 			</div>
 		</form>
 	</section>

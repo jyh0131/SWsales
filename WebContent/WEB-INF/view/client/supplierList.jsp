@@ -128,9 +128,9 @@
 						<option value="sTel">전화번호</option>
 					</select>
 					<input type="text" name="search" id="ipSearch">
-					<input type="submit" value="검색" id="btnSearch">
-					<input type="reset" value="초기화" id="btnClear">
-					<input type="button" value="전체" id="btnAll">
+					<input type="submit" value="검색" id="btnSearch" style="cursor: pointer">
+					<input type="reset" value="초기화" id="btnClear" style="cursor: pointer">
+					<input type="button" value="전체" id="btnAll" style="cursor: pointer">
 				</div>
 			</form>
 			<table id="tbl">
@@ -161,13 +161,13 @@
 						<td>${supplier.sTel }</td>
 						<td>${supplier.sFax }</td>
 						<td>
-							<a href="#"><button>수정</button></a>
-							<a href="#"><button>삭제</button></a>
+							<a href="#"><button style="cursor: pointer">수정</button></a>
+							<a href="#"><button style="cursor: pointer">삭제</button></a>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd">등 록</button></a>
+			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
 		</div>
 	</section>
 <%@ include file="../include/footer.jsp" %>

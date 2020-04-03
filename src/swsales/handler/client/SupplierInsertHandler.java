@@ -27,6 +27,27 @@ public class SupplierInsertHandler implements CommandHandler {
 				JDBCUtil.close(conn);
 			}
 			return "/WEB-INF/view/client/supplierRegForm.jsp";
+		}else if(req.getMethod().equalsIgnoreCase("post")) {
+			String sName = req.getParameter("sName");
+			String sBln = req.getParameter("sBln");
+			String sAddress = req.getParameter("sAddress");
+			String sTel = req.getParameter("sTel");
+			String sFax = req.getParameter("sFax");
+			
+			Connection conn = null;
+			
+			try {
+				conn = JDBCUtil.getConnection();
+				SupplierDao dao = SupplierDao.getInstance();
+				Supplier supplier = new Supplier(0, sName, sBln, sAddress, sTel, sFax);
+				dao.insertSupplier(conn, supplier);
+				res.sendRedirect(req.getContextPath()+"/client/supplierList.do");
+				return null;
+			} catch (Exception e) {
+				e.printStackTrace();
+			} finally {
+				JDBCUtil.close(conn);
+			}
 		}
 		return null;
 	}
