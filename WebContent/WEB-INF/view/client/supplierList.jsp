@@ -9,12 +9,62 @@
 	}
 	#imgDiv{
 		width: 100%;
-		height: 400px;
-		border: 1px solid red;
+		height: 600px;
 		margin: 0 auto;
 		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-bottom: 20px;
 	}
+	#imgDiv img{
+		width: 100%;
+		height: 600px;	
+	}
+	div#submenu{
+		width: 100%;
+		height: 150px;
+		line-height: 50px;
+
+	}
+	div#submenu ul{
+		width: 100%;
+		height: 150px;
+		padding-top: 20px;
+	}
+	div#submenu ul li{
+		width: 810px;
+		height: 120px;
+		float: left;
+		list-style: none;
+		text-align: center;
+	}
+	div#submenu ul li img{
+		width: 55px;
+		height: 55px;
+		padding-top: 10px;
+	}
+	div#submenu ul li a{
+		text-decoration: none;
+		color:  #0067B8;
+		font-size: 17px;
+	}
+	div#submenu ul li:hover{
+		background: #D5D5D5;
+		display: block;
+	}
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}		
 	#search{
 		margin: 10px;
 		position: relative;
@@ -125,8 +175,25 @@
 
 	<section>
 		<div id="imgDiv">
-			<!-- 이미지추가부분 -->
+			<img src="${pageContext.request.contextPath}/images/main/test1.png">
 		</div>
+		<div id="submenu">
+			<ul>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_sp.png"><br>
+					<a href="#"><b>공급 회사</b> ></a>
+				</li>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_cl.png"><br>
+					<a href="#"><b>고객사</b> ></a>
+				</li>				
+			</ul>
+		</div>
+		<div id="title">
+			<h1>Supplier List</h1>
+			<hr>
+			<h3>거래처 관리 / 공급회사 리스트</h3>
+		</div>		
 		<div id="container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">

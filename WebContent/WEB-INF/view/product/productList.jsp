@@ -58,7 +58,7 @@
 		margin-top: 50px;
 	}
 	div#title h1{
-		font-size: 35px;
+		font-size: 40px;
 		letter-spacing: 8px;
 		padding-left: 60px;
 	}
@@ -192,7 +192,7 @@
 		<div id="title">
 			<h1>Software Product List</h1>
 			<hr>
-			<h3>거래처 관리</h3>
+			<h3>제품 관리 / 소프트웨어 상품 리스트</h3>
 		</div>
 		<div id="container">
 			<form action="supplierSearch.do" method="post">
