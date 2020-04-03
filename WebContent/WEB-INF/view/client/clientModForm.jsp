@@ -49,7 +49,7 @@
     	height: 40px;
     	margin-right: 20px;
 	}
-	#btnSname, #btnSaddress{
+	#btnCname, #btnCaddress{
 	    width: 130px;
     	height: 35px;
 	}
@@ -85,36 +85,36 @@
 	function openDaumZipAddress() {
 		new daum.Postcode({
 			oncomplete:function(data) {
-				jQuery("#sAddress").val(data.address);
-				jQuery("#sAddress").focus();
+				jQuery("#cAddress").val(data.address);
+				jQuery("#cAddress").focus();
 				console.log(data);
 			}
 		}).open();
 	}
 	$(function () {
-		$("#btnSname").click(function () {
-			var sName = $("#sName").val();
-			if(sName == ""){
-				alert("회사명을 입력해주세요.");
+		$("#btnCname").click(function () {
+			var cName = $("#cName").val();
+			if(cName == ""){
+				alert("상호명을 입력해주세요.");
 			}else{
 				$.ajax({
-					url:"${pageContext.request.contextPath}/client/supplierSearchName.do",
+					url:"${pageContext.request.contextPath}/client/clientSearchName.do",
 					type:"get",
-					data:{"sName":sName},
+					data:{"cName":cName},
 					dataType:"json",
 					success:function(res){
 						console.log(res);
 						if(res.result == "success"){
-							alert("등록된 회사입니다.");
+							alert("등록된 상호명입니다.");
 						}else if(res.result == "fail"){
-							alert("등록 가능한 회사입니다.");
+							alert("등록 가능한 상호명입니다.");
 						}
 					}
 				})
 			}
 		})
 		$("#btnReset").click(function() {
-			location.href="${pageContext.request.contextPath}/client/supplierList.do"
+			location.href="${pageContext.request.contextPath}/client/clientList.do"
 		})
 		
 	})
@@ -126,29 +126,29 @@
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/client/supplierMod.do" method="post">
+		<form action="${pageContext.request.contextPath}/client/clientMod.do" method="post">
 			<div id="regForm">
 				<div id="form">
-					<label><span class="red">* </span>회사번호</label>
-					<input type="text" name="no" class="text" value=" S00${supplier.sNo }" readonly="readonly"><br>
-					<input type="hidden" name="sNo" value="${supplier.sNo }">
+					<label><span class="red">* </span>고객번호</label>
+					<input type="text" name="no" class="text" value=" C00${client.cNo }" readonly="readonly"><br>
+					<input type="hidden" name="cNo" value="${client.cNo }">
 					
-					<label><span class="red">* </span>회사명</label>
-					<input type="text" name="sName" class="text" id="sName" placeholder=" >> 중복확인" value="${supplier.sName }">
-					<input type="button" value="중복확인" id="btnSname" style="cursor: pointer"><br>
+					<label><span class="red">* </span>상호명</label>
+					<input type="text" name="cName" class="text" id="cName" placeholder=" >> 중복확인" value="${client.cName }">
+					<input type="button" value="중복확인" id="btnCname" style="cursor: pointer"><br>
 					
-					<label><span class="red">* </span>사업자등록번호</label>
-					<input type="text" name="sBln" class="text" placeholder=" 000-00-00000"  value="${supplier.sBln }"><br>
+					<label><span class="red">* </span>대표명</label>
+					<input type="text" name="cCeo" class="text" value="${client.cCeo }"><br>
 					
 					<label>&nbsp&nbsp주소</label>
-					<input type="text" name="sAddress" id="sAddress"class="text" placeholder=" >> 주소검색"  value="${supplier.sAddress }">
-					<input type="button" value="주소검색" id="btnSaddress" onclick="openDaumZipAddress();" style="cursor: pointer"><br>
+					<input type="text" name="cAddress" id="cAddress"class="text" placeholder=" >> 주소검색"  value="${client.cAddress }">
+					<input type="button" value="주소검색" id="btnCaddress" onclick="openDaumZipAddress();" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>전화번호</label>
-					<input type="text" name="sTel" class="text" placeholder=" '-'로 구분하여 입력" value="${supplier.sTel }"><br>
+					<input type="text" name="cTel" class="text" placeholder=" '-'로 구분하여 입력" value="${client.cTel }"><br>
 					
-					<label>&nbsp&nbspFAX번호</label>
-					<input type="text" name="sFax" class="text" placeholder=" '-'로 구분하여 입력" value="${supplier.sFax }"><br>
+					<label>&nbsp&nbsp담당직원</label>
+					<input type="text" name="cSman" class="text" value="${client.cSman }"><br>
 				</div>
 			</div>
 			<div id="add">
