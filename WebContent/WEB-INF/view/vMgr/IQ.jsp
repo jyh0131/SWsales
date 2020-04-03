@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="../include/header.jsp"%>
 <style>
 	h1{
@@ -75,9 +76,9 @@
 					<td>${iq.p_name }</td>
 					<td>${iq.s_name }</td>
 					<td>${iq.iq_qty }</td>
-					<td class="price">${iq.p_price}　</td>
-					<td class="price">${iq.p_cost }　</td>
-					<td>${iq.evaluation }　</td>
+					<td class="price"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</td>
+					<td class="price"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</td>
+					<td>${iq.evaluation }</td>
 				</tr>
 			</c:forEach>
 	</table>
