@@ -1,22 +1,51 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>     
+<%@ include file="../include/header.jsp" %>
 <style>
 	h1{
 		text-align: center;
+		margin:20px 0;
+		font-size: 35px;
+	}
+	fieldset{
+		padding:3px 10px;
+		margin:10px 0;
+		font-size: 20px;
+		height:38px;
+		line-height: 38px;
+		border:none;
+	}
+	fieldset button{
+		font-size: 18px;
+		padding:0 3px;
+	}
+	fieldset input{
+		height:25px;
+	}
+	fieldset input[type="checkbox"]{
+		width:20px;
+		line-height: 30px;
 	}
 	table{
-		border: 1px solid black;
 		border-collapse: collapse;
-		width:1000px;
+		width:100%;
 		text-align: center;
+		height: 46px;
 	}
-	td{
-		border: 1px solid black;
+	th, td{
+		border: 1px solid #ccc;
+		height: 46px;
+	}
+	th{
+		border-top: 2px solid #878787;
+		background-color: #F9FAFB;
+	}
+	tr:nth-child(even){
+		background-color: #eee;
+	}
+	tr:nth-child(odd){
+		background-color: #F9FAFB;
 	}
 	.price{
 		text-align: right;
@@ -25,8 +54,7 @@
 		text-align: right;
 	}
 </style>
-</head>
-<body>
+<section>
 	<h1>S/W별 판매현황 조회</h1>
 	<fieldset>
 		<label>품목명</label>
@@ -43,33 +71,17 @@
 			<td>할인금액</td>
 			<td>판매이윤</td>
 		</tr>
-		<tr>
-			<td>windows 10 pro</td>
-			<td>사무</td>
-			<td>마이크로소프트</td>
-			<td class="price">11,520,000</td>
-			<td class="price">14,400,000</td>
-			<td class="price">0</td>
-			<td class="price">2,880,000</td>
-		</tr>
-		<tr>
-			<td>windows 10 pro</td>
-			<td>사무</td>
-			<td>마이크로소프트</td>
-			<td class="price">11,520,000</td>
-			<td class="price">14,400,000</td>
-			<td class="price">0</td>
-			<td class="price">2,880,000</td>
-		</tr>
-		<tr>
-			<td>windows 10 pro</td>
-			<td>사무</td>
-			<td>마이크로소프트</td>
-			<td class="price">11,520,000</td>
-			<td class="price">14,400,000</td>
-			<td class="price">0</td>
-			<td class="price">2,880,000</td>
-		</tr>
+		<c:forEach var="sw" items="${list }">
+				<tr>
+					<td>${sw.p_name }</td>
+					<td>${sw.cate_name }</td>
+					<td>${sw.s_name }</td>
+					<td class="price">${sw.supplyAmount }　</td>
+					<td class="price">${sw.salesAmount }　</td>
+					<td class="price">${sw.discount }　</td>
+					<td class="price">${sw.salesProfit }　</td>
+				</tr>
+		</c:forEach>
 	</table>
 	<fieldset class="total">
 		<label>총 판매금액</label>
@@ -77,5 +89,5 @@
 		<label>총 판매이윤</label>
 		<input type="text">
 	</fieldset>
-</body>
-</html>
+</section>
+<%@ include file="../include/footer.jsp" %>

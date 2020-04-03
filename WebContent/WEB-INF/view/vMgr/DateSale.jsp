@@ -1,11 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<%@include file="../include/header.jsp"%>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>jQuery UI Datepicker - Icon trigger</title>
   <link rel="stylesheet" href="/resources/demos/style.css">
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
@@ -16,77 +13,101 @@
   $( function() {
     $( "#datepickerStart" ).datepicker({
       showOn: "button",
-      buttonImage: "../../images/iconmonstr-calendar-6-240.png",
+      buttonImage: "../images/vMgr/iconmonstr-calendar-6-240.png",
       buttonImageOnly: true,
-      buttonText: "Select date"
+      buttonText: "시작"
     });
     
     $( "#datepickerEnd" ).datepicker({
       showOn: "button",
-      buttonImage: "../../images/iconmonstr-calendar-6-240.png",
+      buttonImage: "../images/vMgr/iconmonstr-calendar-6-240.png",
       buttonImageOnly: true,
-      buttonText: "Select date"
+      buttonText: "종료"
     });
   } );
   </script>
-<title>Insert title here</title>
 <style>
 	h1{
 		text-align: center;
+		margin:20px 0;
+		font-size: 35px;
+	}
+	fieldset{
+		padding:3px 10px;
+		margin:10px 0;
+		font-size: 20px;
+		height:38px;
+		line-height: 38px;
+		border:none;
+	}
+	fieldset button{
+		font-size: 18px;
+		padding:0 3px;
+	}
+	fieldset input{
+		height:25px;
+	}
+	fieldset input[type="checkbox"]{
+		width:20px;
+		line-height: 30px;
 	}
 	table{
-		border: 1px solid black;
 		border-collapse: collapse;
-		width:1000px;
+		width:100%;
 		text-align: center;
+		height: 46px;
 	}
-	td{
-		border: 1px solid black;
+	th, td{
+		border: 1px solid #ccc;
+		height: 46px;
 	}
-	.price{
-		text-align: right;
+	th{
+		border-top: 2px solid #878787;
+		background-color: #F9FAFB;
+	}
+	tr:nth-child(even){
+		background-color: #eee;
+	}
+	tr:nth-child(odd){
+		background-color: #F9FAFB;
 	}
 	.total{
 		text-align: right;
 	}
 </style>
-</head>
-<body>
+<section>
 	<h1>날짜별 판매현황 조회</h1>
 	<fieldset>
-		<label>조회기간</label>
-		<input type="text" id="datepickerStart"> 시작  <input type="text" id="datepickerEnd"> 종료 <button>검색</button>
+		<label>조 회 기 간 </label>
+		<input type="text" id="datepickerStart"> <input type="text" id="datepickerEnd"> <button>검색</button>
 		<input type="checkbox">전체
 	</fieldset>
 	<table>
 		<tr>
-			<td>주문번호</td>
-			<td>고객상호명</td>
-			<td>품목명</td>
-			<td>주문수량</td>
-			<td>주문일자</td>
+			<th>주문번호</th>
+			<th>고객상호명</th>
+			<th>품목명</th>
+			<th>주문수량</th>
+			<th>주문일자</th>
 		</tr>
-		<tr>
-			<td>O0001</td>
-			<td>민수시스템</td>
-			<td>V3VirusWall FileScan for Linux</td>
-			<td>75</td>
-			<td>2020-01-01</td>
-		</tr>
-		<tr>
-			<td>O0001</td>
-			<td>민수시스템</td>
-			<td>V3VirusWall FileScan for Linux</td>
-			<td>75</td>
-			<td>2020-01-01</td>
-		</tr>
-		<tr>
-			<td>O0001</td>
-			<td>민수시스템</td>
-			<td>V3VirusWall FileScan for Linux</td>
-			<td>75</td>
-			<td>2020-01-01</td>
-		</tr>
+		<c:forEach var="ds" items="${list }">
+				<tr>
+					<td>
+						<c:choose>
+							<c:when test="${ds.o_no <10 }">O000${ds.o_no }
+							</c:when>
+							<c:when test="${ds.o_no >=10 && ds.o_no <100 }">O00${ds.o_no }
+							</c:when>
+							<c:when test="${ds.o_no >=100 && ds.o_no <1000}">O0${ds.o_no }
+							</c:when>
+						</c:choose>
+					</td>
+					<td>${ds.c_name }</td>
+					<td>${ds.p_name }</td>
+					<td>${ds.o_qty }</td>
+					<td>${ds.o_date }</td>
+				</tr>
+		</c:forEach>
 	</table>
-</body>
-</html>
+</section>	
+<%@include file="../include/footer.jsp"%>

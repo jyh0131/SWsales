@@ -1,22 +1,47 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Insert title here</title>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>    
+<%@include file="../include/header.jsp"%>
 <style>
 	h1{
 		text-align: center;
+		margin:20px 0;
+		font-size: 35px;
+	}
+	fieldset{
+		padding:3px 10px;
+		margin:10px 0;
+		font-size: 20px;
+		height:38px;
+		line-height: 38px;
+		border:none;
+	}
+	fieldset button{
+		font-size: 18px;
+		padding:0 3px;
+	}
+	fieldset input{
+		height:25px;
 	}
 	table{
-		border: 1px solid black;
 		border-collapse: collapse;
-		width:1000px;
+		width:100%;
 		text-align: center;
+		height: 46px;
 	}
-	td{
-		border: 1px solid black;
+	th, td{
+		border: 1px solid #ccc;
+		height: 46px;
+	}
+	th{
+		border-top: 2px solid #878787;
+		background-color: #F9FAFB;
+	}
+	tr:nth-child(even){
+		background-color: #eee;
+	}
+	tr:nth-child(odd){
+		background-color: #F9FAFB;
 	}
 	.price{
 		text-align: right;
@@ -31,44 +56,29 @@
 	<fieldset>
 		<label>품목명</label>
 		<input type="text"> <button>조회</button>
-		<input type="radio" name="iq">전체
-		<input type="radio" name="iq">재고과다
-		<input type="radio" name="iq">적정재고
-		<input type="radio" name="iq">재고부족
+		<input type="radio" name="radio" checked="checked">전체
+		<input type="radio" name="radio">재고과다
+		<input type="radio" name="radio">적정재고
+		<input type="radio" name="radio">재고부족
 	</fieldset>
 	<table>
 		<tr>
-			<td>품목명</td>
-			<td>공급회사명</td>
-			<td>재고수량</td>
-			<td>판매가격</td>
-			<td>공급가격</td>
-			<td>재고평가</td>
+			<th>품목명</th>
+			<th>공급회사명</th>
+			<th>재고수량</th>
+			<th>판매가격</th>
+			<th>공급가격</th>
+			<th>재고평가</th>
 		</tr>
-		<tr>
-			<td>window 10 pro</td>
-			<td>마이크로소프트</td>
-			<td>0</td>
-			<td>300,000</td>
-			<td>240,000</td>
-			<td>재고부족</td>
-		</tr>
-		<tr>
-			<td>window 10 pro</td>
-			<td>마이크로소프트</td>
-			<td>0</td>
-			<td>300,000</td>
-			<td>240,000</td>
-			<td>재고부족</td>
-		</tr>
-		<tr>
-			<td>window 10 pro</td>
-			<td>마이크로소프트</td>
-			<td>0</td>
-			<td>300,000</td>
-			<td>240,000</td>
-			<td>재고부족</td>
-		</tr>
+		<c:forEach var="iq" items="${list }">
+				<tr>
+					<td>${iq.p_name }</td>
+					<td>${iq.s_name }</td>
+					<td>${iq.iq_qty }</td>
+					<td class="price">${iq.p_price}　</td>
+					<td class="price">${iq.p_cost }　</td>
+					<td>${iq.evaluation }　</td>
+				</tr>
+			</c:forEach>
 	</table>
-</body>
-</html>
+<%@include file="../include/footer.jsp"%>

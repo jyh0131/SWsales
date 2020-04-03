@@ -6,27 +6,27 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import swsales.dao.ClientSaleDao;
+import swsales.dao.IQEvaluationDao;
 import swsales.jdbc.JDBCUtil;
-import swsales.model.ClientSale;
+import swsales.model.IQEvaluation;
 import swsales.mvc.CommandHandler;
 
-public class ClientSaleHandler implements CommandHandler {
+public class IQHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCUtil.getConnection();
-			ClientSaleDao dao = ClientSaleDao.getInstance();
-			List<ClientSale> list = dao.selectClientSaleByAll(conn);
+			IQEvaluationDao dao = IQEvaluationDao.getInstance();
+			List<IQEvaluation> list = dao.selectIQEvaluationByAll(conn);
 			req.setAttribute("list", list);
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/clientSale.jsp";
+		return "/WEB-INF/view/vMgr/IQ.jsp";
 	}
 
 }
