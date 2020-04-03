@@ -25,7 +25,7 @@ public class ClientDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman from client where c_no=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_no=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, client.getcNo());
 			rs = pstmt.executeQuery();
@@ -38,7 +38,8 @@ public class ClientDao {
 										   rs.getString("c_id"), 
 										   rs.getString("c_mail"), 
 										   rs.getString("c_date"), 
-										   rs.getInt("c_salesman"));
+										   rs.getInt("c_salesman"),
+										   rs.getString("e_name"));
 				return client1;
 			}
 			return null;
@@ -59,7 +60,8 @@ public class ClientDao {
 		String cMail = rs.getString("c_mail");
 		String cDate = rs.getString("c_date");
 		int cSalesman = rs.getInt("c_salesman");
-		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cMail, cDate, cSalesman);
+		String cSman = rs.getString("e_name");
+		return new Client(cNo, cName, cCeo, cAddress, cTel, cId, cMail, cDate, cSalesman, cSman);
 	}
 	
 	private Client getClient2(ResultSet rs) throws SQLException {
@@ -81,7 +83,7 @@ public class ClientDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman from client";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<Client> list = new ArrayList<Client>();
@@ -178,7 +180,7 @@ public class ClientDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_name=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_name=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectClient.getcName());
 			rs = pstmt.executeQuery();
@@ -198,7 +200,7 @@ public class ClientDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_ceo=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_ceo=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectClient.getcCeo());
 			rs = pstmt.executeQuery();
@@ -217,7 +219,7 @@ public class ClientDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_tel=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_tel=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectClient.getcTel());
 			rs = pstmt.executeQuery();
@@ -237,7 +239,7 @@ public class ClientDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_salesman=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_salesman=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, selectClient.getcSalesman());
 			rs = pstmt.executeQuery();
@@ -257,7 +259,7 @@ public class ClientDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman from client where c_name=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_name=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, client.getcName());
 			rs = pstmt.executeQuery();
@@ -278,7 +280,8 @@ public class ClientDao {
 		String cAddress = rs.getString("c_address");
 		String cTel = rs.getString("c_tel");
 		int cSalesman = rs.getInt("c_salesman");
-		return new Client(cNo, cName, cCeo, cAddress, cTel, cSalesman);
+		String cSman = rs.getString("e_name");
+		return new Client(cNo, cName, cCeo, cAddress, cTel, cSalesman, cSman);
 	}
 
 	public String selectClientsEmpName(Connection conn, Client client) throws SQLException {
@@ -374,8 +377,7 @@ public class ClientDao {
 	}
 
 	
-	/***************************************************************************************** (+) 추가 QUERY : 아름 
-	 * @throws SQLException *****************************************************************************************/
+	/***************************************************************************************** (+) 추가 QUERY : 아름  *****************************************************************************************/
 	
 	public Client loginClient(Connection conn, Client client) throws SQLException {
 		PreparedStatement pstmt = null;

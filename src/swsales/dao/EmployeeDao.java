@@ -317,6 +317,27 @@ public class EmployeeDao {
 		}
 	}
 	
+	//검색 : 번호
+	
+	public int selectEmployeeNo(Connection conn, String name) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select e_no from employee where e_name=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, name);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return rs.getInt(1);
+			}
+			return 0;
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+	
 	/***QUERY [insert/update/delete]****************************************************************************************/
 	
 	//insert

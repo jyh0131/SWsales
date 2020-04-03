@@ -11,6 +11,7 @@ public class Client {
 	private String cMail;
 	private String cDate;
 	private int cSalesman;
+	private String cSman;
 	
 	public Client() {
 		// TODO Auto-generated constructor stub
@@ -44,13 +45,14 @@ public class Client {
 		this.cSalesman = cSalesman;
 	}
 
-	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, int cSalesman) {
+	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, int cSalesman, String cSman) {
 		this.cNo = cNo;
 		this.cName = cName;
 		this.cCeo = cCeo;
 		this.cAddress = cAddress;
 		this.cTel = cTel;
 		this.cSalesman = cSalesman;
+		this.cSman = cSman;
 	}
 
 	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, String cId, String cMail,
@@ -66,6 +68,21 @@ public class Client {
 		this.cSalesman = cSalesman;
 	}
 	
+	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, String cId, String cMail,
+			String cDate, int cSalesman, String cSman) {
+		super();
+		this.cNo = cNo;
+		this.cName = cName;
+		this.cCeo = cCeo;
+		this.cAddress = cAddress;
+		this.cTel = cTel;
+		this.cId = cId;
+		this.cMail = cMail;
+		this.cDate = cDate;
+		this.cSalesman = cSalesman;
+		this.cSman = cSman;
+	}
+
 	public Client(int cNo, String cName, String cCeo, String cAddress, String cTel, String cId, String cPw,
 			String cMail, String cDate, int cSalesman) {
 		this.cNo = cNo;
@@ -198,6 +215,14 @@ public class Client {
 
 	public void setcSalesman(int cSalesman) {
 		this.cSalesman = cSalesman;
+	}
+
+	public String getcSman() {
+		return cSman;
+	}
+
+	public void setcSman(String cSman) {
+		this.cSman = cSman;
 	}
 
 	@Override
