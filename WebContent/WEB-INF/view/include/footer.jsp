@@ -3,7 +3,7 @@
 <style>
 	/** footer **/
 	footer{
-		width: 1920px;
+		width: 1903px;
 		height: 370px;
 		background: #F2F2F2;
 	}

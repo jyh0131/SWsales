@@ -37,18 +37,34 @@
 		list-style: none;
 		text-align: center;
 	}
-	div#submenu ul li:hover{
-		background: red;
-		display: block;
-	}	
 	div#submenu ul li img{
 		width: 50px;
 		height: 50px;
+		padding-top: 10px;
 	}
 	div#submenu ul li a{
 		text-decoration: none;
 		color:  #0067B8;
 		font-size: 17px;
+	}
+	div#submenu ul li:hover{
+		background: #D5D5D5;
+		display: block;
+	}
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+	}
+	div#title h1{
+		font-size: 35px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
 	}	
 	#search{
 		margin: 10px;
@@ -117,6 +133,10 @@
 	th{
 		border-top: 2px solid #878787;
 		background-color: #F9FAFB;
+		font-size: 17px;
+	}
+	.tbl_point:hover{
+		color: red;
 	}
 	#btnAdd{
 		width: 130px;
@@ -169,6 +189,11 @@
 				</li>				
 			</ul>
 		</div>
+		<div id="title">
+			<h1>Software Product List</h1>
+			<hr>
+			<h3>거래처 관리</h3>
+		</div>
 		<div id="container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">
@@ -198,8 +223,8 @@
 					<th>수정/삭제</th>
 				</tr>
 				<c:forEach var="product" items="${list }">
-					<tr>
-						<td>
+					<tr class="tbl_point">
+						<td class="tbl_point">
 							<c:choose>
 								<c:when test="${product.pNo < 10 }">
 									P000${product.pNo }
