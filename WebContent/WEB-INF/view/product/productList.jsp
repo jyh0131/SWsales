@@ -47,9 +47,9 @@
 		color:  #0067B8;
 		font-size: 17px;
 	}
-	div#submenu ul li:hover{
-		background: #D5D5D5;
-		display: block;
+	div#submenu ul a:hover{
+		border-bottom: 4px solid black;
+		font-size: 19px;
 	}
 	div#title{
 		width: 100%;
@@ -126,7 +126,7 @@
 		border-collapse: collapse;
 	}
 	th, td{
-		border: 1px solid #ccc;
+ 		border: 1px solid #ccc;
 		text-align: center;
 		height: 46px;
 	}
@@ -135,8 +135,9 @@
 		background-color: #F9FAFB;
 		font-size: 17px;
 	}
-	.tbl_point:hover{
+	tr.tbl_point:hover{
 		color: red;
+		font-weight: bold;
 	}
 	#btnAdd{
 		width: 130px;
@@ -177,7 +178,7 @@
 			<ul>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_regi.png"><br>
-					<a href="#"><b>제품 등록</b> ></a>
+					<a href="${pageContext.request.contextPath}/product/productAdd.do"><b>제품 등록</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_so.png"><br>

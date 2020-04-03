@@ -18,12 +18,15 @@
 	}
 	#imgDiv{
 		width: 100%;
-		height: 400px;
-		border: 1px solid red;
+		height: 600px;
 		margin: 0 auto;
 		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-bottom: 20px;
 	}
+	#imgDiv img{
+		width: 100%;
+		height: 600px;	
+	}	
 	#regForm{
 		width: 65%;
 		margin: 0 auto;
@@ -71,7 +74,7 @@
 </style>
 <section>
 		<div id="imgDiv">
-			<!-- 이미지추가부분 -->
+			<img src="${pageContext.request.contextPath}/images/main/test1.png">
 		</div>
 		<div id="point">
 			<label class="red">＊ 필수입력</label>

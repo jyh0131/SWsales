@@ -68,12 +68,12 @@ $(function(){
 			<li>
 				<img src="${pageContext.request.contextPath}/images/main/main_dummy1.png">
 				<h3>여러분을 위한 365</h3>
-				<p>NAMBAWAN Office 365로 할 수 있는 일들을 찾아보세요.</p>
+				<p>날마다 NAMBAWAN Office 365로 할 수 있는 일들을 찾아보세요.</p>
 			</li>
 			<li>
 				<img src="${pageContext.request.contextPath}/images/main/main_dummy2.png">
 				<h3>원격으로 간편하게 일하기</h3>
-				<p>어디서나 무료로 채팅하고, 회의하고, 통화하고, 공동 작업할 수 있습니다.</p>
+				<p>원격 소프트웨어로 어디서나 무료로 채팅하고, 회의하고, 통화하고, 공동 작업할 수 있습니다.</p>
 			</li>
 			<li>
 				<img src="${pageContext.request.contextPath}/images/main/main_dummy3.png">

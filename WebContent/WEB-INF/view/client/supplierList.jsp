@@ -46,9 +46,9 @@
 		color:  #0067B8;
 		font-size: 17px;
 	}
-	div#submenu ul li:hover{
-		background: #D5D5D5;
-		display: block;
+	div#submenu ul a:hover{
+		border-bottom: 4px solid black;
+		font-size: 19px;
 	}
 	div#title{
 		width: 100%;
