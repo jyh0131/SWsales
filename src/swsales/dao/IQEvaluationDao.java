@@ -10,6 +10,7 @@ import java.util.List;
 
 import swsales.jdbc.JDBCUtil;
 import swsales.model.IQEvaluation;
+import swsales.model.InventoryQuantity;
 
 public class IQEvaluationDao {
 	private static final IQEvaluationDao dao = new IQEvaluationDao();

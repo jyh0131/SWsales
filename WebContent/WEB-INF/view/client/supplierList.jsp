@@ -110,6 +110,7 @@
 		
 		$("#btnAll").click(function() {
 			location.href="supplierList.do";
+<<<<<<< HEAD
 		})
 	});
 </script>
@@ -170,4 +171,75 @@
 			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd">등 록</button></a>
 		</div>
 	</section>
+=======
+		})
+		
+		$(".btnDel").click(function() {
+			var no = $(this).attr("data-sNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/client/supplierDel.do?no="+no;
+			}
+		})
+	});
+</script>
+
+	<section>
+		<div id="imgDiv">
+			<!-- 이미지추가부분 -->
+		</div>
+		<div id="container">
+			<form action="supplierSearch.do" method="post">
+				<div id="search">
+					<select id="selSearch" name="selSearch">
+						<option selected>선택해주세요</option>
+						<option value="sName">회사명</option>
+						<option value="sBln">사업자등록번호</option>
+						<option value="sTel">전화번호</option>
+					</select>
+					<input type="text" name="search" id="ipSearch">
+					<input type="submit" value="검색" id="btnSearch" style="cursor: pointer">
+					<input type="reset" value="초기화" id="btnClear" style="cursor: pointer">
+					<input type="button" value="전체" id="btnAll" style="cursor: pointer">
+				</div>
+			</form>
+			<table id="tbl">
+				<tr>
+					<th>회사번호</th>
+					<th>회사명</th>
+					<th>사업자 등록번호</th>
+					<th>주 소</th>
+					<th>전화번호</th>
+					<th>FAX번호</th>
+					<th>수정/삭제</th>
+				</tr>
+				<c:forEach var="supplier" items="${list }">
+					<tr>
+						<td>
+							<c:choose>
+								<c:when test="${supplier.sNo < 10 }">
+									S000${supplier.sNo }
+								</c:when>
+								<c:when test="${supplier.sNo >= 10 }">
+									S00${supplier.sNo }
+								</c:when>
+							</c:choose>
+						</td>
+						<td>${supplier.sName }</td>
+						<td>${supplier.sBln }</td>
+						<td>${supplier.sAddress }</td>
+						<td>${supplier.sTel }</td>
+						<td>${supplier.sFax }</td>
+						<td>
+							<a href="${pageContext.request.contextPath}/client/supplierMod.do?no=${supplier.sNo}"><button style="cursor: pointer">수정</button></a>
+							<button class="btnDel" style="cursor: pointer" data-sNo="${supplier.sNo }">삭제</button>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
+		</div>
+	</section>
+>>>>>>> branch 'master' of https://github.com/jyh0131/SWsales.git
 <%@ include file="../include/footer.jsp" %>
