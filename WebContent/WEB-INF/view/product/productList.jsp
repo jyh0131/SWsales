@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
  	*{
@@ -9,12 +10,46 @@
 	}
 	#imgDiv{
 		width: 100%;
-		height: 400px;
-		border: 1px solid red;
+		height: 600px;
 		margin: 0 auto;
 		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-bottom: 20px;
 	}
+	#imgDiv img{
+		width: 100%;
+		height: 600px;	
+	}
+	div#submenu{
+		width: 100%;
+		height: 150px;
+		line-height: 50px;
+
+	}
+	div#submenu ul{
+		width: 100%;
+		height: 150px;
+		padding-top: 20px;
+	}
+	div#submenu ul li{
+		width: 540px;
+		height: 120px;
+		float: left;
+		list-style: none;
+		text-align: center;
+	}
+	div#submenu ul li:hover{
+		background: red;
+		display: block;
+	}	
+	div#submenu ul li img{
+		width: 50px;
+		height: 50px;
+	}
+	div#submenu ul li a{
+		text-decoration: none;
+		color:  #0067B8;
+		font-size: 17px;
+	}	
 	#search{
 		margin: 10px;
 		position: relative;
@@ -116,16 +151,32 @@
 
 	<section>
 		<div id="imgDiv">
-			<!-- 이미지추가부분 -->
+			<img src="${pageContext.request.contextPath}/images/main/test1.png">
+		</div>
+		<div id="submenu">
+			<ul>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_regi.png"><br>
+					<a href="#"><b>제품 등록</b> ></a>
+				</li>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_so.png"><br>
+					<a href="#"><b>발주 / 매입</b> ></a>
+				</li>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_cd.png"><br>
+					<a href="#"><b>출 고</b> ></a>
+				</li>				
+			</ul>
 		</div>
 		<div id="container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
-						<option value="sName">회사명</option>
-						<option value="sBln">사업자등록번호</option>
-						<option value="sTel">전화번호</option>
+						<option value="pName">품목명</option>
+						<option value="pCate">분류명</option>
+						<option value="pSno">공급회사명</option>
 					</select>
 					<input type="text" name="search" id="ipSearch">
 					<input type="submit" value="검색" id="btnSearch">
@@ -135,31 +186,46 @@
 			</form>
 			<table id="tbl">
 				<tr>
-					<th>회사번호</th>
-					<th>회사명</th>
-					<th>사업자 등록번호</th>
-					<th>주 소</th>
-					<th>전화번호</th>
-					<th>FAX번호</th>
+					<th>품목번호</th>
+					<th>분류명</th>
+					<th>품목명</th>
+					<!-- <th>품목 이미지</th> -->
+					<th>공급가격</th>
+					<th>판매가격</th>
+					<th>공급회사명</th>
+					<th>최초재고수량</th>
+					<th>최초등록일자</th>
 					<th>수정/삭제</th>
 				</tr>
-				<c:forEach var="supplier" items="${list }">
+				<c:forEach var="product" items="${list }">
 					<tr>
 						<td>
 							<c:choose>
-								<c:when test="${supplier.sNo < 10 }">
-									S000${supplier.sNo }
+								<c:when test="${product.pNo < 10 }">
+									P000${product.pNo }
 								</c:when>
-								<c:when test="${supplier.sNo >= 10 }">
-									S00${supplier.sNo }
+								<c:when test="${product.pNo >= 10 }">
+									P00${product.pNo }
 								</c:when>
 							</c:choose>
 						</td>
-						<td>${supplier.sName }</td>
-						<td>${supplier.sBln }</td>
-						<td>${supplier.sAddress }</td>
-						<td>${supplier.sTel }</td>
-						<td>${supplier.sFax }</td>
+						<td>${product.pCate }</td>
+						<td>${product.pName }</td>
+						<%-- <td>${product.pPicPath }</td> --%>
+						<td><fmt:formatNumber value="${product.pCost }" pattern="\#,###.##"/></td>
+						<td><fmt:formatNumber value="${product.pPrice }" pattern="\#,###.##"/></td>
+						<td>${product.pSno.sName }
+							<c:choose>
+								<c:when test="${product.pSno.sNo < 10 }">
+									(S000${product.pSno.sNo })
+								</c:when>
+								<c:when test="${product.pSno.sNo >= 10 }">
+									(S00${product.pSno.sNo })
+								</c:when>
+							</c:choose>
+						</td>
+						<td>${product.pQty }</td>
+						<td><fmt:formatDate value="${product.pDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
 							<a href="#"><button>수정</button></a>
 							<a href="#"><button>삭제</button></a>
@@ -167,7 +233,6 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd">등 록</button></a>
+			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
 		</div>
-	</section>
 <%@ include file="../include/footer.jsp" %>
