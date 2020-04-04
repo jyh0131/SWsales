@@ -95,10 +95,10 @@
 </script>
 <section>
 		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png" id="sMainImg">
+			<img src="${pageContext.request.contextPath}/images/submenu/pMain.png" id="sMainImg">
 			<div id="sub_log_title">
-				<img src ="${pageContext.request.contextPath}/images/submenu/ptest1.png" id="title1">
-				<img src ="${pageContext.request.contextPath}/images/submenu/ptest2.png" id="title2">
+				<img src ="${pageContext.request.contextPath}/images/submenu/subLogo.png" id="title1">
+				<img src ="${pageContext.request.contextPath}/images/submenu/pTitle.png" id="title2">
 				<h2></h2>
 			<h1>제품 관리</h1>
 			</div>

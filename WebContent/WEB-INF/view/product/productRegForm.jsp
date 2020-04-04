@@ -127,7 +127,7 @@
 				</div>
 			</div>
 			<div id="add">
-				<input type="submit" value="등록" id="btnAdd">
+			<input type="submit" value="등록" id="btnAdd">
 			</div>
 		</form>
 </section>

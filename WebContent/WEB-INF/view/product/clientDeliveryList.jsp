@@ -27,7 +27,7 @@
 		color: red;
 		background-color: white;
 	}	
-	div#container{
+	div#list_container{
 		margin-top: 100px;
 	}
 	#search{
@@ -137,7 +137,7 @@
 			<hr>
 			<h3>제품 관리 > 출고 > <span id="k_title">출고 리스트</span></h3>
 		</div>
-		<div id="container">
+		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
