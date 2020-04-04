@@ -3,10 +3,6 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 <style>
-	*{
-		margin: 0;
-		padding: 0;
-	}
 	#point{
 		width: 65%;
     	height: 40px;
