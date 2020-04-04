@@ -125,6 +125,12 @@
 		width: 100%;
 		border-collapse: collapse;
 	}
+	table tr:nth-child(2n+1){
+		background: #F9FAFB;
+	}
+	table tr:nth-child(2n){
+		background: #eee;
+	}		
 	th, td{
  		border: 1px solid #ccc;
 		text-align: center;
@@ -136,8 +142,8 @@
 		font-size: 17px;
 	}
 	tr.tbl_point:hover{
+		background: black;
 		color: red;
-		font-weight: bold;
 	}
 	#btnAdd{
 		width: 130px;
@@ -154,15 +160,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
-		$("#tbl tr").filter(function (idx, obj) {
-			return idx % 2 == 0;
-		})
-		.css({"background-color":"#F9FAFB"});
-		
-		$("#tbl tr").filter(function (idx, obj) {
-			return idx % 2 != 0;
-		})
-		.css({"background-color":"#eee"});
 		
 		$("#btnAll").click(function() {
 			location.href="supplierList.do";
