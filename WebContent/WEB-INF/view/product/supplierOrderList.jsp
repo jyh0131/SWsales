@@ -4,6 +4,10 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
+ 	*{
+		margin: 0;
+		padding: 0;
+	}
 	#imgDiv{
 		width: 100%;
 		height: 600px;
@@ -164,7 +168,7 @@
 </script>
 
 	<section>
-		<div id="imgDiv">
+<%-- 		<div id="imgDiv">
 			<img src="${pageContext.request.contextPath}/images/main/test1.png">
 		</div>
 		<div id="submenu">
@@ -230,7 +234,7 @@
 						</td>
 						<td>${product.pCate }</td>
 						<td>${product.pName }</td>
-						<%-- <td>${product.pPicPath }</td> --%>
+						<td>${product.pPicPath }</td>
 						<td><fmt:formatNumber value="${product.pCost }" pattern="\#,###.##"/></td>
 						<td><fmt:formatNumber value="${product.pPrice }" pattern="\#,###.##"/></td>
 						<td>${product.pSno.sName }
@@ -253,6 +257,6 @@
 				</c:forEach>
 			</table>
 			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
-		</div>
+		</div> --%>
 </section>		
-<%@ include file="../include/footer.jsp" %>
+<%@ include file="../include/footer.jsp" %>    

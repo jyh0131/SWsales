@@ -70,7 +70,7 @@
 			<ul id="h_menu">
 				<li><a href="#">NAMBAWAN IT</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/supplierList.do">거래처 관리</a></li>
-				<li><a href="${pageContext.request.contextPath}/product/productList.do"">제품 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/product/pSubMenu.do"">제품 관리</a></li>
 				<li><a href="#">주문 관리</a></li>
 				<li><a href="#">현황조회/보고</a></li>
 				<li><a href="#">공지사항</a></li>
