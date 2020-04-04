@@ -71,8 +71,8 @@
 				<li><a href="#">NAMBAWAN IT</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/supplierList.do">거래처 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a></li>
-				<li><a href="${pageContext.request.contextPath}/order/pSubMenu.do">주문 관리</a></li>
-				<li><a href="#">현황조회/보고</a></li>
+				<li><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a></li>
+				<li><a href="${pageContext.request.contextPath}/vMgr/vSubMenu.do">현황조회/보고</a></li>
 				<li><a href="#">공지사항</a></li>
 			</ul>
 			<ul id="h_login">
