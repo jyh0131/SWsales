@@ -7,13 +7,56 @@
 		margin: 0;
 		padding: 0;
 	}
-	#imgDiv{
+	#imgDiv img{
 		width: 100%;
-		height: 400px;
-		border: 1px solid red;
-		margin: 0 auto;
+		height: 600px;	
+	}
+	div#submenu{
+		width: 100%;
+		height: 150px;
+		line-height: 50px;
+
+	}
+	div#submenu ul{
+		width: 100%;
+		height: 150px;
+		padding-top: 20px;
+	}
+	div#submenu ul li{
+		width: 810px;
+		height: 120px;
+		float: left;
+		list-style: none;
+		text-align: center;
+	}
+	div#submenu ul li img{
+		width: 55px;
+		height: 55px;
+		padding-top: 10px;
+	}
+	div#submenu ul li a{
+		text-decoration: none;
+		color:  #0067B8;
+		font-size: 17px;
+	}
+	div#submenu ul a:hover{
+		border-bottom: 4px solid black;
+		font-size: 19px;
+	}
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
 		margin-top: 50px;
-		margin-bottom: 50px;
+	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
 	}
 	#search{
 		margin: 10px;
@@ -100,13 +143,11 @@
 	$(function () {
 		$("#tbl tr").filter(function (idx, obj) {
 			return idx % 2 == 0;
-		})
-		.css({"background-color":"#F9FAFB"});
+		}).css({"background-color":"#F9FAFB"});
 		
 		$("#tbl tr").filter(function (idx, obj) {
 			return idx % 2 != 0;
-		})
-		.css({"background-color":"#eee"});
+		}).css({"background-color":"#eee"});
 		
 		$("#btnAll").click(function() {
 			location.href="clientList.do";
@@ -117,7 +158,7 @@
 			console.log(no);
 			var result = confirm("정말 삭제하시겠습니까?");
 			if(result){
-				location.href="#";
+				location.href="${pageContext.request.contextPath}/client/clientDel.do?no="+no;
 			}
 		})
 	});
@@ -125,7 +166,24 @@
 
 	<section>
 		<div id="imgDiv">
-			<!-- 이미지추가부분 -->
+			<img src="${pageContext.request.contextPath}/images/main/test1.png">
+		</div>
+		<div id="submenu">
+			<ul>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_sp.png"><br>
+					<a href="${pageContext.request.contextPath}/client/supplierList.do"><b>공급 회사</b> ></a>
+				</li>
+				<li>
+					<img src ="${pageContext.request.contextPath}/images/main/smenu_cl.png"><br>
+					<a href="${pageContext.request.contextPath}/client/clientList.do"><b>고객사</b> ></a>
+				</li>				
+			</ul>
+		</div>
+		<div id="title">
+			<h1>Client List</h1>
+			<hr>
+			<h3>거래처 관리 / 고객사 리스트</h3>
 		</div>
 		<div id="container">
 			<form action="clientSearch.do" method="post">
@@ -158,10 +216,10 @@
 						<td>
 							<c:choose>
 								<c:when test="${client.cNo < 10 }">
-									S000${client.cNo }
+									C000${client.cNo }
 								</c:when>
 								<c:when test="${client.cNo >= 10 }">
-									S00${client.cNo }
+									C00${client.cNo }
 								</c:when>
 							</c:choose>
 						</td>

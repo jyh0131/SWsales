@@ -18,11 +18,10 @@
 	}
 	#imgDiv{
 		width: 100%;
-		height: 400px;
-		border: 1px solid red;
+		height: 600px;
 		margin: 0 auto;
 		margin-top: 50px;
-		margin-bottom: 50px;
+		margin-bottom: 20px;
 	}
 	#regForm{
 		width: 65%;
@@ -68,6 +67,16 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	#btnReset{
+		width: 160px;
+   		height: 45px;
+    	background-color: #bbb;
+   		color: white;
+    	border: 1px solid white;
+    	border-radius: 5px;
+    	margin-top: 30px;
+    	font-size: 18px;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -104,11 +113,25 @@
 			}
 		})
 		
+		$("#btnReset").click(function() {
+			location.href="${pageContext.request.contextPath}/client/supplierList.do"
+		})
+		
+		var sno = $("input[name=sNo]").val();
+		console.log(sno);
+		if(sno < 10){
+			$("input[name=no]").val("S000"+sno);
+		}else if(sno > 9 && sno < 100){
+			$("input[name=no]").val("S00"+sno);
+		}else if(sno > 99 && sno < 1000){
+			$("input[name=no]").val("S0"+sno);
+		}
+		
 	})
 </script>
 	<section>
 		<div id="imgDiv">
-			<!-- 이미지추가부분 -->
+			<img src="${pageContext.request.contextPath}/images/main/test1.png">
 		</div>
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
@@ -117,7 +140,8 @@
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>회사번호</label>
-					<input type="text" name="sNo" class="text" value=" S00${supplier.sNo+1 }" readonly="readonly"><br>
+					<input type="text" name="no" class="text" readonly="readonly"><br>
+					<input type="hidden" name="sNo" value="${supplier.sNo+1 }">
 					
 					<label><span class="red">* </span>회사명</label>
 					<input type="text" name="sName" class="text" id="sName" placeholder=" >> 중복확인">
@@ -139,6 +163,7 @@
 			</div>
 			<div id="add">
 				<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
+				<input type="button" value="취소" id="btnReset" style="cursor: pointer">
 			</div>
 		</form>
 	</section>

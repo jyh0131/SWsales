@@ -181,11 +181,11 @@
 			<ul>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_sp.png"><br>
-					<a href="#"><b>공급 회사</b> ></a>
+					<a href="${pageContext.request.contextPath}/client/supplierList.do"><b>공급 회사</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_cl.png"><br>
-					<a href="#"><b>고객사</b> ></a>
+					<a href="${pageContext.request.contextPath}/client/clientList.do"><b>고객사</b> ></a>
 				</li>				
 			</ul>
 		</div>
