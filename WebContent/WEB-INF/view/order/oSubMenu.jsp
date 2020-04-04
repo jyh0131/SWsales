@@ -115,5 +115,9 @@
 				</li>				
 			</ul>
 		</div>
+		<!-- 테스트용:나중에 삭제 -->
+		<p>
+			<a href="${pageContext.request.contextPath}/product/clientDeliveryList.do"><b>주문관리 테스트</b> ></a>
+		</p>
 </section>
 <%@ include file="../include/footer.jsp" %>
