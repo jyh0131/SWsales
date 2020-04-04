@@ -73,10 +73,10 @@
 				<li><a href="${pageContext.request.contextPath}/product/productList.do"">제품 관리</a></li>
 				<li><a href="#">주문 관리</a></li>
 				<li><a href="#">현황조회/보고</a></li>
-				<li><a href="#">공지사항</a></li>
+				<li><a href="${pageContext.request.contextPath}/board/boardList.do">공지사항</a></li>
 			</ul>
 			<ul id="h_login">
-				<li><a href="#">LOGIN</a></li>
+				<li><a href="${pageContext.request.contextPath}/main/login.do">LOGIN</a></li>
 				<li>|</li>
 				<li><a href="#">REGISTER</a></li>
 				<li>|</li>

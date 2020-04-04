@@ -3,6 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 <style>
+	#imgDiv{
+		width: 100%;
+		height: 600px;
+		margin: 0 auto;
+		margin-top: 50px;
+		margin-bottom: 20px;
+	}
 	#imgDiv img{
 		width: 100%;
 		height: 600px;	
@@ -105,8 +112,6 @@
 		right: 0;
 	}
 	#container{
-		width: 60%;
-		margin: 0 auto;
 		position: relative;
 	}
 	table{

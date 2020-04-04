@@ -112,8 +112,6 @@
 		right: 0;
 	}
 	#container{
-		width: 60%;
-		margin: 0 auto;
 		position: relative;
 	}
 	table{
