@@ -86,7 +86,7 @@
 		<div id="title">
 			<h1>Software Product Registration</h1>
 			<hr>
-			<h3>제품 관리 > <span id="k_title">소프트웨어 상품 등록</span></h3>
+			<h3>제품 관리 > 제품 등록 > <span id="k_title">소프트웨어 상품 등록</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">

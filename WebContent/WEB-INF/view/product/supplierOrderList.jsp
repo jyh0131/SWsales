@@ -3,69 +3,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
-<style>
- 	*{
-		margin: 0;
-		padding: 0;
-	}
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
-	}
-	div#submenu{
-		width: 100%;
-		height: 150px;
-		line-height: 50px;
-
-	}
-	div#submenu ul{
-		width: 100%;
-		height: 150px;
-		padding-top: 20px;
-	}
-	div#submenu ul li{
-		width: 540px;
-		height: 120px;
-		float: left;
-		list-style: none;
-		text-align: center;
-	}
-	div#submenu ul li img{
-		width: 50px;
-		height: 50px;
-		padding-top: 10px;
-	}
-	div#submenu ul li a{
-		text-decoration: none;
-		color:  #0067B8;
-		font-size: 17px;
-	}
-	div#submenu ul a:hover{
-		border-bottom: 4px solid black;
-		font-size: 19px;
-	}
-	div#title{
-		width: 100%;
-		height: 200px;
-		line-height: 100px;
-		margin-top: 50px;
-	}
-	div#title h1{
-		font-size: 40px;
-		letter-spacing: 8px;
-		padding-left: 60px;
-	}
-	div#title h3{
-		letter-spacing: 3px;
-		padding-left: 60px;
-	}	
+<style>	
 	#search{
 		margin: 10px;
 		position: relative;

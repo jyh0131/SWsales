@@ -5,58 +5,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
- 	*{
-		margin: 0;
-		padding: 0;
-	}
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
-	}
-	div#submenu{
-		width: 100%;
-		height: 150px;
-		line-height: 50px;
-
-	}
-	div#submenu ul{
-		width: 100%;
-		height: 150px;
-		padding-top: 20px;
-	}
-	div#submenu ul li{
-		width: 540px;
-		height: 120px;
-		float: left;
-		list-style: none;
-		text-align: center;
-	}
-	div#submenu ul li img{
-		width: 50px;
-		height: 50px;
-		padding-top: 10px;
-	}
-	div#submenu ul li a{
-		text-decoration: none;
-		color:  #0067B8;
-		font-size: 17px;
-	}
-	div#submenu ul a:hover{
-		border-bottom: 4px solid black;
-		font-size: 19px;
-	}
+	/** form 타이틀 **/
 	div#title{
 		width: 100%;
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
 	div#title h1{
 		font-size: 40px;
@@ -66,7 +22,14 @@
 	div#title h3{
 		letter-spacing: 3px;
 		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
 	}	
+	div#container{
+		margin-top: 100px;
+	}
 	#search{
 		margin: 10px;
 		position: relative;
@@ -168,5 +131,60 @@
 	});
 </script>
 <section>
+		<!-- form 타이틀 -->
+		<div id="title">
+			<h1>Client Delivery List</h1>
+			<hr>
+			<h3>제품 관리 > 출고 > <span id="k_title">출고 리스트</span></h3>
+		</div>
+		<div id="container">
+			<form action="supplierSearch.do" method="post">
+				<div id="search">
+					<select id="selSearch" name="selSearch">
+						<option selected>선택해주세요</option>
+						<option value="pName">품목명</option>
+						<option value="pCate">분류명</option>
+						<option value="pSno">공급회사명</option>
+					</select>
+					<input type="text" name="search" id="ipSearch">
+					<input type="submit" value="검색" id="btnSearch">
+					<input type="reset" value="초기화" id="btnClear">
+					<input type="button" value="전체" id="btnAll">
+				</div>
+			</form>
+			<table id="tbl">
+				<tr>
+					<th>출고번호</th>
+					<th>고객 상호명</th>
+					<th>품목명</th>
+					<th>출고수량</th>
+					<th>출고일자</th>
+					<th>수정/삭제</th>
+				</tr>
+ 				<c:forEach var="clientDelivery" items="${list }">
+					<tr class="tbl_point">
+ 						<td class="tbl_point">
+	 						<c:choose>
+								<c:when test="${clientDelivery.cdNo < 10 }">
+									CD000${clientDelivery.cdNo }
+								</c:when>
+								<c:when test="${clientDelivery.cdNo >= 10 }">
+									CD00${clientDelivery.cdNo }
+								</c:when>
+							</c:choose> 
+						</td>
+					
+						<td>${clientDelivery.cName.cName }</td>
+						<td>${clientDelivery.pName }</td>
+						<td>${clientDelivery.cdSno.oQty }</td>
+						<td><fmt:formatDate value="${clientDelivery.cdDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
+						<td>
+							<a href="#"><button>수정</button></a>
+							<a href="#"><button>삭제</button></a>
+						</td>
+					</tr>
+				</c:forEach>
+			</table>
+		</div>		
 </section>		
 <%@ include file="../include/footer.jsp" %>    

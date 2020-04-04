@@ -162,7 +162,6 @@
 		})
 	});
 </script>
-
 	<section>
 		<div id="imgDiv">
 			<img src="${pageContext.request.contextPath}/images/main/test1.png">
