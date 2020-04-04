@@ -119,9 +119,5 @@
 				</li>				
 			</ul>
 		</div>
-	<h1>we</h1>
-	<h2>제품 관리</h2>
-	<h3><hr></h3>
-	<h4>내용4</h4>	
 </section>
 <%@ include file="../include/footer.jsp" %>

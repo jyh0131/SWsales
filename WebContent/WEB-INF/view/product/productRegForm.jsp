@@ -3,29 +3,38 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 <style>
-	*{
-		margin: 0;
-		padding: 0;
+	/** form 타이틀 **/
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
 	#point{
 		width: 65%;
     	height: 40px;
     	margin: 0 auto;
+    	margin-top: 100px;
 	}
 	.red{
 		color: red;
 		
-	}
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
 	}	
 	#regForm{
 		width: 65%;
@@ -73,9 +82,13 @@
 	}
 </style>
 <section>
-		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
+		<!-- form 타이틀 -->
+		<div id="title">
+			<h1>Software Product Registration</h1>
+			<hr>
+			<h3>제품 관리 > <span id="k_title">소프트웨어 상품 등록</span></h3>
 		</div>
+		<!-- form -->		
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
