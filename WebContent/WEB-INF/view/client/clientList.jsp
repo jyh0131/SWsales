@@ -167,7 +167,7 @@
 
 	<section>
 		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
+			<img src="${pageContext.request.contextPath}/images/main/client_subMain.png">
 		</div>
 		<div id="submenu">
 			<ul>
