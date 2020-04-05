@@ -111,7 +111,7 @@
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_so.png"><br>
-					<a href="${pageContext.request.contextPath}/product/supplierOrderList.do"><b>발주 / 매입</b> ></a>
+					<a href="${pageContext.request.contextPath}/product/soSubMenu.do"><b>발주 / 매입</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_cd.png"><br>
@@ -119,5 +119,9 @@
 				</li>				
 			</ul>
 		</div>
+		<!-- 테스트용:나중에 삭제 -->
+		<p>
+			<a href="${pageContext.request.contextPath}/product/clientDeliveryList.do"><b>제품관리 테스트</b> ></a>
+		</p>
 </section>
 <%@ include file="../include/footer.jsp" %>

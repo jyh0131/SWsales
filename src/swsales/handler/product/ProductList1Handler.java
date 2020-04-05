@@ -11,7 +11,7 @@ import swsales.jdbc.JDBCUtil;
 import swsales.model.Product;
 import swsales.mvc.CommandHandler;
 
-public class ProductListHandler implements CommandHandler{
+public class ProductList1Handler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
