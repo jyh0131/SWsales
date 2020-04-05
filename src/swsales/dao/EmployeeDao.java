@@ -61,6 +61,11 @@ public class EmployeeDao {
 		String empID = rs.getString("e_id");
 		return new Employee(empID);
 	}
+	//getEmpPW
+	private Employee getEmpPW(ResultSet rs) throws SQLException {
+		String empPW = rs.getString("e_pw");
+		return new Employee(null, empPW);
+	}
 	
 	//getEmp
 	private Employee getEmp(ResultSet rs) throws SQLException {
@@ -250,8 +255,27 @@ public class EmployeeDao {
 		}
 	}
 
+	//검색 : 비밀번호
 
-	
+		public Employee selectEmployeeByPW(Connection conn, Employee emp) throws SQLException {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "select e_pw from employee where e_id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, emp.getEmpId());
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return getEmpPW(rs);
+				}
+				return null;
+			} finally {
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+			}
+		}
+
 	//검색 : ID찾기
 
 	public Employee selectEmployeeByID2(Connection conn, Employee emp) throws SQLException {

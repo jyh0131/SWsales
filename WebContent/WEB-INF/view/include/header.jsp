@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,23 +44,42 @@
 	header ul#h_menu li a:hover{
 		border-bottom: 2px solid black;
 	}	
-	header ul#h_login{
+	header ul#h_login1{
 		width: 250px;
 		position: absolute;
 		right: 0;
 		top: 35px;
 	}
-	header ul#h_login li{
+	header ul#h_login1 li{
 		float: left;
 		margin-left:10px;
 		list-style: none;
 		font-size: 13px;
 	}
-	header ul#h_login li a{
+	header ul#h_login1 li a{
 		color: black;
 		text-decoration: none;
 	}
-	header ul#h_login li a:hover {
+	header ul#h_login1 li a:hover {
+		border-bottom: 2px solid black;
+	}
+	header ul#h_login2{
+		width: 320px;
+		position: absolute;
+		right: 0;
+		top: 35px;
+	}
+	header ul#h_login2 li{
+		float: left;
+		margin-left:10px;
+		list-style: none;
+		font-size: 13px;
+	}
+	header ul#h_login2 li a{
+		color: black;
+		text-decoration: none;
+	}
+	header ul#h_login2 li a:hover {
 		border-bottom: 2px solid black;
 	}
 </style>
@@ -74,13 +94,25 @@
 				<li><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/vMgr/vSubMenu.do">현황조회/보고</a></li>
 				<li><a href="#">공지사항</a></li>
-			</ul>
-			<ul id="h_login">
-				<li><a href="${pageContext.request.contextPath}/main/login.do">LOGIN</a></li>
-				<li>|</li>
-				<li><a href="#">REGISTER</a></li>
-				<li>|</li>
-				<li><a href="#">SEARCH</a></li>
-				<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
-			</ul>		
+			</ul>	
+			<c:if test="${Auth == null }">
+				<ul id="h_login1">
+					<li><a href="${pageContext.request.contextPath}/main/login.do">LOGIN</a></li>
+					<li>|</li>
+					<li><a href="#">REGISTER</a></li>
+					<li>|</li>
+					<li><a href="#">SEARCH</a></li>
+					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
+				</ul>
+			</c:if>
+			<c:if test="${Auth != null }">
+				<ul id="h_login2">
+					<li><a href="#">${Auth.empName }[${Auth.empId }]님</a></li>
+					<li>|</li>
+					<li><a href="${pageContext.request.contextPath}/main/logout.do">LOGOUT</a></li>
+					<li>|</li>
+					<li><a href="#">SEARCH</a></li>
+					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
+				</ul>
+			</c:if>		
 		</header>
