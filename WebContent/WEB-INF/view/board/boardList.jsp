@@ -67,7 +67,7 @@
 	th, td{
 		border-bottom: 1px solid #ccc;
 		text-align: center;
-		height: 46px;
+		height: 55px;
 	}
 	th{
 		border-top: 2px solid #878787;
@@ -96,6 +96,13 @@
 		border: 1px solid white;
 		border-radius: 5px;
 	}
+	#bTitle{
+		text-decoration: none;
+		color: black;
+	}
+	#secTd{
+		text-align: left;
+	}
 </style>
 <section>
 	<div id="imgDiv">
@@ -121,16 +128,18 @@
 					<th>조회수</th>
 					<th>작성일</th>
 				</tr>
-				<c:forEach var="board" items="${board }">
+				<c:forEach var="board" items="${list }">
 					<tr>
 						<td>${board.bNo }</td>
-						<td><a href="boardDetail.do?no=${board.bNo }&readCnt=${board.bReadCnt}">${board.bTile }</a></td>
+						<td id="secTd"><a href="${pageContext.request.contextPath}/board/boardDetail.do?no=${board.bNo }&readCnt=${board.bReadCnt}" id="bTitle">${board.bTitle }</a></td>
 						<td>${board.bReadCnt }</td>
 						<td>${board.bRegDate }</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="${pageContext.request.contextPath}/board/boardAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
+			<c:if test="${Auth.empManager == 1 }">
+				<a href="${pageContext.request.contextPath}/board/boardAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
+			</c:if>
 		</div>
 	</div>
 </section>

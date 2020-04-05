@@ -3,54 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 <style>
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
-	}
-	div#submenu{
-		width: 100%;
-		height: 150px;
-		line-height: 50px;
-
-	}
-	div#submenu ul{
-		width: 100%;
-		height: 150px;
-		padding-top: 20px;
-	}
-	div#submenu ul li{
-		width: 810px;
-		height: 120px;
-		float: left;
-		list-style: none;
-		text-align: center;
-	}
-	div#submenu ul li img{
-		width: 55px;
-		height: 55px;
-		padding-top: 10px;
-	}
-	div#submenu ul li a{
-		text-decoration: none;
-		color:  #0067B8;
-		font-size: 17px;
-	}
-	div#submenu ul a:hover{
-		border-bottom: 4px solid black;
-		font-size: 19px;
-	}
 	div#title{
 		width: 100%;
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
 	div#title h1{
 		font-size: 40px;
@@ -111,12 +70,19 @@
 		position: absolute;
 		right: 0;
 	}
-	#container{
+	#list_container{
 		position: relative;
+		margin-top: 100px;
 	}
 	table{
 		width: 100%;
 		border-collapse: collapse;
+	}
+	table tr:nth-child(2n+1){
+		background: #F9FAFB;
+	}
+	table tr:nth-child(2n){
+		background: #eee;
 	}
 	th, td{
 		border: 1px solid #ccc;
@@ -126,6 +92,11 @@
 	th{
 		border-top: 2px solid #878787;
 		background-color: #F9FAFB;
+		font-size: 17px;
+	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
 	}
 	#btnAdd{
 		width: 130px;
@@ -142,14 +113,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
-		$("#tbl tr").filter(function (idx, obj) {
-			return idx % 2 == 0;
-		}).css({"background-color":"#F9FAFB"});
-		
-		$("#tbl tr").filter(function (idx, obj) {
-			return idx % 2 != 0;
-		}).css({"background-color":"#eee"});
-		
 		$("#btnAll").click(function() {
 			location.href="clientList.do";
 		})
@@ -166,27 +129,12 @@
 </script>
 
 	<section>
-		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/client_subMain.png">
-		</div>
-		<div id="submenu">
-			<ul>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_sp.png"><br>
-					<a href="${pageContext.request.contextPath}/client/supplierList.do"><b>공급 회사</b> ></a>
-				</li>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_cl.png"><br>
-					<a href="${pageContext.request.contextPath}/client/clientList.do"><b>고객사</b> ></a>
-				</li>				
-			</ul>
-		</div>
 		<div id="title">
 			<h1>Client List</h1>
 			<hr>
 			<h3>거래처 관리 / 고객사 리스트</h3>
 		</div>
-		<div id="container">
+		<div id="list_container">
 			<form action="clientSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
@@ -213,8 +161,8 @@
 					<th>수정/삭제</th>
 				</tr>
 				<c:forEach var="client" items="${list }">
-					<tr>
-						<td>
+					<tr class="tbl_point">
+ 						<td class="tbl_point">
 							<c:choose>
 								<c:when test="${client.cNo < 10 }">
 									C000${client.cNo }

@@ -26,13 +26,14 @@ public class BoardDao {
 		PreparedStatement pstmt = null;
 		
 		try {
-			String sql = "insert into board values(null,?,?,?,?,?,0)";
+			String sql = "insert into board values(null,?,?,?,?,?,0,?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, board.getbId());
 			pstmt.setString(2, board.getbName());
 			pstmt.setString(3, board.getbTitle());
 			pstmt.setTimestamp(4, new Timestamp(board.getbRegDate().getTime()));
 			pstmt.setTimestamp(5, new Timestamp(board.getbModDate().getTime()));
+			pstmt.setString(6, board.getbDept());
 			pstmt.executeUpdate();
 		} finally {
 			JDBCUtil.close(pstmt);
@@ -68,7 +69,8 @@ public class BoardDao {
 									    rs.getString(4), 
 									    rs.getTimestamp(5), 
 									    rs.getTimestamp(6), 
-									    rs.getInt(7));
+									    rs.getInt(7),
+									    rs.getString(8));
 				list.add(board);
 			}
 			return list;
@@ -94,7 +96,7 @@ public class BoardDao {
 		}
 	}
 	//updateBoardContent(content만 수정)
-	public void updateContent(Connection conn, Board board) throws SQLException {
+	public void updateBoardContent(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
 		
 		try {
@@ -107,8 +109,8 @@ public class BoardDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
-	//updateBoard(read_cnt)만 수정
-	public void updateArticleReadCnt(Connection conn, Board board) throws SQLException {
+	//updateBoardReadCnt(read_cnt)만 수정
+	public void updateBoardReadCnt(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "update board set b_read_cnt=? where b_no=?";
@@ -121,7 +123,7 @@ public class BoardDao {
 		}
 	}
 	//deleteBoard
-	public int deleteArticle(Connection conn, Board board) throws SQLException {
+	public int deleteBoard(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "delete from board where b_no=?";
@@ -133,7 +135,7 @@ public class BoardDao {
 		}
 	}
 	//deleteBoardContent
-	public int deleteContent(Connection conn, Board board) throws SQLException {
+	public int deleteBoardContent(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
 			String sql = "delete from board_content where bc_no=?";
@@ -145,7 +147,7 @@ public class BoardDao {
 		}
 	}
 	//selectBoardByNo
-	public Board selectArticleByNo(Connection conn, Board boa) throws SQLException {
+	public Board selectBoardByNo(Connection conn, Board boa) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -162,7 +164,8 @@ public class BoardDao {
 											  rs.getTimestamp(5), 
 											  rs.getTimestamp(6), 
 											  rs.getInt(7),
-											  rs.getString(9));
+											  rs.getString(8),
+											  rs.getString(10));
 				return board;
 			}
 			return null;

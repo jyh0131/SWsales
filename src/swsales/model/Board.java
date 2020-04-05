@@ -10,13 +10,15 @@ public class Board {
 	private Date bRegDate;
 	private Date bModDate;
 	private int bReadCnt;
+	private String bDept;
 	private String content;
 
 	public Board() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public Board(int bNo, String bId, String bName, String bTitle, Date bRegDate, Date bModDate, int bReadCnt) {
+	public Board(int bNo, String bId, String bName, String bTitle, Date bRegDate, Date bModDate, int bReadCnt,
+			String bDept) {
 		super();
 		this.bNo = bNo;
 		this.bId = bId;
@@ -25,10 +27,11 @@ public class Board {
 		this.bRegDate = bRegDate;
 		this.bModDate = bModDate;
 		this.bReadCnt = bReadCnt;
+		this.bDept = bDept;
 	}
 
 	public Board(int bNo, String bId, String bName, String bTitle, Date bRegDate, Date bModDate, int bReadCnt,
-			String content) {
+			String bDept, String content) {
 		super();
 		this.bNo = bNo;
 		this.bId = bId;
@@ -37,6 +40,7 @@ public class Board {
 		this.bRegDate = bRegDate;
 		this.bModDate = bModDate;
 		this.bReadCnt = bReadCnt;
+		this.bDept = bDept;
 		this.content = content;
 	}
 
@@ -104,10 +108,19 @@ public class Board {
 		this.content = content;
 	}
 
+	public String getbDept() {
+		return bDept;
+	}
+
+	public void setbDept(String bDept) {
+		this.bDept = bDept;
+	}
+
 	@Override
 	public String toString() {
-		return "Board [bNo=" + bNo + ", bId=" + bId + ", bName=" + bName + ", bTitle=" + bTitle + ", bRegDate="
-				+ bRegDate + ", bModDate=" + bModDate + ", bReadCnt=" + bReadCnt + ", content=" + content + "]";
+		return "Board [bNo=" + bNo + ", bId=" + bId + ", bName=" + bName + ", bDept=" + bDept + ", bTitle=" + bTitle
+				+ ", bRegDate=" + bRegDate + ", bModDate=" + bModDate + ", bReadCnt=" + bReadCnt + ", content="
+				+ content + "]";
 	}
 
 }

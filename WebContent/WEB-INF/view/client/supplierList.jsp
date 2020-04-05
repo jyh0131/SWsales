@@ -3,93 +3,13 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 <style>
-	/** 서브메뉴 메인 이미지 **/
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-		position: relative;
-	}
-	#imgDiv img#sMainImg{
-		width: 100%;
-		height: 600px;	
-	}
-	
-	/** 서브메뉴 로고 title **/	
-	#imgDiv div#sub_log_title{
-		width: 700px;
-		height: 245px;
-		position: absolute;
-		left: 30px;
-		top: 130px;
-	}
-	#imgDiv div#sub_log_title img#title1{
-		opacity: 0;
-		width: 250px;
-		height: 50px;
-		margin-left: 100px;
-		padding-top: 30px;
-
-	}
-	#imgDiv div#sub_log_title img#title2{
-		opacity: 0;
- 		width: 700px;
-		height: 115px;
-		margin-left: -30px;		
-	}
-	#imgDiv div#sub_log_title h2{
-		opacity: 0;
-		border-bottom: 1px solid black;
-		margin-left: -10px;
-		width: 5px;
-	}
-	#imgDiv div#sub_log_title h1{
-		opacity : 0;
-		padding-top: 10px;
-		font-size: 35px;
-		font-weight: bold;
-	}
-	
-	/** 서브메뉴 **/
-	div#submenu{
-		width: 100%;
-		height: 150px;
-		line-height: 50px;
-
-	}
-	div#submenu ul{
-		width: 100%;
-		height: 150px;
-		padding-top: 20px;
-	}
-	div#submenu ul li{
-		width: 810px;
-		height: 120px;
-		float: left;
-		list-style: none;
-		text-align: center;
-	}
-	div#submenu ul li img{
-		width: 55px;
-		height: 55px;
-		padding-top: 10px;
-	}
-	div#submenu ul li a{
-		text-decoration: none;
-		color:  #0067B8;
-		font-size: 17px;
-	}
-	div#submenu ul a:hover{
-		border-bottom: 4px solid black;
-		font-size: 19px;
-	}
 	div#title{
 		width: 100%;
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
 	div#title h1{
 		font-size: 40px;
@@ -150,12 +70,19 @@
 		position: absolute;
 		right: 0;
 	}
-	#container{
+	#list_container{
 		position: relative;
+		margin-top: 100px;
 	}
 	table{
 		width: 100%;
 		border-collapse: collapse;
+	}
+	table tr:nth-child(2n+1){
+		background: #F9FAFB;
+	}
+	table tr:nth-child(2n){
+		background: #eee;
 	}
 	th, td{
 		border: 1px solid #ccc;
@@ -165,6 +92,11 @@
 	th{
 		border-top: 2px solid #878787;
 		background-color: #F9FAFB;
+		font-size: 17px;
+	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
 	}
 	#btnAdd{
 		width: 130px;
@@ -180,17 +112,7 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-	$(function () {
-		$("#tbl tr").filter(function (idx, obj) {
-			return idx % 2 == 0;
-		})
-		.css({"background-color":"#F9FAFB"});
-		
-		$("#tbl tr").filter(function (idx, obj) {
-			return idx % 2 != 0;
-		})
-		.css({"background-color":"#eee"});
-		
+	$(function () {		
 		$("#btnAll").click(function() {
 			location.href="supplierList.do";
 		})
@@ -203,45 +125,16 @@
 				location.href="${pageContext.request.contextPath}/client/supplierDel.do?no="+no;
 			}
 		})
-		
-		//타이틀 제이쿼리
-		$(document).ready(function() {
-			$("#sub_log_title img#title1").animate({"margin-left":"220px","opacity":"1"},1800);
-			$("#sub_log_title img#title2").animate({"margin-left":"0","opacity":"1"},1500);
-			$("#sub_log_title h2").animate({"margin-left":"0","width":"700px","opacity":"1"},2000);
-			$("#sub_log_title h1").animate({"margin-left":"35px","letter-spacing": "8px","opacity":"1"},2000);		
-		})
 	});
 </script>
 
 	<section>
-		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/client_subMain.png"  id="sMainImg">
-			<div id="sub_log_title">
-				<img src ="${pageContext.request.contextPath}/images/submenu/subLogo.png" id="title1">
-				<img src ="${pageContext.request.contextPath}/images/submenu/cTitle.png" id="title2">
-				<h2></h2>
-			<h1>거래처 관리</h1>	
-			</div>		
-		</div>
-		<div id="submenu">
-			<ul>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_sp.png"><br>
-					<a href="${pageContext.request.contextPath}/client/supplierList.do"><b>공급 회사</b> ></a>
-				</li>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_cl.png"><br>
-					<a href="${pageContext.request.contextPath}/client/clientList.do"><b>고객사</b> ></a>
-				</li>				
-			</ul>
-		</div>
 		<div id="title">
 			<h1>Supplier List</h1>
 			<hr>
 			<h3>거래처 관리 / 공급회사 리스트</h3>
 		</div>		
-		<div id="container">
+		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
@@ -267,8 +160,8 @@
 					<th>수정/삭제</th>
 				</tr>
 				<c:forEach var="supplier" items="${list }">
-					<tr>
-						<td>
+					<tr class="tbl_point">
+ 						<td class="tbl_point">
 							<c:choose>
 								<c:when test="${supplier.sNo < 10 }">
 									S000${supplier.sNo }

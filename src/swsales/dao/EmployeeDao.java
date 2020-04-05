@@ -97,7 +97,11 @@ public class EmployeeDao {
 		String total = "("+empNo+")-"+dept+"("+empTitle+")";
 		return total;
 	}
-
+	
+	//getDeptName
+	private String getDeptName(ResultSet rs) throws SQLException {
+		return rs.getString(1);
+	}
 	
 	/***QUERY [select]*****************************************************************************************/
 	
@@ -298,6 +302,27 @@ public class EmployeeDao {
 		}
 	}
 
+	//검색 : 부서이름
+
+		public String selectDeptNameByEmpName(Connection conn, Employee emp) throws SQLException {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "select d.d_name from employee e left join department d on e.e_dept  = d.d_no where e.e_name = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, emp.getEmpName());
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return getDeptName(rs);
+				}
+				return null;
+			} finally {
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+			}
+		}
+	
 	//검색 : 메일일치
 
 	public Employee selectEmployeeByMail(Connection conn, Employee emp) throws SQLException {

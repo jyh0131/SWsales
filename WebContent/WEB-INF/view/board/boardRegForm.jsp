@@ -84,7 +84,8 @@
 					<input type="text" name="bTitle" class="text" placeholder="제목을 입력해주세요"><br>
 					
 					<label>작성자</label>
-					<input type="text" name="bName" class="text" placeholder="이름을 입력해주세요"><br>
+					<input type="text" name="bName" class="text" placeholder="이름을 입력해주세요" value="${Auth.empName }"><br>
+					<input type="hidden" name="bId" value="${Auth.empId }">
 					
 					<label>내용</label>
 					<textarea rows="10" cols="70" placeholder="내용을 입력해주세요" name="bContent"></textarea><br>
