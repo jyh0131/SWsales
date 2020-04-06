@@ -1,4 +1,4 @@
-package swsales.handler.vMgr;
+package swsales.handler.board;
 
 import java.sql.Connection;
 import java.util.List;
@@ -6,27 +6,30 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import swsales.dao.SWTotalSaleDao;
+import swsales.dao.BoardDao;
 import swsales.jdbc.JDBCUtil;
-import swsales.model.SWTotalSale;
+import swsales.model.Board;
 import swsales.mvc.CommandHandler;
 
-public class SWTotalSaleHandler implements CommandHandler {
+public class BoardSelectHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
+		String search = req.getParameter("inpSearch");
 		Connection conn = null;
 		try {
 			conn = JDBCUtil.getConnection();
-			SWTotalSaleDao dao = SWTotalSaleDao.getInstance();
-			List<SWTotalSale> list = dao.selectSWTotalSaleByAll(conn);
+			BoardDao dao = BoardDao.getInstance();
+			List<Board> list = dao.searchBoardList(conn, search);
 			req.setAttribute("list", list);
+			
+			return "/WEB-INF/view/board/boardList.jsp";
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/SWTotalSale.jsp";
+		return null;
 	}
 
 }

@@ -54,6 +54,14 @@
 	.total{
 		text-align: right;
 	}
+	.total input{
+		text-align: center;
+		font-size: 20px;
+		width:200px;
+		margin:15px 0 0 5px;
+		background-color:#FFFFFF;
+		border:2px solid #384D75;
+	}
 </style>
 <section>
 	<h1>S/W 전체 판매현황</h1>
@@ -74,12 +82,13 @@
 					<td>${swTotal.o_no }</td>
 					<td>${swTotal.o_qty }</td>
 					<td class="price"><fmt:formatNumber value="${swTotal.salesAmount }" pattern="#,###,###"/>　</td>
+					<c:set var="sum" value="${sum + swTotal.salesAmount }"/>
 				</tr>
 		</c:forEach>
 	</table>
 	<fieldset class="total">
 		<label>총 판매금액</label>
-		<input type="text">
+		<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
 	</fieldset>
 </section>
 <%@include file="../include/footer.jsp"%>

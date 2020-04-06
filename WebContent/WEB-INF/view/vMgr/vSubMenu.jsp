@@ -107,15 +107,15 @@
 			<ul>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon1.png"><br>
-					<a href="#"><b>고객별 판매현황 조회</b> ></a>
+					<a href="clientSale.do"><b>고객별 판매현황 조회</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon2.png"><br>
-					<a href="#"><b>S/W별 판매현황 조회</b> ></a>
+					<a href="swSale.do"><b>S/W별 판매현황 조회</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon3.png"><br>
-					<a href="#"><b>날짜별 판매현황 조회</b> ></a>
+					<a href="dateSale.do"><b>날짜별 판매현황 조회</b> ></a>
 				</li>				
 			</ul>
 		</div>
@@ -128,11 +128,11 @@
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon5.png"><br>
-					<a href="#"><b>전체 판매현황 / 거래 명세</b> ></a>
+					<a href="swTotalSale.do"><b>전체 판매현황 / 거래 명세</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon6.png"><br>
-					<a href="#"><b>재고현황 조회</b> ></a>
+					<a href="iq.do"><b>재고현황 조회</b> ></a>
 				</li>				
 			</ul>
 		</div>		

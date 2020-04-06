@@ -44,7 +44,7 @@
 		margin: 0 auto;
 		text-align: center;
 	}
-	#btnAdd{
+	#btnMod{
 		width: 160px;
    		height: 45px;
     	background-color: #384D75;
@@ -77,22 +77,23 @@
 		<div id="imgDiv">
 			<img src="${pageContext.request.contextPath}/images/submenu/pMain.png">
 		</div>
-		<form action="${pageContext.request.contextPath}/board/boardAdd.do" method="post">
+		<form action="${pageContext.request.contextPath}/board/boardMod.do" method="post">
 			<div id="regForm">
 				<div id="form">
 					<label>제목</label>
-					<input type="text" name="bTitle" class="text" placeholder="제목을 입력해주세요"><br>
+					<input type="text" name="bTitle" class="text" placeholder="제목을 입력해주세요" value="${board.bTitle }"><br>
 					
 					<label>작성자</label>
-					<input type="text" name="bName" class="text" placeholder="이름을 입력해주세요" value="${Auth.empName }"><br>
-					<input type="hidden" name="bId" value="${Auth.empId }">
+					<input type="text" name="bName" class="text" value="${board.bName }" readonly><br>
+					<input type="hidden" name="bNo" value="${board.bNo }">
+					<input type="hidden" name="bReadCnt" value="${board.bReadCnt }">
 					
 					<label>내용</label>
-					<textarea rows="10" cols="70" placeholder="내용을 입력해주세요" name="bContent"></textarea><br>
+					<textarea rows="10" cols="70" placeholder="내용을 입력해주세요" name="bContent">${board.content }</textarea><br>
 				</div>
 			</div>
 			<div id="add">
-				<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
+				<input type="submit" value="수정" id="btnMod" style="cursor: pointer">
 				<input type="button" value="취소" id="btnReset" style="cursor: pointer">
 			</div>
 		</form>

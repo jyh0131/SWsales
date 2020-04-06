@@ -1,32 +1,36 @@
-package swsales.handler.vMgr;
+package swsales.handler.board;
 
 import java.sql.Connection;
-import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import swsales.dao.IQEvaluationDao;
+import swsales.dao.BoardDao;
 import swsales.jdbc.JDBCUtil;
-import swsales.model.IQEvaluation;
+import swsales.model.Board;
 import swsales.mvc.CommandHandler;
 
-public class IQHandler implements CommandHandler {
+public class BoardDeleteHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Connection conn = null;
 		try {
 			conn = JDBCUtil.getConnection();
-			IQEvaluationDao dao = IQEvaluationDao.getInstance();
-			List<IQEvaluation> list = dao.selectIQEvaluationByAll(conn);
-			req.setAttribute("list", list);
+			BoardDao dao = BoardDao.getInstance();
+			int bNo = Integer.parseInt(req.getParameter("no"));
+			Board board = new Board();
+			board.setbNo(bNo);
+			dao.deleteBoard(conn, board);
+			dao.deleteBoardContent(conn, board);
+			res.sendRedirect(req.getContextPath()+"/board/boardList.do");
+			return null;
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/IQ.jsp";
+		return null;
 	}
 
 }

@@ -17,9 +17,13 @@
 		line-height: 38px;
 		border:none;
 	}
-	fieldset button{
-		font-size: 18px;
-		padding:0 3px;
+	#Search{
+		width: 60px;
+		height: 36px;
+		background-color: #384D75;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
 	}
 	fieldset input{
 		height:25px;
@@ -56,7 +60,8 @@
 	<h1>재고현황 조회</h1>
 	<fieldset>
 		<label>품목명</label>
-		<input type="text"> <button>조회</button>
+		<input type="text" name="iqSearch">
+		<input type="submit" value="조회" id="Search" style="cursor:pointer">
 		<input type="radio" name="radio" checked="checked">전체
 		<input type="radio" name="radio">재고과다
 		<input type="radio" name="radio">적정재고
