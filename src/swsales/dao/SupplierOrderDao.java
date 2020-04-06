@@ -52,7 +52,7 @@ public class SupplierOrderDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select so_no, so_pno, p.p_name, s.s_name, p.p_cost, so_qty, so_date from supplier_order so "
+			String sql = "select so_no, so_pno, p.p_name, s.s_no, s.s_name, p.p_cost, so_qty, so_date from supplier_order so "
 					+ "left join product p on so.so_pno = p.p_no left join supplier s on p.p_sno = s.s_no";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -71,7 +71,7 @@ public class SupplierOrderDao {
 		int soNo = rs.getInt("so_no");
 		Product soPno = new Product(rs.getInt("so_pno"));
 		Product soPname = new Product(rs.getString("p_name"), rs.getInt("p_cost"));
-		Supplier soSname = new Supplier(rs.getString("s_name"));
+		Supplier soSname = new Supplier(rs.getInt("s_no"), rs.getString("s_name"));
 		Product soPcost = new Product(rs.getString("p_name"), rs.getInt("p_cost"));
 		Date soDate = rs.getTimestamp("so_date");
 		int soQty = rs.getInt("so_qty");

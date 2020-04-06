@@ -107,7 +107,7 @@
 			<ul>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_regi.png"><br>
-					<a href="${pageContext.request.contextPath}/product/productAdd.do"><b>제품 등록</b> ></a>
+					<a href="${pageContext.request.contextPath}/product/productList2.do"><b>제품 관리</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/main/smenu_so.png"><br>
@@ -120,8 +120,17 @@
 			</ul>
 		</div>
 		<!-- 테스트용:나중에 삭제 -->
-		<p>
-			<a href="${pageContext.request.contextPath}/product/clientDeliveryList.do"><b>제품관리 테스트</b> ></a>
-		</p>
+		<ul>
+			<li><a href="${pageContext.request.contextPath}/product/productAdd.do">productAdd(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/sOrderAdd1.do">sOrderAdd1(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/sOrderAdd2.do">sOrderAdd2(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/cDeliveryMod.do">cDeliveryMod(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/productList1.do">productList1(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/productList2.do">productList2(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/supplierOrderList1.do">supplierOrderList1(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/supplierOrderList2.do">supplierOrderList2(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/clientDeliveryList.do">clientDeliveryList(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/productDetail.do">productDetail(0)</a></li>
+		</ul>
 </section>
 <%@ include file="../include/footer.jsp" %>

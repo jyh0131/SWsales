@@ -14,11 +14,12 @@ public class TransactionStatement {
 	private int TotalDA;
 
 	public TransactionStatement() {
+		super();
 		// TODO Auto-generated constructor stub
 	}
 
 	public TransactionStatement(String s_name, Date o_date, String c_name, String p_name, int o_qty, int p_price,
-			int salesAmount, int tax, int TotalDA) {
+			int salesAmount, int tax, int totalDA) {
 		super();
 		this.s_name = s_name;
 		this.o_date = o_date;
@@ -28,7 +29,7 @@ public class TransactionStatement {
 		this.p_price = p_price;
 		this.salesAmount = salesAmount;
 		this.tax = tax;
-		this.TotalDA = TotalDA;
+		this.TotalDA = totalDA;
 	}
 
 	public String getS_name() {
@@ -99,8 +100,8 @@ public class TransactionStatement {
 		return TotalDA;
 	}
 
-	public void setTotalDA(int TotalDA) {
-		this.TotalDA = TotalDA;
+	public void setTotalDA(int totalDA) {
+		this.TotalDA = totalDA;
 	}
 
 	@Override

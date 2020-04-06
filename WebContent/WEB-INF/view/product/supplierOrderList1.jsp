@@ -1,10 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
-<style>
+<style>	
 	/** form 타이틀 **/
 	div#title{
 		width: 100%;
@@ -26,9 +25,6 @@
 	span#k_title{
 		color: red;
 		background-color: white;
-	}	
-	div#list_container{
-		margin-top: 100px;
 	}
 	
 	#search{
@@ -81,9 +77,10 @@
 		position: absolute;
 		right: 0;
 	}
-	#container{
-		width: 60%;
+	#list_container{
+		width: 100%;
 		margin: 0 auto;
+		padding-top: 100px;
 		position: relative;
 	}
 	table{
@@ -131,12 +128,12 @@
 		})
 	});
 </script>
-<section>
-		<!-- form 타이틀 -->
+
+	<section>
 		<div id="title">
-			<h1>Client Delivery List</h1>
+			<h1>Software Product Order List</h1>
 			<hr>
-			<h3>제품 관리 > 출고 > <span id="k_title">출고 리스트</span></h3>
+			<h3>제품 관리 > 발주/매입 > <span id="k_title">발주 리스트</span></h3>
 		</div>
 		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
@@ -155,30 +152,41 @@
 			</form>
 			<table id="tbl">
 				<tr>
-					<th>출고번호</th>
-					<th>고객 상호명</th>
+					<th>발주번호</th>
 					<th>품목명</th>
-					<th>출고수량</th>
-					<th>출고일자</th>
+					<th>공급회사명</th>
+					<th>발주가격</th>
+					<th>발주수량</th>
+					<th>발주일자</th>
 					<th>수정/삭제</th>
 				</tr>
- 				<c:forEach var="clientDelivery" items="${list }">
+				<c:forEach var="SupplierOrder" items="${list }">
 					<tr class="tbl_point">
- 						<td class="tbl_point">
-	 						<c:choose>
-								<c:when test="${clientDelivery.cdNo < 10 }">
-									CD000${clientDelivery.cdNo }
+						<td class="tbl_point">
+							<c:choose>
+								<c:when test="${SupplierOrder.soNo < 10 }">
+									SO000${SupplierOrder.soNo }
 								</c:when>
-								<c:when test="${clientDelivery.cdNo >= 10 }">
-									CD00${clientDelivery.cdNo }
+								<c:when test="${SupplierOrder.soNo >= 10 }">
+									SO00${SupplierOrder.soNo }
 								</c:when>
-							</c:choose> 
+							</c:choose>
 						</td>
-					
-						<td>${clientDelivery.cName.cName }</td>
-						<td>${clientDelivery.pName }</td>
-						<td>${clientDelivery.cdSno.oQty }</td>
-						<td><fmt:formatDate value="${clientDelivery.cdDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
+						<td>${SupplierOrder.soPname.pName}</td>
+						<td>
+							${SupplierOrder.soSname.sName}
+							<c:choose>
+								<c:when test="${SupplierOrder.soSname.sNo < 10 }">
+									(S000${SupplierOrder.soSname.sNo })
+								</c:when>
+								<c:when test="${SupplierOrder.soSname.sNo >= 10 }">
+									(S00${SupplierOrder.soSname.sNo })
+								</c:when>
+							</c:choose>
+						</td>
+						<td><fmt:formatNumber value="${SupplierOrder.soPcost.pCost}" pattern="\#,###.##"/></td>
+						<td>${SupplierOrder.soQty}개</td>
+						<td><fmt:formatDate value="${SupplierOrder.soDate}" type="both" pattern="yyyy-MM-dd"/></td>	
 						<td>
 							<a href="#"><button>수정</button></a>
 							<a href="#"><button>삭제</button></a>
@@ -186,6 +194,7 @@
 					</tr>
 				</c:forEach>
 			</table>
-		</div>		
+			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
+		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>    

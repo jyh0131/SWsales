@@ -399,4 +399,33 @@ public class ProductDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+
+	//아름 추가
+	public Product selectProductByNo(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select * from product p left join category c on p.p_cate = c.cate_no left join supplier s on p.p_sno = s.s_no where p.p_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				int pNo = rs.getInt("p_no");
+				Category pCate = new Category(rs.getInt("cate_no"), rs.getString("cate_name"));
+				String pName = rs.getString("p_name");
+				int pCost = rs.getInt("p_cost");
+				int pPrice = rs.getInt("p_price");
+				Supplier pSno = new Supplier(rs.getInt("s_no"), rs.getString("s_name"), rs.getString("s_bln"), rs.getString("s_address"), rs.getString("s_tel"), rs.getString("s_fax"));
+				int pQty = rs.getInt("p_qty");
+				Date pDate = rs.getTimestamp("p_date");
+				String pPicPath = rs.getString("p_picpath");
+				return new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
+			}
+			return null;
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
 }

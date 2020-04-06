@@ -17,9 +17,22 @@
 		line-height: 38px;
 		border:none;
 	}
-	fieldset button{
-		font-size: 18px;
-		padding:0 3px;
+	#Search{
+		width: 60px;
+		height: 36px;
+		background-color: #384D75;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+	}
+	#All{
+		width: 60px;
+		height: 36px;
+		background-color: #ccc;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
 	}
 	fieldset input{
 		height:25px;
@@ -54,14 +67,23 @@
 	.total{
 		text-align: right;
 	}
+	.total input{
+		text-align: center;
+		font-size: 20px;
+		width:200px;
+		margin:15px 0 0 5px;
+		background-color:#FFFFFF;
+		border:2px solid #384D75;
+	}
 </style>
 <section>
 	<h1>고객별 판매현황 조회</h1>
 	<form>
 		<fieldset>
 			<label>고 객 상 호 명 </label>
-			<input type="text"> <button>조회</button>
-			<input type="checkbox"> 전체
+			<input type="text" name="clientSearch" value="${clientSearch }">
+			<input type="submit" value="조회" id="Search" style="cursor:pointer">
+			<input type="button" value="전체" id="All" style="cursor:pointer">
 		</fieldset>
 		<table>
 			<tr>
@@ -74,22 +96,24 @@
 				<th>미수금</th>
 			</tr>
 			<c:forEach var="cs" items="${list }">
-				<tr>
-					<td>${cs.c_name }</td>
-					<td>${cs.p_name }</td>
-					<td>${cs.o_qty }</td>
-					<td>${cs.o_dps }</td>
-					<td class="price"><fmt:formatNumber value="${cs.p_price}" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${cs.salesMoney }" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${cs.uncollected }" pattern="#,###,###"/>　</td>
-				</tr>
+					<tr>
+						<td>${cs.c_name }</td>
+						<td>${cs.p_name }</td>
+						<td>${cs.o_qty }</td>
+						<td>${cs.o_dps }</td>
+						<td class="price"><fmt:formatNumber value="${cs.p_price}" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${cs.salesMoney }" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${cs.uncollected }" pattern="#,###,###"/>　</td>
+						<c:set var="sum1" value="${sum1 + cs.salesMoney }"/>
+						<c:set var="sum2" value="${sum2 + cs.uncollected }"/>
+					</tr>
 			</c:forEach>
 		</table>
 		<fieldset class="total">
 			<label>총 매출금</label>
-			<input type="text">
+			<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
 			<label>총 미수금</label>
-			<input type="text">
+			<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
 		</fieldset>
 	</form>
 </section>

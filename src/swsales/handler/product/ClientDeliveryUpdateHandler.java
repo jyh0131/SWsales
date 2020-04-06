@@ -9,7 +9,9 @@ public class ClientDeliveryUpdateHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
-		// TODO Auto-generated method stub
+		if(req.getMethod().equalsIgnoreCase("get")) {
+			return "/WEB-INF/view/product/clientDeliveryModForm.jsp";
+		}
 		return null;
 	}
 

@@ -11,6 +11,8 @@ public class ProductInsertHandler implements CommandHandler{
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("get")) {
 			return "/WEB-INF/view/product/productRegForm.jsp";
+		}else if(req.getMethod().equalsIgnoreCase("post")) {
+			String uploadPath = req.getRealPath("productIMG");
 		}
 		return null;
 	}
