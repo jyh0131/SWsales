@@ -90,7 +90,7 @@
 			<c:forEach var="product" items="${list }">
 				<div class="productImg">
 					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}">
-						<%-- <img src = "${product.pPicPath}"> --%>
+						<!-- <img src = "${product.pPicPath}"> --> 
 						<img src="${pageContext.request.contextPath}/images/main/인텔리제이.png">
 					</a>
 					<p>${product.pName}</p>
