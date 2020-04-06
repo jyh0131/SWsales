@@ -99,7 +99,7 @@
 				<ul id="h_login1">
 					<li><a href="${pageContext.request.contextPath}/main/login.do">LOGIN</a></li>
 					<li>|</li>
-					<li><a href="#">REGISTER</a></li>
+					<li><a href="${pageContext.request.contextPath}/main/join.do">REGISTER</a></li>
 					<li>|</li>
 					<li><a href="#">SEARCH</a></li>
 					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
