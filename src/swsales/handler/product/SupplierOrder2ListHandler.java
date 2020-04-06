@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import swsales.dao.SupplierOrderDao;
+import swsales.dao.SupplierPurchaseDao;
 import swsales.jdbc.JDBCUtil;
 import swsales.model.SupplierOrder;
+import swsales.model.SupplierPurchase;
 import swsales.mvc.CommandHandler;
 
 public class SupplierOrder2ListHandler implements CommandHandler{
@@ -18,8 +20,8 @@ public class SupplierOrder2ListHandler implements CommandHandler{
 		Connection conn = null;
 		try {
 			conn = JDBCUtil.getConnection();
-			SupplierOrderDao dao = SupplierOrderDao.getInstance();
-			List<SupplierOrder> list = dao.selectSupplierOrderByAll(conn);
+			SupplierPurchaseDao dao = SupplierPurchaseDao.getInstance();
+			List<SupplierPurchase> list = dao.selectSupplierPurchaseByAll(conn);
 			req.setAttribute("list", list);
 		}catch(Exception e) {
 			e.printStackTrace();
