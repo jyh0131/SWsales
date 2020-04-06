@@ -88,9 +88,9 @@
 <section>
 		<!-- form 타이틀 -->
 		<div id="title">
-			<h1>Software Product Registration</h1>
+			<h1>Software Product Order Registration</h1>
 			<hr>
-			<h3>제품 관리 > 제품 등록 > <span id="k_title">소프트웨어 상품 등록</span></h3>
+			<h3>제품 관리 > 발주/매입 > <span id="k_title">발주 이력 등록</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">
@@ -99,44 +99,25 @@
 		<form action="${pageContext.request.contextPath}/product/productList.do" method="post">
 			<div id="regForm">
 				<div id="form">
-					<label><span class="red">* </span>품목번호</label>
-					<input type="text" name="pNo" class="text" value=" P00${product.pNo+1 }" readonly="readonly"><br>
-					
- 					<label><span class="red">* </span>분류명</label>
-					<select name="pCate" class="text">
-						<option selected>선택해주세요</option>
-						<option value="사무">사무</option>
-						<option value="개발">개발</option>
-						<option value="전문분야">전문분야</option>
-						<option value="멀티미디어">멀티미디어</option>
-						<option value="기업업무">기업업무</option>
-						<option value="서버">서버</option>						
-					</select>
-					<br>
+					<label><span class="red">* </span>발주번호</label>
+					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="pName" class="text" placeholder=" >> 중복확인">
-					<input type="button" value="중복확인" id="btnSname"><br>
-					
-					<label><span class="red">* </span>공급가격</label>
-					<input type="text" name="pCost" class="text"><br>
-					
-					<label><span class="red">* </span>판매가격</label>
-					<input type="text" name="pPrice" class="text"><br>
+					<input type="text" name="soPname" class="text" placeholder=" >> 중복확인">
+					<input type="button" value="조회" id="btnSname"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회">
+					<input type="text" name="soSname" class="text"><br>
+					
+					<label><span class="red">* </span>발주가격</label>
+					<input type="text" name="soPcost" class="text"><br>
+					
+					<label><span class="red">* </span>발주수량</label>
+					<input type="text" name="soQty" class="text" placeholder=" >> 회사명 조회">
 					<input type="button" value="조 회" id="btnSname"><br>
 					
-					<label><span class="red">* </span>최초재고수량</label>
-					<input type="text" name="pQty" class="text"><br>
-					
-					
-					<label><span class="red">* </span>최초등록일자</label>
-					<input type="date" name="pDate" class="text"><br>
-					
-					<label>&nbsp&nbsp제품 이미지</label>
-					<input type="file" name="pPic"><br>
+					<label><span class="red">* </span>발주 등록일자</label>
+					<input type="date" name="soDate" class="text"><br>
 				</div>
 			</div>
 			<div id="add">
