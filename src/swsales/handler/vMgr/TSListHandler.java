@@ -11,7 +11,7 @@ import swsales.jdbc.JDBCUtil;
 import swsales.model.TransactionStatement;
 import swsales.mvc.CommandHandler;
 
-public class TSHandler implements CommandHandler {
+public class TSListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -26,7 +26,7 @@ public class TSHandler implements CommandHandler {
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/TS.jsp";
+		return "/WEB-INF/view/vMgr/tsList.jsp";
 	}
 
 }

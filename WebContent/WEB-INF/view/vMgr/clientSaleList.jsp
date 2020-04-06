@@ -81,7 +81,7 @@
 	<form>
 		<fieldset>
 			<label>고 객 상 호 명 </label>
-			<input type="text" name="clientSearch">
+			<input type="text" name="clientSearch" value="${clientSearch }">
 			<input type="submit" value="조회" id="Search" style="cursor:pointer">
 			<input type="button" value="전체" id="All" style="cursor:pointer">
 		</fieldset>
@@ -96,24 +96,24 @@
 				<th>미수금</th>
 			</tr>
 			<c:forEach var="cs" items="${list }">
-				<tr>
-					<td>${cs.c_name }</td>
-					<td>${cs.p_name }</td>
-					<td>${cs.o_qty }</td>
-					<td>${cs.o_dps }</td>
-					<td class="price"><fmt:formatNumber value="${cs.p_price}" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${cs.salesMoney }" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${cs.uncollected }" pattern="#,###,###"/>　</td>
-					<c:set var="sum1" value="${sum1 + cs.salesMoney }"/>
-					<c:set var="sum2" value="${sum2 + cs.uncollected }"/>
-				</tr>
+					<tr>
+						<td>${cs.c_name }</td>
+						<td>${cs.p_name }</td>
+						<td>${cs.o_qty }</td>
+						<td>${cs.o_dps }</td>
+						<td class="price"><fmt:formatNumber value="${cs.p_price}" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${cs.salesMoney }" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${cs.uncollected }" pattern="#,###,###"/>　</td>
+						<c:set var="sum1" value="${sum1 + cs.salesMoney }"/>
+						<c:set var="sum2" value="${sum2 + cs.uncollected }"/>
+					</tr>
 			</c:forEach>
 		</table>
 		<fieldset class="total">
 			<label>총 매출금</label>
-			<input type="text" value=<c:out value="${sum1 }"/> readonly>
+			<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
 			<label>총 미수금</label>
-			<input type="text" value=<c:out value="${sum2 }"/> readonly>
+			<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
 		</fieldset>
 	</form>
 </section>

@@ -111,9 +111,9 @@
 	</table>
 	<fieldset class="total">
 		<label>총 판매금액</label>
-		<input type="text" value=<c:out value="${sum1 }"/>>
+		<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
 		<label>총 판매이윤</label>
-		<input type="text" value=<c:out value="${sum2 }"/>>
+		<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
 	</fieldset>
 </section>
 <%@ include file="../include/footer.jsp" %>

@@ -88,7 +88,7 @@
 	</table>
 	<fieldset class="total">
 		<label>총 판매금액</label>
-		<input type="text" value=<c:out value="${sum }"/>>
+		<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
 	</fieldset>
 </section>
 <%@include file="../include/footer.jsp"%>
