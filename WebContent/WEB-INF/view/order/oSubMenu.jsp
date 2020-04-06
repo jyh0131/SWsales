@@ -111,7 +111,7 @@
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/oSubIcon2.png"><br>
-					<a href="${pageContext.request.contextPath}/client/clientList.do"><b>주문 확인&처리</b> ></a>
+					<a href="${pageContext.request.contextPath}/order/orderNYList.do"><b>주문 확인&처리</b> ></a>
 				</li>				
 			</ul>
 		</div>
