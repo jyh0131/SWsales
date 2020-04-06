@@ -4,6 +4,29 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>	
+	/** form 타이틀 **/
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
+	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
 	#search{
 		margin: 10px;
 		position: relative;
@@ -54,9 +77,10 @@
 		position: absolute;
 		right: 0;
 	}
-	#container{
-		width: 60%;
+	#list_container{
+		width: 100%;
 		margin: 0 auto;
+		padding-top: 100px;
 		position: relative;
 	}
 	table{
@@ -106,31 +130,12 @@
 </script>
 
 	<section>
-<%-- 		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
-		</div>
-		<div id="submenu">
-			<ul>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_regi.png"><br>
-					<a href="${pageContext.request.contextPath}/product/productAdd.do"><b>제품 등록</b> ></a>
-				</li>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_so.png"><br>
-					<a href="${pageContext.request.contextPath}/product/supplierOrderList.do"><b>발주 / 매입</b> ></a>
-				</li>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_cd.png"><br>
-					<a href="#"><b>출 고</b> ></a>
-				</li>				
-			</ul>
-		</div>
 		<div id="title">
-			<h1>Software Product List</h1>
+			<h1>Software Product Order List</h1>
 			<hr>
-			<h3>제품 관리 / 소프트웨어 상품 리스트</h3>
+			<h3>제품 관리 > <span id="k_title">발주 리스트</span></h3>
 		</div>
-		<div id="container">
+		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
@@ -147,46 +152,41 @@
 			</form>
 			<table id="tbl">
 				<tr>
-					<th>품목번호</th>
-					<th>분류명</th>
+					<th>발주번호</th>
 					<th>품목명</th>
-					<!-- <th>품목 이미지</th> -->
-					<th>공급가격</th>
-					<th>판매가격</th>
 					<th>공급회사명</th>
-					<th>최초재고수량</th>
-					<th>최초등록일자</th>
+					<th>발주가격</th>
+					<th>발주수량</th>
+					<th>발주일자</th>
 					<th>수정/삭제</th>
 				</tr>
-				<c:forEach var="product" items="${list }">
+				<c:forEach var="SupplierOrder" items="${list }">
 					<tr class="tbl_point">
 						<td class="tbl_point">
 							<c:choose>
-								<c:when test="${product.pNo < 10 }">
-									P000${product.pNo }
+								<c:when test="${SupplierOrder.soNo < 10 }">
+									SO000${SupplierOrder.soNo }
 								</c:when>
-								<c:when test="${product.pNo >= 10 }">
-									P00${product.pNo }
+								<c:when test="${SupplierOrder.soNo >= 10 }">
+									SO00${SupplierOrder.soNo }
 								</c:when>
 							</c:choose>
 						</td>
-						<td>${product.pCate }</td>
-						<td>${product.pName }</td>
-						<td>${product.pPicPath }</td>
-						<td><fmt:formatNumber value="${product.pCost }" pattern="\#,###.##"/></td>
-						<td><fmt:formatNumber value="${product.pPrice }" pattern="\#,###.##"/></td>
-						<td>${product.pSno.sName }
+						<td>${SupplierOrder.soPname.pName}</td>
+						<td>
+							${SupplierOrder.soSname.sName}
 							<c:choose>
-								<c:when test="${product.pSno.sNo < 10 }">
-									(S000${product.pSno.sNo })
+								<c:when test="${SupplierOrder.soSname.sNo < 10 }">
+									(S000${SupplierOrder.soSname.sNo })
 								</c:when>
-								<c:when test="${product.pSno.sNo >= 10 }">
-									(S00${product.pSno.sNo })
+								<c:when test="${SupplierOrder.soSname.sNo >= 10 }">
+									(S00${SupplierOrder.soSname.sNo })
 								</c:when>
 							</c:choose>
 						</td>
-						<td>${product.pQty }</td>
-						<td><fmt:formatDate value="${product.pDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
+						<td><fmt:formatNumber value="${SupplierOrder.soPcost.pCost}" pattern="\#,###.##"/></td>
+						<td>${SupplierOrder.soQty}개</td>
+						<td><fmt:formatDate value="${SupplierOrder.soDate}" type="both" pattern="yyyy-MM-dd"/></td>	
 						<td>
 							<a href="#"><button>수정</button></a>
 							<a href="#"><button>삭제</button></a>
@@ -195,6 +195,6 @@
 				</c:forEach>
 			</table>
 			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
-		</div> --%>
+		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>    

@@ -25,6 +25,11 @@ public class Supplier {
 	public Supplier(int sNo) {
 		this.sNo = sNo;
 	}
+	
+	public Supplier(int sNo, String sName) {
+		this.sNo = sNo;
+		this.sName = sName;
+	}
 
 	public Supplier(int sNo, String sName, String sBln, String sAddress, String sTel, String sFax) {
 		this.sNo = sNo;

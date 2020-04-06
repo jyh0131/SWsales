@@ -186,7 +186,7 @@
 								</c:when>
 							</c:choose>
 						</td>
-						<td>${product.pQty }</td>
+						<td>${product.pQty } 개</td>
 						<td><fmt:formatDate value="${product.pDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
 							<a href="#"><button>수정</button></a>

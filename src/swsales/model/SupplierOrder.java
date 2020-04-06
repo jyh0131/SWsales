@@ -3,13 +3,13 @@ package swsales.model;
 import java.util.Date;
 
 public class SupplierOrder {
-	private int soNo;
-	private Product soPno;
+	private int soNo; //발주번호
+	private Product soPno; //품목번호
 	private Product soPname;
-	private Supplier soSname;
+	private Supplier soSname; // 공급회사
 	private Product soPcost;
-	private int soQty;
-	private Date soDate;
+	private int soQty; //발주수량
+	private Date soDate; 
 
 	public SupplierOrder() {
 		// TODO Auto-generated constructor stub
