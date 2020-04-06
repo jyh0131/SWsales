@@ -11,11 +11,12 @@ import swsales.jdbc.JDBCUtil;
 import swsales.model.ClientSale;
 import swsales.mvc.CommandHandler;
 
-public class ClientSaleHandler implements CommandHandler {
+public class ClientSaleListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Connection conn = null;
+		
 		try {
 			conn = JDBCUtil.getConnection();
 			ClientSaleDao dao = ClientSaleDao.getInstance();
@@ -26,7 +27,7 @@ public class ClientSaleHandler implements CommandHandler {
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/clientSale.jsp";
+		return "/WEB-INF/view/vMgr/clientSaleList.jsp";
 	}
 
 }

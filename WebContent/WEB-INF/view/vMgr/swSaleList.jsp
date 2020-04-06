@@ -17,9 +17,22 @@
 		line-height: 38px;
 		border:none;
 	}
-	fieldset button{
-		font-size: 18px;
-		padding:0 3px;
+	#Search{
+		width: 60px;
+		height: 36px;
+		background-color: #384D75;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+	}
+	#All{
+		width: 60px;
+		height: 36px;
+		background-color: #ccc;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
 	}
 	fieldset input{
 		height:25px;
@@ -53,14 +66,24 @@
 	}
 	.total{
 		text-align: right;
+		font-size: 20px;
+	}
+	.total input{
+		text-align: center;
+		font-size: 20px;
+		width:200px;
+		margin:15px 0 0 5px;
+		background-color:#FFFFFF;
+		border:2px solid #384D75;
 	}
 </style>
 <section>
 	<h1>S/W별 판매현황 조회</h1>
 	<fieldset>
 		<label>품목명</label>
-		<input type="text"> <button>조회</button>
-		<input type="checkbox">전체
+		<input type="text" name="swSearch">
+		<input type="submit" value="조회" id="Search" style="cursor:pointer">
+		<input type="button" value="전체" id="All" style="cursor:pointer">
 	</fieldset>
 	<table>
 		<tr>
@@ -81,14 +104,16 @@
 					<td class="price"><fmt:formatNumber value="${sw.salesAmount }" pattern="#,###,###"/>　</td>
 					<td class="price"><fmt:formatNumber value="${sw.discount }" pattern="#,###,###"/>　</td>
 					<td class="price"><fmt:formatNumber value="${sw.salesProfit }" pattern="#,###,###"/>　</td>
+					<c:set var="sum1" value="${sum1 + sw.salesAmount }"/>
+					<c:set var="sum2" value="${sum2 + sw.salesProfit }"/>
 				</tr>
 		</c:forEach>
 	</table>
 	<fieldset class="total">
 		<label>총 판매금액</label>
-		<input type="text">
+		<input type="text" value=<c:out value="${sum1 }"/>>
 		<label>총 판매이윤</label>
-		<input type="text">
+		<input type="text" value=<c:out value="${sum2 }"/>>
 	</fieldset>
 </section>
 <%@ include file="../include/footer.jsp" %>

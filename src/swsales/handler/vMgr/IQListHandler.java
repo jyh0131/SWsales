@@ -11,7 +11,7 @@ import swsales.jdbc.JDBCUtil;
 import swsales.model.IQEvaluation;
 import swsales.mvc.CommandHandler;
 
-public class IQHandler implements CommandHandler {
+public class IQListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -26,7 +26,7 @@ public class IQHandler implements CommandHandler {
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/IQ.jsp";
+		return "/WEB-INF/view/vMgr/iqList.jsp";
 	}
 
 }

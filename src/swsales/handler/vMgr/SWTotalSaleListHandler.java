@@ -11,7 +11,7 @@ import swsales.jdbc.JDBCUtil;
 import swsales.model.SWTotalSale;
 import swsales.mvc.CommandHandler;
 
-public class SWTotalSaleHandler implements CommandHandler {
+public class SWTotalSaleListHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -26,7 +26,7 @@ public class SWTotalSaleHandler implements CommandHandler {
 		} finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/vMgr/SWTotalSale.jsp";
+		return "/WEB-INF/view/vMgr/swTotalSaleList.jsp";
 	}
 
 }
