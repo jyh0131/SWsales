@@ -127,10 +127,10 @@
 			<li><a href="${pageContext.request.contextPath}/product/cDeliveryMod.do">cDeliveryMod(0)</a></li>
 			<li><a href="${pageContext.request.contextPath}/product/productList1.do">productList1(0)</a></li>
 			<li><a href="${pageContext.request.contextPath}/product/productList2.do">productList2(0)</a></li>
-			<li><a href="${pageContext.request.contextPath}/product/supplierOrderList1.do">supplierOrderList1</a></li>
-			<li><a href="${pageContext.request.contextPath}/product/supplierOrderList2.do">supplierOrderList2</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/supplierOrderList1.do">supplierOrderList1(0)</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/supplierOrderList2.do">supplierOrderList2(0)</a></li>
 			<li><a href="${pageContext.request.contextPath}/product/clientDeliveryList.do">clientDeliveryList(0)</a></li>
-			<li><a href="${pageContext.request.contextPath}/product/productDetail.do">productDetail</a></li>
+			<li><a href="${pageContext.request.contextPath}/product/productDetail.do">productDetail(0)</a></li>
 		</ul>
 </section>
 <%@ include file="../include/footer.jsp" %>
