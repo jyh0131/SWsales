@@ -64,7 +64,7 @@
 		border-bottom: 2px solid black;
 	}
 	header ul#h_login2{
-		width: 320px;
+		width: 365px;
 		position: absolute;
 		right: 0;
 		top: 35px;
@@ -107,7 +107,7 @@
 			</c:if>
 			<c:if test="${Auth != null }">
 				<ul id="h_login2">
-					<li><a href="#">${Auth.empName }[${Auth.empId }]님</a></li>
+					<li><a href="#">${Auth.empName }[${Auth.empId }] ${Auth.empTitle }님</a></li>
 					<li>|</li>
 					<li><a href="${pageContext.request.contextPath}/main/logout.do">LOGOUT</a></li>
 					<li>|</li>
