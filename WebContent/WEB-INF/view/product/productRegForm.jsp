@@ -60,6 +60,7 @@
 		width: 500px;
     	height: 40px;
     	margin-right: 20px;
+    	outline-color: red;
 	}
 	#btnSname, #btnSaddress{
 	    width: 130px;
@@ -80,6 +81,31 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	input[name*='pNo']{
+		font-weight: bold;
+		color: #000080;
+		font-size: 16px;
+		outline: none;
+		background: #eee;
+	}
+	select[name*='pCate']{
+		font-weight: bold;
+	}
+	input[name*='pName']{
+		font-weight: bold;
+		color: #336600;
+	}
+	input[name*='pPrice']{
+		font-weight: bold;
+		color: blue;
+	}
+	input[name*='pSno']{
+		font-weight: bold;
+		color: #990000;	
+	}
+	input[name*='pQty']{
+		font-weight: bold;	
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -96,7 +122,7 @@
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/productList.do" method="post">
+		<form action="${pageContext.request.contextPath}/product/productAdd.do" method="post" enctype="multipart/form-data">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
@@ -105,12 +131,12 @@
  					<label><span class="red">* </span>분류명</label>
 					<select name="pCate" class="text">
 						<option selected>선택해주세요</option>
-						<option value="사무">사무</option>
-						<option value="개발">개발</option>
-						<option value="전문분야">전문분야</option>
-						<option value="멀티미디어">멀티미디어</option>
-						<option value="기업업무">기업업무</option>
-						<option value="서버">서버</option>						
+						<option value=1>사무</option>
+						<option value=2>개발</option>
+						<option value=3>전문분야</option>
+						<option value=4>멀티미디어</option>
+						<option value=5>기업업무</option>
+						<option value=6>서버</option>						
 					</select>
 					<br>
 					
@@ -140,7 +166,7 @@
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd"><a href="${pageContext.request.contextPath}/product/productList1.do">리스트</a>
+			<input type="submit" value="등록" id="btnAdd"> <a href="${pageContext.request.contextPath}/product/productList1.do">리스트</a>
 			</div>
 		</form>
 </section>

@@ -2,6 +2,7 @@ package swsales.handler.product;
 
 import java.io.File;
 import java.sql.Connection;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import javax.servlet.http.HttpServletRequest;
@@ -45,28 +46,36 @@ public class ProductInsertHandler implements CommandHandler{
 			}
 			
 			int size = 1024*1024*10;
-			
+			System.out.println("시러");
 			MultipartRequest multi = new MultipartRequest(req, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
-			
+			System.out.println("ㅁㄴㅇㄹ");
 			Connection conn = null;
 			
 			try {
-//				conn = JDBCUtil.getConnection();
-//				
-//				ProductDao dao = ProductDao.getInstance();;
-//				int pNo;
-//				Category pCate;
-//				String pName;
-//				int pCost;
-//				int pPrice;
-//				Supplier pSno;
-//				int pQty;
-//				Date pDate;
-//				String pPicPath;
-//				Product product = new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
-//				dao.insertProduct(conn, product);
-//				res.sendRedirect(req.getContextPath()+"/product/productList1.do");
-//				res.sendRedirect(req.getContextPath()+"/product/productList2.do");
+				conn = JDBCUtil.getConnection();
+				
+				ProductDao dao = ProductDao.getInstance();
+				
+				Category pCate = new Category(Integer.parseInt(multi.getParameter("pCate")));
+				String pName = multi.getParameter("pName");
+				int pCost = Integer.parseInt(multi.getParameter("pCost"));
+				int pPrice = Integer.parseInt(multi.getParameter("pPrice"));
+				
+				
+				Supplier pSno = new Supplier(Integer.parseInt(multi.getParameter("pSno")));
+				
+				int pQty = Integer.parseInt(multi.getParameter("pQty"));
+				
+				String sDate = multi.getParameter("pDate");
+				SimpleDateFormat dt = new SimpleDateFormat("yyyyy-MM-dd");
+				Date pDate = dt.parse(sDate);
+				
+				String pPicPath = multi.getFilesystemName("pPic");
+				
+				Product product = new Product(0, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
+			
+				dao.insertProduct(conn, product);
+				res.sendRedirect(req.getContextPath()+"/product/productList2.do");
 				return null;
 			}catch(Exception e) {
 				e.printStackTrace();
