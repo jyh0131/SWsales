@@ -4,54 +4,14 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
-	}
-	div#submenu{
-		width: 100%;
-		height: 150px;
-		line-height: 50px;
-
-	}
-	div#submenu ul{
-		width: 100%;
-		height: 150px;
-		padding-top: 20px;
-	}
-	div#submenu ul li{
-		width: 540px;
-		height: 120px;
-		float: left;
-		list-style: none;
-		text-align: center;
-	}
-	div#submenu ul li img{
-		width: 50px;
-		height: 50px;
-		padding-top: 10px;
-	}
-	div#submenu ul li a{
-		text-decoration: none;
-		color:  #0067B8;
-		font-size: 17px;
-	}
-	div#submenu ul a:hover{
-		border-bottom: 4px solid black;
-		font-size: 19px;
-	}
+	/** form 타이틀 **/
 	div#title{
 		width: 100%;
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
 	div#title h1{
 		font-size: 40px;
@@ -61,7 +21,12 @@
 	div#title h3{
 		letter-spacing: 3px;
 		padding-left: 60px;
-	}	
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
 	#search{
 		margin: 10px;
 		position: relative;
@@ -112,10 +77,8 @@
 		position: absolute;
 		right: 0;
 	}
-	#container{
-		width: 60%;
-		margin: 0 auto;
-		position: relative;
+	div#list_container{
+		margin-top: 100px;
 	}
 	table{
 		width: 100%;
@@ -163,31 +126,12 @@
 	});
 </script>
 	<section>
-		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
-		</div>
-		<div id="submenu">
-			<ul>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_regi.png"><br>
-					<a href="${pageContext.request.contextPath}/product/productAdd.do"><b>제품 등록</b> ></a>
-				</li>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_so.png"><br>
-					<a href="${pageContext.request.contextPath}/product/supplierOrderList.do"><b>발주 / 매입</b> ></a>
-				</li>
-				<li>
-					<img src ="${pageContext.request.contextPath}/images/main/smenu_cd.png"><br>
-					<a href="#"><b>출 고</b> ></a>
-				</li>				
-			</ul>
-		</div>
 		<div id="title">
 			<h1>Software Product List</h1>
 			<hr>
-			<h3>제품 관리 / 소프트웨어 상품 리스트</h3>
+			<h3>제품 관리 > <span id="k_title">소프트웨어 상품 리스트</span></h3>
 		</div>
-		<div id="container">
+		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">

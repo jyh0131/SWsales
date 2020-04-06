@@ -27,6 +27,6 @@ public class ProductList1Handler implements CommandHandler{
 		}finally {
 			JDBCUtil.close(conn);
 		}
-		return "/WEB-INF/view/product/productList.jsp";
+		return "/WEB-INF/view/product/productList1.jsp";
 	}
 }

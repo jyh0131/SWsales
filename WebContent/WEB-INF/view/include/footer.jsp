@@ -6,6 +6,7 @@
 		width: 1903px;
 		height: 370px;
 		background: #F2F2F2;
+		clear: both;
 	}
 	footer div#f_dummy1{
 		width: 1500px;
