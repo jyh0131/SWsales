@@ -116,7 +116,7 @@
 		</div>
 	<div id="contain">
 		<div id="formDiv">
-			<form action="">
+			<form action="${pageContext.request.contextPath}/board/boardSelect.do" method="get">
 				<input type="text" name="inpSearch" id="inpSearch">
 				<input type="submit" value="검색" id="btnSearch" style="cursor: pointer">
 			</form>

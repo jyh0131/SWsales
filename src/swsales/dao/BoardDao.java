@@ -79,6 +79,34 @@ public class BoardDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+	//listBoard
+		public List<Board> searchBoardList(Connection conn, String search) throws SQLException{
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "select * from board where b_title like concat ('%', ?, '%')";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, search);
+				rs = pstmt.executeQuery();
+				ArrayList<Board> list = new ArrayList<>();
+				while(rs.next()) {
+					Board board = new Board(rs.getInt(1), 
+										    rs.getString(2), 
+										    rs.getString(3), 
+										    rs.getString(4), 
+										    rs.getTimestamp(5), 
+										    rs.getTimestamp(6), 
+										    rs.getInt(7),
+										    rs.getString(8));
+					list.add(board);
+				}
+				return list;
+			} finally {
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+			}
+		}
 	//updateBoard(title, moddate, read_cnt)만 수정
 	public void updateBoard(Connection conn, Board board) throws SQLException {
 		PreparedStatement pstmt = null;
