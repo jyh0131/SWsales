@@ -3,21 +3,31 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="../include/header.jsp" %>
 <style>
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
+		margin-bottom: 100px;
+	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}	
 	#point{
 		width: 65%;
     	height: 40px;
     	margin: 0 auto;
 	}
 	.red{
-		color: red;
-		
-	}
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
+		color: red;	
 	}
 	#regForm{
 		width: 65%;
@@ -126,9 +136,11 @@
 	})
 </script>
 	<section>
-		<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
-		</div>
+		<div id="title">
+			<h1>Supplier List</h1>
+			<hr>
+			<h3>거래처 관리 / 공급회사 등록</h3>
+		</div>	
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>

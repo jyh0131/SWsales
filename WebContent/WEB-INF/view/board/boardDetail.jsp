@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
 	#imgDiv{
@@ -30,7 +31,7 @@
 		padding-left: 60px;
 	}
 	#contain{
-		width: 70%;
+		width: 50%;
 		margin: 0 auto;
 	}
 	table{
@@ -42,11 +43,47 @@
 		text-align: center;
 		height: 55px;
 	}
+	th{
+		background-color: #F6F6F7;
+	}
+	#ATitle{
+		border-top: 2px solid #878787;
+	}
+	#boardTitle{
+		text-align: left;
+		padding-left: 15px;
+	}
+	#AContent{
+		height: 300px;
+		text-align: left;
+	}
 	#tblDiv{
 		position: relative;
 	}
-	#btnAdd{
-		width: 130px;
+	#btnMod{
+		width: 60px;
+		height: 40px;
+		background-color: #384D75;
+		color: white;
+		margin: 10px 0;
+    	position: absolute;
+    	right: 130px;
+		border: 1px solid white;
+		border-radius: 5px;
+	}
+	#btnDel{
+		width: 60px;
+		height: 40px;
+		background-color: #384D75;
+		color: white;
+		margin: 10px 0;
+    	position: absolute;
+    	right: 65px;
+		border: 1px solid white;
+		border-radius: 5px;
+	}
+	#btnList{
+		width: 60px;
 		height: 40px;
 		background-color: #384D75;
 		color: white;
@@ -57,9 +94,22 @@
 		border-radius: 5px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function () {
+		$("#btnDel").click(function() {
+			var no = $(this).attr("data-bNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/board/boardDel.do?no="+no;
+			}
+		})
+	});
+</script>
 <section>
 	<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
+			<img src="${pageContext.request.contextPath}/images/submenu/pMain.png">
 	</div>
 	<div id="title">
 			<h1>Notice List</h1>
@@ -69,15 +119,15 @@
 	<div id="contain">
 		<div id="tblDiv">
 			<table id="tblBoard">
-				<tr>
+				<tr id="ATitle">
 					<th>제목</th>
-					<td>${board.bTitle }</td>
+					<td colspan="3" id="boardTitle">${board.bTitle }</td>
 				</tr>
 				<tr>
 					<th>부서명</th>
-					<td>${board.bDept }</td>
+					<td style="width: 240px">${board.bDept }</td>
 					<th>등록일</th>
-					<td>${board.bRegDate }</td>
+					<td style="width: 240px"><fmt:formatDate value="${board.bRegDate }" pattern="yyyy-MM-dd"/></td>
 				</tr>
 				<tr>
 					<th>작성자</th>
@@ -86,13 +136,17 @@
 					<td>${board.bReadCnt }</td>
 				</tr>
 				<tr>
-					<th>글내용</th>
+					<th colspan="4">글내용</th>
 				</tr>
 				<tr>
-					<td>${board.content }</td>
+					<td colspan="4" id="AContent"><pre style="padding-left: 30px;">${board.content }</pre></td>
 				</tr>
 			</table>
-			<a href="${pageContext.request.contextPath}/board/boardAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
+			<c:if test="${Auth.empId == board.bId }">
+				<a href="${pageContext.request.contextPath}/board/boardMod.do?no=${board.bNo }"><button id="btnMod" style="cursor: pointer">수 정</button></a>
+				<button id="btnDel" data-bNo = "${board.bNo }" style="cursor: pointer">삭 제</button>
+			</c:if>
+			<a href="${pageContext.request.contextPath}/board/boardList.do"><button id="btnList" style="cursor: pointer">목 록</button></a>
 		</div>
 	</div>
 </section>

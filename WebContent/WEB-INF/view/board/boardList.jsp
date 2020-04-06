@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
 	#imgDiv{
@@ -77,7 +78,7 @@
 		width: 10%;
 	}
 	th:nth-child(2) {
-		width: 60%;
+		width: 52%;
 	}
 	th:nth-child(3) {
 		width: 10%;
@@ -106,7 +107,7 @@
 </style>
 <section>
 	<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/main/test1.png">
+			<img src="${pageContext.request.contextPath}/images/submenu/pMain.png">
 	</div>
 	<div id="title">
 			<h1>Notice List</h1>
@@ -125,6 +126,7 @@
 				<tr>
 					<th>번호</th>
 					<th>제목</th>
+					<th>작성자</th>
 					<th>조회수</th>
 					<th>작성일</th>
 				</tr>
@@ -132,8 +134,9 @@
 					<tr>
 						<td>${board.bNo }</td>
 						<td id="secTd"><a href="${pageContext.request.contextPath}/board/boardDetail.do?no=${board.bNo }&readCnt=${board.bReadCnt}" id="bTitle">${board.bTitle }</a></td>
+						<td>${board.bName }</td>
 						<td>${board.bReadCnt }</td>
-						<td>${board.bRegDate }</td>
+						<td><fmt:formatDate value="${board.bRegDate }" pattern="yyyy-MM-dd"/></td>
 					</tr>
 				</c:forEach>
 			</table>
