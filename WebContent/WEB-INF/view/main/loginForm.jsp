@@ -94,7 +94,7 @@
 					<label class="emp" style="margin-right: 10px">직원</label>
 					<input class="emp" type="radio" name="emp" value="admin">
 					<label class="emp">관리자</label> -->
-					<input type="submit" value="로그인" id="btnLogin">
+					<input type="submit" value="로그인" id="btnLogin" style="cursor: pointer">
 				</form>
 			</div>
 		</div>

@@ -84,7 +84,7 @@
 					<input type="text" name="bTitle" class="text" placeholder="제목을 입력해주세요"><br>
 					
 					<label>작성자</label>
-					<input type="text" name="bName" class="text" placeholder="이름을 입력해주세요" value="${Auth.empName }"><br>
+					<input type="text" name="bName" class="text" value="${Auth.empName }" readonly><br>
 					<input type="hidden" name="bId" value="${Auth.empId }">
 					
 					<label>내용</label>
