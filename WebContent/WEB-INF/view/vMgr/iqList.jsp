@@ -7,12 +7,12 @@
 	h1{
 		text-align: center;
 		margin:20px 0;
-		font-size: 35px;
+		font-size: 27px;
 	}
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
+		font-size: 17px;
 		height:38px;
 		line-height: 38px;
 		border:none;
@@ -24,6 +24,42 @@
 		border: 1px solid white;
 		color: white;
 		border-radius: 5px;
+	}
+	#All{
+		width: 60px;
+		height: 36px;
+		background-color: #ccc;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
+	}
+	#Excessive{
+		width: 80px;
+		height: 36px;
+		background-color: #F29661;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
+	}
+	#Moderate{
+		width: 80px;
+		height: 36px;
+		background-color: #F29661;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
+	}
+	#Shortage{
+		width: 80px;
+		height: 36px;
+		background-color: #F29661;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
 	}
 	fieldset input{
 		height:25px;
@@ -55,36 +91,55 @@
 		text-align: right;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function (){
+		$("#All").click(function(){
+			location.href="iq.do";
+		})
+		$("#Excessive").click(function(){
+			location.href="iqExcessive.do";
+		})
+		$("#Moderate").click(function(){
+			location.href="iqModerate.do";
+		})
+		$("#Shortage").click(function(){
+			location.href="iqShortage.do";
+		})
+	});
+</script>
 </head>
 <body>
-	<h1>재고현황 조회</h1>
-	<fieldset>
-		<label>품목명</label>
-		<input type="text" name="iqSearch">
-		<input type="submit" value="조회" id="Search" style="cursor:pointer">
-		<input type="radio" name="radio" checked="checked">전체
-		<input type="radio" name="radio">재고과다
-		<input type="radio" name="radio">적정재고
-		<input type="radio" name="radio">재고부족
-	</fieldset>
-	<table>
-		<tr>
-			<th>품목명</th>
-			<th>공급회사명</th>
-			<th>재고수량</th>
-			<th>판매가격</th>
-			<th>공급가격</th>
-			<th>재고평가</th>
-		</tr>
-		<c:forEach var="iq" items="${list }">
-				<tr>
-					<td>${iq.p_name }</td>
-					<td>${iq.s_name }</td>
-					<td>${iq.iq_qty }</td>
-					<td class="price"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</td>
-					<td>${iq.evaluation }</td>
-				</tr>
-			</c:forEach>
-	</table>
+	<form action="iqSearch.do" method="post">
+		<h1>재고현황 조회</h1>
+		<fieldset>
+			<label>품 목 명</label>
+			<input type="text" name="iqSearch">
+			<input type="submit" value="조회" id="Search" style="cursor:pointer">
+			<input type="button" value="전체" id="All" style="cursor:pointer">
+			<input type="button" value="재고과다" id="Excessive" style="cursor:pointer">
+			<input type="button" value="적정재고" id="Moderate" style="cursor:pointer">
+			<input type="button" value="재고부족" id="Shortage" style="cursor:pointer">
+		</fieldset>
+		<table>
+			<tr>
+				<th>품목명</th>
+				<th>공급회사명</th>
+				<th>재고수량</th>
+				<th>판매가격</th>
+				<th>공급가격</th>
+				<th>재고평가</th>
+			</tr>
+			<c:forEach var="iq" items="${list }">
+					<tr>
+						<td>${iq.p_name }</td>
+						<td>${iq.s_name }</td>
+						<td>${iq.iq_qty }</td>
+						<td class="price"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</td>
+						<td>${iq.evaluation }</td>
+					</tr>
+				</c:forEach>
+		</table>
+	</form>
 <%@include file="../include/footer.jsp"%>

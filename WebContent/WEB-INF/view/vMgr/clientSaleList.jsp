@@ -6,13 +6,14 @@
 <style>
 	h1{
 		text-align: center;
-		margin:20px 0;
-		font-size: 35px;
+		margin:20px;
+		padding:20px;
+		font-size: 27px;
 	}
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
+		font-size: 17px;
 		height:38px;
 		line-height: 38px;
 		border:none;
@@ -36,10 +37,6 @@
 	}
 	fieldset input{
 		height:25px;
-	}
-	fieldset input[type="checkbox"]{
-		width:20px;
-		line-height: 30px;
 	}
 	table{
 		border-collapse: collapse;
@@ -68,20 +65,29 @@
 		text-align: right;
 	}
 	.total input{
-		text-align: center;
+		text-align: right;
 		font-size: 20px;
 		width:200px;
 		margin:15px 0 0 5px;
 		background-color:#FFFFFF;
 		border:2px solid #384D75;
+		padding-right:8px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function (){
+		$("#All").click(function(){
+			location.href="clientSale.do";
+		})
+	});
+</script>
 <section>
-	<h1>고객별 판매현황 조회</h1>
-	<form>
+	<form action="csSearch.do" method="post">
+		<h1>고객별 판매현황 조회</h1>
 		<fieldset>
-			<label>고 객 상 호 명 </label>
-			<input type="text" name="clientSearch" value="${clientSearch }">
+			<label>고 객 상 호 명</label>
+			<input type="text" name="clientSearch">
 			<input type="submit" value="조회" id="Search" style="cursor:pointer">
 			<input type="button" value="전체" id="All" style="cursor:pointer">
 		</fieldset>

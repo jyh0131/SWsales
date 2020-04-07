@@ -1,6 +1,5 @@
 package swsales.dao;
 
-import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -55,15 +54,22 @@ public class IQEvaluationDao {
 		}
 	}
 
-	public List<IQEvaluation> procedureIQEvaluationByPName(Connection conn, IQEvaluation iq) throws SQLException {
-		CallableStatement cstmt = null;
+	public List<IQEvaluation> selectIQEvaluationByPName(Connection conn, IQEvaluation iq) throws SQLException {
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "{call iq(?)}";
-			cstmt = conn.prepareCall(sql);
-			cstmt.setString(1, iq.getP_name());
-			rs = cstmt.executeQuery();
+			String sql = "select	p.p_name as 품목명, " + 
+					"		s.s_name as 공급회사명, " + 
+					"		iq.iq_qty as 재고수량, " + 
+					"		p.p_price as 판매가격, " + 
+					"		p.p_cost as 공급가격, " + 
+					"		(case when iq.iq_qty < 50 then '재고부족'	  when iq.iq_qty >= 50 and iq.iq_qty < 150 then '적정재고'	  when iq.iq_qty >= 150 then '재고과다'	end) as 재고평가 " + 
+					"  from product p natural join supplier s natural join inventory_quantity iq " + 
+					" where s.s_no = p.p_sno and p.p_no = iq.iq_pno and p.p_name = ?";
+			pstmt = conn.prepareCall(sql);
+			pstmt.setString(1, iq.getP_name());
+			rs = pstmt.executeQuery();
 			List<IQEvaluation> list = new ArrayList<IQEvaluation>();
 			while(rs.next()) {
 				IQEvaluation iqEvaluation = new IQEvaluation();
@@ -79,7 +85,7 @@ public class IQEvaluationDao {
 			return list;
 		} finally {
 			JDBCUtil.close(rs);
-			JDBCUtil.close(cstmt);
+			JDBCUtil.close(pstmt);
 		}
 	}
 
