@@ -46,9 +46,6 @@ public class SupplierOrder1InsertHandler implements CommandHandler{
 				Product pName = new Product(req.getParameter("soPname"));
 				ProductDao dao2 = ProductDao.getInstance();
 				Product pNo = dao2.selectProductByName(conn, pName);
-				int no1 = pNo.getpNo();
-				String name1 = pNo.getpName();
-				Product soPname = new Product(no1, name1);
 				
 				//System.out.println(pName); //인텔리제이
 				//System.out.println(pNo); // 인텔리제이
@@ -59,8 +56,6 @@ public class SupplierOrder1InsertHandler implements CommandHandler{
 				Supplier sName = new Supplier(req.getParameter("soSname"));
 				SupplierDao dao3 = SupplierDao.getInstance();
 				Supplier sNo = dao3.selectSupplierByName(conn, sName);
-				int no2 = sNo.getsNo();
-				Supplier soSname = new Supplier(no2);
 				
 				Product soPcost = new Product(Integer.parseInt(req.getParameter("soPcost")));
 				int soQty = Integer.parseInt((req.getParameter("soQty")));
@@ -71,7 +66,7 @@ public class SupplierOrder1InsertHandler implements CommandHandler{
 				
 				
 
-				SupplierOrder so = new SupplierOrder(0, soPname, soSname, soPcost, soQty, soDate); // 번호오토, 번호, 번호, 가격, 수량, 날짜
+				SupplierOrder so = new SupplierOrder(0, pNo, sNo, soPcost, soQty, soDate); // 번호오토, 번호, 번호, 가격, 수량, 날짜
 				//System.out.println(so);
 				dao.insertSupplierOrder(conn, so);
 				res.sendRedirect(req.getContextPath()+"/product/supplierOrderList1.do");

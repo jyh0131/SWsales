@@ -7,14 +7,14 @@ import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import swsales.dao.IQDao;
 import swsales.dao.ProductDao;
 import swsales.dao.SupplierDao;
-import swsales.dao.SupplierOrderDao;
 import swsales.dao.SupplierPurchaseDao;
 import swsales.jdbc.JDBCUtil;
+import swsales.model.InventoryQuantity;
 import swsales.model.Product;
 import swsales.model.Supplier;
-import swsales.model.SupplierOrder;
 import swsales.model.SupplierPurchase;
 import swsales.mvc.CommandHandler;
 
@@ -48,9 +48,6 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				Product pName = new Product(req.getParameter("spPname"));
 				ProductDao dao2 = ProductDao.getInstance();
 				Product pNo = dao2.selectProductByName(conn, pName);
-				int no1 = pNo.getpNo();
-				String name1 = pNo.getpName();
-				Product spPname = new Product(no1, name1);
 				
 				//System.out.println(pName); //인텔리제이
 				//System.out.println(pNo); // 인텔리제이
@@ -61,11 +58,19 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				Supplier sName = new Supplier(req.getParameter("spSname"));
 				SupplierDao dao3 = SupplierDao.getInstance();
 				Supplier sNo = dao3.selectSupplierByName(conn, sName);
-				int no2 = sNo.getsNo();
-				Supplier spSname = new Supplier(no2);
+				
 				
 				Product spPcost = new Product(Integer.parseInt(req.getParameter("spPcost")));
 				int spQty = Integer.parseInt((req.getParameter("spQty")));
+				
+				IQDao dao4 = IQDao.getInstance();
+				 
+
+				
+				//Product iqPno;
+				//int iqQty;
+				InventoryQuantity iq = new InventoryQuantity(pNo, spQty);
+				dao4.insertIQ(conn, iq);
 				
 				String sDate = req.getParameter("spDate");
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
@@ -73,7 +78,7 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				
 				
 
-				SupplierPurchase sp = new SupplierPurchase(0, spPname, spSname, spPcost, spQty, spDate);// 번호오토, 번호, 번호, 가격, 수량, 날짜
+				SupplierPurchase sp = new SupplierPurchase(0, pNo, sNo, spPcost, spQty, spDate);// 번호오토, 번호, 번호, 가격, 수량, 날짜
 				dao.insertSupplierPurchase(conn, sp);
 				res.sendRedirect(req.getContextPath()+"/product/supplierOrderList2.do");
 				return null;
