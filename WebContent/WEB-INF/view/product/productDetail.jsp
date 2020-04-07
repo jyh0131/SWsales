@@ -37,11 +37,21 @@
 	margin-top: 100px;
 	text-align: right;
 	}
-	
-	button#btnAdd{
+
+	button#btnMod{
 		width: 130px;
 		height: 40px;
-		background-color: #384D75;
+		background-color: #384D75; /* #87cefa */
+		color: white;
+		border: 1px solid white;
+		border-radius: 5px;
+		margin-right: 10px;
+	}
+		
+	button#btnDel{
+		width: 130px;
+		height: 40px;
+		background-color: #384D75; /* #f08080 */
 		color: white;
 		border: 1px solid white;
 		border-radius: 5px;
@@ -95,8 +105,8 @@
 		background: white;
 	}
 	td img{
-		width: 400px;
-		height: 400px;
+		width: 401px;
+		height: 434px;
 	}
 	td p {
 		padding-left: 10px;
@@ -131,8 +141,8 @@
 			<h3>제품 관리 > 소프트웨어 상품 리스트 > <span id="k_title">소프트웨어 제품 상세정보</span> : <span id="d_title">[${detail.pName } - ${detail.pCate}]</span></h3>
 		</div>
 		<div id="proAdd">
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">아 직 미 정</button></a>	
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">아 직 미 정</button></a>	
+			<a href="${pageContext.request.contextPath}/product/productMod.do"><button id="btnMod">수 정</button></a>	
+			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnDel">삭 제</button></a>	
 		</div>
 		<div id="detail_container">
 			<table>
@@ -140,7 +150,7 @@
 					<td colspan="3" id="tbl_title"><h1>▶ [${detail.pCate}] ${detail.pName }  </h1></td>
 				</tr>
 				<tr>
-					<td rowspan="8" id="pro_img"><img src="${pageContext.request.contextPath}/images/main/인텔리제이.png"></td>
+					<td rowspan="8" id="pro_img"><img src="${pageContext.request.contextPath}/productIMG/${detail.pPicPath}"></td>
 					<th>품목번호</th>
 					<td>
 						<p id="pNo">P00${detail.pNo}</p>

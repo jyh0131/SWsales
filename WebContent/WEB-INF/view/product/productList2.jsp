@@ -31,10 +31,18 @@
 		width: 100%;
 		height: 40px;
 		margin-top: 100px;
-		border: 1px solid red;
 		text-align: right;
 	}
-	
+	button#btnAll{
+		width: 130px;
+		height: 40px;
+		background-color: #ccc;
+		color: white;
+		border: 1px solid white;
+		border-radius: 5px;
+		margin-right: 10px;
+	}
+		
 	button#btnAdd{
 		width: 130px;
 		height: 40px;
@@ -47,14 +55,15 @@
 	
 	div#pImg_container{
 		width: 100%;
-		border: 1px solid red;
 		text-align: center;
+		margin-top: 20px;
 	}
 	
 	div.productImg{
 		width: 324px;
 		height: 350px;
 		float: left;
+		position: relative;
 	}
 	div.productImg img{
 		width: 300px;
@@ -66,7 +75,24 @@
 		text-align: center;
 		line-height: 20px;
 	}
-
+	
+	div.caption{
+		width: 300px;
+		height: 310px;
+		text-align: center;
+		background-color: rgba(0,0,0,0.6);
+		color: white;
+		position: absolute;
+		left: 12px;
+		top:1px;
+		line-height: 90px;
+ 		opacity: 0;
+		transition: all 1s ease;
+	}
+	
+	div.productImg a:hover div.caption{
+		opacity:1;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -84,16 +110,22 @@
 			<h3>제품 관리 > <span id="k_title">소프트웨어 제품 리스트</span></h3>
 		</div>
 		<div id="proAdd">
+			<a href="${pageContext.request.contextPath}/product/productList1.do"><button id="btnAll">전 체 LIST</button></a>		
 			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">제 품 등 록</button></a>	
 		</div>
 		<div id="pImg_container">
 			<c:forEach var="product" items="${list }">
 				<div class="productImg">
 					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}">
-						<!-- <img src = "${product.pPicPath}"> --> 
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
+						<div class="caption">
+						<h1> < ${product.pCate} > </h1>
+						<h3>${product.pName}</h3>
+						<p>공급가격 : <fmt:formatNumber value="${product.pCost}" pattern="#,###.##원"/></p>
+						<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/></p>
+					</div>
 					</a>
-					<p>${product.pName}</p>
+					<p>${product.pName}</p>		
 				</div>
 			</c:forEach>
 		</div>

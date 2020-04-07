@@ -81,10 +81,20 @@
 		margin: 0 auto;
 		text-align: center;
 	}
-	#btnAdd{
+	#btnMod{
 		width: 160px;
    		height: 45px;
     	background-color: #384D75;
+   		color: white;
+    	border: 1px solid white;
+    	border-radius: 5px;
+    	margin-top: 30px;
+    	font-size: 18px;
+	}
+	#btnReset{
+		width: 160px;
+   		height: 45px;
+    	background-color: #bbb;
    		color: white;
     	border: 1px solid white;
     	border-radius: 5px;
@@ -126,7 +136,7 @@
 		<div id="title">
 			<h1>Software Product Registration</h1>
 			<hr>
-			<h3>제품 관리 > 소프트웨어 제품 리스트 > <span id="k_title">소프트웨어 제품 등록</span></h3>
+			<h3>제품 관리 > 소프트웨어 제품 리스트 > 소프트웨어 제품 상세정보 > <span id="k_title">소프트웨어 제품 수정</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">
@@ -176,7 +186,8 @@
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
+				<input type="submit" value="등록" id="btnMod" style="cursor: pointer">
+				<input type="button" value="취소" id="btnReset" style="cursor: pointer">			
 			</div>
 		</form>
 </section>
