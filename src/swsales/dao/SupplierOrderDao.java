@@ -85,7 +85,7 @@ public class SupplierOrderDao {
 			String sql = "insert into supplier_order(so_no, so_pno, so_qty, so_date) values(?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, so.getSoNo());
-			pstmt.setInt(2, so.getSoPno().getpNo());
+			pstmt.setInt(2, so.getSoPname().getpNo());
 			pstmt.setInt(3, so.getSoQty());
 			pstmt.setTimestamp(4, new Timestamp(so.getSoDate().getTime()));
 			pstmt.executeUpdate();

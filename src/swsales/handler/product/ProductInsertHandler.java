@@ -67,7 +67,7 @@ public class ProductInsertHandler implements CommandHandler{
 				int pQty = Integer.parseInt(multi.getParameter("pQty"));
 				
 				String sDate = multi.getParameter("pDate");
-				SimpleDateFormat dt = new SimpleDateFormat("yyyyy-MM-dd");
+				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 				Date pDate = dt.parse(sDate);
 				
 				String pPicPath = multi.getFilesystemName("pPic");

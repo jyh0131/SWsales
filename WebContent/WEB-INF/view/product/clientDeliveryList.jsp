@@ -107,8 +107,8 @@
 		font-size: 17px;
 	}
 	tr.tbl_point:hover{
-		background: black;
-		color: red;
+		background: #5D5D5D;
+		color: yellow;
 	}
 	#btnAdd{
 		width: 130px;
