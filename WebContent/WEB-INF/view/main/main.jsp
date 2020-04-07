@@ -40,6 +40,21 @@ $(function(){
 		width: 1600px;
 		height: 600px;
 		margin-top: 80px;
+		margin-bottom: 80px;
+	}
+	div#m_dummy_img3{
+		height: 350px;
+		margin-bottom: 100px;
+	}
+	div#m_dummy_img3 ul li{
+		width: 358px;
+		list-style: none;
+		float: left;
+		margin-left: 30px;
+		line-height: 25px;
+	}
+	div#m_dummy_img3 ul li p{
+		font-size: 14px;
 	}
 	div#m_sns ul li{
 		float: left;
@@ -91,6 +106,28 @@ $(function(){
 		<img src="${pageContext.request.contextPath}/images/main/main_dummy5.png">
 	</div>
 	<div id="m_dummy_img3">
+		<ul>
+			<li>
+				<img src="${pageContext.request.contextPath}/images/main/main_dummy6.png">
+				<h3>비즈니스용 NAMBAWAN Office 365</h3>
+				<p>동급 최고의 Office 앱, 지능형 클라우드 서비스 및 고급 보안으로 비즈니스를 운영하고 성장시키세요.</p>
+			</li>
+			<li>
+				<img src="${pageContext.request.contextPath}/images/main/main_dummy7.png">
+				<h3>온라인 교실 만들기</h3>
+				<p>최상의 소프트웨어 프로그램으로 교육자와 학생에 무료로 제공하는 Teams 프로그램을 사용하여 과제를 만들고 가상으로 공동 작업하는 등 여러 활동을 하는 방법에 대한 전문가의 팁을 확인하세요.</p>
+			</li>
+			<li>
+				<img src="${pageContext.request.contextPath}/images/main/main_dummy8.png">
+				<h3>Kubernetes 작동</h3>
+				<p>어떻게 작동하는지 알아보고 클라우드 네이트브 앱 개발을 바로 시작하세요.</p>				
+			</li>
+			<li>
+				<img src="${pageContext.request.contextPath}/images/main/main_dummy9.png">
+				<h3>Visual Studio 2019</h3>
+				<p>생산적이로 현대적이며 혁신적인 IDE인 Visual Studio 2019를 바로 사용하세요.</p>				
+			</li>
+		</ul>	
 	</div>
 	<div id="m_sns">
 		<ul>

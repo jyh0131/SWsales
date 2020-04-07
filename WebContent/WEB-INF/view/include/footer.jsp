@@ -3,8 +3,9 @@
 <style>
 	/** footer **/
 	footer{
+		margin-top: 50px;
 		width: 1903px;
-		height: 370px;
+		height: 400px;
 		background: #F2F2F2;
 		clear: both;
 	}
@@ -42,7 +43,7 @@
 	footer div#f_dummy2 ul#f_menu{
 		width: 1500px;
 		height: 80px;
-		margin-top: 300px;
+		padding-top: 300px;
 	}
 	footer div#f_dummy2 ul#f_menu li:first-child{
 		margin-left: 700px;

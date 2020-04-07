@@ -100,7 +100,7 @@
 				<img src ="${pageContext.request.contextPath}/images/submenu/subLogo.png" id="title1">
 				<img src ="${pageContext.request.contextPath}/images/submenu/pTitle.png" id="title2">
 				<h2></h2>
-			<h1>제품 관리</h1>
+				<h1>제품 관리</h1>
 			</div>
 		</div>
 		<div id="submenu">
