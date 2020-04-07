@@ -20,8 +20,7 @@ public class OrdeerNYListHandler implements CommandHandler{
 		try {
 			conn = JDBCUtil.getConnection();
 			OrderDao dao = OrderDao.getInstance();
-			Client client = new Client();
-			List<Order> list = dao.selectClientOrderList(conn, client);
+			List<Order> list = dao.selectOrderByAll(conn);
 			req.setAttribute("list", list);
 			
 		}catch(Exception e) {

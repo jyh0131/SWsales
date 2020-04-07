@@ -118,6 +118,14 @@
 		border: 1px solid white;
 		border-radius: 5px;
 	}
+	span#y{
+		font-weight: bold;
+		color: blue;
+	}
+	span#n{
+		font-weight: bold;
+		color: red;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -162,20 +170,42 @@
 					<th>주문완료</th>
 					<th>주문담당자</th>
 				</tr>
-				<%-- <c:forEach var="SupplierOrder" items="${list }">
+				 <c:forEach var="Order" items="${list }">
 					<tr class="tbl_point">
 						<td class="tbl_point">
-							<c:choose>
-								<c:when test="${SupplierOrder.soNo < 10 }">
-									SO000${SupplierOrder.soNo }
+ 							<c:choose>
+								<c:when test="${Order.oNo < 10 }">
+									O000${Order.oNo }
 								</c:when>
-								<c:when test="${SupplierOrder.soNo >= 10 }">
-									SO00${SupplierOrder.soNo }
+								<c:when test="${Order.oNo >= 10 }">
+									O00${Order.oNo }
 								</c:when>
-							</c:choose>
+							</c:choose> 
 						</td>
-						<td>${SupplierOrder.soPname.pName}</td>
+						<td>${Order.oDate}</td>
+						<td>${Order.oCname.cName}</td>
+						<td>${Order.oPname.pName}</td>
+						<td>${Order.oQty}</td>
+						<td>${Order.oMemo}</td>
 						<td>
+							<c:if test="${Order.oDps == 1}">
+								<input type="checkbox" checked>
+							</c:if>
+							<c:if test="${Order.oDps == 0}">
+								<input type="checkbox">
+							</c:if>							
+						</td>
+						<td>
+							<c:if test="${Order.oOk == '1'}">
+								<span id="y">Y</span>
+							</c:if>
+							<c:if test="${Order.oOk == '0'}">
+								<span id="n">N<span id="y">
+							</c:if>
+						</td>
+						<td>${Order.oEname.empName},EE00${Order.oEno.empNo}
+						</td>
+<%-- 						<td>
 							${SupplierOrder.soSname.sName}
 							<c:choose>
 								<c:when test="${SupplierOrder.soSname.sNo < 10 }">
@@ -192,9 +222,9 @@
 						<td>
 							<a href="#"><button>수정</button></a>
 							<a href="#"><button>삭제</button></a>
-						</td>
+						</td> --%>
 					</tr>
-				</c:forEach> --%>
+				</c:forEach>
 			</table>
 			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
 		</div>

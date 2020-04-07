@@ -48,11 +48,6 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				Product pName = new Product(req.getParameter("spPname"));
 				ProductDao dao2 = ProductDao.getInstance();
 				Product pNo = dao2.selectProductByName(conn, pName);
-				
-				//System.out.println(pName); //인텔리제이
-				//System.out.println(pNo); // 인텔리제이
-				//System.out.println(no1); // 93
-				//System.out.println(soPname);//인텔리제이
 
 				//회사명 - 번호
 				Supplier sName = new Supplier(req.getParameter("spSname"));
@@ -63,12 +58,8 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				Product spPcost = new Product(Integer.parseInt(req.getParameter("spPcost")));
 				int spQty = Integer.parseInt((req.getParameter("spQty")));
 				
+				//매입이력등록시 재고수량테이블 자동증가 시켜야함!
 				IQDao dao4 = IQDao.getInstance();
-				 
-
-				
-				//Product iqPno;
-				//int iqQty;
 				InventoryQuantity iq = new InventoryQuantity(pNo, spQty);
 				dao4.insertIQ(conn, iq);
 				
