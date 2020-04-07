@@ -8,7 +8,7 @@
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
-		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background: url("${pageContext.request.contextPath}/images/title/cTitle.png") no-repeat;
 		background-size: 100%, 200px;
 		margin-bottom: 100px;
 	}

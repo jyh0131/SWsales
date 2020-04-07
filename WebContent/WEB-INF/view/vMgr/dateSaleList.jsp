@@ -27,10 +27,31 @@
   } );
   </script>
 <style>
-	h1{
-		text-align: center;
-		margin:20px 0;
-		font-size: 35px;
+	/** form 타이틀 **/
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/title/vTitle.png") no-repeat;
+		background-size: 100%, 200px;
+	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
+	div#list_container{
+		margin-top: 50px;
 	}
 	fieldset{
 		padding:3px 10px;
@@ -76,38 +97,44 @@
 	}
 </style>
 <section>
-	<h1>날짜별 판매현황 조회</h1>
-	<fieldset>
-		<label>조 회 기 간 </label>
-		<input type="text" id="datepickerStart"> <input type="text" id="datepickerEnd"> <button>검색</button>
-		<input type="checkbox">전체
-	</fieldset>
-	<table>
-		<tr>
-			<th>주문번호</th>
-			<th>고객상호명</th>
-			<th>품목명</th>
-			<th>주문수량</th>
-			<th>주문일자</th>
-		</tr>
-		<c:forEach var="ds" items="${list }">
-				<tr>
-					<td>
-						<c:choose>
-							<c:when test="${ds.o_no <10 }">O000${ds.o_no }
-							</c:when>
-							<c:when test="${ds.o_no >=10 && ds.o_no <100 }">O00${ds.o_no }
-							</c:when>
-							<c:when test="${ds.o_no >=100 && ds.o_no <1000}">O0${ds.o_no }
-							</c:when>
-						</c:choose>
-					</td>
-					<td>${ds.c_name }</td>
-					<td>${ds.p_name }</td>
-					<td>${ds.o_qty }</td>
-					<td>${ds.o_date }</td>
-				</tr>
-		</c:forEach>
-	</table>
+	<div id="title">
+		<h1>Supplier List</h1>
+		<hr>
+		<h3>현황조회 / 보고 > <span id="k_title">날짜별 판매현황 조회</span></h3>
+	</div>
+	<div id="list_container">
+		<fieldset>
+			<label>조 회 기 간 </label>
+			<input type="text" id="datepickerStart"> <input type="text" id="datepickerEnd"> <button>검색</button>
+			<input type="checkbox">전체
+		</fieldset>
+		<table>
+			<tr>
+				<th>주문번호</th>
+				<th>고객상호명</th>
+				<th>품목명</th>
+				<th>주문수량</th>
+				<th>주문일자</th>
+			</tr>
+			<c:forEach var="ds" items="${list }">
+					<tr>
+						<td>
+							<c:choose>
+								<c:when test="${ds.o_no <10 }">O000${ds.o_no }
+								</c:when>
+								<c:when test="${ds.o_no >=10 && ds.o_no <100 }">O00${ds.o_no }
+								</c:when>
+								<c:when test="${ds.o_no >=100 && ds.o_no <1000}">O0${ds.o_no }
+								</c:when>
+							</c:choose>
+						</td>
+						<td>${ds.c_name }</td>
+						<td>${ds.p_name }</td>
+						<td>${ds.o_qty }</td>
+						<td>${ds.o_date }</td>
+					</tr>
+			</c:forEach>
+		</table>
+	</div>	
 </section>	
 <%@include file="../include/footer.jsp"%>
