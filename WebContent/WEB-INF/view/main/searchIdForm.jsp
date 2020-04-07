@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>NAMBAWAN IT 로그인</title>
+<title>NAMBAWAN IT 아이디찾기</title>
 <style>
 	*{
 		margin: 0;
@@ -51,8 +51,8 @@
 		width:99%;
 		position: relative;
 	}
-	#btnLogin{
-		width: 70px;
+	#btnSearch{
+		width: 95px;
     	height: 30px;
     	background-color: #00346b;
     	color: white;
@@ -60,7 +60,7 @@
     	border-radius: 5px;
     	position: absolute;
     	right: 80px;
-    	bottom: -50px;
+    	bottom: -40px;
 	}
 	#btnReset{
 		width: 75px;
@@ -71,7 +71,7 @@
     	border-radius: 5px;
     	position: absolute;
     	right: 0;
-    	bottom: -50px;
+    	bottom: -40px;
 	}
 	#wantId{
 		font-size: 12px;
@@ -88,9 +88,7 @@
 		var result = ${error};
 		console.log(result);
 		if(result == 1){
-			alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.")
-		}else if(result == 2){
-			alert("비밀번호가 틀렸습니다. 다시 확인해주세요.")
+			alert("해당 아이디가 존재하지 않습니다. 다시 확인해주세요")
 		}
 	})
 </script>
@@ -102,13 +100,12 @@
 				<img src="${pageContext.request.contextPath}/images/main/h_logo.png">
 			</div>
 			<div id="loginbox">
-				<form action="${pageContext.request.contextPath}/main/login.do" method="post">
-					<label class="text">사용자ID</label><br>
-					<input type="text" name="id" class="box"><br>
-					<label class="text">비밀번호</label><br>
-					<input type="password" name="password" class="box"><br>
-					<a href="${pageContext.request.contextPath}/main/searchId.do" id="wantId">아이디와 비밀번호를 잊으셨나요?</a>
-					<input type="submit" value="로그인" id="btnLogin" style="cursor: pointer">
+				<form action="${pageContext.request.contextPath}/main/searchId.do" method="post">
+					<label class="text">사원번호</label><br>
+					<input type="text" name="empNo" class="box" value="EE"><br>
+					<label class="text">이 름</label><br>
+					<input type="text" name="empName" class="box"><br>
+					<input type="submit" value="아이디 찾기" id="btnSearch" style="cursor: pointer">
 				</form>
 				<a href="${pageContext.request.contextPath}/main/main.do"><button id="btnReset" style="cursor: pointer">돌아가기</button></a>
 			</div>
