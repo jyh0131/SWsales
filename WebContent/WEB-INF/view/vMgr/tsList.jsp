@@ -4,10 +4,24 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%@include file="../include/header.jsp"%>
 <style>
+	#menu{
+		margin-top:40px;
+		margin-left:10px;
+	}
+	.btnMenu{
+		width: 150px;
+		height: 36px;
+		background-color: #A6A6A6;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		margin:0 1px;
+	}
 	h1{
 		text-align: center;
-		margin:20px 0;
-		font-size: 35px;
+		padding:20px;
+		padding-bottom:40px;
+		font-size: 27px;
 	}
 	fieldset{
 		padding:3px 10px;
@@ -17,16 +31,8 @@
 		line-height: 38px;
 		border:none;
 	}
-	fieldset button{
-		font-size: 18px;
-		padding:0 3px;
-	}
 	fieldset input{
 		height:25px;
-	}
-	fieldset input[type="checkbox"]{
-		width:20px;
-		line-height: 30px;
 	}
 	table{
 		border-collapse: collapse;
@@ -55,15 +61,20 @@
 		text-align: right;
 	}
 	.total input{
-		text-align: center;
+		text-align: right;
 		font-size: 20px;
 		width:200px;
 		margin:15px 0 0 5px;
 		background-color:#FFFFFF;
 		border:2px solid #384D75;
+		padding-right:8px;
 	}
 </style>
 <section>
+	<div id="menu">
+		<a href="${pageContext.request.contextPath}/vMgr/swTotalSale.do"><button class="btnMenu">S/W 전체 판매현황</button></a>
+		<a href="${pageContext.request.contextPath}/vMgr/ts.do"><button class="btnMenu">거래명세</button></a>
+	</div>
 	<h1>거래명세</h1>
 	<table>
 		<tr>
