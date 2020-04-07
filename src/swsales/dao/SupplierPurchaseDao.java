@@ -85,7 +85,7 @@ public class SupplierPurchaseDao {
 			String sql = "insert into supplier_purchase(sp_no, sp_pno, sp_qty, sp_date) values(?, ?, ?, ?)";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, sp.getSpNo());
-			pstmt.setInt(2, sp.getSpPno().getpNo());
+			pstmt.setInt(2, sp.getSpPname().getpNo());
 			pstmt.setInt(3, sp.getSpQty());
 			pstmt.setTimestamp(4, new Timestamp(sp.getSpDate().getTime()));
 			pstmt.executeUpdate();

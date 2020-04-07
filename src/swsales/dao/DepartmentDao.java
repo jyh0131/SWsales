@@ -74,6 +74,25 @@ public class DepartmentDao {
 		}
 	}
 	
+	public Department selectDepartmentByName(Connection conn, Department dept) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select d_no, d_name, d_floor from department where d_name = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dept.getDeptName());
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return getDepartment(rs);
+			}
+			return null;
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+	
 	/***QUERY [insert/update/delete] 
 	 * @throws SQLException ****************************************************************************************/
 	
