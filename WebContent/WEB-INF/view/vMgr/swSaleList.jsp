@@ -7,12 +7,12 @@
 	h1{
 		text-align: center;
 		margin:20px 0;
-		font-size: 35px;
+		font-size: 27px;
 	}
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
+		font-size: 17px;
 		height:38px;
 		line-height: 38px;
 		border:none;
@@ -69,51 +69,62 @@
 		font-size: 20px;
 	}
 	.total input{
-		text-align: center;
+		text-align: right;
 		font-size: 20px;
 		width:200px;
 		margin:15px 0 0 5px;
 		background-color:#FFFFFF;
 		border:2px solid #384D75;
+		padding-right:8px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function (){
+		$("#All").click(function(){
+			location.href="clientSale.do";
+		})
+	});
+</script>
 <section>
-	<h1>S/W별 판매현황 조회</h1>
-	<fieldset>
-		<label>품목명</label>
-		<input type="text" name="swSearch">
-		<input type="submit" value="조회" id="Search" style="cursor:pointer">
-		<input type="button" value="전체" id="All" style="cursor:pointer">
-	</fieldset>
-	<table>
-		<tr>
-			<td>품목명</td>
-			<td>분류</td>
-			<td>공급회사명</td>
-			<td>공급금액</td>
-			<td>판매금액</td>
-			<td>할인금액</td>
-			<td>판매이윤</td>
-		</tr>
-		<c:forEach var="sw" items="${list }">
-				<tr>
-					<td>${sw.p_name }</td>
-					<td>${sw.cate_name }</td>
-					<td>${sw.s_name }</td>
-					<td class="price"><fmt:formatNumber value="${sw.supplyAmount }" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${sw.salesAmount }" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${sw.discount }" pattern="#,###,###"/>　</td>
-					<td class="price"><fmt:formatNumber value="${sw.salesProfit }" pattern="#,###,###"/>　</td>
-					<c:set var="sum1" value="${sum1 + sw.salesAmount }"/>
-					<c:set var="sum2" value="${sum2 + sw.salesProfit }"/>
-				</tr>
-		</c:forEach>
-	</table>
-	<fieldset class="total">
-		<label>총 판매금액</label>
-		<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
-		<label>총 판매이윤</label>
-		<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
-	</fieldset>
+	<form action="swSearch.do" method="post">
+		<h1>S/W별 판매현황 조회</h1>
+		<fieldset>
+			<label>품 목 명</label>
+			<input type="text" name="swSearch">
+			<input type="submit" value="조회" id="Search" style="cursor:pointer">
+			<input type="button" value="전체" id="All" style="cursor:pointer">
+		</fieldset>
+		<table>
+			<tr>
+				<td>품목명</td>
+				<td>분류</td>
+				<td>공급회사명</td>
+				<td>공급금액</td>
+				<td>판매금액</td>
+				<td>할인금액</td>
+				<td>판매이윤</td>
+			</tr>
+			<c:forEach var="sw" items="${list }">
+					<tr>
+						<td>${sw.p_name }</td>
+						<td>${sw.cate_name }</td>
+						<td>${sw.s_name }</td>
+						<td class="price"><fmt:formatNumber value="${sw.supplyAmount }" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${sw.salesAmount }" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${sw.discount }" pattern="#,###,###"/>　</td>
+						<td class="price"><fmt:formatNumber value="${sw.salesProfit }" pattern="#,###,###"/>　</td>
+						<c:set var="sum1" value="${sum1 + sw.salesAmount }"/>
+						<c:set var="sum2" value="${sum2 + sw.salesProfit }"/>
+					</tr>
+			</c:forEach>
+		</table>
+		<fieldset class="total">
+			<label>총 판매금액</label>
+			<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
+			<label>총 판매이윤</label>
+			<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
+		</fieldset>
+	</form>
 </section>
 <%@ include file="../include/footer.jsp" %>
