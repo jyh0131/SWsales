@@ -153,7 +153,7 @@ public class ProductDao {
 		
 		try {
 			StringBuilder sql = new StringBuilder("update product set p_cate=?, p_name=?, p_cost=?, p_price=?, p_sno=?, p_qty=?, p_date=?, ");
-			if(product.getpPic()!=null) sql.append("p_pic=?, ");
+			//if(product.getpPic()!=null) sql.append("p_pic=?, ");
 			if(product.getpPicPath()!=null) sql.append("p_picpath=?, ");
 			sql.replace(sql.lastIndexOf(","), sql.length(), " ");
 			sql.append("where p_no=?");
@@ -166,10 +166,10 @@ public class ProductDao {
 			pstmt.setInt(6, product.getpQty());
 			pstmt.setTimestamp(7, new Timestamp(product.getpDate().getTime()));
 			int argCnt = 8;
-			if(product.getpPic()!=null) {
-				pstmt.setBytes(argCnt++, product.getpPic());
+			/*if(product.getpPic()!=null) {
+				pstmt.setBytes(argCnt++, product.getpPic());*/
 				pstmt.setString(argCnt++, product.getpPicPath());
-			}
+			//}
 			pstmt.setInt(argCnt++, product.getpNo());
 			pstmt.executeUpdate();
 			

@@ -46,9 +46,9 @@ public class ProductInsertHandler implements CommandHandler{
 			}
 			
 			int size = 1024*1024*10;
-			System.out.println("시러");
+			//System.out.println("시러");
 			MultipartRequest multi = new MultipartRequest(req, uploadPath, size, "UTF-8", new DefaultFileRenamePolicy());
-			System.out.println("ㅁㄴㅇㄹ");
+			//System.out.println("ㅁㄴㅇㄹ");
 			Connection conn = null;
 			
 			try {

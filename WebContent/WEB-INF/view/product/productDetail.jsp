@@ -141,7 +141,7 @@
 			<h3>제품 관리 > 소프트웨어 상품 리스트 > <span id="k_title">소프트웨어 제품 상세정보</span> : <span id="d_title">[${detail.pName } - ${detail.pCate}]</span></h3>
 		</div>
 		<div id="proAdd">
-			<a href="${pageContext.request.contextPath}/product/productMod.do"><button id="btnMod">수 정</button></a>	
+			<a href="${pageContext.request.contextPath}/product/productMod.do?pNo=${detail.pNo}"><button id="btnMod">수 정</button></a>	
 			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnDel">삭 제</button></a>	
 		</div>
 		<div id="detail_container">
