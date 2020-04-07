@@ -91,7 +91,7 @@
 				<div class="productImg">
 					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}">
 						<!-- <img src = "${product.pPicPath}"> --> 
-						<img src="${pageContext.request.contextPath}/images/main/인텔리제이.png">
+						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 					</a>
 					<p>${product.pName}</p>
 				</div>
