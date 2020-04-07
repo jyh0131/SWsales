@@ -60,7 +60,6 @@
 		width: 500px;
     	height: 40px;
     	margin-right: 20px;
-    	outline-color: red;
 	}
 	#btnPname, #btnSname{
 	    width: 130px;
@@ -81,10 +80,20 @@
 		margin: 0 auto;
 		text-align: center;
 	}
-	#btnAdd{
+	#btnMod{
 		width: 160px;
    		height: 45px;
     	background-color: #384D75;
+   		color: white;
+    	border: 1px solid white;
+    	border-radius: 5px;
+    	margin-top: 30px;
+    	font-size: 18px;
+	}
+	#btnReset{
+		width: 160px;
+   		height: 45px;
+    	background-color: #bbb;
    		color: white;
     	border: 1px solid white;
     	border-radius: 5px;
@@ -126,57 +135,59 @@
 		<div id="title">
 			<h1>Software Product Registration</h1>
 			<hr>
-			<h3>제품 관리 > 소프트웨어 제품 리스트 > <span id="k_title">소프트웨어 제품 등록</span></h3>
+			<h3>제품 관리 > 소프트웨어 제품 리스트 > 소프트웨어 제품 상세정보 > <span id="k_title">소프트웨어 제품 수정</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/productAdd.do" method="post" enctype="multipart/form-data">
+		<form action="${pageContext.request.contextPath}/product/productMod.do" method="post" enctype="multipart/form-data">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
-					<input type="text" name="pNo" class="text" value=" P00${product.pNo+1 }" readonly="readonly"><br>
+					<input type="text" name="pNo" class="text" value="P00${product.pNo }" readonly="readonly"><br>
+					<input type="hidden" name="no" value="${product.pNo}">
 					
  					<label><span class="red">* </span>분류명</label>
 					<select name="pCate" class="text">
 						<option selected>선택해주세요</option>
-						<option value=1>사무</option>
-						<option value=2>개발</option>
-						<option value=3>전문분야</option>
-						<option value=4>멀티미디어</option>
-						<option value=5>기업업무</option>
-						<option value=6>서버</option>						
+						<option value="${product.pCate.cateNo}">사무</option>
+						<option value="${product.pCate.cateNo}">개발</option>
+						<option value="${product.pCate.cateNo}">전문분야</option>
+						<option value="${product.pCate.cateNo}">멀티미디어</option>
+						<option value="${product.pCate.cateNo}">기업업무</option>
+						<option value="${product.pCate.cateNo}">서버</option>						
 					</select>
 					<br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="pName" class="text" placeholder=" >> 중복확인">
+					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" value="${product.pName}">
 					<input type="button" value="중복확인" id="btnPname"><br>
 					
 					<label><span class="red">* </span>공급가격</label>
-					<input type="text" name="pCost" class="text"><br>
+					<input type="text" name="pCost" class="text" value="${product.pCost}"><br>
 					
 					<label><span class="red">* </span>판매가격</label>
-					<input type="text" name="pPrice" class="text"><br>
+					<input type="text" name="pPrice" class="text" value="${product.pPrice}"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회">
+					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회" value="${product.pSno.sName}">
 					<input type="button" value="조 회" id="btnSname"><br>
 					
 					<label><span class="red">* </span>최초재고수량</label>
-					<input type="text" name="pQty" class="text"><br>
+					<input type="text" name="pQty" class="text" value="${product.pQty}"><br>
 					
 					
 					<label><span class="red">* </span>최초등록일자</label>
-					<input type="date" name="pDate" class="text"><br>
+					<input type="date" name="pDate" class="text" value="${product.pDate}"><br>
 					
 					<label>&nbsp&nbsp제품 이미지</label>
-					<input type="file" name="pPic"><br>
+					<input type="file" name="pPic" value="${product.pPicPath}"><br>
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
+				<input type="submit" value="등록" id="btnMod" style="cursor: pointer">
+				<input type="button" value="취소" id="btnReset" style="cursor: pointer">			
 			</div>
 		</form>
 </section>

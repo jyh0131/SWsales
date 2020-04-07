@@ -101,19 +101,12 @@
 		font-size: 17px;
 	}
 	tr.tbl_point:hover{
-		background: black;
-		color: red;
+		background: #5D5D5D;
+		color: yellow;
 	}
-	#btnAdd{
-		width: 130px;
-		height: 40px;
-		background-color: #384D75;
-		color: white;
-		margin: 10px 0;
-    	position: absolute;
-    	right: 0;
-		border: 1px solid white;
-		border-radius: 5px;
+	td img#pro_img{
+		width: 100px;
+		height: 100px;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -127,9 +120,9 @@
 </script>
 	<section>
 		<div id="title">
-			<h1>Software Product List</h1>
+			<h1>Software Product All List</h1>
 			<hr>
-			<h3>제품 관리 > <span id="k_title">소프트웨어 상품 리스트</span></h3>
+			<h3>제품 관리 > <span id="k_title">소프트웨어 제품 전체 리스트</span></h3>
 		</div>
 		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
@@ -151,13 +144,12 @@
 					<th>품목번호</th>
 					<th>분류명</th>
 					<th>품목명</th>
-					<!-- <th>품목 이미지</th> -->
+					<th>품목 이미지</th>
 					<th>공급가격</th>
 					<th>판매가격</th>
 					<th>공급회사명</th>
 					<th>최초재고수량</th>
 					<th>최초등록일자</th>
-					<th>수정/삭제</th>
 				</tr>
 				<c:forEach var="product" items="${list }">
 					<tr class="tbl_point">
@@ -173,7 +165,7 @@
 						</td>
 						<td>${product.pCate }</td>
 						<td>${product.pName }</td>
-						<%-- <td>${product.pPicPath }</td> --%>
+						<td><img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath }" id="pro_img"></td>
 						<td><fmt:formatNumber value="${product.pCost }" pattern="\#,###.##"/></td>
 						<td><fmt:formatNumber value="${product.pPrice }" pattern="\#,###.##"/></td>
 						<td>${product.pSno.sName }
@@ -188,14 +180,9 @@
 						</td>
 						<td>${product.pQty } 개</td>
 						<td><fmt:formatDate value="${product.pDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
-						<td>
-							<a href="#"><button>수정</button></a>
-							<a href="#"><button>삭제</button></a>
-						</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
 		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>
