@@ -94,7 +94,7 @@ public class SupplierDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name=?";
+			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_name like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectSupplier.getsName());
 			rs = pstmt.executeQuery();
@@ -114,7 +114,7 @@ public class SupplierDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_bln=?";
+			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_bln like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectSupplier.getsBln());
 			rs = pstmt.executeQuery();
@@ -133,7 +133,7 @@ public class SupplierDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_tel=?";
+			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier where s_tel like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectSupplier.getsTel());
 			rs = pstmt.executeQuery();
