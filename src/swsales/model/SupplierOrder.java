@@ -18,6 +18,16 @@ public class SupplierOrder {
 	public SupplierOrder(int soNo) {
 		this.soNo = soNo;
 	}
+	
+	
+
+	public SupplierOrder(int soNo, Product soPno, int soQty, Date soDate) {
+		super();
+		this.soNo = soNo;
+		this.soPno = soPno;
+		this.soQty = soQty;
+		this.soDate = soDate;
+	}
 
 	public SupplierOrder(int soNo, Product soPname, Supplier soSname, Product soPcost, int soQty, Date soDate) {
 		this.soNo = soNo;

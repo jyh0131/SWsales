@@ -61,9 +61,14 @@
     	height: 40px;
     	margin-right: 20px;
 	}
-	#btnSname, #btnSaddress{
+	#btnPname{
 	    width: 130px;
     	height: 35px;
+ 		color: white;
+		outline: none;
+		border: none;
+		border-radius: 5px; 
+		background: #A6A6A6;
 	}
 	#add{
 		width: 65%;
@@ -80,6 +85,34 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	#btnReset{
+		width: 160px;
+   		height: 45px;
+    	background-color: #bbb;
+   		color: white;
+    	border: 1px solid white;
+    	border-radius: 5px;
+    	margin-top: 30px;
+    	font-size: 18px;
+	}	
+	input[name*='spNo']{
+		font-weight: bold;
+		color: #000080;
+		font-size: 16px;
+		outline: none;
+		background: #eee;
+	}
+	input[name*='spPname']{
+		font-weight: bold;
+		color: #336600;
+	}
+	input[name*='spSname']{
+		font-weight: bold;
+		color: #990000;	
+	}
+	input[name*='spPcost'], input[name*='spQty']{
+		font-weight: bold;
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -96,15 +129,15 @@
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/productList.do" method="post">
+		<form action="${pageContext.request.contextPath}/product/sOrderAdd2.do" method="post">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>매입번호</label>
 					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo+1 }" readonly="readonly"><br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="spPname" class="text" placeholder=" >> 중복확인">
-					<input type="button" value="조회" id="btnSname"><br>
+					<input type="text" name="spPname" class="text" placeholder=" >> 품목명 조회">
+					<input type="button" value="조회" id="btnPname"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
 					<input type="text" name="spSname" class="text"><br>
@@ -113,8 +146,7 @@
 					<input type="text" name="spPcost" class="text"><br>
 					
 					<label><span class="red">* </span>매입수량</label>
-					<input type="text" name="spQty" class="text" placeholder=" >> 회사명 조회">
-					<input type="button" value="조 회" id="btnSname"><br>
+					<input type="text" name="spQty" class="text"><br>
 					
 					<label><span class="red">* </span>매입 등록일자</label>
 					<input type="date" name="spDate" class="text"><br>
@@ -122,6 +154,7 @@
 			</div>
 			<div id="add">
 			<input type="submit" value="등록" id="btnAdd">
+			<input type="button" value="취소" id="btnReset" style="cursor: pointer">					
 			</div>
 		</form>
 </section>
