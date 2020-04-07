@@ -180,7 +180,7 @@ public class ClientDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_name=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_name like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectClient.getcName());
 			rs = pstmt.executeQuery();
@@ -200,7 +200,7 @@ public class ClientDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_ceo=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_ceo like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectClient.getcCeo());
 			rs = pstmt.executeQuery();
@@ -219,7 +219,7 @@ public class ClientDao {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {
-			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_tel=?";
+			String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_salesman, e.e_name from client c left join employee e on c.c_salesman = e.e_no where c_tel like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, selectClient.getcTel());
 			rs = pstmt.executeQuery();

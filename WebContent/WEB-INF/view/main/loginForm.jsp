@@ -60,9 +60,15 @@
     	border-radius: 5px;
     	position: absolute;
     	right: 0;
+    	bottom: -50px;
 	}
-	.emp{
-		margin-top: 8px;
+	#wantId{
+		font-size: 12px;
+    	text-decoration: none;
+   		color: gray;
+    	position: absolute;
+    	left: 0;
+    	bottom: 0px;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -90,10 +96,7 @@
 					<input type="text" name="id" class="box"><br>
 					<label class="text">비밀번호</label><br>
 					<input type="password" name="password" class="box"><br>
-					<!-- <input class="emp" type="radio" name="emp" value="employee">
-					<label class="emp" style="margin-right: 10px">직원</label>
-					<input class="emp" type="radio" name="emp" value="admin">
-					<label class="emp">관리자</label> -->
+					<a href="#" id="wantId">아이디와 비밀번호를 잊으셨나요?</a>
 					<input type="submit" value="로그인" id="btnLogin" style="cursor: pointer">
 				</form>
 			</div>
