@@ -35,7 +35,7 @@
 		<url-pattern>/*</url-pattern>
 	</filter-mapping>
 
-	<filter>
+	<!-- <filter>
 		<filter-name>LoginFilter</filter-name>
 		<filter-class>swsales.util.LoginFilter</filter-class>
 	</filter>
@@ -45,7 +45,7 @@
 		<url-pattern>/product/pSubMenu.do</url-pattern>
 		<url-pattern>/order/oSubMenu.do</url-pattern>
 		<url-pattern>/vMgr/vSubMenu.do</url-pattern>
-	</filter-mapping>
+	</filter-mapping> -->
 
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
