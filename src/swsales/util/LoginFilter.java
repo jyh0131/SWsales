@@ -29,7 +29,7 @@ public class LoginFilter implements Filter {
 		if(session.getAttribute("Auth") == null) {
 			//로그인 화면으로 이동
 			HttpServletResponse res = (HttpServletResponse)response;
-			res.sendRedirect("login.do");
+			res.sendRedirect(req.getContextPath()+"/main/login.do");
 		}else {
 			chain.doFilter(request, response);
 		}
