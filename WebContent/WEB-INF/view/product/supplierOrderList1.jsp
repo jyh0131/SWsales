@@ -67,16 +67,6 @@
 		color: white;
 		border-radius: 5px;
 	}
-	#btnAll{
-		width: 60px;
-		height: 36px;
-		background-color: #ccc;
-		border: 1px solid white;
-		color: white;
-		border-radius: 5px;
-		position: absolute;
-		right: 0;
-	}
 	#list_container{
 		width: 100%;
 		margin: 0 auto;
@@ -118,13 +108,35 @@
 		border: 1px solid white;
 		border-radius: 5px;
 	}
+	div#bottom_btns{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
+	}
+	input#btnTop{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #eee;
+		position: absolute;
+		right: 0; 
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
+		//Top버튼
+		$("#btnTop").click(function() {
+			location.href="supplierOrderList1.do";
+		})
 		
-		$("#btnAll").click(function() {
-			location.href="supplierList.do";
+		//삭제버튼
+		$(".btnDel").click(function() {
+			var no = $(this).attr("data-soNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/product/supplierOrderDel1.do?no="+no;
+			}
 		})
 	});
 </script>
@@ -136,12 +148,11 @@
 			<h3>제품 관리 > 발주/매입 > <span id="k_title">발주 이력 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="supplierSearch.do" method="post">
+<!-- 			<form action="supplierOrder1Search.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
 						<option value="pName">품목명</option>
-						<option value="pCate">분류명</option>
 						<option value="pSno">공급회사명</option>
 					</select>
 					<input type="text" name="search" id="ipSearch">
@@ -149,7 +160,7 @@
 					<input type="reset" value="초기화" id="btnClear">
 					<input type="button" value="전체" id="btnAll">
 				</div>
-			</form>
+			</form> -->
 			<table id="tbl">
 				<tr>
 					<th>발주번호</th>
@@ -189,12 +200,14 @@
 						<td><fmt:formatDate value="${SupplierOrder.soDate}" type="both" pattern="yyyy-MM-dd"/></td>	
 						<td>
 							<a href="#"><button>수정</button></a>
-							<a href="#"><button>삭제</button></a>
+							<button class="btnDel" style="cursor: pointer" data-soNo="${SupplierOrder.soNo }">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
+			<div id="bottom_btns">
+				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
+			</div>
 		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>    

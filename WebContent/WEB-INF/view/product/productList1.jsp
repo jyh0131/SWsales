@@ -108,14 +108,30 @@
 		width: 100px;
 		height: 100px;
 	}
+	div#bottom_btns{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
+	}
+	input#btnTop{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #eee;
+		position: absolute;
+		right: 140px; 
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
 		
 		$("#btnAll").click(function() {
-			location.href="supplierList.do";
+			location.href="productList1.do";
 		})
+		
+		$("#btnTop").click(function() {
+			location.href="productList1.do";
+		})		
 	});
 </script>
 	<section>
@@ -125,7 +141,7 @@
 			<h3>제품 관리 > <span id="k_title">소프트웨어 제품 전체 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="supplierSearch.do" method="post">
+			<form action="productSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
@@ -183,6 +199,9 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div id="bottom_btns">
+				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
+			</div>			
 		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>
