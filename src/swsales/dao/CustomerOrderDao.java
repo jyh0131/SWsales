@@ -10,19 +10,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import swsales.jdbc.JDBCUtil;
-import swsales.model.ClientChart;
+import swsales.model.CustomerOrder;
 
-public class ClientChartDao {
-	private static final ClientChartDao dao = new ClientChartDao();
+public class CustomerOrderDao {
+	private static final CustomerOrderDao dao = new CustomerOrderDao();
 
-	public static ClientChartDao getInstance() {
+	public static CustomerOrderDao getInstance() {
 		return dao;
 	}
 
-	private ClientChartDao() {
+	private CustomerOrderDao() {
 	}
 
-	public List<ClientChart> procedureClientChart(Connection conn, ClientChart cChart) throws SQLException {
+	public List<CustomerOrder> procedureClientChart(Connection conn, CustomerOrder cChart) throws SQLException {
 		CallableStatement cstmt = null;
 		ResultSet rs = null;
 		
@@ -31,9 +31,9 @@ public class ClientChartDao {
 			cstmt = conn.prepareCall(sql);
 			cstmt.setDate(1, (Date) cChart.getO_date());
 			rs = cstmt.executeQuery();
-			List<ClientChart> list = new ArrayList<ClientChart>();
+			List<CustomerOrder> list = new ArrayList<CustomerOrder>();
 			while(rs.next()) {
-				ClientChart chart = new ClientChart();
+				CustomerOrder chart = new CustomerOrder();
 				chart.setC_name(rs.getString(1));
 				chart.setP_price(rs.getInt(2));
 				chart.setO_date(rs.getDate(3));
@@ -47,7 +47,7 @@ public class ClientChartDao {
 		}
 	}
 
-	public List<ClientChart> selectClientChartTest(Connection conn, String start, String end) throws SQLException {
+	public List<CustomerOrder> selectClientChartTest(Connection conn, CustomerOrder co) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -57,16 +57,17 @@ public class ClientChartDao {
 					" where o.o_cno = c.c_no and p.p_no = o.o_pno and ? <= o.o_date and o.o_date <= ?" + 
 					" order by o.o_qty*p.p_price desc limit 10";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, start);
-			pstmt.setString(2, end);
+			pstmt.setDate(1, co.getStart_o_date());
+			pstmt.setDate(2, co.getEnd_o_date());
 			rs = pstmt.executeQuery();
-			List<ClientChart> list = new ArrayList<ClientChart>();
+			List<CustomerOrder> list = new ArrayList<CustomerOrder>();
 			while(rs.next()) {
-				ClientChart cChart = new ClientChart();
-				cChart.setC_name(rs.getString(1));
-				cChart.setP_price(rs.getInt(2));
-
-				list.add(cChart);
+				CustomerOrder customerOrder = new CustomerOrder();
+				customerOrder.setC_name(rs.getString(1));
+				customerOrder.setP_price(rs.getInt(2));
+				customerOrder.setO_date(rs.getDate(3));
+				
+				list.add(customerOrder);
 			}
 			return list;
 		} finally {

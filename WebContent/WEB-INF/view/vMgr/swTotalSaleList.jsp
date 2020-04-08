@@ -43,12 +43,7 @@
 		color: white;
 		border-radius: 5px;
 		margin:0 1px;
-	}
-	h1{
-		text-align: center;
-		padding:20px;
-		padding-bottom:40px;
-		font-size: 27px;
+		margin-bottom:10px;
 	}
 	fieldset{
 		padding:3px 10px;
@@ -99,7 +94,7 @@
 </style>
 <section>
 	<div id="title">
-		<h1>Supplier List</h1>
+		<h1>S/W Overall Sales</h1>
 		<hr>
 		<h3>현황조회 / 보고 > <span id="k_title">S/W 전체 판매현황</span></h3>
 	</div>

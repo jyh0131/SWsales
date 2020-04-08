@@ -134,7 +134,7 @@
 <body>
 	<form action="iqSearch.do" method="post">
 	<div id="title">
-		<h1>Supplier List</h1>
+		<h1>Stock</h1>
 		<hr>
 		<h3>현황조회 / 보고 > <span id="k_title">재고현황 조회</span></h3>
 	</div>
