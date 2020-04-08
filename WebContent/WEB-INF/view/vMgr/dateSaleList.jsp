@@ -59,7 +59,7 @@
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
+		font-size: 17px;
 		height:38px;
 		line-height: 38px;
 		border:none;
@@ -104,6 +104,10 @@
 	tr:nth-child(odd){
 		background-color: #F9FAFB;
 	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
+	}
 	.total{
 		text-align: right;
 	}
@@ -125,7 +129,7 @@
 		<h3>현황조회 / 보고 > <span id="k_title">날짜별 판매현황 조회</span></h3>
 	</div>
 	<div id="list_container">
-		<form action="dateSearch.do" method="get">
+		<form action="dateSearch.do" method="post">
 			<fieldset>
 				<label>조 회 기 간 </label>
 				<input type="text" id="datepickerStart" name="startDate">
@@ -142,7 +146,7 @@
 					<th>주문일자</th>
 				</tr>
 				<c:forEach var="ds" items="${list }">
-						<tr>
+						<tr class="tbl_point">
 							<td>
 								<c:choose>
 									<c:when test="${ds.o_no <10 }">O000${ds.o_no }

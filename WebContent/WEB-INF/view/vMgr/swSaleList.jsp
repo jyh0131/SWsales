@@ -83,6 +83,10 @@
 	tr:nth-child(odd){
 		background-color: #F9FAFB;
 	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
+	}
 	.price{
 		text-align: right;
 	}
@@ -133,7 +137,7 @@
 					<td>판매이윤</td>
 				</tr>
 				<c:forEach var="sw" items="${list }">
-						<tr>
+						<tr class="tbl_point">
 							<td>${sw.p_name }</td>
 							<td>${sw.cate_name }</td>
 							<td>${sw.s_name }</td>

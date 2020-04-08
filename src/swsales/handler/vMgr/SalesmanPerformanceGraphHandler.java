@@ -7,12 +7,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import swsales.dao.DateSaleDao;
+import swsales.dao.CustomerOrderDao;
 import swsales.jdbc.JDBCUtil;
-import swsales.model.DateSale;
+import swsales.model.CustomerOrder;
 import swsales.mvc.CommandHandler;
 
-public class DateSaleSelectByDate implements CommandHandler {
+public class SalesmanPerformanceGraphHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -29,9 +29,9 @@ public class DateSaleSelectByDate implements CommandHandler {
 				java.sql.Date s1 = new java.sql.Date(start.getTime());
 				java.sql.Date s2 = new java.sql.Date(end.getTime());
 				conn = JDBCUtil.getConnection();
-				DateSaleDao dao = DateSaleDao.getInstance();
-				DateSale selectDate = new DateSale(s1, s2);
-				List<DateSale> list = dao.selectDateSaleByDate(conn, selectDate);
+				CustomerOrderDao dao = CustomerOrderDao.getInstance();
+				CustomerOrder selectDate = new CustomerOrder(s1, s2);
+				List<CustomerOrder> list = dao.selectClientChartTest(conn, selectDate);
 				
 				req.setAttribute("list", list);
 			} catch (Exception e) {
@@ -40,7 +40,7 @@ public class DateSaleSelectByDate implements CommandHandler {
 				JDBCUtil.close(conn);
 			}
 		}
-		return "/WEB-INF/view/vMgr/dateSaleList.jsp";
+		return "/WEB-INF/view/vMgr/salesmanPerformanceGraph.jsp";
 	}
 
 }

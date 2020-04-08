@@ -53,6 +53,23 @@
 		line-height: 38px;
 		border:none;
 	}
+/* 	#Search{
+		width: 60px;
+		height: 36px;
+		background-color: #384D75;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+	}
+	#All{
+		width: 60px;
+		height: 36px;
+		background-color: #ccc;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
+	} */
 	fieldset input{
 		height:25px;
 	}
@@ -75,6 +92,10 @@
 	}
 	tr:nth-child(odd){
 		background-color: #F9FAFB;
+	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
 	}
 	.price{
 		text-align: right;
@@ -103,6 +124,12 @@
 		<a href="${pageContext.request.contextPath}/vMgr/swTotalSale.do"><button class="btnMenu">S/W 전체 판매현황</button></a>
 		<a href="${pageContext.request.contextPath}/vMgr/ts.do"><button class="btnMenu">거래명세</button></a>
 	</div>
+<!-- 	<fieldset>
+		<label>품 목 명</label>
+		<input type="text" name="clientSearch">
+		<input type="submit" value="조회" id="Search" style="cursor:pointer">
+		<input type="button" value="전체" id="All" style="cursor:pointer">
+	</fieldset> -->
 		<table>
 			<tr>
 				<th>날짜</th>
@@ -113,7 +140,7 @@
 				<th>판매금액</th>
 			</tr>
 			<c:forEach var="swTotal" items="${list }">
-					<tr>
+					<tr class="tbl_point">
 						<td>${swTotal.o_date }</td>
 						<td>${swTotal.cate_name }</td>
 						<td>${swTotal.p_name }</td>

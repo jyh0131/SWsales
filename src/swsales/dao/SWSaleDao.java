@@ -77,7 +77,7 @@ public class SWSaleDao {
 					"				  when o.o_qty >= 100 then o.o_qty*p.p_price*0.85-(o.o_qty*p.p_cost) " + 
 					"			 else (o.o_qty*p.p_price)-(o.o_qty*p.p_cost)	end) as 판매이윤 " + 
 					" 	 from product p natural join `order` o natural join supplier s natural join category cate " + 
-					"	 where p.p_no = o.o_pno and cate.cate_no = p.p_cate and s.s_no = p.p_sno and p.p_name = ?";
+					"	 where p.p_no = o.o_pno and cate.cate_no = p.p_cate and s.s_no = p.p_sno and p.p_name  like concat ('%', ?, '%')";
 			pstmt = conn.prepareCall(sql);
 			pstmt.setString(1, sw.getP_name());
 			rs = pstmt.executeQuery();

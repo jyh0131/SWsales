@@ -79,6 +79,10 @@
 	tr:nth-child(odd){
 		background-color: #F9FAFB;
 	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
+	}
 	.price{
 		text-align: right;
 	}
@@ -128,7 +132,7 @@
 					<th>미수금</th>
 				</tr>
 				<c:forEach var="cs" items="${list }">
-						<tr>
+						<tr class="tbl_point">
 							<td>${cs.c_name }</td>
 							<td>${cs.p_name }</td>
 							<td>${cs.o_qty }</td>

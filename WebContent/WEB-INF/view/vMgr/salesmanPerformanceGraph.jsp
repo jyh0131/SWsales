@@ -28,30 +28,34 @@
 	    
 	  } );
   </script>
-  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-<script type="text/javascript">
+ <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+   <script type="text/javascript">
+     google.charts.load('current', {'packages':['corechart']});
+     google.charts.setOnLoadCallback(drawChart);
 
-	google.charts.load('current', {'packages':['corechart']});
-	google.charts.setOnLoadCallback(drawVisualization);
-	
-	function drawVisualization(){
-		var data = google.visualization.arrayToDataTable([
-			['Month', 'Bolivia', 'Ecuador', 'Madagascar', 'Papua New Guinea', 'Rwanda', 'Average'],
-			['2004/05', 165, 938, 522, 998, 450, 614.6]
-			
-		]);
-		
-		var options = {
-				title: "상위 10개 고객사",
-				vAxis: {title: '판매금액' },
-				hAxis: {title: '고객사'},
-				seriesType: 'bars'
-		};
-		
-		var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
-		chart.draw(data, options);
-	}
-</script>
+     function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          ['사원명', '%'],
+          ['문심차', 22],
+          ['홍소목', 17],
+          ['양옥고', 15],
+          ['강궁소', 12],
+          ['서사정', 6],
+          ['한전내', 5],
+          ['최지오', 5],
+          ['한지석', 5],
+          ['장우공', 4],
+          ['왕우내', 3],
+        ]);
+
+        var options = {
+          title: '상위 10인 영업사원'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+        chart.draw(data, options);
+      }
+ </script>
 <style>
 	/** form 타이틀 **/
 	div#title{
@@ -84,7 +88,7 @@
 		margin-left:10px;
 	}
 	.btnMenu{
-		width: 150px;
+		width: 140px;
 		height: 36px;
 		background-color: #FFE08C;
 		border: 1px solid white;
@@ -100,6 +104,7 @@
 		height:38px;
 		line-height: 38px;
 		border:none;
+		text-align: center;
 	}
 	fieldset input{
 		height:25px;
@@ -121,20 +126,24 @@
 		border-radius: 5px;
 		right: 0;
 	}
+	#piechart{
+		padding-left:250px;
+		height:650px;
+	}
 </style>
 
 <section>
 	<div id="title">
 		<h1>Customer Order</h1>
 		<hr>
-		<h3>현황조회 / 보고 > <span id="k_title">고객사 주문현황 그래프</span></h3>
+		<h3>현황조회 / 보고 > <span id="k_title">영업사원 실적 그래프</span></h3>
 	</div>
 	<div id="list_container">
 		<div id="menu">
 			<a href="${pageContext.request.contextPath}/vMgr/customerOrder.do"><button class="btnMenu">고객사 주문현황</button></a>
-			<a href="${pageContext.request.contextPath}/vMgr/Employee.do"><button class="btnMenu">영업사원 실적</button></a>
+			<a href="${pageContext.request.contextPath}/vMgr/salesman.do"><button class="btnMenu">영업사원 실적</button></a>
 		</div>
-		<form action="dateSearch.do" method="post">
+		<form action="salesman.do" method="post">
 			<fieldset>
 				<label>조 회 기 간 </label>
 				<input type="text" id="datepickerStart" name="startDate">
@@ -142,8 +151,8 @@
 				<input type="submit" value="검색" id="Search" style="cursor:pointer">
 				<input type="button" value="전체" id="All" style="cursor:pointer">
 			</fieldset>
-			<div id="chart_div">
-				
+			<div id="piechart">
+			
 			</div>
 		</form>
 	</div>

@@ -1,15 +1,15 @@
 package swsales.model;
 
-public class EmployeeChart {
+public class SalesmanPerformance {
 	private String e_name;
 	private int o_eno;
 	private int salesMoney;
 
-	public EmployeeChart() {
+	public SalesmanPerformance() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public EmployeeChart(String e_name, int o_eno, int salesMoney) {
+	public SalesmanPerformance(String e_name, int o_eno, int salesMoney) {
 		this.e_name = e_name;
 		this.o_eno = o_eno;
 		this.salesMoney = salesMoney;
