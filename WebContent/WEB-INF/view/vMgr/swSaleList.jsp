@@ -111,7 +111,7 @@
 <section>
 	<form action="swSearch.do" method="post">
 	<div id="title">
-		<h1>Supplier List</h1>
+		<h1>Sales By S/W</h1>
 		<hr>
 		<h3>현황조회 / 보고 > <span id="k_title">S/W별 판매현황 조회</span></h3>
 	</div>

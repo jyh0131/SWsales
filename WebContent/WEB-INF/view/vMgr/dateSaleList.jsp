@@ -84,10 +84,6 @@
 	fieldset input{
 		height:25px;
 	}
-	fieldset input[type="checkbox"]{
-		width:20px;
-		line-height: 30px;
-	}
 	table{
 		border-collapse: collapse;
 		width:100%;

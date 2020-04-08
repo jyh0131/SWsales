@@ -105,7 +105,7 @@
 </script>
 <section>
 	<div id="title">
-		<h1>Supplier List</h1>
+		<h1>Sales By Customer</h1>
 		<hr>
 		<h3>현황조회 / 보고 > <span id="k_title">고객별 판매현황 조회</span></h3>
 	</div>
