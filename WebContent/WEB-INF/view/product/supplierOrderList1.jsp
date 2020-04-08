@@ -122,9 +122,19 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
-		
+		//전체버튼
 		$("#btnAll").click(function() {
-			location.href="supplierList.do";
+			location.href="supplierOrderList1.do";
+		})
+		
+		//삭제버튼
+		$(".btnDel").click(function() {
+			var no = $(this).attr("data-soNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/product/supplierOrderDel1.do?no="+no;
+			}
 		})
 	});
 </script>
@@ -136,12 +146,11 @@
 			<h3>제품 관리 > 발주/매입 > <span id="k_title">발주 이력 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="supplierSearch.do" method="post">
+			<form action="supplierOrder1Search.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
 						<option value="pName">품목명</option>
-						<option value="pCate">분류명</option>
 						<option value="pSno">공급회사명</option>
 					</select>
 					<input type="text" name="search" id="ipSearch">
@@ -189,7 +198,7 @@
 						<td><fmt:formatDate value="${SupplierOrder.soDate}" type="both" pattern="yyyy-MM-dd"/></td>	
 						<td>
 							<a href="#"><button>수정</button></a>
-							<a href="#"><button>삭제</button></a>
+							<button class="btnDel" style="cursor: pointer" data-soNo="${SupplierOrder.soNo }">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>

@@ -152,7 +152,7 @@ span#y {
 	$(function() {
 
 		$("#btnAll").click(function() {
-			location.href = "supplierList.do";
+			location.href = "orderNYList.do";
 		})
 	});
 </script>
@@ -166,13 +166,12 @@ span#y {
 		</h3>
 	</div>
 	<div id="list_container">
-		<form action="supplierSearch.do" method="post">
+		<form action="orderSearch.do" method="post">
 			<div id="search">
 				<select id="selSearch" name="selSearch">
 					<option selected>선택해주세요</option>
 					<option value="pName">품목명</option>
-					<option value="pCate">분류명</option>
-					<option value="pSno">공급회사명</option>
+					<option value="pCno">고객 상호명</option>
 				</select> <input type="text" name="search" id="ipSearch"> <input
 					type="submit" value="검색" id="btnSearch"> <input
 					type="reset" value="초기화" id="btnClear"> <input

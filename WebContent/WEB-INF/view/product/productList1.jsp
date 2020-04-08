@@ -114,7 +114,7 @@
 	$(function () {
 		
 		$("#btnAll").click(function() {
-			location.href="supplierList.do";
+			location.href="productList1.do";
 		})
 	});
 </script>
@@ -125,7 +125,7 @@
 			<h3>제품 관리 > <span id="k_title">소프트웨어 제품 전체 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="supplierSearch.do" method="post">
+			<form action="productSearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
