@@ -4,11 +4,33 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@include file="../include/header.jsp"%>
 <style>
-	h1{
-		text-align: center;
-		margin:20px 0;
-		font-size: 27px;
+	/** form 타이틀 **/
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/title/vTitle.png") no-repeat;
+		background-size: 100%, 200px;
 	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
+	div#list_container{
+		margin-top: 50px;
+	}
+	
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
@@ -111,7 +133,12 @@
 </head>
 <body>
 	<form action="iqSearch.do" method="post">
-		<h1>재고현황 조회</h1>
+	<div id="title">
+		<h1>Stock</h1>
+		<hr>
+		<h3>현황조회 / 보고 > <span id="k_title">재고현황 조회</span></h3>
+	</div>
+	<div id="list_container">
 		<fieldset>
 			<label>품 목 명</label>
 			<input type="text" name="iqSearch">
@@ -141,5 +168,6 @@
 					</tr>
 				</c:forEach>
 		</table>
+	</div>
 	</form>
 <%@include file="../include/footer.jsp"%>

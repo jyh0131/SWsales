@@ -4,11 +4,33 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>  
 <%@ include file="../include/header.jsp" %>
 <style>
-	h1{
-		text-align: center;
-		margin:20px 0;
-		font-size: 27px;
+	/** form 타이틀 **/
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/title/vTitle.png") no-repeat;
+		background-size: 100%, 200px;
 	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
+	div#list_container{
+		margin-top: 50px;
+	}
+	
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
@@ -88,43 +110,49 @@
 </script>
 <section>
 	<form action="swSearch.do" method="post">
-		<h1>S/W별 판매현황 조회</h1>
-		<fieldset>
-			<label>품 목 명</label>
-			<input type="text" name="swSearch">
-			<input type="submit" value="조회" id="Search" style="cursor:pointer">
-			<input type="button" value="전체" id="All" style="cursor:pointer">
-		</fieldset>
-		<table>
-			<tr>
-				<td>품목명</td>
-				<td>분류</td>
-				<td>공급회사명</td>
-				<td>공급금액</td>
-				<td>판매금액</td>
-				<td>할인금액</td>
-				<td>판매이윤</td>
-			</tr>
-			<c:forEach var="sw" items="${list }">
-					<tr>
-						<td>${sw.p_name }</td>
-						<td>${sw.cate_name }</td>
-						<td>${sw.s_name }</td>
-						<td class="price"><fmt:formatNumber value="${sw.supplyAmount }" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${sw.salesAmount }" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${sw.discount }" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${sw.salesProfit }" pattern="#,###,###"/>　</td>
-						<c:set var="sum1" value="${sum1 + sw.salesAmount }"/>
-						<c:set var="sum2" value="${sum2 + sw.salesProfit }"/>
-					</tr>
-			</c:forEach>
-		</table>
-		<fieldset class="total">
-			<label>총 판매금액</label>
-			<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
-			<label>총 판매이윤</label>
-			<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
-		</fieldset>
-	</form>
+	<div id="title">
+		<h1>Sales By S/W</h1>
+		<hr>
+		<h3>현황조회 / 보고 > <span id="k_title">S/W별 판매현황 조회</span></h3>
+	</div>
+	<div id="list_container">
+			<fieldset>
+				<label>품 목 명</label>
+				<input type="text" name="swSearch">
+				<input type="submit" value="조회" id="Search" style="cursor:pointer">
+				<input type="button" value="전체" id="All" style="cursor:pointer">
+			</fieldset>
+			<table>
+				<tr>
+					<td>품목명</td>
+					<td>분류</td>
+					<td>공급회사명</td>
+					<td>공급금액</td>
+					<td>판매금액</td>
+					<td>할인금액</td>
+					<td>판매이윤</td>
+				</tr>
+				<c:forEach var="sw" items="${list }">
+						<tr>
+							<td>${sw.p_name }</td>
+							<td>${sw.cate_name }</td>
+							<td>${sw.s_name }</td>
+							<td class="price"><fmt:formatNumber value="${sw.supplyAmount }" pattern="#,###,###"/>　</td>
+							<td class="price"><fmt:formatNumber value="${sw.salesAmount }" pattern="#,###,###"/>　</td>
+							<td class="price"><fmt:formatNumber value="${sw.discount }" pattern="#,###,###"/>　</td>
+							<td class="price"><fmt:formatNumber value="${sw.salesProfit }" pattern="#,###,###"/>　</td>
+							<c:set var="sum1" value="${sum1 + sw.salesAmount }"/>
+							<c:set var="sum2" value="${sum2 + sw.salesProfit }"/>
+						</tr>
+				</c:forEach>
+			</table>
+			<fieldset class="total">
+				<label>총 판매금액</label>
+				<input type="text" value=<fmt:formatNumber value="${sum1}" pattern="#,###,###"/> readonly>
+				<label>총 판매이윤</label>
+				<input type="text" value=<fmt:formatNumber value="${sum2}" pattern="#,###,###"/> readonly>
+			</fieldset>
+		</div>			
+		</form>
 </section>
 <%@ include file="../include/footer.jsp" %>

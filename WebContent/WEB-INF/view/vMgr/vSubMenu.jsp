@@ -124,7 +124,7 @@
 			<ul>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon4.png"><br>
-					<a href="#"><b>고객사 주문현황 & 영업사원 실적 그래프</b> ></a>
+					<a href="customerOrder.do"><b>고객사 주문현황 & 영업사원 실적 그래프</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/vSubIcon5.png"><br>

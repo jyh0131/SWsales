@@ -133,7 +133,7 @@
 		<div id="title">
 			<h1>Software Product Purchase List</h1>
 			<hr>
-			<h3>제품 관리 > 발주/매입 > <span id="k_title">매입 리스트</span></h3>
+			<h3>제품 관리 > 발주/매입 > <span id="k_title">매입 이력 리스트</span></h3>
 		</div>
 		<div id="list_container">
 			<form action="supplierSearch.do" method="post">

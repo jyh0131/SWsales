@@ -4,6 +4,33 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%> 
 <%@include file="../include/header.jsp"%>
 <style>
+	/** form 타이틀 **/
+	div#title{
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/title/vTitle.png") no-repeat;
+		background-size: 100%, 200px;
+	}
+	div#title h1{
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	div#title h3{
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
+	
+	div#list_container{
+		margin-top: 50px;
+	}
+	
 	#menu{
 		margin-top:40px;
 		margin-left:10px;
@@ -16,12 +43,7 @@
 		color: white;
 		border-radius: 5px;
 		margin:0 1px;
-	}
-	h1{
-		text-align: center;
-		padding:20px;
-		padding-bottom:40px;
-		font-size: 27px;
+		margin-bottom:10px;
 	}
 	fieldset{
 		padding:3px 10px;
@@ -71,11 +93,16 @@
 	}
 </style>
 <section>
+	<div id="title">
+		<h1>S/W Overall Sales</h1>
+		<hr>
+		<h3>현황조회 / 보고 > <span id="k_title">S/W 전체 판매현황</span></h3>
+	</div>
+	<div id="list_container">
 	<div id="menu">
 		<a href="${pageContext.request.contextPath}/vMgr/swTotalSale.do"><button class="btnMenu">S/W 전체 판매현황</button></a>
 		<a href="${pageContext.request.contextPath}/vMgr/ts.do"><button class="btnMenu">거래명세</button></a>
 	</div>
-		<h1>S/W 전체 판매현황</h1>
 		<table>
 			<tr>
 				<th>날짜</th>
@@ -100,6 +127,7 @@
 		<fieldset class="total">
 			<label>총 판매금액</label>
 			<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
-		</fieldset>	
+		</fieldset>
+	</div>			
 </section>
 <%@include file="../include/footer.jsp"%>
