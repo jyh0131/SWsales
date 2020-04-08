@@ -11,12 +11,10 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
-import swsales.dao.IQDao;
 import swsales.dao.ProductDao;
 import swsales.dao.SupplierDao;
 import swsales.jdbc.JDBCUtil;
 import swsales.model.Category;
-import swsales.model.InventoryQuantity;
 import swsales.model.Product;
 import swsales.model.Supplier;
 import swsales.mvc.CommandHandler;
@@ -56,28 +54,22 @@ public class ProductInsertHandler implements CommandHandler{
 			
 			try {
 				conn = JDBCUtil.getConnection();
-				int pNo = Integer.parseInt(multi.getParameter("pNo"));
+
+
 				ProductDao dao = ProductDao.getInstance();
 				
+				int pNo = Integer.parseInt(multi.getParameter("pNo"));
 				Category pCate = new Category(Integer.parseInt(multi.getParameter("pCate")));
 				String pName = multi.getParameter("pName");
 				int pCost = Integer.parseInt(multi.getParameter("pCost"));
 				int pPrice = Integer.parseInt(multi.getParameter("pPrice"));
 				
-				
-				
 				Supplier sName = new Supplier(multi.getParameter("pSno"));
 				SupplierDao dao1 = SupplierDao.getInstance();
 				Supplier pSno = dao1.selectSupplierByName(conn, sName);
-				System.out.println(pSno);
+
 				
 				int pQty = Integer.parseInt(multi.getParameter("pQty"));
-				
-				//최초 등록시 재고수량 테이블 자동증가
-				IQDao dao2 = IQDao.getInstance();
-				InventoryQuantity iq = new InventoryQuantity(new Product(pNo), pQty);
-				dao2.insertIQ(conn, iq);
-				System.out.println(iq);
 				
 				String sDate = multi.getParameter("pDate");
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
