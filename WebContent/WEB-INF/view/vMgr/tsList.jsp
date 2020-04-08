@@ -75,6 +75,10 @@
 	tr:nth-child(odd){
 		background-color: #F9FAFB;
 	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
+	}
 	.price{
 		text-align: right;
 	}
@@ -115,7 +119,7 @@
 				<th>총납품금액</th>
 			</tr>
 			<c:forEach var="ts" items="${list }">
-					<tr>
+					<tr class="tbl_point">
 						<td>${ts.s_name }</td>
 						<td>${ts.o_date }</td>
 						<td>${ts.c_name }</td>

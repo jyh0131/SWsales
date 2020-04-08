@@ -106,6 +106,10 @@
 	tr:nth-child(odd){
 		background-color: #F9FAFB;
 	}
+	tr.tbl_point:hover{
+		background: black;
+		color: red;
+	}
 	.price{
 		text-align: right;
 	}
@@ -158,7 +162,7 @@
 				<th>재고평가</th>
 			</tr>
 			<c:forEach var="iq" items="${list }">
-					<tr>
+					<tr class="tbl_point">
 						<td>${iq.p_name }</td>
 						<td>${iq.s_name }</td>
 						<td>${iq.iq_qty }</td>
