@@ -8,19 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import swsales.jdbc.JDBCUtil;
-import swsales.model.EmployeeChart;
+import swsales.model.SalesmanPerformance;
 
-public class EmployeeChartDao {
-	private static final EmployeeChartDao dao = new EmployeeChartDao();
+public class SalesmanPerformanceDao {
+	private static final SalesmanPerformanceDao dao = new SalesmanPerformanceDao();
 
-	public static EmployeeChartDao getInstance() {
+	public static SalesmanPerformanceDao getInstance() {
 		return dao;
 	}
 
-	private EmployeeChartDao() {
+	private SalesmanPerformanceDao() {
 	}
 
-	public List<EmployeeChart> selectEmployeeChart(Connection conn, String startDate, String endDate) throws SQLException {
+	public List<SalesmanPerformance> selectEmployeeChart(Connection conn, String startDate, String endDate) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
@@ -34,9 +34,9 @@ public class EmployeeChartDao {
 			pstmt.setString(1, startDate);
 			pstmt.setString(2, endDate);
 			rs = pstmt.executeQuery();
-			List<EmployeeChart> list = new ArrayList<EmployeeChart>();
+			List<SalesmanPerformance> list = new ArrayList<SalesmanPerformance>();
 			while(rs.next()) {
-				EmployeeChart eChart = new EmployeeChart();
+				SalesmanPerformance eChart = new SalesmanPerformance();
 				eChart.setE_name(rs.getString(1));
 				eChart.setSalesMoney(rs.getInt(2));
 				list.add(eChart);

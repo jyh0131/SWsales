@@ -40,7 +40,7 @@ public class CustomerOrderGraphHandler implements CommandHandler {
 				JDBCUtil.close(conn);
 			}
 		}
-		return "/WEB-INF/view/vMgr/graph.jsp";
+		return "/WEB-INF/view/vMgr/customerOrderGraph.jsp";
 	}
 
 }
