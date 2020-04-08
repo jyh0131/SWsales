@@ -92,26 +92,16 @@
 	
 	div.productImg a:hover div.caption{
 		opacity:1;
-	}
-	div#bottom_btns{
-		width: 100%;
-		height: 50px;
-		border: 1px solid red;
-	}
-	input#btnTop{
-		width: 50px;
-		height: 50px;
-		border: 1px solid #eee;
 	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
 		
-		//Top버튼
+	/* 	//Top버튼
 		$("#btnTop").click(function() {
 			location.href="productList2.do";
-		})
+		}) */
 	});
 </script>
 	<section>
@@ -139,10 +129,6 @@
 					<p>${product.pName}</p>		
 				</div>
 			</c:forEach>
-		</div>
-<%-- 		<div id="bottom_btns">
-				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
-			</div>			
-		</div>	 --%>		
+		</div>		
 </section>	
 <%@ include file="../include/footer.jsp" %>

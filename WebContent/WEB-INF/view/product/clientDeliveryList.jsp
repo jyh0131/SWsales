@@ -110,23 +110,24 @@
 		background: #5D5D5D;
 		color: yellow;
 	}
-	#btnAdd{
-		width: 130px;
-		height: 40px;
-		background-color: #384D75;
-		color: white;
-		margin: 10px 0;
-    	position: absolute;
-    	right: 0;
-		border: 1px solid white;
-		border-radius: 5px;
+	div#bottom_btns{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
 	}
+	input#btnTop{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #eee;
+		position: absolute;
+		right: 0; 
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
 		
-		$("#btnAll").click(function() {
+		$("#btnTop").click(function() {
 			location.href="clientDeliveryList.do";
 		})
 	});
@@ -185,6 +186,10 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div id="bottom_btns">
+				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
+			</div>
+		</div>			
 		</div>		
 </section>		
 <%@ include file="../include/footer.jsp" %>    

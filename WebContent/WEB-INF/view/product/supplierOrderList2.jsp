@@ -113,12 +113,12 @@
 		height: 50px;
 		margin-top: 30px;
 	}
-	input#btnAll{
+	input#btnTop{
 		width: 50px;
 		height: 50px;
 		border: 1px solid #eee;
 		position: absolute;
-		right: 0; 
+		right:0;
 	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
