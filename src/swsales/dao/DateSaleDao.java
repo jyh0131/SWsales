@@ -55,16 +55,23 @@ public class DateSaleDao {
 		}
 	}
 
-	public List<DateSale> procedureDateSaleByDate(Connection conn, DateSale ds) throws SQLException {
-		CallableStatement cstmt = null;
+	public List<DateSale> selectDateSaleByDate(Connection conn, DateSale ds) throws SQLException {
+		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
 		try {
-			String sql = "{call dateSale(?, ?)}";
-			cstmt = conn.prepareCall(sql);
-			cstmt.setDate(1, ds.getStart_o_date());
-			cstmt.setDate(2, ds.getEnd_o_date());
-			rs = cstmt.executeQuery();
+			String sql = "select	o.o_no as 주문번호, " + 
+					"		c.c_name as 고객상호명, " + 
+					"		p.p_name as 품목명, " + 
+					"		o.o_qty as 주문수량, " + 
+					"		(case o.o_dps when '0' then '미입금'  when '1' then '완료'	end) as 입금여부, " + 
+					"		o.o_date as 주문일자 " + 
+					"  from `order` o natural join client c natural join product p " + 
+					" where o.o_cno = c.c_no and p.p_no = o.o_pno and DATE(o_date) between ? and ?";
+			pstmt = conn.prepareCall(sql);
+			pstmt.setDate(1, ds.getStart_o_date());
+			pstmt.setDate(2, ds.getEnd_o_date());
+			rs = pstmt.executeQuery();
 			List<DateSale> list = new ArrayList<DateSale>();
 			while(rs.next()) {
 				DateSale dateSale = new DateSale();
@@ -80,7 +87,7 @@ public class DateSaleDao {
 			return list;
 		} finally {
 			JDBCUtil.close(rs);
-			JDBCUtil.close(cstmt);
+			JDBCUtil.close(pstmt);
 		}
 	}
 }
