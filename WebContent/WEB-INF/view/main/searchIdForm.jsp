@@ -84,24 +84,22 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-	function check() {
-		var empNo = $("#empNo").val();
-		var empName = $("#empName").val();
-		
-		if(empNo == ""||empNo=="EE"||empName=="") {
-			alert("사원번호와 이름을 정확히 입력해주세요.");
-			return false;
-			
-	  	}else {
-	    	return true;
-	}
-
 	$(function() {
 		var result = ${error};
 		console.log(result);
 		if(result == 1){
-			alert("해당 아이디가 존재하지 않습니다. 다시 확인해주세요")
-		}		
+			alert("해당 아이디가 존재하지 않습니다. 다시 확인해주세요");
+		}	
+		
+		$("form").submit(function (e) {
+			var empNo = $("input[name='empNo']").val();
+			var empName = $("input[name='empName']").val();
+			
+			if(empNo == ""||empNo == "EE"|| empName == ""){
+				alert("사원번호와 이름을 정확히 입력하세요.")
+				return false;
+			}
+		})
 	})
 </script>
 </head>
@@ -112,11 +110,11 @@
 				<img src="${pageContext.request.contextPath}/images/main/h_logo.png">
 			</div>
 			<div id="loginbox">
-				<form action="${pageContext.request.contextPath}/main/searchId.do" method="post" onsubmit="return check()">
+				<form action="${pageContext.request.contextPath}/main/searchId.do" method="post">
 					<label class="text">사원번호</label><br>
-					<input type="text" name="empNo" class="box" value="EE" id="empNo"><br>
+					<input type="text" name="empNo" class="box" value="EE"><br>
 					<label class="text">이 름</label><br>
-					<input type="text" name="empName" class="box" id="empName"><br>
+					<input type="text" name="empName" class="box"><br>
 					<input type="submit" value="아이디 찾기" id="btnSearch" style="cursor: pointer">
 				</form>
 				<a href="${pageContext.request.contextPath}/main/main.do"><button id="btnReset" style="cursor: pointer">돌아가기</button></a>
