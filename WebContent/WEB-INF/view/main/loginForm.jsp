@@ -85,13 +85,23 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function() {
-		var result = ${error};
-		console.log(result);
-		if(result == 1){
-			alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.")
-		}else if(result == 2){
-			alert("비밀번호가 틀렸습니다. 다시 확인해주세요.")
-		}
+		$("form").submit(function (e) {
+			var id = $("input[name='id']").val();
+			var password = $("input[name='password']").val();
+			
+			if(id == "" || password == ""){
+				alert("사용자ID와 비밀번호를 정확히 입력해주세요.")
+				return false;
+			}
+			
+			var result = ${error};
+			console.log(result);
+			if(result == 1){
+				alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.");
+			}else if(result == 2){
+				alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+			}
+		})
 	})
 </script>
 </head>

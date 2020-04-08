@@ -88,8 +88,10 @@
 		var result = ${error};
 		console.log(result);
 		if(result == 1){
-			alert("해당 아이디가 존재하지 않습니다. 다시 확인해주세요")
-		}
+			alert("사원번호와 이름을 정확히 입력하세요.");
+		}else if(result == 2){
+			alert("해당 아이디가 존재하지 않습니다. 다시 확인해주세요");
+		}	
 	})
 </script>
 </head>

@@ -58,7 +58,7 @@ public class BoardDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql = "select * from board";
+			String sql = "select * from board order by b_no desc";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			ArrayList<Board> list = new ArrayList<>();
@@ -85,7 +85,7 @@ public class BoardDao {
 			ResultSet rs = null;
 			
 			try {
-				String sql = "select * from board where b_title like concat ('%', ?, '%')";
+				String sql = "select * from board where b_title like concat ('%', ?, '%') order by b_no desc";
 				pstmt = conn.prepareStatement(sql);
 				pstmt.setString(1, search);
 				rs = pstmt.executeQuery();

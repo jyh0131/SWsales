@@ -85,6 +85,7 @@
 	}
 	#tblDiv{
 		position: relative;
+		margin-bottom: 60px;
 	}
 	#btnAdd{
 		width: 130px;

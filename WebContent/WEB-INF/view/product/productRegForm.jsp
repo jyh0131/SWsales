@@ -34,7 +34,8 @@
 	}
 	.red{
 		color: red;
-		
+		font-weight: bold;
+		font-size: 18px;
 	}	
 	#regForm{
 		width: 65%;
@@ -91,6 +92,16 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	#btnReset{
+		width: 160px;
+   		height: 45px;
+    	background-color: #bbb;
+   		color: white;
+    	border: 1px solid white;
+    	border-radius: 5px;
+    	margin-top: 30px;
+    	font-size: 18px;
+	}	
 	input[name*='pNo']{
 		font-weight: bold;
 		color: #000080;
@@ -119,7 +130,65 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-
+$(function () {
+	$("#btnPname").click(function () {
+		var pName = $("#pName").val();
+		if(pName == ""){
+			alert("품목명을 입력해주세요.");
+		}else{
+			$.ajax({
+				url:"${pageContext.request.contextPath}/product/productSearchName.do",
+				type:"get",
+				data:{"pName":pName},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					if(res.result == "success"){
+						alert("등록된 품목입니다.");
+					}else if(res.result == "fail"){
+						alert("등록 가능한 품목입니다.");
+					}
+				}
+			})
+		}
+	})
+	
+	$("#btnSname").click(function() {
+		var sName = $("#sName").val();
+		if(sName == ""){
+			alert("회사명을 입력해주세요");
+		}else{
+			$.ajax({
+				url:"${pageContext.request.contextPath}/client/supplierSearchName.do",
+				type:"get",
+				data:{"sName":sName},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					if(res.result == "success"){
+						alert("등록된 회사입니다.");
+					}else if(res.result == "fail"){
+						alert("공급회사 등록이 필요합니다.");
+					}
+				}
+			})
+		}
+	})
+	
+	$("#btnReset").click(function() {
+		location.href="${pageContext.request.contextPath}/product/productList2.do";
+	})
+	
+	var pno = $("input[name=pNo]").val();
+	console.log(pno);
+	if(pno < 10){
+		$("input[name=no]").val("P000"+pno);
+	}else if(pno > 9 && pno < 100){
+		$("input[name=no]").val("P00"+pno);
+	}else if(pno > 99 && pno < 1000){
+		$("input[name=no]").val("P0"+pno);
+	}
+})	
 </script>
 <section>
 		<!-- form 타이틀 -->
@@ -137,6 +206,7 @@
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
 					<input type="text" name="pNo" class="text" value=" P00${product.pNo+1 }" readonly="readonly"><br>
+					<input type="hidden" name="pNo" value="${product.pNo+1 }">
 					
  					<label><span class="red">* </span>분류명</label>
 					<select name="pCate" class="text">
@@ -151,8 +221,8 @@
 					<br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="pName" class="text" placeholder=" >> 중복확인">
-					<input type="button" value="중복확인" id="btnPname"><br>
+					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" id="pName">
+					<input type="button" value="중복확인" id="btnPname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>공급가격</label>
 					<input type="text" name="pCost" class="text"><br>
@@ -161,8 +231,8 @@
 					<input type="text" name="pPrice" class="text"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회">
-					<input type="button" value="조 회" id="btnSname"><br>
+					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회" id="sName">
+					<input type="button" value="조 회" id="btnSname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>최초재고수량</label>
 					<input type="text" name="pQty" class="text"><br>
@@ -171,12 +241,13 @@
 					<label><span class="red">* </span>최초등록일자</label>
 					<input type="date" name="pDate" class="text"><br>
 					
-					<label>&nbsp&nbsp제품 이미지</label>
+					<label>&nbsp&nbsp&nbsp제품 이미지</label>
 					<input type="file" name="pPic"><br>
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
+			<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
+			<input type="button" value="취소" id="btnReset" style="cursor: pointer">			
 			</div>
 		</form>
 </section>

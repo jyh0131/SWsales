@@ -92,15 +92,16 @@
 	
 	div.productImg a:hover div.caption{
 		opacity:1;
-	}
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
 		
-		$("#btnAll").click(function() {
-			location.href="supplierList.do";
-		})
+	/* 	//Top버튼
+		$("#btnTop").click(function() {
+			location.href="productList2.do";
+		}) */
 	});
 </script>
 	<section>
@@ -119,15 +120,15 @@
 					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}">
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 						<div class="caption">
-						<h1> < ${product.pCate} > </h1>
-						<h3>${product.pName}</h3>
-						<p>공급가격 : <fmt:formatNumber value="${product.pCost}" pattern="#,###.##원"/></p>
-						<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/></p>
-					</div>
+							<h1> < ${product.pCate} > </h1>
+							<h3>${product.pName}</h3>
+							<p>공급가격 : <fmt:formatNumber value="${product.pCost}" pattern="#,###.##원"/></p>
+							<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/></p>
+						</div>
 					</a>
 					<p>${product.pName}</p>		
 				</div>
 			</c:forEach>
-		</div>
-</section>		
+		</div>		
+</section>	
 <%@ include file="../include/footer.jsp" %>

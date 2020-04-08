@@ -110,24 +110,25 @@
 		background: #5D5D5D;
 		color: yellow;
 	}
-	#btnAdd{
-		width: 130px;
-		height: 40px;
-		background-color: #384D75;
-		color: white;
-		margin: 10px 0;
-    	position: absolute;
-    	right: 0;
-		border: 1px solid white;
-		border-radius: 5px;
+	div#bottom_btns{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
 	}
+	input#btnTop{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #eee;
+		position: absolute;
+		right: 0; 
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
 		
-		$("#btnAll").click(function() {
-			location.href="supplierList.do";
+		$("#btnTop").click(function() {
+			location.href="clientDeliveryList.do";
 		})
 	});
 </script>
@@ -139,20 +140,19 @@
 			<h3>제품 관리 > 출고 > <span id="k_title">출고 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="supplierSearch.do" method="post">
+<!-- 			<form action="clientDeliverySearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
 						<option value="pName">품목명</option>
-						<option value="pCate">분류명</option>
-						<option value="pSno">공급회사명</option>
+						<option value="pCno">고객 상호명</option>
 					</select>
 					<input type="text" name="search" id="ipSearch">
 					<input type="submit" value="검색" id="btnSearch">
 					<input type="reset" value="초기화" id="btnClear">
 					<input type="button" value="전체" id="btnAll">
 				</div>
-			</form>
+			</form> -->
 			<table id="tbl">
 				<tr>
 					<th>출고번호</th>
@@ -186,6 +186,10 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div id="bottom_btns">
+				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
+			</div>
+		</div>			
 		</div>		
 </section>		
 <%@ include file="../include/footer.jsp" %>    

@@ -20,6 +20,10 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	span#k_title{
+		color: red;
+		background-color: white;
+	}
 	#search{
 		margin: 10px;
 		position: relative;
@@ -95,8 +99,8 @@
 		font-size: 17px;
 	}
 	tr.tbl_point:hover{
-		background: black;
-		color: red;
+		background: #5D5D5D;
+		color: yellow;
 	}
 	#btnAdd{
 		width: 130px;
@@ -132,7 +136,7 @@
 		<div id="title">
 			<h1>Client List</h1>
 			<hr>
-			<h3>거래처 관리 / 고객사 리스트</h3>
+			<h3>거래처 관리 > <span id="k_title">고객사 리스트</span></h3>
 		</div>
 		<div id="list_container">
 			<form action="clientSearch.do" method="post">

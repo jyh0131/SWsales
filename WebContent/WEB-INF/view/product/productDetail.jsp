@@ -134,6 +134,20 @@
 		font-weight: bold;
 	}	
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function () {
+		
+		$("#btnDel").click(function() {
+			var no = $(this).attr("data-pNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/product/productDelete.do?no="+no;
+			}
+		})
+	});
+</script>
 	<section>
 		<div id="title">
 			<h1>Software Product Detail</h1>
@@ -142,7 +156,7 @@
 		</div>
 		<div id="proAdd">
 			<a href="${pageContext.request.contextPath}/product/productMod.do?pNo=${detail.pNo}"><button id="btnMod">수 정</button></a>	
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnDel">삭 제</button></a>	
+			<button id="btnDel" data-pNo="${detail.pNo }">삭 제</button>
 		</div>
 		<div id="detail_container">
 			<table>

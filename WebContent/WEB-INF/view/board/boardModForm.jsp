@@ -8,7 +8,7 @@
 		height: 600px;
 		margin: 0 auto;
 		margin-top: 50px;
-		margin-bottom: 20px;
+		margin-bottom: 40px;
 	}
 	#imgDiv img{
 		width: 100%;

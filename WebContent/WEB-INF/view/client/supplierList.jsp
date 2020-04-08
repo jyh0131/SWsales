@@ -19,7 +19,11 @@
 	div#title h3{
 		letter-spacing: 3px;
 		padding-left: 60px;
-	}		
+	}	
+	span#k_title{
+		color: red;
+		background-color: white;
+	}	
 	#search{
 		margin: 10px;
 		position: relative;
@@ -73,6 +77,7 @@
 	#list_container{
 		position: relative;
 		margin-top: 100px;
+		margin-bottom: 60px;
 	}
 	table{
 		width: 100%;
@@ -95,8 +100,8 @@
 		font-size: 17px;
 	}
 	tr.tbl_point:hover{
-		background: black;
-		color: red;
+		background: #5D5D5D;
+		color: yellow;
 	}
 	#btnAdd{
 		width: 130px;
@@ -132,7 +137,7 @@
 		<div id="title">
 			<h1>Supplier List</h1>
 			<hr>
-			<h3>거래처 관리 / 공급회사 리스트</h3>
+			<h3>거래처 관리 > <span id="k_title">공급회사 리스트</span></h3>
 		</div>		
 		<div id="list_container">
 			<form action="supplierSearch.do" method="post">

@@ -12,7 +12,7 @@ import swsales.model.Client;
 import swsales.model.Order;
 import swsales.mvc.CommandHandler;
 
-public class OrdeerNYListHandler implements CommandHandler{
+public class OrderNYListHandler implements CommandHandler{
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {

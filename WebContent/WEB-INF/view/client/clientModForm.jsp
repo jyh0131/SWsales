@@ -57,6 +57,16 @@
 	#btnCname, #btnCaddress{
 	    width: 130px;
     	height: 35px;
+    	color: white;
+		outline: none;
+		border: none;
+		border-radius: 5px; 
+	}
+	#btnCname{
+		background: #f08080;
+	}
+	#btnCaddress{
+		background: #A6A6A6;
 	}
 	#add{
 		width: 65%;
