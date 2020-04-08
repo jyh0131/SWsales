@@ -17,8 +17,14 @@ public class SearchIdHandler implements CommandHandler {
 		if(req.getMethod().equalsIgnoreCase("get")) {
 			return "/WEB-INF/view/main/searchIdForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")) {
-			int empNo = Integer.parseInt((req.getParameter("empNo")).substring(2));
+			String no = req.getParameter("empNo");
 			String empName = req.getParameter("empName");
+			if(no.equals("") || no.equals("EE") || empName.equals("")) {
+				req.setAttribute("error", 1);
+				
+				return "/WEB-INF/view/main/searchIdForm.jsp"; 
+			}
+			int empNo = Integer.parseInt(no.substring(2));
 			
 			Connection conn = null;
 			
@@ -28,7 +34,7 @@ public class SearchIdHandler implements CommandHandler {
 				Employee emp = new Employee(empNo, empName);
 				Employee employee = dao.selectEmployeeByID2(conn, emp);
 				if(employee == null) {
-					req.setAttribute("error", 1);
+					req.setAttribute("error", 2);
 					
 					return "/WEB-INF/view/main/searchIdForm.jsp"; 
 				}

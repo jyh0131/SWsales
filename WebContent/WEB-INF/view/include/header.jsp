@@ -45,7 +45,7 @@
 		border-bottom: 2px solid black;
 	}	
 	header ul#h_login1{
-		width: 250px;
+		width: 145px;
 		position: absolute;
 		right: 0;
 		top: 35px;
@@ -64,7 +64,7 @@
 		border-bottom: 2px solid black;
 	}
 	header ul#h_login2{
-		width: 365px;
+		width: 275px;
 		position: absolute;
 		right: 0;
 		top: 35px;
@@ -100,19 +100,19 @@
 					<li><a href="${pageContext.request.contextPath}/main/login.do">LOGIN</a></li>
 					<li>|</li>
 					<li><a href="${pageContext.request.contextPath}/main/join.do">REGISTER</a></li>
-					<li>|</li>
+					<%-- <li>|</li>
 					<li><a href="#">SEARCH</a></li>
-					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
+					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li> --%>
 				</ul>
 			</c:if>
 			<c:if test="${Auth != null }">
 				<ul id="h_login2">
-					<li><a href="#">${Auth.empName }[${Auth.empId }] ${Auth.empTitle }님</a></li>
+					<li><a href="${pageContext.request.contextPath}/main/profile.do?id=${Auth.empId}">${Auth.empName }[${Auth.empId }] ${Auth.empTitle }님</a></li>
 					<li>|</li>
 					<li><a href="${pageContext.request.contextPath}/main/logout.do">LOGOUT</a></li>
-					<li>|</li>
+					<%-- <li>|</li>
 					<li><a href="#">SEARCH</a></li>
-					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li>
+					<li><img src="${pageContext.request.contextPath}/images/main/search.PNG"></li> --%>
 				</ul>
 			</c:if>		
 		</header>

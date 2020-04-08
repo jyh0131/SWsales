@@ -98,6 +98,18 @@ public class EmployeeDao {
 		return total;
 	}
 	
+	//getEmpProfile
+	private Employee getEmpProfile(ResultSet rs) throws SQLException {
+		int empNo = rs.getInt(1);
+		String empName = rs.getString(2);
+		Department dNo = new Department(rs.getString(3));
+		String empTitle = rs.getString(4);
+		String empId = rs.getString(5);
+		String empPass = rs.getString(6);
+		String empMail = rs.getString(7);
+		return new Employee(empNo, empName, dNo, empTitle, 0, empId, empPass, empMail);
+	}
+	
 	//getDeptName
 	private String getDeptName(ResultSet rs) throws SQLException {
 		return rs.getString(1);
@@ -366,6 +378,28 @@ public class EmployeeDao {
 		}
 	}
 	
+	//검색 : 프로필 검색
+
+		public Employee selectEmployeeProfile(Connection conn, String empId) throws SQLException {
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			try {
+				String sql = "select e.e_no, e.e_name, d.d_name, e.e_title, e.e_id, e.e_pw, e.e_mail from employee e " 
+						   + "left join department d on e.e_dept = d.d_no where e.e_id = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, empId);
+				rs = pstmt.executeQuery();
+				if(rs.next()) {
+					return getEmpProfile(rs);
+				}
+				return null;
+			} finally {
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+			}
+		}
+
 	//검색 : 번호
 	
 	public int selectEmployeeNo(Connection conn, String name) throws SQLException {

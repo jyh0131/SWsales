@@ -59,6 +59,7 @@
 	}
 	#tblDiv{
 		position: relative;
+		margin-bottom: 60px;
 	}
 	#btnMod{
 		width: 60px;

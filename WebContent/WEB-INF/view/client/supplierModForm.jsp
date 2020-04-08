@@ -20,6 +20,10 @@
 	div#title h3{
 		letter-spacing: 3px;
 		padding-left: 60px;
+	}
+	span#k_title{
+		color: red;
+		background-color: white;
 	}	
 	#point{
 		width: 65%;
@@ -57,6 +61,16 @@
 	#btnSname, #btnSaddress{
 	    width: 130px;
     	height: 35px;
+    	color: white;
+		outline: none;
+		border: none;
+		border-radius: 5px; 
+	}
+	#btnSname{
+		background: #f08080;
+	}
+	#btnSaddress{
+		background: #A6A6A6;
 	}
 	#add{
 		width: 65%;
@@ -139,7 +153,7 @@
 		<div id="title">
 			<h1>Supplier List</h1>
 			<hr>
-			<h3>거래처 관리 / 공급회사 정보수정</h3>
+			<h3>거래처 관리 > <span id="k_title">공급회사 정보수정</span></h3>
 		</div>	
 		<div id="point">
 			<label class="red">＊ 필수입력</label>

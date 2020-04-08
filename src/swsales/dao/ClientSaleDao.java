@@ -69,7 +69,7 @@ public class ClientSaleDao {
 					"		o.o_qty*p.p_price as 매출금, " + 
 					"		(case o.o_dps when '0' then o.o_qty*p.p_price when '1' then '0' end) as 미수금 " + 
 					"  from client c natural join `order` o natural join product p " + 
-					" where c.c_no = o.o_cno and p.p_no = o.o_pno and c.c_name = ?";
+					" where c.c_no = o.o_cno and p.p_no = o.o_pno and c.c_name  like concat ('%', ?, '%')";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, cs.getC_name());
 			rs = pstmt.executeQuery();

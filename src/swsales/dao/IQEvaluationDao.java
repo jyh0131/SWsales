@@ -66,7 +66,7 @@ public class IQEvaluationDao {
 					"		p.p_cost as 공급가격, " + 
 					"		(case when iq.iq_qty < 50 then '재고부족'	  when iq.iq_qty >= 50 and iq.iq_qty < 150 then '적정재고'	  when iq.iq_qty >= 150 then '재고과다'	end) as 재고평가 " + 
 					"  from product p natural join supplier s natural join inventory_quantity iq " + 
-					" where s.s_no = p.p_sno and p.p_no = iq.iq_pno and p.p_name = ?";
+					" where s.s_no = p.p_sno and p.p_no = iq.iq_pno and p.p_name like concat ('%', ?, '%')";
 			pstmt = conn.prepareCall(sql);
 			pstmt.setString(1, iq.getP_name());
 			rs = pstmt.executeQuery();
