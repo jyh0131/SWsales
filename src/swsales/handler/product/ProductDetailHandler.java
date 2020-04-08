@@ -1,6 +1,7 @@
 package swsales.handler.product;
 
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -18,17 +19,27 @@ public class ProductDetailHandler implements CommandHandler{
 			String no = req.getParameter("pNo");
 			int pNo = Integer.parseInt(no);
 			
+			String cate = req.getParameter("pCate");
+			int pcate = Integer.parseInt(cate);
+			
 			Connection conn = null;
 			try {
 				conn = JDBCUtil.getConnection();
 				ProductDao dao = ProductDao.getInstance();
-				Product product = dao.selectProductByNo(conn, pNo);
-				req.setAttribute("detail", product);
+				Product product1 = dao.selectProductByNo(conn, pNo);
+				req.setAttribute("detail", product1);
+				
+				Product product2 = dao.selectProductByCate(conn, pcate);
+				req.setAttribute("cate", product2);
+				
+				List<Product> list = dao.selectProductBytt(conn, pcate);
+				req.setAttribute("list", list);
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
 				JDBCUtil.close(conn);
-			}
+			}			
 			return "/WEB-INF/view/product/productDetail.jsp";
 		}
 		return null;

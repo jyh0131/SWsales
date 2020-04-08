@@ -61,6 +61,7 @@
 	div#detail_container{
 		width: 100%;
 		margin-top: 50px;
+		margin-bottom: 50px;
 	}
 	
 	table{
@@ -132,10 +133,27 @@
 	}
 	td p#pQty{
 		font-weight: bold;
-	}	
+	}
+	
+	div#simg_wrap{
+		width: 100%;
+		text-align: center;
+		padding-top: 20px;
+	}
+	div#simg{
+		width: 160px;
+		height: 180x;
+		float: left;
+	}
+	img#simg_img{
+		width: 115px;
+		height: 130px;
+		border: 1px solid #eee;
+	}			
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
+	var index = 0;
 	$(function () {
 		
 		$("#btnDel").click(function() {
@@ -215,6 +233,18 @@
 					</td>
 				</tr>																								
 			</table>				
+		</div>
+		
+		<h3>+ 관련 제품 : ${cate.pCate.cateName}용 소프트웨어</h3>	
+		<div id="simg_wrap">	
+			<c:forEach var="product" items="${list}">
+				<div id="simg">
+					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}&pCate=${product.pCate.cateNo}">
+						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}" id="simg_img">
+					</a>
+					<p>${product.pName}</p>
+				</div>
+			</c:forEach>						
 		</div>
 	</section>
 <%@ include file="../include/footer.jsp" %>

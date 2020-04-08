@@ -117,7 +117,7 @@
 		<div id="pImg_container">
 			<c:forEach var="product" items="${list }">
 				<div class="productImg">
-					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}">
+					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}&pCate=${product.pCate.cateNo}"> <!-- 여러값을 넘기기 -->
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 						<div class="caption">
 							<h1> < ${product.pCate} > </h1>

@@ -56,6 +56,11 @@ $(function(){
 	div#m_dummy_img3 ul li p{
 		font-size: 14px;
 	}
+	div#m_sns{
+		width: 100%;
+		height: 50px;
+		margin-bottom: 100px;
+	}
 	div#m_sns ul li{
 		float: left;
 		list-style: none;
