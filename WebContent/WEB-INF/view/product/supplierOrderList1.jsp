@@ -67,16 +67,6 @@
 		color: white;
 		border-radius: 5px;
 	}
-	#btnAll{
-		width: 60px;
-		height: 36px;
-		background-color: #ccc;
-		border: 1px solid white;
-		color: white;
-		border-radius: 5px;
-		position: absolute;
-		right: 0;
-	}
 	#list_container{
 		width: 100%;
 		margin: 0 auto;
@@ -118,12 +108,24 @@
 		border: 1px solid white;
 		border-radius: 5px;
 	}
+	div#bottom_btns{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
+	}
+	input#btnTop{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #eee;
+		position: absolute;
+		right: 0; 
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
-		//전체버튼
-		$("#btnAll").click(function() {
+		//Top버튼
+		$("#btnTop").click(function() {
 			location.href="supplierOrderList1.do";
 		})
 		
@@ -146,7 +148,7 @@
 			<h3>제품 관리 > 발주/매입 > <span id="k_title">발주 이력 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="supplierOrder1Search.do" method="post">
+<!-- 			<form action="supplierOrder1Search.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
@@ -158,7 +160,7 @@
 					<input type="reset" value="초기화" id="btnClear">
 					<input type="button" value="전체" id="btnAll">
 				</div>
-			</form>
+			</form> -->
 			<table id="tbl">
 				<tr>
 					<th>발주번호</th>
@@ -203,7 +205,9 @@
 					</tr>
 				</c:forEach>
 			</table>
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">등 록</button></a>
+			<div id="bottom_btns">
+				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
+			</div>
 		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>    

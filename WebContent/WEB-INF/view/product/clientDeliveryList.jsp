@@ -139,7 +139,7 @@
 			<h3>제품 관리 > 출고 > <span id="k_title">출고 리스트</span></h3>
 		</div>
 		<div id="list_container">
-			<form action="clientDeliverySearch.do" method="post">
+<!-- 			<form action="clientDeliverySearch.do" method="post">
 				<div id="search">
 					<select id="selSearch" name="selSearch">
 						<option selected>선택해주세요</option>
@@ -151,7 +151,7 @@
 					<input type="reset" value="초기화" id="btnClear">
 					<input type="button" value="전체" id="btnAll">
 				</div>
-			</form>
+			</form> -->
 			<table id="tbl">
 				<tr>
 					<th>출고번호</th>

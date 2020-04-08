@@ -108,6 +108,18 @@
 		width: 100px;
 		height: 100px;
 	}
+	div#bottom_btns{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
+	}
+	input#btnTop{
+		width: 50px;
+		height: 50px;
+		border: 1px solid #eee;
+		position: absolute;
+		right: 140px; 
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -116,6 +128,10 @@
 		$("#btnAll").click(function() {
 			location.href="productList1.do";
 		})
+		
+		$("#btnTop").click(function() {
+			location.href="productList1.do";
+		})		
 	});
 </script>
 	<section>
@@ -183,6 +199,9 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<div id="bottom_btns">
+				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
+			</div>			
 		</div>
 </section>		
 <%@ include file="../include/footer.jsp" %>

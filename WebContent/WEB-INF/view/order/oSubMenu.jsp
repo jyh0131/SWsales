@@ -107,7 +107,7 @@
 			<ul>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/oSubIcon1.png"><br>
-					<a href="${pageContext.request.contextPath}/client/supplierList.do"><b>주문 등록</b> ></a>
+					<a href="${pageContext.request.contextPath}/order/orderAdd.do"><b>주문 등록</b> ></a>
 				</li>
 				<li>
 					<img src ="${pageContext.request.contextPath}/images/submenu/oSubIcon2.png"><br>
