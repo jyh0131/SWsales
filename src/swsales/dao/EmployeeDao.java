@@ -452,6 +452,23 @@ public class EmployeeDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+	
+	//update3
+
+		public void updateEmpPass(Connection conn, Employee emp) throws SQLException {
+			PreparedStatement pstmt = null;
+			
+			try {
+				String sql = "update employee set e_pw = ? where e_id = ? and e_mail = ?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setString(1, emp.getEmpPass());
+				pstmt.setString(2, emp.getEmpId());
+				pstmt.setString(3, emp.getEmpMail());
+				pstmt.executeUpdate();
+			} finally {
+				JDBCUtil.close(pstmt);
+			}
+		}
 
 	//delete
 

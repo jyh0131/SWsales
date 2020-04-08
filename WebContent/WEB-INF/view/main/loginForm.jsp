@@ -88,10 +88,18 @@
 		var result = ${error};
 		console.log(result);
 		if(result == 1){
-			alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.")
+			alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.");
 		}else if(result == 2){
-			alert("비밀번호가 틀렸습니다. 다시 확인해주세요.")
+			alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
 		}
+		
+		var flag = ${flag};
+		console.log(flag);
+		/* if(flag == true){
+			alert("임시비밀번호가 전송되었습니다.");
+		}else{
+			alert("임시비밀번호가 전송이 실패하였습니다.");
+		} */
 	})
 </script>
 </head>
