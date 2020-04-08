@@ -82,6 +82,16 @@
     	bottom: 0px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function() {
+		var result = ${error};
+		console.log(result);
+		if(result == 1){
+			alert("아이디나 이메일 정보가 맞지 않습니다.");
+		}
+	})
+</script>
 </head>
 <body>
 	<section id="section">
