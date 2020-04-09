@@ -104,6 +104,20 @@
 		background: #5D5D5D;
 		color: yellow;
 	}
+   td button{
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      color: white;
+      padding: 6px;
+      font-weight: bold;
+   }
+   td button#btnMod{
+      background: #87cefa;
+   }
+    td button.btnDel{
+      background: #f08080;
+   }	
 	#btnAdd{
 		width: 130px;
 		height: 40px;
@@ -206,7 +220,7 @@
 						<td>${SupplierOrder.soQty}개</td>
 						<td><fmt:formatDate value="${SupplierOrder.soDate}" type="both" pattern="yyyy-MM-dd"/></td>	
 						<td>
-							<a href="#"><button>수정</button></a>
+							<a href="#"><button id="btnMod" style="cursor: pointer">수정</button></a>
 							<button class="btnDel" style="cursor: pointer" data-soNo="${SupplierOrder.soNo }">삭제</button>
 						</td>
 					</tr>

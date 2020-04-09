@@ -10,7 +10,7 @@
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
-		background: url("${pageContext.request.contextPath}/images/title/soTitle.png") no-repeat;
+		background: url("${pageContext.request.contextPath}/images/title/oTitle.png") no-repeat;
 		background-size: 100%, 200px;
 	}
 	div#title h1{
@@ -77,7 +77,7 @@
 	}
 	div.productImg{
 		width: 324px;
-		height: 500px;
+		height: 450px;
 		float: left;
 		position: relative;
 	}
@@ -91,21 +91,18 @@
 	}
 	div.product_info{
 		width: 305px;
-		height: 100px;
+		height: 120px;
 		background: #eee;
 		margin-left: 10px;
 		text-align: left;
 	}
 	div.product_info p:first-child{
-		border: 1px solid red;
 		padding: 10px;
 	}
 	div.product_info p:nth-child(2){
-		border: 1px solid red;
 		padding-left: 10px;
 	}
  	div.product_info p:last-child{
-		border: 1px solid red;
 		padding-left: 10px;
 	}
 	span#cate{
@@ -119,6 +116,10 @@
 		color: #353535;
 		font-size: 20px;
 		font-weight: bold;
+	}
+	span#pCost{
+		font-size: 10px;
+		color: #747474;
 	}		
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -156,9 +157,9 @@
 <section>
 	<!-- form 타이틀 -->
 	<div id="title">
-		<h1>Order Registration</h1>
+		<h1>Product Order Category</h1>
 		<hr>
-		<h3>주문 관리 > <span id="k_title">주문 상품</span></h3>
+		<h3>주문 관리 > <span id="k_title">주문 제품별 카테고리</span></h3>
 	</div>
 	<div id="icon_dummy">
 		<ul>
@@ -183,13 +184,13 @@
 	<div id="product_list">
 			<c:forEach var="product" items="${list }">
 				<div class="productImg">
-					<a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}&pCate=${product.pCate.cateNo}"> <!-- 여러값을 넘기기 -->
+					<a href="${pageContext.request.contextPath}/order/orderAdd.do?pNo=${product.pNo}"> <!-- 여러값을 넘기기 -->
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 					</a>
 					<div class="product_info">
 						<p><span id="cate">&nbsp${product.pCate}&nbsp</span> <span id="pName">${product.pName}</span></p>
-						<p>공급회사 : ${product.pSno.sName}</p>
-						<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/> (<strike><fmt:formatNumber value="${product.pCost}" pattern="\#,###.##"/></strike>)</p>
+						<p><b>공급회사 : </b>${product.pSno.sName}</p>
+						<p><b>판매가격 : </b><fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${product.pCost}" pattern="\#,###.##"/>)</span></p>
 					</div>
 				</div>
 			</c:forEach>

@@ -10,7 +10,7 @@ div#title {
 	height: 200px;
 	line-height: 100px;
 	margin-top: 50px;
-	background: url("${pageContext.request.contextPath}/images/title/soTitle.png") no-repeat;
+	background: url("${pageContext.request.contextPath}/images/title/oTitle.png") no-repeat;
 	background-size: 100%, 200px;
 }
 
