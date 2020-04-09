@@ -4,22 +4,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
-	}
 	div#title{
 		width: 100%;
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
 	div#title h1{
 		font-size: 40px;
@@ -33,6 +24,7 @@
 	#contain{
 		width: 50%;
 		margin: 0 auto;
+		margin-top: 40px;
 	}
 	table{
 		width: 100%;
@@ -59,7 +51,7 @@
 	}
 	#tblDiv{
 		position: relative;
-		margin-bottom: 60px;
+		margin-bottom: 80px;
 	}
 	#btnMod{
 		width: 60px;
@@ -109,9 +101,6 @@
 	});
 </script>
 <section>
-	<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/submenu/pMain.png">
-	</div>
 	<div id="title">
 			<h1>Notice List</h1>
 			<hr>
