@@ -36,7 +36,7 @@ public class CustomerOrderGraphHandler implements CommandHandler {
 				req.setAttribute("list", list);
 			} catch (Exception e) {
 				e.printStackTrace();
-			}finally {
+			} finally {
 				JDBCUtil.close(conn);
 			}
 		}

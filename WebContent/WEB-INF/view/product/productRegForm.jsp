@@ -127,10 +127,28 @@
 	input[name*='pQty']{
 		font-weight: bold;	
 	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;
+	}
+	span.cnt{
+		color: blue;
+		font-size: 12px;
+	}		
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(function () {
+	//등록버튼
+	$("#btnAdd").click(function () {
+		var text = $("#pName").val();
+		var text1 = $("select[name=pCate]").var();
+		if(tex1 == "선택해주세요"){
+			alert("dasdada");
+			location.href="productAdd.do";
+		}
+	})
+	
 	$("#btnPname").click(function () {
 		var pName = $("#pName").val();
 		if(pName == ""){
@@ -224,10 +242,10 @@ $(function () {
 					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" id="pName">
 					<input type="button" value="중복확인" id="btnPname" style="cursor: pointer"><br>
 					
-					<label><span class="red">* </span>공급가격</label>
+					<label><span class="red">* </span>공급가격 <span class="cnt">(1개당)</span></label>
 					<input type="text" name="pCost" class="text"><br>
 					
-					<label><span class="red">* </span>판매가격</label>
+					<label><span class="red">* </span>판매가격 <span class="cnt">(1개당)</span></label>
 					<input type="text" name="pPrice" class="text"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>

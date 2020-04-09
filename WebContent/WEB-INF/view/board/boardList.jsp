@@ -9,8 +9,9 @@
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
-		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background: url("${pageContext.request.contextPath}/images/title/nTitle.png") no-repeat;
 		background-size: 100%, 200px;
+		
 	}
 	div#title h1{
 		font-size: 40px;
