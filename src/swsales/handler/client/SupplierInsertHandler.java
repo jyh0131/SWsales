@@ -19,7 +19,7 @@ public class SupplierInsertHandler implements CommandHandler {
 			try {
 				conn = JDBCUtil.getConnection();
 				SupplierDao dao = SupplierDao.getInstance();
-				Supplier supplier = dao.selectSuppplierLastData(conn);
+				Supplier supplier = dao.selectSupplierLastData(conn);
 				req.setAttribute("supplier", supplier);
 			} catch (Exception e) {
 				e.printStackTrace();

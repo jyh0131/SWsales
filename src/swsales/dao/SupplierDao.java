@@ -67,7 +67,7 @@ public class SupplierDao {
 	}
 
 
-	public Supplier selectSuppplierLastData(Connection conn) throws SQLException {
+	public Supplier selectSupplierLastData(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		try {

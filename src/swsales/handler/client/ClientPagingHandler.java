@@ -9,39 +9,39 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import swsales.dao.SupplierDao;
+import swsales.dao.ClientDao;
 import swsales.jdbc.JDBCUtil;
+import swsales.model.Client;
 import swsales.model.Paging;
-import swsales.model.Supplier;
 import swsales.mvc.CommandHandler;
 
 @SuppressWarnings("serial")
-@WebServlet("/supplierList.do")
-public class SupplierPagingHandler extends HttpServlet implements CommandHandler{
+@WebServlet("/clientList.do")
+public class ClientPagingHandler extends HttpServlet implements CommandHandler{
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		Connection conn = null;
 		
 		try {
 			conn = JDBCUtil.getConnection();
-			SupplierDao dao = SupplierDao.getInstance();
+			ClientDao dao = ClientDao.getInstance();
 			
 			int page = 1;
 
 			if (req.getParameter("page") != null) {
 				page = Integer.parseInt(req.getParameter("page"));
 			}
-			Supplier last = dao.selectSupplierLastData(conn);
+			Client last = dao.selectClientLastData(conn);
 	
 			Paging paging = new Paging();
 			paging.setPage(page);
-			paging.setTotalCount(last.getsNo());
+			paging.setTotalCount(last.getcNo());
 
-			List<Supplier> list = dao.selectSupplierPaging(conn, page);
+			List<Client> list = dao.selectClientPaging(conn, page);
 			req.setAttribute("list", list);
 			req.setAttribute("paging", paging);
 
-			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/client/supplierList.jsp");
+			RequestDispatcher dispatcher = req.getRequestDispatcher("/WEB-INF/view/client/clientList.jsp");
 			dispatcher.forward(req, res);
 			
 		} catch (Exception e) {

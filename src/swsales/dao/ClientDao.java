@@ -254,6 +254,33 @@ public class ClientDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+	
+	public List<Client> selectClientPaging(Connection conn, int page) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//1번 페이지 1~10
+        //2번 페이지 11~20        
+        int startNum = (page-1)*10+1;
+        int endNum = page*10;
+        
+        try{
+        	 String sql = "select c_no, c_name, c_ceo, c_address, c_tel, c_id, c_mail, c_date, c_salesman, e.e_name from " 
+                        + "(SELECT @rownum:=@rownum+1 rnum, c.* from client c, (SELECT @ROWNUM := 0) R where 1=1) list left " 
+        			    + "join employee e on e.e_no = c_salesman WHERE rnum >= ? AND rnum <= ?";
+        	List<Client> list = new ArrayList<Client>();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, startNum);
+            pstmt.setInt(2, endNum);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+            	list.add(getClient(rs));
+            }
+            return list;
+        }finally{
+            JDBCUtil.close(rs);
+            JDBCUtil.close(pstmt);
+        }
+	}
 
 	public Client selectClientByName(Connection conn, Client client) throws SQLException {
 		PreparedStatement pstmt = null;

@@ -179,13 +179,13 @@
 			</form>
 			<table id="tbl">
 				<tr>
-					<th>회사번호</th>
-					<th>회사명</th>
-					<th>사업자 등록번호</th>
-					<th>주 소</th>
-					<th>전화번호</th>
-					<th>FAX번호</th>
-					<th>수정/삭제</th>
+					<th style="width: 150px;">회사번호</th>
+					<th style="width: 200px;">회사명</th>
+					<th style="width: 210px;">사업자 등록번호</th>
+					<th style="width: 600px;">주 소</th>
+					<th style="width: 170px;">전화번호</th>
+					<th style="width: 170px;">FAX번호</th>
+					<th style="width: 150px;">수정/삭제</th>
 				</tr>
 				<c:forEach var="supplier" items="${list }">
 					<tr class="tbl_point">
@@ -212,6 +212,13 @@
 				</c:forEach>
 			</table>
 			<a href="${pageContext.request.contextPath}/client/supplierAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
-		</div>
+			<jsp:include page="../paging/supplierPaging.jsp">
+				<jsp:param value="${paging.page}" name="page" />
+				<jsp:param value="${paging.beginPage}" name="beginPage" />
+				<jsp:param value="${paging.endPage}" name="endPage" />
+				<jsp:param value="${paging.prev}" name="prev" />
+				<jsp:param value="${paging.next}" name="next" />
+			</jsp:include>
+	</div>
 	</section>
 <%@ include file="../include/footer.jsp" %>

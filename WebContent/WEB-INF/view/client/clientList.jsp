@@ -179,13 +179,13 @@
 			</form>
 			<table id="tbl">
 				<tr>
-					<th>고객번호</th>
-					<th>상호명</th>
-					<th>대표명</th>
-					<th>주 소</th>
-					<th>전화번호</th>
-					<th>담당직원</th>
-					<th>수정/삭제</th>
+					<th style="width: 150px;">고객번호</th>
+					<th style="width: 200px;">상호명</th>
+					<th style="width: 150px;">대표명</th>
+					<th style="width: 600px;">주 소</th>
+					<th style="width: 190px;">전화번호</th>
+					<th style="width: 150px;">담당직원</th>
+					<th style="width: 150px;">수정/삭제</th>
 				</tr>
 				<c:forEach var="client" items="${list }">
 					<tr class="tbl_point">
@@ -211,6 +211,13 @@
 					</tr>
 				</c:forEach>
 			</table>
+			<jsp:include page="../paging/clientPaging.jsp">
+				<jsp:param value="${paging.page}" name="page" />
+				<jsp:param value="${paging.beginPage}" name="beginPage" />
+				<jsp:param value="${paging.endPage}" name="endPage" />
+				<jsp:param value="${paging.prev}" name="prev" />
+				<jsp:param value="${paging.next}" name="next" />
+			</jsp:include>
 		</div>
 	</section>
 <%@ include file="../include/footer.jsp" %>
