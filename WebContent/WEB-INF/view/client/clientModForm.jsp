@@ -21,6 +21,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -161,11 +168,11 @@
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>고객번호</label>
-					<input type="text" name="no" class="text" readonly="readonly"><br>
+					<input type="text" name="no" class="text" readonly="readonly" style="color: #000080; font-weight: bold;"><br>
 					<input type="hidden" name="cNo" value="${client.cNo }">
 					
 					<label><span class="red">* </span>상호명</label>
-					<input type="text" name="cName" class="text" id="cName" placeholder=" >> 중복확인" value="${client.cName }">
+					<input type="text" name="cName" class="text" id="cName" placeholder=" >> 중복확인" value="${client.cName }" style="color: #990000; font-weight: bold;">
 					<input type="button" value="중복확인" id="btnCname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>대표명</label>
@@ -179,7 +186,7 @@
 					<input type="text" name="cTel" class="text" placeholder=" '-'로 구분하여 입력" value="${client.cTel }"><br>
 					
 					<label>&nbsp&nbsp담당직원</label>
-					<input type="text" name="cSman" class="text" value="${client.cSman }"><br>
+					<input type="text" name="cSman" class="text" value="${client.cSman }" style="color: #22741C; font-weight: bold;"><br>
 				</div>
 			</div>
 			<div id="add">

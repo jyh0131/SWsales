@@ -168,6 +168,35 @@ public class SupplierDao {
 		}
 	}
 	
+	public List<Supplier> selectSupplierPaging(Connection conn, int page) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		//1번 페이지 1~10
+        //2번 페이지 11~20        
+        int startNum = (page-1)*10+1;
+        int endNum = page*10;
+        
+        try{
+        	 String sql = "SELECT * from (SELECT @rownum:=@rownum+1 rnum, s.* from supplier s, " 
+                     + "(SELECT @ROWNUM := 0) R where 1=1) list WHERE rnum >= ? AND rnum <=?";
+        	List<Supplier> list = new ArrayList<Supplier>();
+            pstmt = conn.prepareStatement(sql);
+            pstmt.setInt(1, startNum);
+            pstmt.setInt(2, endNum);
+            rs = pstmt.executeQuery();
+            while(rs.next()){
+            	Supplier sup = new Supplier(rs.getInt("s_no"), rs.getString("s_name"), 
+            								rs.getString("s_bln"), rs.getString("s_address"), 
+            								rs.getString("s_tel"), rs.getString("s_fax"));
+                list.add(sup);
+            }
+            return list;
+        }finally{
+            JDBCUtil.close(rs);
+            JDBCUtil.close(pstmt);
+        }
+	}
+	
 	public void insertSupplier(Connection conn,Supplier supplier) throws SQLException {
 		PreparedStatement pstmt = null;
 		try {
