@@ -208,32 +208,91 @@ span#y {
 				<th>주문담당자</th>
 			</tr>
 			<c:forEach var="Order" items="${list }">
-					<td class="tbl_point"><c:choose>
-							<c:when test="${Order.oNo < 10 }">
-									O000${Order.oNo }
-								</c:when>
-							<c:when test="${Order.oNo >= 10 }">
-									O00${Order.oNo }
-								</c:when>
-						</c:choose></td>
-					<td><fmt:formatDate value="${Order.oDate}" type="both"
-							pattern="yyyy-MM-dd" /></td>
-					<td>${Order.oCname.cName}</td>
-					<td>${Order.oPname.pName}</td>
-					<td>${Order.oQty}</td>
-					<td>${Order.oMemo}</td>
+					<td class="tbl_point">
+					<c:if test="${Order.oOk == '0'}">
+						<c:choose>
+								<c:when test="${Order.oNo < 10 }">
+										<span class="n">O000${Order.oNo }</span>
+									</c:when>
+								<c:when test="${Order.oNo >= 10 }">
+										<span class="n">O00${Order.oNo }</span>
+									</c:when>
+							</c:choose>
+					</c:if>
+					<c:if test="${Order.oOk == '1'}">
+						<c:choose>
+								<c:when test="${Order.oNo < 10 }">
+										O000${Order.oNo }
+									</c:when>
+								<c:when test="${Order.oNo >= 10 }">
+										O00${Order.oNo }
+									</c:when>
+							</c:choose>
+					</c:if>					
+					</td>
+					<td>
+					<c:if test="${Order.oOk == '0'}">
+						<span class="n"><fmt:formatDate value="${Order.oDate}" type="both" pattern="yyyy-MM-dd" /></span>
+					</c:if>
+					<c:if test="${Order.oOk == '1'}">
+						<fmt:formatDate value="${Order.oDate}" type="both" pattern="yyyy-MM-dd" />
+					</c:if>					
+					</td>
+					<td>
+					<c:if test="${Order.oOk == '0'}">
+						<span class="n">${Order.oCname.cName}</span>
+					</c:if>
+					<c:if test="${Order.oOk == '1'}">
+						${Order.oCname.cName}
+					</c:if>
+					</td>
+					<td>
+						<c:if test="${Order.oOk == '0'}">					
+							<span class="n">${Order.oPname.pName}</span>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">					
+							${Order.oPname.pName}
+						</c:if>					
+					</td>
+					<td>
+						<c:if test="${Order.oOk == '0'}">						
+							<span class="n">${Order.oQty}</span>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">						
+							${Order.oQty}
+						</c:if>						
+					</td>
+					<td>
+						<c:if test="${Order.oOk == '0'}">
+							<span class="n">${Order.oMemo}</span>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">
+							${Order.oMemo}
+						</c:if>															
+					</td>
 					
 					<td><c:if test="${Order.oDps == 1}">
 							<input type="checkbox" checked>
-						</c:if> <c:if test="${Order.oDps == 0}">
+						</c:if>
+						<c:if test="${Order.oDps == 0}">
 							<input type="checkbox">
-						</c:if></td>
+						</c:if>
+					</td>
 					<td><c:if test="${Order.oOk == '1'}">
 							<span id="y">Y</span>
-						</c:if> <c:if test="${Order.oOk == '0'}">
+						</c:if>
+						<c:if test="${Order.oOk == '0'}">
 							<span class="n">N</span>
-						</c:if></td>
-					<td>${Order.oEname.empName},EE00${Order.oEno.empNo}</td>
+						</c:if>
+					</td>
+					<td>
+						<c:if test="${Order.oOk == '0'}">
+							<span class="n">${Order.oEname.empName}(EE00${Order.oEno.empNo})</span>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">
+							${Order.oEname.empName}(EE00${Order.oEno.empNo})
+						</c:if>															
+					</td>
 					<%-- 						<td>
 							${SupplierOrder.soSname.sName}
 							<c:choose>
