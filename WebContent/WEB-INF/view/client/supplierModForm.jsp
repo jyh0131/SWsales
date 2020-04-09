@@ -169,11 +169,11 @@
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>회사번호</label>
-					<input type="text" name="no" class="text" readonly="readonly"><br>
+					<input type="text" name="no" class="text" readonly="readonly" style="color: #000080; font-weight: bold;"><br>
 					<input type="hidden" name="sNo" value="${supplier.sNo }">
 					
 					<label><span class="red">* </span>회사명</label>
-					<input type="text" name="sName" class="text" id="sName" placeholder=" >> 중복확인" value="${supplier.sName }">
+					<input type="text" name="sName" class="text" id="sName" placeholder=" >> 중복확인" value="${supplier.sName }" style="color: #990000; font-weight: bold;">
 					<input type="button" value="중복확인" id="btnSname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>사업자등록번호</label>
