@@ -4,22 +4,13 @@
 <%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
-	#imgDiv{
-		width: 100%;
-		height: 600px;
-		margin: 0 auto;
-		margin-top: 50px;
-		margin-bottom: 20px;
-	}
-	#imgDiv img{
-		width: 100%;
-		height: 600px;	
-	}
 	div#title{
 		width: 100%;
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/main/formtest.png") no-repeat;
+		background-size: 100%, 200px;
 	}
 	div#title h1{
 		font-size: 40px;
@@ -33,6 +24,7 @@
 	#contain{
 		width: 70%;
 		margin: 0 auto;
+		margin-top: 40px;
 	}
 	#formDiv{
 		position: relative;
@@ -85,7 +77,7 @@
 	}
 	#tblDiv{
 		position: relative;
-		margin-bottom: 60px;
+		margin-bottom: 80px;
 	}
 	#btnAdd{
 		width: 130px;
@@ -107,14 +99,11 @@
 	}
 </style>
 <section>
-	<div id="imgDiv">
-			<img src="${pageContext.request.contextPath}/images/submenu/pMain.png">
-	</div>
 	<div id="title">
-			<h1>Notice List</h1>
-			<hr>
-			<h3>공지사항</h3>
-		</div>
+		<h1>Notice List</h1>
+		<hr>
+		<h3>공지사항</h3>
+	</div>
 	<div id="contain">
 		<div id="formDiv">
 			<form action="${pageContext.request.contextPath}/board/boardSelect.do" method="get">

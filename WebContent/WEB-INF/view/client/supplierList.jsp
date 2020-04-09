@@ -137,7 +137,7 @@
 		<div id="title">
 			<h1>Supplier List</h1>
 			<hr>
-			<h3>거래처 관리 > <span id="k_title">공급회사 리스트</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a> > <span id="k_title">공급회사 리스트</span></h3>
 		</div>		
 		<div id="list_container">
 			<form action="supplierSearch.do" method="post">
