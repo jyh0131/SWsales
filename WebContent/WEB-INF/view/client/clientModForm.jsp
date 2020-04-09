@@ -21,6 +21,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}
 	span#k_title{
 		color: red;
 		background-color: white;
