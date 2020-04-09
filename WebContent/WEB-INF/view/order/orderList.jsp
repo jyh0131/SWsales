@@ -88,7 +88,7 @@
 		letter-spacing: 5px;
 	}
 	input#sinput:hover{
-		box-shadow: 3px 3px 10px 3px #EAEAEA;
+		box-shadow: 3px 3px 10px 5px #EAEAEA;
 	}	
 	div#product_list{
 		width: 100%;
