@@ -29,27 +29,53 @@
 	  } );
   </script>
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
+	var queryObject = "";
+	var queryObjectLen = "";
+	$.ajax({
+		type: 'POST',
+		url: 'customerOrderGraph.jsp',
+		dataType:'json',
+		success: function(data){
+			
+			queryObject = eval('(' + JSON.stringify(data, null, 2) + ')');
+			queryObjectLen = 10;
+			
+		}
+	});
 
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawVisualization);
 	
 	function drawVisualization(){
-		var data = google.visualization.arrayToDataTable([
+		/* var data = google.visualization.arrayToDataTable([
 			['고객사명', '영화정보통신', '세종특별자치시청', '상내정보통신', '우우시스템',
 				'대전광역시 교육청', '금변시스템', '전라북도청', '대전광역시청', '부산광역시 교육청', '세종특별자치시 교육청'],
 			[' ', 1747240000, 1042800000, 1020250000, 819280000, 789250000,
-				654500000, 595650000, 534820000, 524535000, 485100000]
+				654500000, 595650000, 534820000, 524535000, 485100000] */
+				
+			var data = new google.visualization.DataTable();
+			data.addColumn('string', 'c_name');
+			data.addColumn('number', 'p_price');
 			
-		]);
-		
-		var options = {
-				title: "상위 10개 고객사",
-				vAxis: {title: '판매금액' },
-				hAxis: {title: '고객사'},
-				seriesType: 'bars'
-		};
-		
+			for(var i=0; i<queryObjectLen; i++){
+				var cName = queryObject.barlist[i].c_name;
+				var price = queryObject.barlist[i].p_price;
+				
+				data.addRows([
+					["고객사명", cName],
+					[" ", price]
+				]);
+			}
+			
+			var options = {
+					title: "상위 10개 고객사",
+					vAxis: {title: '판매금액' },
+					hAxis: {title: '고객사'},
+					seriesType: 'bars'
+			};
+			
 		var chart = new google.visualization.ComboChart(document.getElementById('chart_div'));
 		chart.draw(data, options);
 	}
