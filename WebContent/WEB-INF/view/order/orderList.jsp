@@ -70,6 +70,26 @@
 		font-weight: bold;
 		background: #384D75;
 	}
+	div#search{
+		width: 100%;
+		height: 50px;
+		margin-top: 30px;
+		text-align: center;
+	}
+	div#search input#sinput{
+		width: 70%;
+		height: 45px;
+		border-radius: 20px;
+		outline: none;
+		border: 1px solid #EAEAEA;
+	}
+	input#sinput::placeholder{
+		font-size: 16px;
+		letter-spacing: 5px;
+	}
+	input#sinput:hover{
+		box-shadow: 3px 3px 10px 3px #EAEAEA;
+	}	
 	div#product_list{
 		width: 100%;
 		text-align: center;
@@ -171,7 +191,7 @@
 			<li><img src="${pageContext.request.contextPath}/images/order/icon_cate5.png"></li>
 			<li><img src="${pageContext.request.contextPath}/images/order/icon_cate6.png"></li>
 		</ul>
-	</div>	
+	</div>
 	<div id="product_cate">
 		<input type="button" value="전체" id="All" style="cursor:pointer">
 		<input type="button" value="사무" id="cate1" style="cursor:pointer">
@@ -181,6 +201,12 @@
 		<input type="button" value="기업업무" id="cate5" style="cursor:pointer">
 		<input type="button" value="서버" id="cate6" style="cursor:pointer">		
 	</div>
+	<div id="search">
+		<form>
+		<input type="text" name="sinput" id="sinput" placeholder="   Search...">
+		<input type="submit" value="검색" id="btnSearch" style="cursor:pointer">
+		</form>
+	</div>		
 	<div id="product_list">
 			<c:forEach var="product" items="${list }">
 				<div class="productImg">
