@@ -110,6 +110,20 @@
 		background: #5D5D5D;
 		color: yellow;
 	}
+	td button{
+		border-radius: 5px;
+		outline: none;
+		border: none;
+		color: white;
+		padding: 6px;
+		font-weight: bold;
+	}
+	td button#btnMod{
+		background: #87cefa;
+	}
+ 	td button#btnDel{
+		background: #f08080;
+	}
 	div#bottom_btns{
 		width: 100%;
 		height: 50px;
@@ -180,8 +194,8 @@
 						<td>${clientDelivery.cdSno.oQty }</td>
 						<td><fmt:formatDate value="${clientDelivery.cdDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
-							<a href="#"><button>수정</button></a>
-							<a href="#"><button>삭제</button></a>
+							<a href="#"><button id="btnMod">수정</button></a>
+							<a href="#"><button id="btnDel">삭제</button></a>
 						</td>
 					</tr>
 				</c:forEach>

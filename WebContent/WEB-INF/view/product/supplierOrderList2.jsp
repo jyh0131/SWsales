@@ -104,6 +104,20 @@
 		background: #5D5D5D;
 		color: yellow;
 	}
+   td button{
+      border-radius: 5px;
+      outline: none;
+      border: none;
+      color: white;
+      padding: 6px;
+      font-weight: bold;
+   }
+   td button#btnMod{
+      background: #87cefa;
+   }
+    td button#btnDel{
+      background: #f08080;
+   }	
 	#btnAdd{
 		width: 130px;
 		height: 40px;
@@ -186,8 +200,8 @@
 						<td>${SupplierPurchase.spQty} 개</td>
 						<td><fmt:formatDate value="${SupplierPurchase.spDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
-							<a href="#"><button>수정</button></a>
-							<a href="#"><button>삭제</button></a>
+							<a href="#"><button id="btnMod">수정</button></a>
+							<a href="#"><button id="btnDel">삭제</button></a>
 						</td>
 					</tr>
 				</c:forEach>

@@ -8,7 +8,7 @@
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
-		background: url("${pageContext.request.contextPath}/images/title/cTitle.png") no-repeat;
+		background: url("${pageContext.request.contextPath}/images/title/csTitle.png") no-repeat;
 		background-size: 100%, 200px;
 	}
 	div#title h1{
@@ -19,7 +19,14 @@
 	div#title h3{
 		letter-spacing: 3px;
 		padding-left: 60px;
-	}	
+	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -114,6 +121,22 @@
 		border: 1px solid white;
 		border-radius: 5px;
 	}
+	.btnMod {
+		color: white;
+		border: 1px solid white;
+		background-color: #87cefa;
+		width: 40px;
+    	height: 30px;
+    	border-radius: 5px;
+	}
+	.btnDel {
+		color: white;
+		border: 1px solid white;
+		background-color: #f08080;
+		width: 40px;
+    	height: 30px;
+    	border-radius: 5px;
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -182,7 +205,7 @@
 						<td>${supplier.sTel }</td>
 						<td>${supplier.sFax }</td>
 						<td>
-							<a href="${pageContext.request.contextPath}/client/supplierMod.do?no=${supplier.sNo}"><button style="cursor: pointer">수정</button></a>
+							<a href="${pageContext.request.contextPath}/client/supplierMod.do?no=${supplier.sNo}"><button class="btnMod" style="cursor: pointer">수정</button></a>
 							<button class="btnDel" style="cursor: pointer" data-sNo="${supplier.sNo }">삭제</button>
 						</td>
 					</tr>

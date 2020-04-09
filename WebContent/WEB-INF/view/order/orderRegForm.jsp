@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>       
 <%@ include file="../include/header.jsp" %>
 <style>
 	/** form 타이틀 **/
@@ -8,7 +10,7 @@
 		height: 200px;
 		line-height: 100px;
 		margin-top: 50px;
-		background: url("${pageContext.request.contextPath}/images/title/soTitle.png") no-repeat;
+		background: url("${pageContext.request.contextPath}/images/title/oTitle.png") no-repeat;
 		background-size: 100%, 200px;
 	}
 	div#title h1{
@@ -39,10 +41,42 @@
 		text-align: center;
 	}	
 	div#order_container div.order_box img{
-		width: 600px;
-		height: 600px;
+		width: 500px;
+		height: 500px;
 		border: 3px solid black;
 	}
+	div.product_info{
+		width: 503px;
+		height: 120px;
+		background: #eee;									
+		text-align: left;
+		margin-left: 155px;
+		
+	}
+	div.product_info p:first-child{
+		padding: 10px;
+	}
+	div.product_info p:nth-child(2){
+		padding-left: 10px;
+	}
+ 	div.product_info p:last-child{
+		padding-left: 10px;
+	}
+	span#cate{
+		background: #CD3B3B;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 
+	}
+	span#pName{
+		color: #353535;
+		font-size: 20px;
+		font-weight: bold;
+	}
+	span#pCost{
+		color: #747474;
+	}			
 	div#order_container div.order_box div#point{
 		width: 100%;
     	height: 50px;
@@ -55,7 +89,6 @@
 		float: left;
 		font-weight: bold;
 		font-size: 14px;
-
 	}
 	.text{
 		margin-bottom: 30px;
@@ -72,14 +105,14 @@
 		font-weight: bold;
 		font-size: 18px;
 	}
-	#btnPname{
+	#btnQty{
 		width: 130px;
     	height: 35px;
  		color: white;
 		outline: none;
 		border: none;
 		border-radius: 5px; 
-		background: #A6A6A6;
+		background: #FFCC33;
 	}	
 	#add{
 	width: 65%;
@@ -119,10 +152,16 @@
 	}
 	input[name*='oPname']{
 		font-weight: bold;
-		color: #336600;		
+		color: #336600;
+		font-size: 16px;
+		background: #eee;				
 	}
 	input[name*='oQty']{
 		font-weight: bold;
+	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;		
 	}	
 </style>
 <section>
@@ -134,7 +173,12 @@
 	</div>
 	<div id="order_container">
 		<div class="order_box">
-			<img src="${pageContext.request.contextPath}/images/main/인텔리제이.png">
+			<img src="${pageContext.request.contextPath}/productIMG/${order.pPicPath}">
+			<div class = "product_info">
+				<p><span id="cate">&nbsp${order.pCate}&nbsp</span> <span id="pName">${order.pName}</span></p>
+				<p><b>공급회사 : </b>${order.pSno.sName}</p>
+				<p><b>판매가격 : </b><fmt:formatNumber value="${order.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${order.pCost}" pattern="\#,###.##"/>)</span></p>			
+			</div>
 		</div>
 		<div class="order_box">
 			<div id="point">
@@ -142,7 +186,7 @@
 			</div>
 			<form>
 				<label>&nbsp<span class="red">* </span>주문번호</label>
-				<input type="text" name="oNo" class="text" readonly="readonly"><br>
+				<input type="text" name="oNo" class="text" readonly="readonly" value="POO${order.pNo}"><br>
 				
 				<label>&nbsp<span class="red">* </span>주문일자</label>
 				<input type="date" name="oDate" class="text"><br>
@@ -151,11 +195,11 @@
 				<input type="text" name="oCname" class="text"><br>
 				
 				<label>&nbsp<span class="red">* </span>품목명</label>
-				<input type="text" name="oPname" class="text">
-				<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
+				<input type="text" name="oPname" class="text" readonly="readonly" value="${order.pName}"><br>
 				
 				<label>&nbsp<span class="red">* </span>주문수량</label>
-				<input type="text" name="oQty" placeholder=" >> 품목명 조회 후 수량조회" class="text"><br>
+				<input type="text" name="oQty" placeholder=" >> 재고조회 후 수량입력" class="text">
+				<input type="button" value="재고조회" id="btnQty" style="cursor: pointer"><br>
 				
 				<label>&nbsp&nbsp&nbsp고객요구사항</label>
 				<textarea rows="10" cols="60"></textarea><br>
