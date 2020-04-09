@@ -32,7 +32,7 @@ public class ProductDetailHandler implements CommandHandler{
 				Product product2 = dao.selectProductByCate(conn, pcate);
 				req.setAttribute("cate", product2);
 				
-				List<Product> list = dao.selectProductBytt(conn, pcate);
+				List<Product> list = dao.selectProductListByCateNo(conn, pcate);
 				req.setAttribute("list", list);
 				
 			}catch(Exception e) {

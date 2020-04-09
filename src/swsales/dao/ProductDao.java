@@ -459,7 +459,7 @@ public class ProductDao {
 	
 	
 	
-	public List<Product> selectProductBytt(Connection conn, int no) throws SQLException {
+	public List<Product> selectProductListByCateNo(Connection conn, int no) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
 		
