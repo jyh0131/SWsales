@@ -31,11 +31,11 @@ public class ClientPagingHandler extends HttpServlet implements CommandHandler{
 			if (req.getParameter("page") != null) {
 				page = Integer.parseInt(req.getParameter("page"));
 			}
-			Client last = dao.selectClientLastData(conn);
+			List<Client> last = dao.selectClientByAll(conn);
 	
 			Paging paging = new Paging();
 			paging.setPage(page);
-			paging.setTotalCount(last.getcNo());
+			paging.setTotalCount(last.size());
 
 			List<Client> list = dao.selectClientPaging(conn, page);
 			req.setAttribute("list", list);

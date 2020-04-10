@@ -26,30 +26,62 @@ public class SWTotalSaleDao {
 		
 		try {
 			String sql = "select	MID(o.o_date , 1, 7) as 날짜, " + 
-					"		cate.cate_name as 분류, " + 
-					"		p.p_name as 품목명, " + 
-					"		o.o_no as 주문번호, " + 
-					"		o.o_qty as 주문수량, " + 
-					"		o.o_qty*p.p_price as 판매금액 " + 
-					"  from `order` o natural join product p natural join category cate " + 
-					" where p.p_no  = o.o_pno and cate.cate_no = p.p_cate " + 
-					"group by 날짜, 분류, 품목명, 주문번호";
+					"							cate.cate_name as 분류, " + 
+					"							p.p_name as 품목명, " + 
+					"							sum(o.o_qty) as 주문수량, " + 
+					"							o.o_qty*p.p_price as 판매금액 " + 
+					"					  from `order` o natural join product p natural join category cate " + 
+					"					 where p.p_no  = o.o_pno and cate.cate_no = p.p_cate " + 
+					"					group by 날짜, 분류, 품목명";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			List<SWTotalSale> list = new ArrayList<SWTotalSale>();
 			while(rs.next()) {
-				SWTotalSale swTotal = new SWTotalSale();
-				swTotal.setO_date(rs.getString(1));
-				swTotal.setCate_name(rs.getString(2));
-				swTotal.setP_name(rs.getString(3));
-				swTotal.setO_no(rs.getInt(4));
-				swTotal.setO_qty(rs.getInt(5));
-				swTotal.setSalesAmount(rs.getInt(6));
+				SWTotalSale swTotalSale = new SWTotalSale();
+				swTotalSale.setO_date(rs.getString(1));
+				swTotalSale.setCate_name(rs.getString(2));
+				swTotalSale.setP_name(rs.getString(3));
+				swTotalSale.setO_qty(rs.getInt(4));
+				swTotalSale.setSalesAmount(rs.getInt(5));
 				
-				list.add(swTotal);
+				list.add(swTotalSale);
 			}
 			return list;
 			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+	
+	public List<SWTotalSale> selectSWTotalSaleByPName(Connection conn, SWTotalSale swTotal) throws SQLException{
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select	MID(o.o_date , 1, 7) as 날짜, " + 
+					"				cate.cate_name as 분류, " + 
+					"				p.p_name as 품목명, " + 
+					"				sum(o.o_qty) as 주문수량, " + 
+					"				o.o_qty*p.p_price as 판매금액 " + 
+					"		from `order` o natural join product p natural join category cate " + 
+					"		where p.p_no  = o.o_pno and cate.cate_no = p.p_cate and p.p_name like concat ('%', ?, '%')" + 
+					"		group by 날짜, 분류, 품목명";
+			pstmt = conn.prepareCall(sql);
+			pstmt.setString(1, swTotal.getP_name());
+			rs = pstmt.executeQuery();
+			List<SWTotalSale> list = new ArrayList<SWTotalSale>();
+			while(rs.next()) {
+				SWTotalSale swTotalSale = new SWTotalSale();
+				swTotalSale.setO_date(rs.getString(1));
+				swTotalSale.setCate_name(rs.getString(2));
+				swTotalSale.setP_name(rs.getString(3));
+				swTotalSale.setO_qty(rs.getInt(4));
+				swTotalSale.setSalesAmount(rs.getInt(5));
+				
+				list.add(swTotalSale);
+			}
+			return list;
 		} finally {
 			JDBCUtil.close(rs);
 			JDBCUtil.close(pstmt);

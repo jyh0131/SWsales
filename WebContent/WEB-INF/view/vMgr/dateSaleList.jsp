@@ -84,6 +84,9 @@
 	fieldset input{
 		height:25px;
 	}
+	.date{
+		font-weight: bold;
+	}
 	table{
 		border-collapse: collapse;
 		width:100%;
@@ -136,6 +139,7 @@
 				<input type="text" id="datepickerEnd" name="endDate">
 				<input type="submit" value="검색" id="Search" style="cursor:pointer">
 				<input type="button" value="전체" id="All" style="cursor:pointer">
+				<span>${dateText }</span>
 			</fieldset>
 			<table>
 				<tr>

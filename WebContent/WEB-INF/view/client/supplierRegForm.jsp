@@ -144,6 +144,26 @@
 			location.href="${pageContext.request.contextPath}/client/supplierList.do"
 		})
 		
+		$("form").submit(function () {
+			var sName = $("input[name='sName']").val();
+			if(sName == ""){
+				alert("회사명을 입력하세요.");
+				return false;
+			}
+			
+			var sBln = $("input[name='sBln']").val();
+			if(sBln == ""){
+				alert("사업자등록번호를 입력하세요.");
+				return false;
+			}
+			
+			var sTel = $("input[name='sTel']").val();
+			if(sTel == ""){
+				alert("전화번호를 입력하세요.");
+				return false;
+			}
+		})
+		
 		var sno = $("input[name=sNo]").val();
 		console.log(sno);
 		if(sno < 10){

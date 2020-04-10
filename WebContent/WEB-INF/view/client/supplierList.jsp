@@ -123,7 +123,7 @@
 	}
 	.btnMod {
 		color: white;
-		border: 1px solid white;
+		border: 1px white;
 		background-color: #87cefa;
 		width: 40px;
     	height: 30px;
@@ -131,7 +131,7 @@
 	}
 	.btnDel {
 		color: white;
-		border: 1px solid white;
+		border: 1px white;
 		background-color: #f08080;
 		width: 40px;
     	height: 30px;

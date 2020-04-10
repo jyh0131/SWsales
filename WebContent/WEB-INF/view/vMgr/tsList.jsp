@@ -47,10 +47,27 @@
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
+		font-size: 17px;
 		height:38px;
 		line-height: 38px;
 		border:none;
+	}
+	#Search{
+		width: 60px;
+		height: 36px;
+		background-color: #384D75;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+	}
+	#All{
+		width: 60px;
+		height: 36px;
+		background-color: #ccc;
+		border: 1px solid white;
+		color: white;
+		border-radius: 5px;
+		right: 0;
 	}
 	fieldset input{
 		height:25px;
@@ -95,6 +112,14 @@
 		padding-right:8px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function (){
+		$("#All").click(function(){
+			location.href="ts.do";
+		})
+	});
+</script>
 <section>
 	<div id="title">
 		<h1>Transaction Specification</h1>
@@ -106,37 +131,45 @@
 			<a href="${pageContext.request.contextPath}/vMgr/swTotalSale.do"><button class="btnMenu">S/W 전체 판매현황</button></a>
 			<a href="${pageContext.request.contextPath}/vMgr/ts.do"><button class="btnMenu">거래명세</button></a>
 		</div>
-		<table>
-			<tr>
-				<th>공급회사명</th>
-				<th>주문일자</th>
-				<th>고객상호명</th>
-				<th>품목명</th>
-				<th>수량</th>
-				<th>단가</th>
-				<th>금액</th>
-				<th>세금</th>
-				<th>총납품금액</th>
-			</tr>
-			<c:forEach var="ts" items="${list }">
-					<tr class="tbl_point">
-						<td>${ts.s_name }</td>
-						<td>${ts.o_date }</td>
-						<td>${ts.c_name }</td>
-						<td>${ts.p_name }</td>
-						<td>${ts.o_qty }</td>
-						<td class="price"><fmt:formatNumber value="${ts.p_price }" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${ts.salesAmount }" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${ts.tax }" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${ts.totalDA }" pattern="#,###,###"/>　</td>
-						<c:set var="sum" value="${sum + ts.totalDA }"/>
-					</tr>
-			</c:forEach>
-		</table>
-		<fieldset class="total">
-			<label>총 납품금액</label>
-			<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
-		</fieldset>
+		<form action="tsSearch.do" method="post">
+			<fieldset>
+					<label>품 목 명</label>
+					<input type="text" name="tsSearch">
+					<input type="submit" value="조회" id="Search" style="cursor:pointer">
+					<input type="button" value="전체" id="All" style="cursor:pointer">
+				</fieldset>
+			<table>
+				<tr>
+					<th>공급회사명</th>
+					<th>주문일자</th>
+					<th>고객상호명</th>
+					<th>품목명</th>
+					<th>수량</th>
+					<th>단가</th>
+					<th>금액</th>
+					<th>세금</th>
+					<th>총납품금액</th>
+				</tr>
+				<c:forEach var="ts" items="${list }">
+						<tr class="tbl_point">
+							<td>${ts.s_name }</td>
+							<td>${ts.o_date }</td>
+							<td>${ts.c_name }</td>
+							<td>${ts.p_name }</td>
+							<td>${ts.o_qty }</td>
+							<td class="price"><fmt:formatNumber value="${ts.p_price }" pattern="#,###,###"/>　</td>
+							<td class="price"><fmt:formatNumber value="${ts.salesAmount }" pattern="#,###,###"/>　</td>
+							<td class="price"><fmt:formatNumber value="${ts.tax }" pattern="#,###,###"/>　</td>
+							<td class="price"><fmt:formatNumber value="${ts.totalDA }" pattern="#,###,###"/>　</td>
+							<c:set var="sum" value="${sum + ts.totalDA }"/>
+						</tr>
+				</c:forEach>
+			</table>
+			<fieldset class="total">
+				<label>총 납품금액</label>
+				<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
+			</fieldset>
+		</form>
 	</div>
 </section>	
 <%@include file="../include/footer.jsp"%>
