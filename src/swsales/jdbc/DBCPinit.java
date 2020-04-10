@@ -33,7 +33,7 @@ public class DBCPinit extends HttpServlet {
 	private void initConnectionPool() {
 		try {
 			String url = "jdbc:mysql://192.168.10.145:3306/yi_java3st_1team?"  //test DB 가정
-						+ "useUnicode=true&characterEncoding=utf8";
+						+ "useUnicode=true&characterEncoding=utf8&useSSL=false";
 			String user = "root";
 			String password = "rootroot";
 

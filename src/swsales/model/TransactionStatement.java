@@ -18,6 +18,11 @@ public class TransactionStatement {
 		// TODO Auto-generated constructor stub
 	}
 
+	public TransactionStatement(String p_name) {
+		super();
+		this.p_name = p_name;
+	}
+
 	public TransactionStatement(String s_name, Date o_date, String c_name, String p_name, int o_qty, int p_price,
 			int salesAmount, int tax, int totalDA) {
 		super();

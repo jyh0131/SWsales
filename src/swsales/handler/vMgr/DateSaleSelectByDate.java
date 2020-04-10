@@ -34,6 +34,8 @@ public class DateSaleSelectByDate implements CommandHandler {
 				List<DateSale> list = dao.selectDateSaleByDate(conn, selectDate);
 				
 				req.setAttribute("list", list);
+				req.setAttribute("dateText", "조회기간은 [ <span class='date'>" + startDate + "</span> ] 부터 [ <span class='date'>" + endDate + "</span> ] 까지 입니다.");
+//				req.setAttribute("end", endDate);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally {

@@ -30,7 +30,6 @@
 		width: 100%;
 		height: 700px;
 		margin-top: 100px;
-		border: 1px solid red;
 	}
 	div#order_container div.order_box{
 		width: 50%;
@@ -47,31 +46,32 @@
 	}
 	div.product_info{
 		width: 503px;
-		height: 120px;
+		height: 150px;
 		background: #eee;									
 		text-align: left;
 		margin-left: 155px;
+		margin-top: 20px;
 		
 	}
 	div.product_info p:first-child{
-		padding: 10px;
+		padding: 20px;
 	}
 	div.product_info p:nth-child(2){
-		padding-left: 10px;
+		padding-left: 20px;
 	}
  	div.product_info p:last-child{
-		padding-left: 10px;
+		padding-left: 20px;
 	}
 	span#cate{
 		background: #CD3B3B;
 		color: white;
 		font-weight: bold;
 		border-radius:5px;
-		font-size: 16px; 
+		font-size: 20px; 
 	}
 	span#pName{
 		color: #353535;
-		font-size: 20px;
+		font-size: 25px;
 		font-weight: bold;
 	}
 	span#pCost{
