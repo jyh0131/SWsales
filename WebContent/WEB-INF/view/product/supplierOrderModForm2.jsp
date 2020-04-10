@@ -152,31 +152,32 @@
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/sOrderAdd2.do" method="post">
+		<form action="${pageContext.request.contextPath}/product/supplierOrderMod2.do" method="post">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>매입번호</label>
-					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo+1 }" readonly="readonly"><br>
+					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo}" readonly="readonly"><br>
+					<input type="hidden" name="no" value="${SupplierPurchase.spNo}">
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="spPname" class="text" placeholder=" >> 품목명 조회">
+					<input type="text" name="spPname" class="text" placeholder=" >> 품목명 조회" value="${SupplierPurchase.spPname.pName }">
 					<input type="button" value="조회" id="btnPname"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="spSname" class="text" readonly="readonly"><br>
+					<input type="text" name="spSname" class="text" readonly="readonly" value="${SupplierPurchase.spSname.sName}"><br>
 					
 					<label><span class="red">* </span>매입가격 <span class="cnt">(1개당)</span></label>
-					<input type="text" name="spPcost" class="text" readonly="readonly"><br>
+					<input type="text" name="spPcost" class="text" readonly="readonly" value="${SupplierPurchase.spPcost.pCost}"><br>
 					
 					<label><span class="red">* </span>매입수량</label>
-					<input type="text" name="spQty" class="text"><br>
+					<input type="text" name="spQty" class="text" value="${SupplierPurchase.spQty}"><br>
 					
 					<label><span class="red">* </span>매입 등록일자</label>
-					<input type="date" name="spDate" class="text"><br>
+					<input type="date" name="spDate" class="text" value="${SupplierPurchase.spDate }"><br>
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
+			<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
 			<input type="button" value="취소" id="btnReset" style="cursor: pointer">					
 			</div>
 		</form>

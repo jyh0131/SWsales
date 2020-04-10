@@ -147,4 +147,24 @@ public class SupplierOrderDao {
 		return soPno;
 	}
 
+	//추가
+	public SupplierOrder selectSupplierOrderByNo(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select so_no, so_pno, p.p_name, s.s_no, s.s_name, p.p_cost, so_qty, so_date from supplier_order so left join product p on so.so_pno = p.p_no left join supplier s on p.p_sno = s.s_no where so.so_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {				
+				return getSOJoin(rs);
+			}
+			return null;
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+
 }

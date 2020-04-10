@@ -207,7 +207,7 @@
 						<td>${SupplierPurchase.spQty} 개</td>
 						<td><fmt:formatDate value="${SupplierPurchase.spDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
-							<a href="#"><button id="btnMod">수정</button></a>
+							<a href="${pageContext.request.contextPath}/product/supplierOrderMod2.do?spNo=${SupplierPurchase.spNo}"><button id="btnMod" style="cursor: pointer">수정</button></a>
 							<a href="#"><button id="btnDel">삭제</button></a>
 						</td>
 					</tr>

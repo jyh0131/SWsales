@@ -146,33 +146,34 @@
 		<div id="title">
 			<h1>Software Product Order Registration</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">발주 이력 등록</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">&nbsp;발주 이력 등록&nbsp;</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/sOrderAdd1.do" method="post">
+		<form action="${pageContext.request.contextPath}/product/supplierOrderMod1.do" method="post">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>발주번호</label>
-					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
+					<input type="text" name="soNo" class="text" value="SO00${SupplierOrder.soNo}" readonly="readonly"><br>
+					<input type="hidden" name="no" value="${SupplierOrder.soNo}">
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="soPname" class="text" placeholder=" >> 품목명 조회">
+					<input type="text" name="soPname" class="text" placeholder=" >> 품목명 조회" value="${SupplierOrder.soPname.pName}">
 					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="soSname" class="text" readonly="readonly" ><br>
+					<input type="text" name="soSname" class="text" readonly="readonly" value="${SupplierOrder.soSname.sName}"><br>
 					
 					<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
-					<input type="text" name="soPcost" class="text"  readonly="readonly"><br>
+					<input type="text" name="soPcost" class="text"  readonly="readonly" value="${SupplierOrder.soPcost.pCost}"><br>
 					
 					<label><span class="red">* </span>발주수량</label>
-					<input type="text" name="soQty" class="text"><br>
+					<input type="text" name="soQty" class="text" value="${SupplierOrder.soQty}"><br>
 					
 					<label><span class="red">* </span>발주 등록일자</label>
-					<input type="date" name="soDate" class="text"><br>
+					<input type="date" name="soDate" class="text" value="${SupplierOrder.soDate}"><br>
 				</div>
 			</div>
 			<div id="add">

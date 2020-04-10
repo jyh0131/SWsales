@@ -41,7 +41,8 @@
 	}
 	.red{
 		color: red;
-		
+		font-weight: bold;
+		font-size: 18px;
 	}	
 	#regForm{
 		width: 65%;
@@ -132,10 +133,67 @@
 	input[name*='pQty']{
 		font-weight: bold;	
 	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;
+	}
+	span.cnt{
+		color: blue;
+		font-size: 12px;
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-
+$(function() {
+	$("#btnPname").click(function () {
+		var pName = $("#pName").val();
+		if(pName == ""){
+			alert("품목명을 입력해주세요.");
+		}else{
+			$.ajax({
+				url:"${pageContext.request.contextPath}/product/productSearchName.do",
+				type:"get",
+				data:{"pName":pName},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					if(res.result == "success"){
+						alert("등록된 품목입니다.");
+					}else if(res.result == "fail"){
+						alert("등록 가능한 품목입니다.");
+					}
+				}
+			})
+		}
+	})
+	
+	
+	$("#btnSname").click(function() {
+		var sName = $("#sName").val();
+		if(sName == ""){
+			alert("회사명을 입력해주세요");
+		}else{
+			$.ajax({
+				url:"${pageContext.request.contextPath}/client/supplierSearchName.do",
+				type:"get",
+				data:{"sName":sName},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					if(res.result == "success"){
+						alert("등록된 회사입니다.");
+					}else if(res.result == "fail"){
+						alert("공급회사 등록이 필요합니다.");
+					}
+				}
+			})
+		}
+	})
+	
+	$("#btnReset").click(function() {
+		location.href="${pageContext.request.contextPath}/product/productList2.do";
+	})
+})
 </script>
 <section>
 		<!-- form 타이틀 -->
@@ -168,17 +226,17 @@
 					<br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" value="${product.pName}">
+					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" value="${product.pName}" id="pName">
 					<input type="button" value="중복확인" id="btnPname"><br>
 					
-					<label><span class="red">* </span>공급가격</label>
+					<label><span class="red">* </span>공급가격 <span class="cnt">(1개당)</span></label>
 					<input type="text" name="pCost" class="text" value="${product.pCost}"><br>
 					
-					<label><span class="red">* </span>판매가격</label>
+					<label><span class="red">* </span>판매가격 <span class="cnt">(1개당)</span></label>
 					<input type="text" name="pPrice" class="text" value="${product.pPrice}"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회" value="${product.pSno.sName}">
+					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회" value="${product.pSno.sName}" id="sName">
 					<input type="button" value="조 회" id="btnSname"><br>
 					
 					<label><span class="red">* </span>최초재고수량</label>

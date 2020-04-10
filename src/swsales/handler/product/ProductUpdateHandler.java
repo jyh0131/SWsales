@@ -65,15 +65,7 @@ public class ProductUpdateHandler implements CommandHandler{
 			Date pDate = dt.parse(sDate);
 			
 			String pPicPath = multi.getFilesystemName("pPic");
-			System.out.println(pNo); //96
-			System.out.println(pCate); //
-			System.out.println(pName); //96
-			System.out.println(pCost); //96
-			System.out.println(pPrice); //96
-			System.out.println(pSno); //96
-			System.out.println(pQty); //96
-			System.out.println(pDate); //96
-			System.out.println(pPicPath); //96
+
 			Connection conn = null;
 			
 			try {

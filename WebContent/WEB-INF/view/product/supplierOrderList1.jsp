@@ -227,7 +227,7 @@
 						<td>${SupplierOrder.soQty}개</td>
 						<td><fmt:formatDate value="${SupplierOrder.soDate}" type="both" pattern="yyyy-MM-dd"/></td>	
 						<td>
-							<a href="#"><button id="btnMod" style="cursor: pointer">수정</button></a>
+							<a href="${pageContext.request.contextPath}/product/supplierOrderMod1.do?soNo=${SupplierOrder.soNo}"><button id="btnMod" style="cursor: pointer">수정</button></a>
 							<button class="btnDel" style="cursor: pointer" data-soNo="${SupplierOrder.soNo }">삭제</button>
 						</td>
 					</tr>

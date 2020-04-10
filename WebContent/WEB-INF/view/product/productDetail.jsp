@@ -183,7 +183,7 @@
 		<div id="title">
 			<h1>Software Product Detail</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 상품 리스트</a> > <span id="k_title">소프트웨어 제품 상세정보</span> : <span id="d_title">[${detail.pName } - ${detail.pCate}]</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 제품 리스트</a> > <span id="k_title">소프트웨어 제품 상세정보</span> : <span id="d_title">[${detail.pName } - ${detail.pCate}]</span></h3>
 		</div>
 		<div id="proAdd">
 			<a href="${pageContext.request.contextPath}/product/productMod.do?pNo=${detail.pNo}"><button id="btnMod">수 정</button></a>	
