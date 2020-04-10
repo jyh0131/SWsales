@@ -79,6 +79,39 @@ public class BoardDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+	//listBoard(Paging)
+		public List<Board> listBoardPaging(Connection conn, int page) throws SQLException{
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			
+			int startNum = (page-1)*10+1;
+			int endNum = page*10;
+			
+			try {
+				String sql = "SELECT * from (SELECT @rownum:=@rownum+1 rnum, b.* from board b , (SELECT @ROWNUM := 0) R where 1=1 " 
+						   + "order by b_no desc) list WHERE rnum >= ? AND rnum <=?";
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, startNum);
+				pstmt.setInt(2, endNum);
+				rs = pstmt.executeQuery();
+				ArrayList<Board> list = new ArrayList<>();
+				while(rs.next()) {
+					Board board = new Board(rs.getInt("b_no"), 
+										    rs.getString("b_id"), 
+										    rs.getString("b_name"), 
+										    rs.getString("b_title"), 
+										    rs.getTimestamp("b_regdate"), 
+										    rs.getTimestamp("b_moddate"), 
+										    rs.getInt("b_read_cnt"),
+										    rs.getString("b_dept"));
+					list.add(board);
+				}
+				return list;
+			} finally {
+				JDBCUtil.close(rs);
+				JDBCUtil.close(pstmt);
+			}
+		}
 	//listBoard
 		public List<Board> searchBoardList(Connection conn, String search) throws SQLException{
 			PreparedStatement pstmt = null;

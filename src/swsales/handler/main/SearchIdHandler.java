@@ -15,15 +15,11 @@ public class SearchIdHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("get")) {
+			req.setAttribute("error", 0);
 			return "/WEB-INF/view/main/searchIdForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")) {
 			String no = req.getParameter("empNo");
 			String empName = req.getParameter("empName");
-			if(no.equals("") || no.equals("EE") || empName.equals("")) {
-				req.setAttribute("error", 1);
-				
-				return "/WEB-INF/view/main/searchIdForm.jsp"; 
-			}
 			int empNo = Integer.parseInt(no.substring(2));
 			
 			Connection conn = null;
@@ -34,11 +30,12 @@ public class SearchIdHandler implements CommandHandler {
 				Employee emp = new Employee(empNo, empName);
 				Employee employee = dao.selectEmployeeByID2(conn, emp);
 				if(employee == null) {
-					req.setAttribute("error", 2);
+					req.setAttribute("error", 1);
 					
 					return "/WEB-INF/view/main/searchIdForm.jsp"; 
 				}
 				req.setAttribute("emp", employee);
+				req.setAttribute("error", 0);
 				return "/WEB-INF/view/main/searchPwForm.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -93,15 +94,15 @@
 				alert("사용자ID와 비밀번호를 정확히 입력해주세요.")
 				return false;
 			}
-			
-			var result = ${error};
-			console.log(result);
-			if(result == 1){
-				alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.");
-			}else if(result == 2){
-				alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
-			}
 		})
+		
+		var result = ${error};
+		console.log(result);
+		if(result == 1){
+			alert("해당 아이디가 존재하지 않습니다. 회원가입을 해주세요.");
+		}else if(result == 2){
+			alert("비밀번호가 틀렸습니다. 다시 확인해주세요.");
+		}
 	})
 </script>
 </head>

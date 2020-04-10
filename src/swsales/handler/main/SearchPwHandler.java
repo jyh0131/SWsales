@@ -36,6 +36,7 @@ public class SearchPwHandler implements CommandHandler {
 				Employee employee = dao.selectEmployeeByMail(conn, emp);
 				
 				if(employee == null || !employee.getEmpMail().equals(empMail)) {
+					req.setAttribute("emp", emp);
 					req.setAttribute("error", 1);
 					return "/WEB-INF/view/main/searchPwForm.jsp";
 				}

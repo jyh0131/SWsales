@@ -85,6 +85,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function() {
+		$("form").submit(function (e) {
+			var empId = $("input[name='empId']").val();
+			var empMail = $("input[name='empMail']").val();
+			
+			if(empId == "" || empMail == ""){
+				alert("사용자ID와 등록된 이메일을 정확히 입력해주세요.")
+				return false;
+			}
+		})
 		var result = ${error};
 		console.log(result);
 		if(result == 1){
