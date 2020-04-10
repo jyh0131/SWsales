@@ -146,7 +146,7 @@
 		outline: none;
 		background: #eee;
 	}
-	input[name*='oCname']{
+	select[name*='oCname']{
 		font-weight: bold;
 		color: #990000;			
 	}

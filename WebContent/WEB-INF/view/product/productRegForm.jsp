@@ -119,7 +119,7 @@
 	select[name*='pCate']{
 		font-weight: bold;
 	}
-	input[name*='pName']{
+	select[name*='pName']{
 		font-weight: bold;
 		color: #336600;
 	}
@@ -127,7 +127,7 @@
 		font-weight: bold;
 		color: blue;
 	}
-	input[name*='pSno']{
+	select[name*='pSno']{
 		font-weight: bold;
 		color: #990000;	
 	}

@@ -111,7 +111,7 @@
 		outline: none;
 		background: #eee;
 	}
-	input[name*='soPname']{
+	select[name*='soPname']{
 		font-weight: bold;
 		color: #336600;
 	}
