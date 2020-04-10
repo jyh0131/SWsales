@@ -16,6 +16,7 @@ public class LoginHandler implements CommandHandler {
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("get")) {
+			req.setAttribute("error", 0);
 			return "/WEB-INF/view/main/loginForm.jsp";
 		}else if(req.getMethod().equalsIgnoreCase("post")) {
 			String id = req.getParameter("id");
