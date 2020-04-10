@@ -17,7 +17,6 @@ public class OrderSearchHandler implements CommandHandler{
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
 		if(req.getMethod().equalsIgnoreCase("post")) {
 			String sinput = req.getParameter("sinput");
-			System.out.println(sinput);
 			
 			Connection conn = null;
 			
@@ -26,7 +25,6 @@ public class OrderSearchHandler implements CommandHandler{
 				
 				ProductDao dao = ProductDao.getInstance();
 				Product pName = new Product(null, sinput, null);
-				System.out.println(pName);
 				List<Product> list = dao.selectProductListByName(conn, pName);
 				req.setAttribute("list", list);
 

@@ -3,6 +3,7 @@ package swsales.handler.product;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -28,6 +29,12 @@ public class SupplierOrder1InsertHandler implements CommandHandler{
 				
 				SupplierOrder lastNo = dao.selectSupplierOrderLastDate(conn);
 				req.setAttribute("SupplierOrder", lastNo);
+				
+				//품목명 가져오기
+				ProductDao dao2 = ProductDao.getInstance();
+				List<Product> list = dao2.selectProductByAll(conn);
+				req.setAttribute("list", list);
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {
@@ -42,7 +49,7 @@ public class SupplierOrder1InsertHandler implements CommandHandler{
 				
 				SupplierOrderDao dao = SupplierOrderDao.getInstance();
 				
-				//품목명 - 번호
+				//품목명 - 번호(고쳐야할듯 - 4/10)
 				Product pName = new Product(req.getParameter("soPname"));
 				ProductDao dao2 = ProductDao.getInstance();
 				Product pNo = dao2.selectProductByName(conn, pName);
