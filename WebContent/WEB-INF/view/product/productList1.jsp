@@ -22,6 +22,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}	
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -138,7 +145,7 @@
 		<div id="title">
 			<h1>Software Product All List</h1>
 			<hr>
-			<h3>제품 관리 > <span id="k_title">소프트웨어 제품 전체 리스트</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 제품 리스트</a> > <span id="k_title">소프트웨어 제품 전체 리스트</span></h3>
 		</div>
 		<div id="list_container">
 			<form action="productSearch.do" method="post">
