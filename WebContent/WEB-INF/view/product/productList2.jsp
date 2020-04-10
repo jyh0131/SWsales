@@ -92,7 +92,7 @@
 		height: 350px;
 		float: left;
 		position: relative;
-		margin-bottom: 15px;
+		margin-bottom: 30px;
 	}
 	div.productImg img{
 		width: 300px;
@@ -101,17 +101,20 @@
 	}
 	div.productImg p{
 		font-weight: bold;
-		text-align: center;
+		text-align: left;
 		line-height: 20px;
-		font-size: 15px;
+		font-size: 20px;
+		padding-left:20px; 
+		padding-top: 5px;
+		color: #353535;		
 	}
-	span#cate{
+ 	span#cate{
 		background: #CD3B3B;
 		color: white;
 		font-weight: bold;
 		border-radius:5px;
 		font-size: 16px; 
-	}	
+	}
 	
 	div.caption{
 		width: 300px;
@@ -143,7 +146,7 @@
 		})
 		$("#cate2").click(function(){
 			location.href="productCate2List.do";
-			$("#cate2").css({'color':'navy','background':'#FFCD12'});			
+			$("#cate2").css({'color':'navy','background':'#FFCD12'});
 		})
 		$("#cate3").click(function(){
 			location.href="productCate3List.do";
@@ -160,7 +163,8 @@
 		$("#cate6").click(function(){
 			location.href="productCate6List.do";
 			$("#cate6").css({'color':'navy','background':'#FFCD12'});
-		})		
+		})
+
 	});
 </script>
 	<section>
@@ -192,9 +196,10 @@
 							<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/></p>
 						</div>
 					</a>
-					<p><span id="cate">&nbsp${product.pCate}&nbsp</span> ${product.pName}</p>		
+					<p class="category"><span id="cate">&nbsp;${product.pCate}&nbsp;</span> ${product.pName}</p>
 				</div>
 			</c:forEach>
 		</div>		
+ 
 </section>	
 <%@ include file="../include/footer.jsp" %>
