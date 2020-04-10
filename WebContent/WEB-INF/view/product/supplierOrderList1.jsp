@@ -96,9 +96,11 @@
 		height: 46px;
 	}
 	th{
-		border-top: 2px solid #878787;
-		background-color: #F9FAFB;
+		border-top: 3px solid #747474;/* #878787; */
+		border-bottom: 5px double #747474;/* #878787; */
+		background-color: #BDBDBD;/* #F9FAFB; */
 		font-size: 17px;
+		height: 55px;
 	}
 	tr.tbl_point:hover{
 		background: #5D5D5D;
@@ -140,6 +142,10 @@
 		border: 1px solid #eee;
 		position: absolute;
 		right: 0; 
+	}
+	span#cost{
+		color: blue;
+		font-size: 14px;
 	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
@@ -183,11 +189,12 @@
 				</div>
 			</form> -->
 			<table id="tbl">
-				<tr>
+				<tr id="tbl_title">
 					<th>발주번호</th>
 					<th>품목명</th>
 					<th>공급회사명</th>
-					<th>발주가격</th>
+					<th>발주가격<br>
+						<span id="cost">(공급가격-1개당)</span></th>
 					<th>발주수량</th>
 					<th>발주일자</th>
 					<th>수정/삭제</th>

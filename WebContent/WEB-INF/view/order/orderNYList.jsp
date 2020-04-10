@@ -120,15 +120,17 @@ th, td {
 	height: 46px;
 }
 
-th {
-	border-top: 2px solid #878787;
-	background-color: #F9FAFB;
+th{
+	border-top: 3px solid #747474;/* #878787; */
+	border-bottom: 5px double #747474;/* #878787; */
+	background-color: #BDBDBD;/* #F9FAFB; */
 	font-size: 17px;
+	height: 55px;
 }
 
 tr.tbl_point:hover {
-	background: black;
-	color: red;
+		background: #5D5D5D;
+		color: yellow;
 }
 
 #btnAdd {
@@ -208,6 +210,7 @@ span#y {
 				<th>주문담당자</th>
 			</tr>
 			<c:forEach var="Order" items="${list }">
+					<tr class="tbl_point">			
 					<td class="tbl_point">
 					<c:if test="${Order.oOk == '0'}">
 						<c:choose>

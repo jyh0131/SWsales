@@ -106,7 +106,6 @@
 		font-size: 20px;
 		padding-left:20px; 
 		padding-top: 5px;
-		color: #353535;		
 	}
  	span#cate{
 		background: #CD3B3B;
@@ -129,7 +128,11 @@
  		opacity: 0;
 		transition: all 1s ease;
 	}
-	
+	div.caption p{
+		text-align: center;
+		font-size: 18px;
+		padding: 0;
+	}	
 	div.productImg a:hover div.caption{
 		opacity:1;
 	}	
@@ -164,6 +167,7 @@
 			location.href="productCate6List.do";
 			$("#cate6").css({'color':'navy','background':'#FFCD12'});
 		})
+		
 
 	});
 </script>
@@ -200,6 +204,5 @@
 				</div>
 			</c:forEach>
 		</div>		
- 
 </section>	
 <%@ include file="../include/footer.jsp" %>

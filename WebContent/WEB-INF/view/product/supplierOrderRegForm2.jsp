@@ -41,6 +41,8 @@
 	}
 	.red{
 		color: red;
+		font-weight: bold;
+		font-size: 18px;		
 		
 	}	
 	#regForm{
@@ -119,7 +121,15 @@
 	}
 	input[name*='spPcost'], input[name*='spQty']{
 		font-weight: bold;
+	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;
 	}	
+	span.cnt{
+		color: blue;
+		font-size: 12px;
+	}		
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
