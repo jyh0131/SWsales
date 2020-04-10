@@ -241,15 +241,9 @@ $(function () {
 						</c:forEach>
 					</select>
 					<br>
-					
-					
+								
 					<label><span class="red">* </span>품목명</label>
-					<select name="pName" class="text">
-							<option selected>선택해주세요</option>
-						<c:forEach var="product" items="${list2}">
-							<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
-						</c:forEach>
-					</select>
+					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" id="pName">
 					<input type="button" value="중복확인" id="btnPname" style="cursor: pointer"><br>
 										
 					<label><span class="red">* </span>공급가격 <span class="cnt">(1개당)</span></label>

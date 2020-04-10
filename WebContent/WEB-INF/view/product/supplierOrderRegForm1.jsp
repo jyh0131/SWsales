@@ -138,7 +138,11 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function() {
-		
+		$("#btnPname").click(function() {
+			var pName = $("select[name='soPname']").val(); //품목번호를 가져옴
+			alert(pName);
+			
+		})
 	})
 </script>
 <section>
@@ -158,21 +162,23 @@
 					<label><span class="red">* </span>발주번호</label>
 					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
 					
-					<label><span class="red">* </span>품목명</label>
-					<select name="soPname" class="text">
-						<option selected>선택해주세요</option>					
-							<c:forEach var="product" items="${list}">
-								<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
-							</c:forEach>
-					</select>
-					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
-					
-					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="soSname" class="text" readonly="readonly" ><br>
-					
-					<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
-					<input type="text" name="soPcost" class="text"  readonly="readonly"><br>
-					
+					<!-- 품목명 조회후 공급회사명, 발주가격 자동입력 -->
+					<form action="so1InputSearch.do" method="post">
+						<label><span class="red">* </span>품목명</label>
+						<select name="soPname" class="text">
+							<option selected>선택해주세요</option>					
+								<c:forEach var="product" items="${list}">
+									<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
+								</c:forEach>
+						</select>
+						<input type="submit" value="조회" id="btnPname" style="cursor: pointer"><br>
+						
+						<label><span class="red">* </span>공급 회사명</label>
+						<input type="text" name="soSname" class="text" readonly="readonly" ><br>
+						
+						<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
+						<input type="text" name="soPcost" class="text"  readonly="readonly"><br>
+					</form>
 					<label><span class="red">* </span>발주수량</label>
 					<input type="text" name="soQty" class="text"><br>
 					

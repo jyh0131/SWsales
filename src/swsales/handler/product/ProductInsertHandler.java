@@ -39,11 +39,6 @@ public class ProductInsertHandler implements CommandHandler{
 				List<Category> list1 = dao2.selectCategoryByAll(conn);
 				req.setAttribute("list1", list1);
 				
-				//품목명 가져오기
-				ProductDao dao3 = ProductDao.getInstance();
-				List<Product> list2 = dao3.selectProductByAll(conn);
-				req.setAttribute("list2", list2);
-				
 				//회사명 가져오기
 				SupplierDao dao4 = SupplierDao.getInstance();
 				List<Supplier> list3 = dao4.selectSupplierByAll(conn);
@@ -81,22 +76,16 @@ public class ProductInsertHandler implements CommandHandler{
 				String pName = multi.getParameter("pName");
 				int pCost = Integer.parseInt(multi.getParameter("pCost"));
 				int pPrice = Integer.parseInt(multi.getParameter("pPrice"));
-				
-				Supplier sName = new Supplier(multi.getParameter("pSno"));
-				SupplierDao dao1 = SupplierDao.getInstance();
-				Supplier pSno = dao1.selectSupplierByName(conn, sName);
-
-				
+				Supplier pSno = new Supplier(Integer.parseInt(multi.getParameter("pSno")));
+				/*SupplierDao dao1 = SupplierDao.getInstance();
+				Supplier pSno = dao1.selectSupplierByName(conn, sName);*/
 				int pQty = Integer.parseInt(multi.getParameter("pQty"));
-				
 				String sDate = multi.getParameter("pDate");
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 				Date pDate = dt.parse(sDate);
 				
 				String pPicPath = multi.getFilesystemName("pPic");
 				
-
-
 				Product product = new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
 			
 				dao.insertProduct(conn, product);

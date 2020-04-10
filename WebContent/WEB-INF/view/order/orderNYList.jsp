@@ -37,68 +37,27 @@ span#k_title {
 	background-color: white;
 }
 
-#search {
-	margin: 10px;
-	position: relative;
+div#proAdd{
+	width: 100%;
+	height: 40px;
+	text-align: right;
+	margin-top: 100px;
 }
-
-#lblSearch {
-	width: 70px;
-	height: 39px;
-	display: inline-block;
-	background-color: #ccc;
-	line-height: 35px;
-	text-align: center;
-	margin-left: -10px;
-	margin-right: -6px;
-}
-
-#selSearch {
-	width: 150px;
-	height: 36px;
-	margin-left: -10px;
-}
-
-#ipSearch {
-	width: 200px;
-	height: 32px;
-	margin-top: 2px;
-}
-
-#btnSearch {
-	width: 60px;
-	height: 36px;
+button#btnOk{
+	width: 130px;
+	height: 40px;
 	background-color: #384D75;
-	border: 1px solid white;
 	color: white;
-	border-radius: 5px;
-}
-
-#btnClear {
-	width: 60px;
-	height: 36px;
-	background-color: #ccc;
 	border: 1px solid white;
-	color: white;
 	border-radius: 5px;
+	margin-right: 10px;
+	margin-top: 5px;
 }
-
-#btnAll {
-	width: 60px;
-	height: 36px;
-	background-color: #ccc;
-	border: 1px solid white;
-	color: white;
-	border-radius: 5px;
-	position: absolute;
-	right: 0;
-}
-
 #list_container {
 	width: 100%;
 	margin: 0 auto;
-	padding-top: 100px;
 	position: relative;
+	margin-top: 30px;
 }
 
 table {
@@ -183,6 +142,9 @@ span#y {
 		<h1>Confirm Order Of Customer</h1>
 		<hr>
 		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문관리</a> > <span id="k_title">주문 확인 / 처리</span></h3>
+	</div>
+	<div id="proAdd">
+		<a href="#"><button id="btnOk">확인</button></a>	
 	</div>
 	<div id="list_container">
 <!-- 		<form action="orderSearch.do" method="post">
