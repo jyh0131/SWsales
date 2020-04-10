@@ -112,6 +112,14 @@
 		padding-right:8px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function (){
+		$("#All").click(function(){
+			location.href="ts.do";
+		})
+	});
+</script>
 <section>
 	<div id="title">
 		<h1>Transaction Specification</h1>

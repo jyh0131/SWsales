@@ -113,6 +113,14 @@
 		padding-right:8px;
 	}
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function (){
+		$("#All").click(function(){
+			location.href="swTotalSale.do";
+		})
+	});
+</script>
 <section>
 	<div id="title">
 		<h1>S/W Overall Sales</h1>
