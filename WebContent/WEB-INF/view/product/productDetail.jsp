@@ -148,14 +148,20 @@
 		padding-top: 20px;
 	}
 	div#simg{
-		width: 160px;
-		height: 180x;
+		width: 20%;
+		height: 200x;
 		float: left;
+		margin-bottom: 10px;
+		padding-bottom: 20px;
 	}
-	img#simg_img{
+	div#simg img#simg_img{
 		width: 115px;
 		height: 130px;
 		border: 1px solid #eee;
+		margin-top: 20px;
+	}
+	div#simg p{
+		font-size: 13px;
 	}			
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>

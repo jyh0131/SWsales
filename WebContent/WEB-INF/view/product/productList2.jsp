@@ -40,6 +40,26 @@
 		margin-top: 100px;
 		text-align: right;
 	}
+	div#proAdd input[type*='button']{
+		width: 72px;
+		height: 35px;
+		color: white;
+		background: #A6A6A6;
+		border-radius: 5px;
+		outline: none;
+		border: none;
+		margin: 10px;
+		float: left;
+	}
+	div#proAdd input:hover{
+		background: #f08080;
+		font-weight: bold;
+		
+	}	
+	div#proAdd input#All{
+		font-weight: bold;
+		background: #384D75;
+	}		
 	button#btnAll{
 		width: 130px;
 		height: 40px;
@@ -48,6 +68,7 @@
 		border: 1px solid white;
 		border-radius: 5px;
 		margin-right: 10px;
+		margin-top: 5px;
 	}
 		
 	button#btnAdd{
@@ -63,7 +84,7 @@
 	div#pImg_container{
 		width: 100%;
 		text-align: center;
-		margin-top: 20px;
+		margin-top: 50px;
 	}
 	
 	div.productImg{
@@ -71,6 +92,7 @@
 		height: 350px;
 		float: left;
 		position: relative;
+		margin-bottom: 30px;
 	}
 	div.productImg img{
 		width: 300px;
@@ -79,8 +101,18 @@
 	}
 	div.productImg p{
 		font-weight: bold;
-		text-align: center;
+		text-align: left;
 		line-height: 20px;
+		font-size: 20px;
+		padding-left:20px; 
+		padding-top: 5px;
+	}
+ 	span#cate{
+		background: #CD3B3B;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 
 	}
 	
 	div.caption{
@@ -96,7 +128,11 @@
  		opacity: 0;
 		transition: all 1s ease;
 	}
-	
+	div.caption p{
+		text-align: center;
+		font-size: 18px;
+		padding: 0;
+	}	
 	div.productImg a:hover div.caption{
 		opacity:1;
 	}	
@@ -104,11 +140,35 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function () {
-		
-	/* 	//Top버튼
-		$("#btnTop").click(function() {
+		$("#All").click(function(){
 			location.href="productList2.do";
-		}) */
+		})
+		$("#cate1").click(function(){
+			location.href="productCate1List.do";
+			$("#cate1").css({'color':'navy','background':'#FFCD12'});
+		})
+		$("#cate2").click(function(){
+			location.href="productCate2List.do";
+			$("#cate2").css({'color':'navy','background':'#FFCD12'});
+		})
+		$("#cate3").click(function(){
+			location.href="productCate3List.do";
+			$("#cate3").css({'color':'navy','background':'#FFCD12'});			
+		})
+		$("#cate4").click(function(){
+			location.href="productCate4List.do";
+			$("#cate4").css({'color':'navy','background':'#FFCD12'});			
+		})
+		$("#cate5").click(function(){
+			location.href="productCate5List.do";
+			$("#cate5").css({'color':'navy','background':'#FFCD12'});			
+		})
+		$("#cate6").click(function(){
+			location.href="productCate6List.do";
+			$("#cate6").css({'color':'navy','background':'#FFCD12'});
+		})
+		
+
 	});
 </script>
 	<section>
@@ -118,6 +178,13 @@
 			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <span id="k_title">소프트웨어 제품 리스트</span></h3>
 		</div>
 		<div id="proAdd">
+			<input type="button" value="전체" id="All" style="cursor:pointer">
+			<input type="button" value="사무" id="cate1" style="cursor:pointer">
+			<input type="button" value="개발" id="cate2" style="cursor:pointer">
+			<input type="button" value="전문분야" id="cate3" style="cursor:pointer">
+			<input type="button" value="멀티미디어" id="cate4" style="cursor:pointer">
+			<input type="button" value="기업업무" id="cate5" style="cursor:pointer">
+			<input type="button" value="서버" id="cate6" style="cursor:pointer">		
 			<a href="${pageContext.request.contextPath}/product/productList1.do"><button id="btnAll">전 체 LIST</button></a>		
 			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">제 품 등 록</button></a>	
 		</div>
@@ -133,7 +200,7 @@
 							<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/></p>
 						</div>
 					</a>
-					<p>${product.pName}</p>		
+					<p class="category"><span id="cate">&nbsp;${product.pCate}&nbsp;</span> ${product.pName}</p>
 				</div>
 			</c:forEach>
 		</div>		

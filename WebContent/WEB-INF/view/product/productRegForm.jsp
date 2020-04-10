@@ -142,7 +142,7 @@ $(function () {
 	//등록버튼
 	$("#btnAdd").click(function () {
 		var text = $("#pName").val();
-		var text1 = $("select[name=pCate]").var();
+		var text1 = $("select[name=pCate]").val();
 		if(tex1 == "선택해주세요"){
 			alert("dasdada");
 			location.href="productAdd.do";

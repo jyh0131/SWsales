@@ -41,6 +41,8 @@
 	}
 	.red{
 		color: red;
+		font-weight: bold;
+		font-size: 18px;
 		
 	}	
 	#regForm{
@@ -117,13 +119,27 @@
 		font-weight: bold;
 		color: #990000;	
 	}
+	input[name*='soSname'], input[name*='soPcost']{
+		outline: none;
+		background: #eee;
+	}
 	input[name*='soPcost'], input[name*='soQty']{
 		font-weight: bold;
 	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;
+	}	
+	span.cnt{
+		color: blue;
+		font-size: 12px;
+	}		
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-
+	$(function() {
+		
+	})
 </script>
 <section>
 		<!-- form 타이틀 -->
@@ -144,13 +160,13 @@
 					
 					<label><span class="red">* </span>품목명</label>
 					<input type="text" name="soPname" class="text" placeholder=" >> 품목명 조회">
-					<input type="button" value="조회" id="btnPname"><br>
+					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="soSname" class="text"><br>
+					<input type="text" name="soSname" class="text" readonly="readonly" ><br>
 					
-					<label><span class="red">* </span>발주가격</label>
-					<input type="text" name="soPcost" class="text"><br>
+					<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
+					<input type="text" name="soPcost" class="text"  readonly="readonly"><br>
 					
 					<label><span class="red">* </span>발주수량</label>
 					<input type="text" name="soQty" class="text"><br>
@@ -160,7 +176,7 @@
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
+			<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
 			<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
 			</div>
 		</form>

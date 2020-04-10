@@ -72,24 +72,35 @@
 	}
 	div#search{
 		width: 100%;
-		height: 50px;
+		height: 70px;
 		margin-top: 30px;
 		text-align: center;
 	}
-	div#search input#sinput{
-		width: 70%;
+ 	div#search input#sinput{
+		width: 56%;
 		height: 45px;
-		border-radius: 20px;
 		outline: none;
-		border: 1px solid #EAEAEA;
+		border-top: none;
+		border-left: none;
+		border-right: none;
+		border-bottom: 3px solid #384D75;
+		background: url("${pageContext.request.contextPath}/images/order/icon_search.png") no-repeat;
+		background-size: 25px 25px contain;
+		background-position: left;
+		padding-left:80px;
 	}
-	input#sinput::placeholder{
-		font-size: 16px;
+	input#btnSearch{
+		width: 60px;
+		height: 50px;
+		border: 1px solid #384D75;
+		background-color: #384D75;
+		outline: none;
+		border-radius: 0 5px 5px 0;
+		color: white;
+	}
+	input::placeholder{
 		letter-spacing: 5px;
 	}
-	input#sinput:hover{
-		box-shadow: 3px 3px 10px 5px #EAEAEA;
-	}	
 	div#product_list{
 		width: 100%;
 		text-align: center;
@@ -203,8 +214,8 @@
 	</div>
 	<div id="search">
 		<form>
-		<input type="text" name="sinput" id="sinput" placeholder="   Search...">
-		<input type="submit" value="검색" id="btnSearch" style="cursor:pointer">
+			<input type="text" name="sinput" id="sinput" placeholder=" >> 제품명을 입력하세요">
+			<input type="submit" value = "Search" id="btnSearch" style="cursor:pointer">
 		</form>
 	</div>		
 	<div id="product_list">
