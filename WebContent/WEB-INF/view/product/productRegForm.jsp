@@ -233,22 +233,20 @@ $(function () {
 					<input type="text" name="pNo" class="text" value=" P00${product.pNo+1 }" readonly="readonly"><br>
 					<input type="hidden" name="pNo" value="${product.pNo+1 }">
 					
- 					<label><span class="red">* </span>분류명</label>
+					<label><span class="red">* </span>분류명</label>
 					<select name="pCate" class="text">
-						<option selected>선택해주세요</option>
-						<option value=1>사무</option>
-						<option value=2>개발</option>
-						<option value=3>전문분야</option>
-						<option value=4>멀티미디어</option>
-						<option value=5>기업업무</option>
-						<option value=6>서버</option>						
+							<option selected>선택해주세요</option>
+						<c:forEach var="category" items="${list1}">
+							<option value="${category.cateNo}">${category.cateName}</option>
+						</c:forEach>
 					</select>
 					<br>
+					
 					
 					<label><span class="red">* </span>품목명</label>
 					<select name="pName" class="text">
 							<option selected>선택해주세요</option>
-						<c:forEach var="product" items="${list1}">
+						<c:forEach var="product" items="${list2}">
 							<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
 						</c:forEach>
 					</select>
@@ -263,7 +261,7 @@ $(function () {
 					<label><span class="red">* </span>공급 회사명</label>
 					<select name="pSno" class="text">
 							<option selected>선택해주세요</option>
-						<c:forEach var="supplier" items="${list2}">
+						<c:forEach var="supplier" items="${list3}">
 							<option value="${supplier.sNo}">${supplier.sName}</option>
 						</c:forEach>
 					</select>

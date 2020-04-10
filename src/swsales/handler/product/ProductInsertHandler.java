@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
+import swsales.dao.CategoryDao;
 import swsales.dao.ProductDao;
 import swsales.dao.SupplierDao;
 import swsales.jdbc.JDBCUtil;
@@ -33,15 +34,20 @@ public class ProductInsertHandler implements CommandHandler{
 				Product lastNo = dao.selectProductLastData(conn);
 				req.setAttribute("product", lastNo);
 				
-				//품목명 가져오기
-				ProductDao dao2 = ProductDao.getInstance();
-				List<Product> list1 = dao2.selectProductByAll(conn);
+				//카테고리명 가져오기
+				CategoryDao dao2 = CategoryDao.getInstance();
+				List<Category> list1 = dao2.selectCategoryByAll(conn);
 				req.setAttribute("list1", list1);
 				
-				//회사명 가져오기
-				SupplierDao dao3 = SupplierDao.getInstance();
-				List<Supplier> list2 = dao3.selectSupplierByAll(conn);
+				//품목명 가져오기
+				ProductDao dao3 = ProductDao.getInstance();
+				List<Product> list2 = dao3.selectProductByAll(conn);
 				req.setAttribute("list2", list2);
+				
+				//회사명 가져오기
+				SupplierDao dao4 = SupplierDao.getInstance();
+				List<Supplier> list3 = dao4.selectSupplierByAll(conn);
+				req.setAttribute("list3", list3);
 				
 			}catch(Exception e) {
 				e.printStackTrace();
