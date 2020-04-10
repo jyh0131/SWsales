@@ -144,6 +144,26 @@
 			location.href="${pageContext.request.contextPath}/client/clientList.do"
 		})
 		
+		$("form").submit(function () {
+			var cName = $("input[name='cName']").val();
+			if(cName == ""){
+				alert("상호명을 입력하세요.");
+				return false;
+			}
+			
+			var cCeo = $("input[name='cCeo']").val();
+			if(cCeo == ""){
+				alert("대표명을 입력하세요.");
+				return false;
+			}
+			
+			var cTel = $("input[name='cTel']").val();
+			if(cTel == ""){
+				alert("전화번호를 입력하세요.");
+				return false;
+			}
+		})
+		
 		var cno = $("input[name=cNo]").val();
 		console.log(cno);
 		if(cno < 10){

@@ -31,11 +31,11 @@ public class SupplierPagingHandler extends HttpServlet implements CommandHandler
 			if (req.getParameter("page") != null) {
 				page = Integer.parseInt(req.getParameter("page"));
 			}
-			Supplier last = dao.selectSupplierLastData(conn);
+			List<Supplier> last = dao.selectSupplierByAll(conn);
 	
 			Paging paging = new Paging();
 			paging.setPage(page);
-			paging.setTotalCount(last.getsNo());
+			paging.setTotalCount(last.size());
 
 			List<Supplier> list = dao.selectSupplierPaging(conn, page);
 			req.setAttribute("list", list);
