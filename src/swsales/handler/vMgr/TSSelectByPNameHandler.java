@@ -6,12 +6,12 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import swsales.dao.SWSaleDao;
+import swsales.dao.TSDao;
 import swsales.jdbc.JDBCUtil;
-import swsales.model.SWSale;
+import swsales.model.TransactionStatement;
 import swsales.mvc.CommandHandler;
 
-public class SWSaleSelectByPNameHandler implements CommandHandler {
+public class TSSelectByPNameHandler implements CommandHandler {
 
 	@Override
 	public String process(HttpServletRequest req, HttpServletResponse res) throws Exception {
@@ -19,11 +19,11 @@ public class SWSaleSelectByPNameHandler implements CommandHandler {
 			Connection conn = null;
 			
 			try {
-				String swSearch = req.getParameter("swSearch");
+				String tsSearch = req.getParameter("tsSearch");
 				conn = JDBCUtil.getConnection();
-				SWSaleDao dao = SWSaleDao.getInstance();
-				SWSale selectSW = new SWSale(swSearch);
-				List<SWSale> list = dao.selectSWSaleByPName(conn, selectSW);
+				TSDao dao = TSDao.getInstance();
+				TransactionStatement selectSWTotal = new TransactionStatement(tsSearch);
+				List<TransactionStatement> list = dao.selectTSByPName(conn, selectSWTotal);
 				
 				req.setAttribute("list", list);
 			} catch (Exception e) {
@@ -32,7 +32,7 @@ public class SWSaleSelectByPNameHandler implements CommandHandler {
 				JDBCUtil.close(conn);
 			}
 		}
-		return "/WEB-INF/view/vMgr/swSaleList.jsp";
+		return "/WEB-INF/view/vMgr/tsList.jsp";
 	}
 
 }

@@ -120,17 +120,17 @@
 		<h3>현황조회 / 보고 > <span id="k_title">S/W 전체 판매현황</span></h3>
 	</div>
 	<div id="list_container">
-	<div id="menu">
-		<a href="${pageContext.request.contextPath}/vMgr/swTotalSale.do"><button class="btnMenu">S/W 전체 판매현황</button></a>
-		<a href="${pageContext.request.contextPath}/vMgr/ts.do"><button class="btnMenu">거래명세</button></a>
-	</div>
-	<form action="swTotalSearch.do" method="post">
-	 	<fieldset>
-			<label>품 목 명</label>
-			<input type="text" name="swTotalSearch">
-			<input type="submit" value="조회" id="Search" style="cursor:pointer">
-			<input type="button" value="전체" id="All" style="cursor:pointer">
-		</fieldset>
+		<div id="menu">
+			<a href="${pageContext.request.contextPath}/vMgr/swTotalSale.do"><button class="btnMenu">S/W 전체 판매현황</button></a>
+			<a href="${pageContext.request.contextPath}/vMgr/ts.do"><button class="btnMenu">거래명세</button></a>
+		</div>
+		<form action="swTotalSearch.do" method="post">
+		 	<fieldset>
+				<label>품 목 명</label>
+				<input type="text" name="swTotalSearch">
+				<input type="submit" value="조회" id="Search" style="cursor:pointer">
+				<input type="button" value="전체" id="All" style="cursor:pointer">
+			</fieldset>
 			<table>
 				<tr>
 					<th>날짜</th>
@@ -140,21 +140,21 @@
 					<th>판매금액</th>
 				</tr>
 				<c:forEach var="swTotal" items="${list }">
-						<tr class="tbl_point">
-							<td>${swTotal.o_date }</td>
-							<td>${swTotal.cate_name }</td>
-							<td>${swTotal.p_name }</td>
-							<td>${swTotal.o_qty }</td>
-							<td class="price"><fmt:formatNumber value="${swTotal.salesAmount }" pattern="#,###,###"/>　</td>
-							<c:set var="sum" value="${sum + swTotal.salesAmount }"/>
-						</tr>
-				</c:forEach>
-			</table>
-			<fieldset class="total">
-				<label>총 판매금액</label>
-				<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
-			</fieldset>
-		</form>
-	</div>			
+					<tr class="tbl_point">
+						<td>${swTotal.o_date }</td>
+						<td>${swTotal.cate_name }</td>
+						<td>${swTotal.p_name }</td>
+						<td>${swTotal.o_qty }</td>
+						<td class="price"><fmt:formatNumber value="${swTotal.salesAmount }" pattern="#,###,###"/>　</td>
+						<c:set var="sum" value="${sum + swTotal.salesAmount }"/>
+					</tr>
+			</c:forEach>
+		</table>
+		<fieldset class="total">
+			<label>총 판매금액</label>
+			<input type="text" value=<fmt:formatNumber value="${sum}" pattern="#,###,###"/> readonly>
+		</fieldset>
+	</form>	
+	</div>
 </section>
 <%@include file="../include/footer.jsp"%>

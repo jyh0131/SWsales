@@ -11,6 +11,11 @@ public class SWTotalSale {
 		// TODO Auto-generated constructor stub
 	}
 
+	public SWTotalSale(String p_name) {
+		super();
+		this.p_name = p_name;
+	}
+
 	public SWTotalSale(String o_date, String cate_name, String p_name, int o_qty, int salesAmount) {
 		super();
 		this.o_date = o_date;
@@ -62,10 +67,8 @@ public class SWTotalSale {
 
 	@Override
 	public String toString() {
-		return "SWTotalSale [o_date=" + o_date + ", cate_name=" + cate_name + ", p_name=" + p_name
-				+ ", o_qty=" + o_qty + ", salesAmount=" + salesAmount + "]";
+		return "SWTotalSale [o_date=" + o_date + ", cate_name=" + cate_name + ", p_name=" + p_name + ", o_qty=" + o_qty
+				+ ", salesAmount=" + salesAmount + "]";
 	}
-
-	
 
 }
