@@ -27,7 +27,7 @@
 	}
 	div#title h3 a:hover{
 		border-bottom: 3px solid black;
-	}
+	}	
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -42,7 +42,7 @@
 	.red{
 		color: red;
 		font-weight: bold;
-		font-size: 18px;		
+		font-size: 18px;
 		
 	}	
 	#regForm{
@@ -103,29 +103,27 @@
     	border-radius: 5px;
     	margin-top: 30px;
     	font-size: 18px;
-	}	
-	input[name*='spNo']{
+	}
+	input[name*='soNo']{
 		font-weight: bold;
 		color: #000080;
 		font-size: 16px;
 		outline: none;
 		background: #eee;
 	}
-	input[name*='spPname']{
+	input[name*='soPname']{
 		font-weight: bold;
 		color: #336600;
 	}
-	input[name*='spSname']{
+	input[name*='soSname']{
 		font-weight: bold;
-		color: #990000;
-		outline: none;
-		background: #eee;			
+		color: #990000;	
 	}
-	input[name*='spPcost']{
+	input[name*='soSname'], input[name*='soPcost']{
 		outline: none;
-		background: #eee;		
+		background: #eee;
 	}
-	input[name*='spPcost'], input[name*='spQty']{
+	input[name*='soPcost'], input[name*='soQty']{
 		font-weight: bold;
 	}
 	input::placeholder{
@@ -139,45 +137,47 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-
+	$(function() {
+		
+	})
 </script>
 <section>
 		<!-- form 타이틀 -->
 		<div id="title">
-			<h1>Software Product Purchase Registration</h1>
+			<h1>Software Product Order Registration</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">매입 이력 등록</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">발주 이력 등록</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/sOrderAdd2.do" method="post">
+		<form action="${pageContext.request.contextPath}/product/sOrderAdd1.do" method="post">
 			<div id="regForm">
 				<div id="form">
-					<label><span class="red">* </span>매입번호</label>
-					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo+1 }" readonly="readonly"><br>
+					<label><span class="red">* </span>발주번호</label>
+					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="spPname" class="text" placeholder=" >> 품목명 조회">
-					<input type="button" value="조회" id="btnPname"><br>
+					<input type="text" name="soPname" class="text" placeholder=" >> 품목명 조회">
+					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="spSname" class="text" readonly="readonly"><br>
+					<input type="text" name="soSname" class="text" readonly="readonly" ><br>
 					
-					<label><span class="red">* </span>매입가격 <span class="cnt">(1개당)</span></label>
-					<input type="text" name="spPcost" class="text" readonly="readonly"><br>
+					<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
+					<input type="text" name="soPcost" class="text"  readonly="readonly"><br>
 					
-					<label><span class="red">* </span>매입수량</label>
-					<input type="text" name="spQty" class="text"><br>
+					<label><span class="red">* </span>발주수량</label>
+					<input type="text" name="soQty" class="text"><br>
 					
-					<label><span class="red">* </span>매입 등록일자</label>
-					<input type="date" name="spDate" class="text"><br>
+					<label><span class="red">* </span>발주 등록일자</label>
+					<input type="date" name="soDate" class="text"><br>
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
-			<input type="button" value="취소" id="btnReset" style="cursor: pointer">					
+			<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
+			<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
 			</div>
 		</form>
 </section>

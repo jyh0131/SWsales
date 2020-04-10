@@ -175,7 +175,7 @@
 		<div id="title">
 			<h1>Software Product List</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <span id="k_title">소프트웨어 제품 리스트</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <span id="k_title">&nbsp;소프트웨어 제품 리스트&nbsp;</span></h3>
 		</div>
 		<div id="proAdd">
 			<input type="button" value="전체" id="All" style="cursor:pointer">
