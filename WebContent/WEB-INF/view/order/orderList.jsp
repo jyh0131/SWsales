@@ -213,7 +213,7 @@
 		<input type="button" value="서버" id="cate6" style="cursor:pointer">		
 	</div>
 	<div id="search">
-		<form>
+		<form action="orderSearch.do" method="post">
 			<input type="text" name="sinput" id="sinput" placeholder=" >> 제품명을 입력하세요">
 			<input type="submit" value = "Search" id="btnSearch" style="cursor:pointer">
 		</form>
