@@ -219,6 +219,6 @@
 				<jsp:param value="${paging.prev}" name="prev" />
 				<jsp:param value="${paging.next}" name="next" />
 			</jsp:include>
-	</div>
+		</div>
 	</section>
 <%@ include file="../include/footer.jsp" %>

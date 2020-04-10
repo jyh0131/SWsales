@@ -134,6 +134,13 @@
 			<c:if test="${Auth.empManager == 1 }">
 				<a href="${pageContext.request.contextPath}/board/boardAdd.do"><button id="btnAdd" style="cursor: pointer">등 록</button></a>
 			</c:if>
+			<jsp:include page="../paging/boardPaging.jsp">
+				<jsp:param value="${paging.page}" name="page" />
+				<jsp:param value="${paging.beginPage}" name="beginPage" />
+				<jsp:param value="${paging.endPage}" name="endPage" />
+				<jsp:param value="${paging.prev}" name="prev" />
+				<jsp:param value="${paging.next}" name="next" />
+			</jsp:include>
 		</div>
 	</div>
 </section>
