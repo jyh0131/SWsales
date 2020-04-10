@@ -169,4 +169,23 @@ public class ClientDeliveryDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+
+	public ClientDelivery selectClientDeliveryByNo(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "select cd_no, c_name, p_name, o_qty, cd_date, c_no, o_no from client_delivery cd left join `order` o on cd.cd_sno = o.o_no left join product p on o.o_pno = p.p_no left join client c on o.o_cno = c.c_no where cd.cd_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {				
+				return getClientDelivery(rs);
+			}
+			return null;
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+
 }

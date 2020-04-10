@@ -13,6 +13,11 @@ public class ClientDelivery {
 		
 	}
 
+	public ClientDelivery(int cdNo, Date cdDate) {
+		this.cdNo = cdNo;
+		this.cdDate = cdDate;
+	}
+
 	public ClientDelivery(int cdNo) {
 		this.cdNo = cdNo;
 	}

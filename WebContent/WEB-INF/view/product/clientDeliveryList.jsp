@@ -196,7 +196,7 @@
 						<td>${clientDelivery.cdSno.oQty }</td>
 						<td><fmt:formatDate value="${clientDelivery.cdDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
-							<a href="#"><button id="btnMod">수정</button></a>
+							<a href="${pageContext.request.contextPath}/product/cDeliveryMod.do?cdNo=${clientDelivery.cdNo}"><button id="btnMod">수정</button></a>
 							<a href="#"><button id="btnDel">삭제</button></a>
 						</td>
 					</tr>

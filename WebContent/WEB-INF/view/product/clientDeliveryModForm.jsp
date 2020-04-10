@@ -80,6 +80,21 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	input[name*='cdNo'], input[name*='cName'], input[name*='pName'], input[name*='oQty']{
+		font-weight: bold;
+		outline: none;
+		background: #eee;
+	}
+	input[name*='cdNo']{
+		color: #000080;
+		font-size: 16px;	
+	}
+	input[name*='cName']{
+		color: #990000;	
+	}
+	input[name*='pName']{
+		color: #336600;	
+	}			
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -96,47 +111,24 @@
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
 		</div>
-		<form action="${pageContext.request.contextPath}/product/productList.do" method="post">
+		<form action="${pageContext.request.contextPath}/product/cDeliveryMod.do" method="post">
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
-					<input type="text" name="pNo" class="text" value=" P00${product.pNo+1 }" readonly="readonly"><br>
+					<input type="text" name="cdNo" class="text" value="CD00${clientDelivery.cdNo}" readonly="readonly"><br>
+					<input type="hidden" name="no" class="text" value="${clientDelivery.cdNo}">
 					
- 					<label><span class="red">* </span>분류명</label>
-					<select name="pCate" class="text">
-						<option selected>선택해주세요</option>
-						<option value="사무">사무</option>
-						<option value="개발">개발</option>
-						<option value="전문분야">전문분야</option>
-						<option value="멀티미디어">멀티미디어</option>
-						<option value="기업업무">기업업무</option>
-						<option value="서버">서버</option>						
-					</select>
-					<br>
+					<label><span class="red">* </span>고객 상호명</label>
+					<input type="text" name="cName" class="text" value="${clientDelivery.cName.cName}" readonly="readonly"><br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="pName" class="text" placeholder=" >> 중복확인">
-					<input type="button" value="중복확인" id="btnSname"><br>
+					<input type="text" name="pName" class="text" value="${clientDelivery.pName}"  readonly="readonly"><br>
 					
-					<label><span class="red">* </span>공급가격</label>
-					<input type="text" name="pCost" class="text"><br>
+					<label><span class="red">* </span>출고수량</label>
+					<input type="text" name="oQty" class="text" value="${clientDelivery.cdSno.oQty}"  readonly="readonly"><br>
 					
-					<label><span class="red">* </span>판매가격</label>
-					<input type="text" name="pPrice" class="text"><br>
-					
-					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회">
-					<input type="button" value="조 회" id="btnSname"><br>
-					
-					<label><span class="red">* </span>최초재고수량</label>
-					<input type="text" name="pQty" class="text"><br>
-					
-					
-					<label><span class="red">* </span>최초등록일자</label>
-					<input type="date" name="pDate" class="text"><br>
-					
-					<label>&nbsp&nbsp제품 이미지</label>
-					<input type="file" name="pPic"><br>
+					<label><span class="red">* </span>출고일자</label>
+					<input type="date" name="cdDate" class="text" value="${clientDelivery.cdDate}"><br>
 				</div>
 			</div>
 			<div id="add">
