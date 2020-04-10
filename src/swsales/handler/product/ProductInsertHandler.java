@@ -4,6 +4,7 @@ import java.io.File;
 import java.sql.Connection;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -31,6 +32,17 @@ public class ProductInsertHandler implements CommandHandler{
 				
 				Product lastNo = dao.selectProductLastData(conn);
 				req.setAttribute("product", lastNo);
+				
+				//품목명 가져오기
+				ProductDao dao2 = ProductDao.getInstance();
+				List<Product> list1 = dao2.selectProductByAll(conn);
+				req.setAttribute("list1", list1);
+				
+				//회사명 가져오기
+				SupplierDao dao3 = SupplierDao.getInstance();
+				List<Supplier> list2 = dao3.selectSupplierByAll(conn);
+				req.setAttribute("list2", list2);
+				
 			}catch(Exception e) {
 				e.printStackTrace();
 			}finally {

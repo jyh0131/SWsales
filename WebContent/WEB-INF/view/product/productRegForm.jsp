@@ -246,9 +246,14 @@ $(function () {
 					<br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="pName" class="text" placeholder=" >> 중복확인" id="pName">
+					<select name="pName" class="text">
+							<option selected>선택해주세요</option>
+						<c:forEach var="product" items="${list1}">
+							<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
+						</c:forEach>
+					</select>
 					<input type="button" value="중복확인" id="btnPname" style="cursor: pointer"><br>
-					
+										
 					<label><span class="red">* </span>공급가격 <span class="cnt">(1개당)</span></label>
 					<input type="text" name="pCost" class="text"><br>
 					
@@ -256,8 +261,13 @@ $(function () {
 					<input type="text" name="pPrice" class="text"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
-					<input type="text" name="pSno" class="text" placeholder=" >> 회사명 조회" id="sName">
-					<input type="button" value="조 회" id="btnSname" style="cursor: pointer"><br>
+					<select name="pSno" class="text">
+							<option selected>선택해주세요</option>
+						<c:forEach var="supplier" items="${list2}">
+							<option value="${supplier.sNo}">${supplier.sName}</option>
+						</c:forEach>
+					</select>
+					<input type="button" value="조 회" id="btnSname" style="cursor: pointer"><br>				
 					
 					<label><span class="red">* </span>최초재고수량</label>
 					<input type="text" name="pQty" class="text"><br>

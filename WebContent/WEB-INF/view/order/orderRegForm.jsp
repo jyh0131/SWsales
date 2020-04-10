@@ -191,8 +191,13 @@
 				<label>&nbsp<span class="red">* </span>주문일자</label>
 				<input type="date" name="oDate" class="text"><br>
 				
-				<label>&nbsp<span class="red">* </span>고객 상호명</label>
-				<input type="text" name="oCname" class="text"><br>
+				<label><span class="red">* </span>고객 상호명</label>
+				<select name="oCname" class="text">
+						<option selected>선택해주세요</option>
+					<c:forEach var="client" items="${list}">
+						<option value="${client.cNo}">${client.cName}</option>
+					</c:forEach>
+				</select><br>				
 				
 				<label>&nbsp<span class="red">* </span>품목명</label>
 				<input type="text" name="oPname" class="text" readonly="readonly" value="${order.pName}"><br>

@@ -159,8 +159,13 @@
 					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo+1 }" readonly="readonly"><br>
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="spPname" class="text" placeholder=" >> 품목명 조회">
-					<input type="button" value="조회" id="btnPname"><br>
+					<select name="spPname" class="text">
+						<option selected>선택해주세요</option>					
+							<c:forEach var="product" items="${list}">
+								<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
+							</c:forEach>
+					</select>
+					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>					
 					
 					<label><span class="red">* </span>공급 회사명</label>
 					<input type="text" name="spSname" class="text" readonly="readonly"><br>

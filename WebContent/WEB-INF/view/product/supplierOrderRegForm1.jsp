@@ -158,11 +158,12 @@
 					<label><span class="red">* </span>발주번호</label>
 					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
 					
-					<label><span class="red">* </span>품목명(테스트)</label>
+					<label><span class="red">* </span>품목명</label>
 					<select name="soPname" class="text">
-						<c:forEach var="product" items="${list}">
-						<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
-						</c:forEach>
+						<option selected>선택해주세요</option>					
+							<c:forEach var="product" items="${list}">
+								<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
+							</c:forEach>
 					</select>
 					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
 					
