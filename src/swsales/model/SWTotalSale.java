@@ -4,7 +4,6 @@ public class SWTotalSale {
 	private String o_date;
 	private String cate_name;
 	private String p_name;
-	private int o_no;
 	private int o_qty;
 	private int salesAmount;
 
@@ -12,12 +11,11 @@ public class SWTotalSale {
 		// TODO Auto-generated constructor stub
 	}
 
-	public SWTotalSale(String o_date, String cate_name, String p_name, int o_no, int o_qty, int salesAmount) {
+	public SWTotalSale(String o_date, String cate_name, String p_name, int o_qty, int salesAmount) {
 		super();
 		this.o_date = o_date;
 		this.cate_name = cate_name;
 		this.p_name = p_name;
-		this.o_no = o_no;
 		this.o_qty = o_qty;
 		this.salesAmount = salesAmount;
 	}
@@ -46,14 +44,6 @@ public class SWTotalSale {
 		this.p_name = p_name;
 	}
 
-	public int getO_no() {
-		return o_no;
-	}
-
-	public void setO_no(int o_no) {
-		this.o_no = o_no;
-	}
-
 	public int getO_qty() {
 		return o_qty;
 	}
@@ -72,7 +62,7 @@ public class SWTotalSale {
 
 	@Override
 	public String toString() {
-		return "SWTotalSale [o_date=" + o_date + ", cate_name=" + cate_name + ", p_name=" + p_name + ", o_no=" + o_no
+		return "SWTotalSale [o_date=" + o_date + ", cate_name=" + cate_name + ", p_name=" + p_name
 				+ ", o_qty=" + o_qty + ", salesAmount=" + salesAmount + "]";
 	}
 
