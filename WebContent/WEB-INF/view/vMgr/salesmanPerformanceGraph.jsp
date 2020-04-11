@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@include file="../include/header.jsp"%>
  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+  <!-- <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
@@ -33,19 +33,27 @@
      google.charts.load('current', {'packages':['corechart']});
      google.charts.setOnLoadCallback(drawChart);
 
+     
+    
      function drawChart() {
         var data = google.visualization.arrayToDataTable([
-          ['사원명', '%'],
-          ['문심차', 22],
-          ['홍소목', 17],
-          ['양옥고', 15],
-          ['강궁소', 12],
-          ['서사정', 6],
-          ['한전내', 5],
-          ['최지오', 5],
-          ['한지석', 5],
-          ['장우공', 4],
-          ['왕우내', 3],
+         /*  ['문심차', 22],
+            ['홍소목', 17],
+            ['양옥고', 15],
+            ['강궁소', 12],
+            ['서사정', 6],
+            ['한전내', 5],
+            ['최지오', 5],
+            ['한지석', 5],
+            ['장우공', 4],
+            ['왕우내', 3],  */
+          
+            ['사원명', '%'],
+            
+          	<c:forEach var="sp" items="${list}">
+				['${sp.e_name}', ${sp.salesMoney}],
+			</c:forEach>
+          
         ]);
 
         var options = {
@@ -90,9 +98,9 @@
 	.btnMenu{
 		width: 140px;
 		height: 36px;
-		background-color: #FFE08C;
+		background-color: #FFCD12;
 		border: 1px solid white;
-		color: #3A3A3A;
+		color: black;
 		border-radius: 5px;
 		margin:0 1px;
 		margin-bottom:10px;
@@ -100,7 +108,7 @@
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
+		font-size: 17px;
 		height:38px;
 		line-height: 38px;
 		border:none;
@@ -108,6 +116,12 @@
 	}
 	fieldset input{
 		height:25px;
+	}
+	.date{
+		font-weight: bold;
+	}
+	#text{
+		margin-top:5px;
 	}
 	#Search{
 		width: 60px;
@@ -143,13 +157,12 @@
 			<a href="${pageContext.request.contextPath}/vMgr/customerOrder.do"><button class="btnMenu">고객사 주문현황</button></a>
 			<a href="${pageContext.request.contextPath}/vMgr/salesman.do"><button class="btnMenu">영업사원 실적</button></a>
 		</div>
-		<form action="salesman.do" method="post">
+		<form action="salesmanSearch.do" method="post">
 			<fieldset>
 				<label>조 회 기 간 </label>
 				<input type="text" id="datepickerStart" name="startDate">
 				<input type="text" id="datepickerEnd" name="endDate">
 				<input type="submit" value="검색" id="Search" style="cursor:pointer">
-				<input type="button" value="전체" id="All" style="cursor:pointer">
 			</fieldset>
 			<div id="piechart">
 			

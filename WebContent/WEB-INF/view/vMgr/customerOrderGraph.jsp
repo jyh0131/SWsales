@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@include file="../include/header.jsp"%>
  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="/resources/demos/style.css">
+ <!--  <link rel="stylesheet" href="/resources/demos/style.css"> -->
   <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
   <link rel="stylesheet" href="http://code.jquery.com/ui/1.8.18/themes/base/jquery-ui.css" type="text/css" />  
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>  
   <script src="http://code.jquery.com/ui/1.8.18/jquery-ui.min.js"></script>  
-  <script>
+   <script>
 	  $( function() {
 	    $( "#datepickerStart" ).datepicker({
 	      showOn: "button",
@@ -27,47 +28,29 @@
 	    });
 	    
 	  } );
-  </script>
+  </script> 
 <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
 <script type="text/javascript" src="https://www.google.com/jsapi"></script>
 <script type="text/javascript">
-	var queryObject = "";
-	var queryObjectLen = "";
-	$.ajax({
-		type: 'POST',
-		url: 'customerOrderGraph.jsp',
-		dataType:'json',
-		success: function(data){
-			
-			queryObject = eval('(' + JSON.stringify(data, null, 2) + ')');
-			queryObjectLen = 10;
-			
-		}
-	});
 
 	google.charts.load('current', {'packages':['corechart']});
 	google.charts.setOnLoadCallback(drawVisualization);
 	
 	function drawVisualization(){
-		/* var data = google.visualization.arrayToDataTable([
-			['고객사명', '영화정보통신', '세종특별자치시청', '상내정보통신', '우우시스템',
+		 var data = google.visualization.arrayToDataTable([
+			/*['고객사명', '영화정보통신', '세종특별자치시청', '상내정보통신', '우우시스템',
 				'대전광역시 교육청', '금변시스템', '전라북도청', '대전광역시청', '부산광역시 교육청', '세종특별자치시 교육청'],
 			[' ', 1747240000, 1042800000, 1020250000, 819280000, 789250000,
-				654500000, 595650000, 534820000, 524535000, 485100000] */
-				
-			var data = new google.visualization.DataTable();
-			data.addColumn('string', 'c_name');
-			data.addColumn('number', 'p_price');
+				654500000, 595650000, 534820000, 524535000, 485100000] 
+			*/
 			
-			for(var i=0; i<queryObjectLen; i++){
-				var cName = queryObject.barlist[i].c_name;
-				var price = queryObject.barlist[i].p_price;
-				
-				data.addRows([
-					["고객사명", cName],
-					[" ", price]
-				]);
-			}
+				['고객사명', <c:forEach var="co" items="${cName}">
+									'${co.c_name}',
+							</c:forEach>],
+				[' ', <c:forEach var="co" items="${pPrice}">
+								${co.p_price},
+							</c:forEach>]
+			])
 			
 			var options = {
 					title: "상위 10개 고객사",
@@ -114,9 +97,9 @@
 	.btnMenu{
 		width: 140px;
 		height: 36px;
-		background-color: #FFE08C;
+		background-color: #FFCD12;
 		border: 1px solid white;
-		color: #3A3A3A;
+		color: black;
 		border-radius: 5px;
 		margin:0 1px;
 		margin-bottom:10px;
@@ -124,14 +107,20 @@
 	fieldset{
 		padding:3px 10px;
 		margin:10px 0;
-		font-size: 20px;
-		height:38px;
+		font-size: 17px;
+		height:100px;
 		line-height: 38px;
 		border:none;
 		text-align: center;
 	}
 	fieldset input{
 		height:25px;
+	}
+	.date{
+		font-weight: bold;
+	}
+	#text{
+		margin-top:5px;
 	}
 	#Search{
 		width: 60px;
@@ -140,15 +129,6 @@
 		border: 1px solid white;
 		color: white;
 		border-radius: 5px;
-	}
-	#All{
-		width: 60px;
-		height: 36px;
-		background-color: #ccc;
-		border: 1px solid white;
-		color: white;
-		border-radius: 5px;
-		right: 0;
 	}
 	#chart_div{
 		height:700px;
@@ -166,13 +146,13 @@
 			<a href="${pageContext.request.contextPath}/vMgr/customerOrder.do"><button class="btnMenu">고객사 주문현황</button></a>
 			<a href="${pageContext.request.contextPath}/vMgr/salesman.do"><button class="btnMenu">영업사원 실적</button></a>
 		</div>
-		<form action="dateSearch.do" method="post">
-			<fieldset>
+		<form action="coSearch.do" method="post">
+			 <fieldset>
 				<label>조 회 기 간 </label>
 				<input type="text" id="datepickerStart" name="startDate">
 				<input type="text" id="datepickerEnd" name="endDate">
 				<input type="submit" value="검색" id="Search" style="cursor:pointer">
-				<input type="button" value="전체" id="All" style="cursor:pointer">
+				<div id="text">${dateText }</div>
 			</fieldset>
 			<div id="chart_div">
 			
