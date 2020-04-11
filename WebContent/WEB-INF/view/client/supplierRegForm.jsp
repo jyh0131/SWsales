@@ -38,7 +38,9 @@
     	margin: 0 auto;
 	}
 	.red{
-		color: red;	
+		color: red;
+		font-weight: bold;
+		font-size: 18px;	
 	}
 	#regForm{
 		width: 65%;
@@ -104,6 +106,21 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	input[name*='no']{
+		font-weight: bold;
+		color: #000080;
+		font-size: 16px;
+		outline: none;
+		background: #eee;
+	}
+	input[name*='sName']{
+		font-weight: bold;
+		color: #990000;	
+	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -178,9 +195,9 @@
 </script>
 	<section>
 		<div id="title">
-			<h1>Supplier List</h1>
+			<h1>Supplier Registration</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a> > <span id="k_title">공급회사 등록</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a> > <a href="${pageContext.request.contextPath}/client/supplierList.do">공급회사 리스트</a> > <span id="k_title">&nbsp;공급회사 등록&nbsp;</span></h3>
 		</div>	
 		<div id="point">
 			<label class="red">＊ 필수입력</label>
@@ -199,14 +216,14 @@
 					<label><span class="red">* </span>사업자등록번호</label>
 					<input type="text" name="sBln" class="text" placeholder=" 000-00-00000"><br>
 					
-					<label>&nbsp&nbsp주소</label>
+					<label>&nbsp;&nbsp;주소</label>
 					<input type="text" name="sAddress" id="sAddress"class="text" placeholder=" >> 주소검색">
 					<input type="button" value="주소검색" id="btnSaddress" onclick="openDaumZipAddress();" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>전화번호</label>
 					<input type="text" name="sTel" class="text" placeholder=" '-'로 구분하여 입력"><br>
 					
-					<label>&nbsp&nbspFAX번호</label>
+					<label>&nbsp;&nbsp;FAX번호</label>
 					<input type="text" name="sFax" class="text" placeholder=" '-'로 구분하여 입력"><br>
 				</div>
 			</div>
