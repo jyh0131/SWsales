@@ -290,10 +290,6 @@ $(function () {
 		$("input[name=no]").val("P0"+pno); //P0100
 	}
 	
-	$("#test").click(function() {
-		var t = $("#btnPname").val();
-		alert(t);
-	})
 })	
 </script>
 <section>
@@ -357,6 +353,5 @@ $(function () {
 			<input type="button" value="취소" id="btnReset" style="cursor: pointer">			
 			</div>
 		</form>
-		<button id="test">test</button>
 </section>
 <%@ include file="../include/footer.jsp" %>

@@ -50,7 +50,10 @@ public class SupplierOrder1InsertHandler implements CommandHandler{
 				SupplierOrderDao dao = SupplierOrderDao.getInstance();
 				
 				//품목명
-				Product pNo = new Product(req.getParameter("soPname"));
+				String str = req.getParameter("soPname");
+				String[] arr = str.split("/");
+				String no = arr[0];
+				Product pNo = new Product(Integer.parseInt(no));
 
 				//회사명 - 번호
 				Supplier sName = new Supplier(req.getParameter("soSname"));
