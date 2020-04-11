@@ -177,7 +177,7 @@
 </script>
 	<section>
 		<div id="title">
-			<h1>Supplier List</h1>
+			<h1>Client Information Modify</h1>
 			<hr>
 			<h3><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a> > <span id="k_title">고객사 정보수정</span></h3>
 		</div>	

@@ -88,7 +88,7 @@
 		<header>
 			<a href="${pageContext.request.contextPath}/main/main.do"><img src="${pageContext.request.contextPath}/images/main/h_logo.png" width="157" height="64" id="h_logo"></a>
 			<ul id="h_menu">
-				<li><a href="#">NAMBAWAN IT</a></li>
+				<li><a href="${pageContext.request.contextPath}/main/main.do">NAMBAWAN IT</a></li>
 				<li><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a></li>
 				<li><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a></li>

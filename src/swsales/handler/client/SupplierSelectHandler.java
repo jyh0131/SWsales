@@ -8,7 +8,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import swsales.dao.SupplierDao;
 import swsales.jdbc.JDBCUtil;
-import swsales.model.Paging;
 import swsales.model.Supplier;
 import swsales.mvc.CommandHandler;
 
@@ -29,45 +28,18 @@ public class SupplierSelectHandler implements CommandHandler {
 					Supplier selectSupplier = new Supplier(search, null, null);
 					List<Supplier> list = dao.selectSupplierListByName(conn, selectSupplier);
 					
-					int page = 1;
-					if (req.getParameter("page") != null) {
-						page = Integer.parseInt(req.getParameter("page"));
-					}
-					Paging paging = new Paging();
-					paging.setPage(page);
-					paging.setTotalCount(list.size());
-					
-					req.setAttribute("paging", paging);
 					req.setAttribute("list", list);
 					
 				}else if(selSearch.equals("sBln")) {
 					Supplier selectSupplier = new Supplier(null, search, null);
 					List<Supplier> list = dao.selectSupplierListByBln(conn, selectSupplier);
 					
-					int page = 1;
-					if (req.getParameter("page") != null) {
-						page = Integer.parseInt(req.getParameter("page"));
-					}
-					Paging paging = new Paging();
-					paging.setPage(page);
-					paging.setTotalCount(list.size());
-					
-					req.setAttribute("paging", paging);					
 					req.setAttribute("list", list);
 					
 				}else if(selSearch.equals("sTel")) {
 					Supplier selectSupplier = new Supplier(null, null, search);
 					List<Supplier> list = dao.selectSupplierListByTel(conn, selectSupplier);
-					
-					int page = 1;
-					if (req.getParameter("page") != null) {
-						page = Integer.parseInt(req.getParameter("page"));
-					}
-					Paging paging = new Paging();
-					paging.setPage(page);
-					paging.setTotalCount(list.size());
-					
-					req.setAttribute("paging", paging);
+
 					req.setAttribute("list", list);
 				}
 				return "/WEB-INF/view/client/supplierList.jsp";

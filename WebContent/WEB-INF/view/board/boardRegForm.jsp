@@ -86,7 +86,7 @@
 </script>
 	<section>
 		<div id="title">
-			<h1>Notice List</h1>
+			<h1>Notice Registration</h1>
 			<hr>
 			<h3>공지사항  > <span id="k_title">공지사항 등록</span></h3>
 		</div>
