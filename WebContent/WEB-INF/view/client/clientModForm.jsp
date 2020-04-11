@@ -39,6 +39,8 @@
 	}
 	.red{
 		color: red;
+		font-weight: bold;
+		font-size: 18px;
 	}
 	#regForm{
 		width: 65%;
@@ -104,6 +106,17 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	input[name='no']{
+		font-weight: bold;
+		color: #000080;
+		font-size: 16px;
+		outline: none;
+		background: #eee;	
+	}
+	input::placeholder{
+		color:red;
+		letter-spacing: 6px;
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/JavaScript" src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
@@ -177,9 +190,9 @@
 </script>
 	<section>
 		<div id="title">
-			<h1>Client Information Modify</h1>
+			<h1>Client Modification</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a> > <span id="k_title">고객사 정보수정</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/client/cSubMenu.do">거래처 관리</a> > <a href="${pageContext.request.contextPath}/client/clientList.do">공급회사 리스트</a> > <span id="k_title">&nbsp;고객사 정보수정&nbsp;</span></h3>
 		</div>	
 		<div id="point">
 			<label class="red">＊ 필수입력</label>

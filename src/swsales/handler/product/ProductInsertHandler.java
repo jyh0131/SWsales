@@ -39,9 +39,9 @@ public class ProductInsertHandler implements CommandHandler{
 				List<Category> list1 = dao2.selectCategoryByAll(conn);
 				req.setAttribute("list1", list1);
 				
-				//회사명 가져오기
+				//회사명 가져오기 - 가나다순정렬
 				SupplierDao dao4 = SupplierDao.getInstance();
-				List<Supplier> list3 = dao4.selectSupplierByAll(conn);
+				List<Supplier> list3 = dao4.selectSupplierByAllOrderByName(conn);
 				req.setAttribute("list3", list3);
 				
 			}catch(Exception e) {
@@ -71,7 +71,7 @@ public class ProductInsertHandler implements CommandHandler{
 
 				ProductDao dao = ProductDao.getInstance();
 				
-				int pNo = Integer.parseInt(multi.getParameter("pNo"));
+				//int pNo = Integer.parseInt(multi.getParameter("pNo"));
 				Category pCate = new Category(Integer.parseInt(multi.getParameter("pCate")));
 				String pName = multi.getParameter("pName");
 				int pCost = Integer.parseInt(multi.getParameter("pCost"));
@@ -86,7 +86,7 @@ public class ProductInsertHandler implements CommandHandler{
 				
 				String pPicPath = multi.getFilesystemName("pPic");
 				
-				Product product = new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
+				Product product = new Product(0, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
 			
 				dao.insertProduct(conn, product);
 				res.sendRedirect(req.getContextPath()+"/product/productList2.do");

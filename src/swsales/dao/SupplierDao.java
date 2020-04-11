@@ -147,31 +147,6 @@ public class SupplierDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
-	
-	public List<Supplier> selectSupplierListPagingByTel(Connection conn,Supplier selectSupplier, int page) throws SQLException {
-		PreparedStatement pstmt = null;
-		ResultSet rs = null;
-		int startNum = (page-1)*10+1;
-        int endNum = page*10;
-        
-		try {
-			String sql = "SELECT * from (SELECT @rownum:=@rownum+1 rnum, s.* from supplier s, " 
-                       + "(SELECT @ROWNUM := 0) R where 1=1) list WHERE rnum >= ? AND rnum <=? and s_tel like concat ('%', ?, '%')";
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, startNum);
-			pstmt.setInt(2, endNum);
-			pstmt.setString(3, selectSupplier.getsTel());
-			rs = pstmt.executeQuery();
-			List<Supplier> list = new ArrayList<Supplier>();
-			while (rs.next()) {
-				list.add(getSupplier(rs));
-			}
-			return list;
-		} finally {
-			JDBCUtil.close(rs);
-			JDBCUtil.close(pstmt);
-		}
-	}
 
 	public List<Supplier> selectSupplierByAll(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
@@ -269,6 +244,28 @@ public class SupplierDao {
 			pstmt.executeUpdate();
 			
 		} finally {
+			JDBCUtil.close(pstmt);
+		}
+	}
+	
+	
+	//회사명 가나다순 정렬
+	public List<Supplier> selectSupplierByAllOrderByName(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier order by s_name";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<Supplier> list = new ArrayList<Supplier>();
+			while (rs.next()) {
+				list.add(getSupplier(rs));
+			}
+			return list;
+			
+		} finally {
+			JDBCUtil.close(rs);
 			JDBCUtil.close(pstmt);
 		}
 	}
