@@ -29,8 +29,8 @@ public class SupplierOrder2DeleteHandler implements CommandHandler{
 			int pNo = searchSp.getSpPno().getpNo();
 			int delQty = searchSp.getSpQty();
 			
-			System.out.println(pNo);
-			System.out.println(delQty);
+			//System.out.println(pNo);
+			//System.out.println(delQty);
 			
 			
 			SupplierPurchase sp = new SupplierPurchase(spNo);

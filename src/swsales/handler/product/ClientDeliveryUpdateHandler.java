@@ -47,9 +47,10 @@ public class ClientDeliveryUpdateHandler implements CommandHandler{
 				Order cdSno = dao2.selectOrderByNo(conn, oNo);*/
 				/*System.out.println(cdSno);*/
 				String sDate = req.getParameter("cdDate");
-				SimpleDateFormat dt = new SimpleDateFormat("yyyyy-MM-dd");
+				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
 				Date cdDate = dt.parse(sDate);
-				System.out.println(cdDate);
+				
+				//System.out.println(cdDate);
 				ClientDeliveryDao dao = ClientDeliveryDao.getInstance();
 
 				ClientDelivery clientdelivery = new ClientDelivery(cdNo,cdDate);
