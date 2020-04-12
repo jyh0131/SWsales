@@ -7,8 +7,10 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import swsales.dao.ProductDao;
+import swsales.dao.SupplierDao;
 import swsales.jdbc.JDBCUtil;
 import swsales.model.Product;
+import swsales.model.Supplier;
 import swsales.mvc.CommandHandler;
 
 public class ProductSearchHandler implements CommandHandler{
@@ -29,15 +31,24 @@ public class ProductSearchHandler implements CommandHandler{
 					//System.out.println(selectProduct); - 한글 2020
 					List<Product> list = dao.selectProductListByName(conn, selectProduct);
 					req.setAttribute("list", list);
+					
 				}/*else if(selSearch.equals("pCate")) {
-					//Product selectProduct = new Product(search, null, null); 
-					//List<Product> list = dao.selectProductListByCate(conn, selectProduct);
-					//req.setAttribute("list", list);
-				}else if(selSearch.equals("pSno")) {
-					//Product selectProduct =  new Product(null, null, search);
-					//List<Product> list = dao.selectProductListBySupp(conn, selectProduct);
-					//req.setAttribute("list", list);
-				}*/
+					CategoryDao cDao = CategoryDao.getInstance();
+					Category cate = cDao.selectCategoryByCateName(conn, search);
+					Product selectProduct = new Product();
+					selectProduct.setpCate(cate);
+					List<Product> list = dao.selectProductListByCate(conn, selectProduct);
+					req.setAttribute("list", list);
+					
+				}*/else if(selSearch.equals("pSno")) {
+					SupplierDao sDao = SupplierDao.getInstance();
+					Supplier supplier = new Supplier(search);
+					Supplier sup = sDao.selectSupplierByName(conn, supplier);
+					Product selectProduct =  new Product();
+					selectProduct.setpSno(sup);
+					List<Product> list = dao.selectProductListBySupp(conn, selectProduct);
+					req.setAttribute("list", list);
+				}
 				return "/WEB-INF/view/product/productList1.jsp";
 			} catch (Exception e) {
 				e.printStackTrace();

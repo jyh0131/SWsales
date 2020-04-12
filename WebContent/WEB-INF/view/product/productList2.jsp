@@ -185,8 +185,8 @@
 			<input type="button" value="멀티미디어" id="cate4" style="cursor:pointer">
 			<input type="button" value="기업업무" id="cate5" style="cursor:pointer">
 			<input type="button" value="서버" id="cate6" style="cursor:pointer">		
-			<a href="${pageContext.request.contextPath}/product/productList1.do"><button id="btnAll">전 체 LIST</button></a>		
-			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd">제 품 등 록</button></a>	
+			<a href="${pageContext.request.contextPath}/product/productList1.do"><button id="btnAll" style="cursor: pointer">전 체 LIST</button></a>		
+			<a href="${pageContext.request.contextPath}/product/productAdd.do"><button id="btnAdd" style="cursor: pointer">제 품 등 록</button></a>	
 		</div>
 		<div id="pImg_container">
 			<c:forEach var="product" items="${list }">

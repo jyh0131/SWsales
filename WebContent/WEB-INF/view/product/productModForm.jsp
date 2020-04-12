@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../include/header.jsp" %>
 <style>
 	/** form 타이틀 **/
@@ -244,14 +245,14 @@ $(function() {
 					
 					
 					<label><span class="red">* </span>최초등록일자</label>
-					<input type="date" name="pDate" class="text" value="${product.pDate}"><br>
+					<input type="date" name="pDate" class="text" value='<fmt:formatDate  value="${product.pDate }" pattern="yyyy-MM-dd"/>'><br>
 					
 					<label>&nbsp&nbsp제품 이미지</label>
-					<input type="file" name="pPic" value="${product.pPicPath}"><br>
+					<input type="file" name="pPic" value="${product.pPicPath}" ><br>
 				</div>
 			</div>
 			<div id="add">
-				<input type="submit" value="등록" id="btnMod" style="cursor: pointer">
+				<input type="submit" value="수정" id="btnMod" style="cursor: pointer">
 				<input type="button" value="취소" id="btnReset" style="cursor: pointer">			
 			</div>
 		</form>

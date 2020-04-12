@@ -74,11 +74,10 @@ public class ProductDao {
 		ResultSet rs = null;
 		
 		try {
-			String sql ="select p_no, c.cate_no, c.cate_name, p_name, p_cost, p_price, s.s_no, s.s_name, p_qty, p_date, p_picpath from product p "
-					  + "left join category c on p.p_cate = c.cate_no "
-					  + "left join supplier s on p.p_sno = s.s_no where cate_name=?";
+			String sql ="select p_no, c.cate_no, c.cate_name, p_name, p_cost, p_price, s.s_no, s.s_name, p_qty, p_date, p_picpath "
+					  + "from product p left join category c on p.p_cate = c.cate_no left join supplier s on p.p_sno = s.s_no where cate_no=?";
 			pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, product.getpCate().getCateName());
+			pstmt.setInt(1, product.getpCate().getCateNo());
 			rs = pstmt.executeQuery();
 			List<Product> list = new ArrayList<>();
 			while(rs.next()) {
@@ -100,6 +99,7 @@ public class ProductDao {
 					  + "left join category c on p.p_cate = c.cate_no "
 					  + "left join supplier s on p.p_sno = s.s_no where s_name=?";
 			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, product.getpSno().getsName());
 			rs = pstmt.executeQuery();
 			List<Product> list = new ArrayList<>();
 			while(rs.next()) {
@@ -418,7 +418,7 @@ public class ProductDao {
 				int pPrice = rs.getInt("p_price");
 				Supplier pSno = new Supplier(rs.getInt("s_no"), rs.getString("s_name"), rs.getString("s_bln"), rs.getString("s_address"), rs.getString("s_tel"), rs.getString("s_fax"));
 				int pQty = rs.getInt("p_qty");
-				Date pDate = rs.getTimestamp("p_date");
+				Date pDate = rs.getTimestamp("p_date");				
 				String pPicPath = rs.getString("p_picpath");
 				return new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
 			}
