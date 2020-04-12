@@ -160,5 +160,30 @@ public class IQDao {
 		int iqNo = rs.getInt("iq_no");
 		return new InventoryQuantity(iqNo);
 	}
+	
+	
+	public InventoryQuantity selectIqQtyByPno(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		try {
+			String sql = "select iq_pno, iq_qty from inventory_quantity iq left join product p on iq.iq_pno = p.p_no where p.p_no = ?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {				
+				return getPno(rs);
+			}
+			return null;
+		}finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+
+	private InventoryQuantity getPno(ResultSet rs) throws SQLException{
+		Product iqPno = new Product(rs.getInt("iq_pno"));
+		int iqQty = rs.getInt("iq_qty");
+		return new InventoryQuantity(iqPno, iqQty);
+	}
 
 }

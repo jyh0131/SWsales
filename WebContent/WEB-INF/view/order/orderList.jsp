@@ -22,6 +22,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}	
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -190,7 +197,7 @@
 	<div id="title">
 		<h1>Product Order Category</h1>
 		<hr>
-		<h3>주문 관리 > <span id="k_title">주문 제품별 카테고리</span></h3>
+		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a> > <span id="k_title">주문 제품별 카테고리</span></h3>
 	</div>
 	<div id="icon_dummy">
 		<ul>
@@ -225,7 +232,7 @@
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 					</a>
 					<div class="product_info">
-						<p><span id="cate">&nbsp${product.pCate}&nbsp</span> <span id="pName">${product.pName}</span></p>
+						<p><span id="cate">&nbsp;${product.pCate}&nbsp;</span> <span id="pName">${product.pName}</span></p>
 						<p><b>공급회사 : </b>${product.pSno.sName}</p>
 						<p><b>판매가격 : </b><fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${product.pCost}" pattern="\#,###.##"/>)</span></p>
 					</div>

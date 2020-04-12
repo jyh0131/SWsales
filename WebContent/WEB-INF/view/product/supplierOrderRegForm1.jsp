@@ -112,7 +112,7 @@
 		outline: none;
 		background: #eee;
 	}
-	select[name*='soPname']{
+	select[name*='pInfo']{
 		font-weight: bold;
 		color: #336600;
 		position: relative;
@@ -152,7 +152,7 @@
 		/*** 등록막기 ***/
 	 	$("form").submit(function() {
 	 		//품목명
-	 		var pName = $("select[name='soPname']").val();
+	 		var pName = $("select[name='pInfo']").val();
 			if(pName == "선택해주세요"){
 				alert("품목명을 선택해주세요.");
 				$("#soPname").focus();
@@ -201,7 +201,7 @@
 	 	
 		/*** 품목명 조회 버튼 ***/
 		$("#btnPname").click(function() {
-			var pName = $("select[name='soPname']").val(); //품목번호를 가져옴
+			var pName = $("select[name='pInfo']").val(); //품목번호를 가져옴
 			if(pName == "선택해주세요"){
 				alert("품목명을 선택해주세요.");
 				$("#soPname").focus();
@@ -209,7 +209,7 @@
 				$.ajax({
 					url:"${pageContext.request.contextPath}/product/productSearchNo.do",
 					type:"get",
-					data:{"soPname":pName},
+					data:{"pInfo":pName},
 					dataType:"json",
 					success:function(res){
 						console.log(res);
@@ -248,7 +248,7 @@
 					
 					<!-- 품목명 조회후 공급회사명, 발주가격 자동입력 -->
 						<label><span class="red">* </span>품목명</label>
-						<select name="soPname" class="text" id="soPname">
+						<select name="pInfo" class="text" id="soPname">
 							<option selected="selected" value="선택해주세요">선택해주세요</option>					
 								<c:forEach var="product" items="${list}">
 									<option value="${product.pNo}/${product.pSno.sName}/${product.pCost}">[${product.pCate}] ${product.pName}</option>

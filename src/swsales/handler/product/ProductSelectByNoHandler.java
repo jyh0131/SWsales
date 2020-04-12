@@ -22,7 +22,7 @@ public class ProductSelectByNoHandler implements CommandHandler{
 		if(req.getMethod().equalsIgnoreCase("get")) {
 			Connection conn = null;
 			//int pNo = Integer.parseInt(req.getParameter("soPname"));
-			String str = req.getParameter("soPname");
+			String str = req.getParameter("pInfo");
 			String[] arr = str.split("/");
 			String no = arr[0];
 			int pNo = Integer.parseInt(no);

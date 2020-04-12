@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp" %>
 <style>
 	/** form 타이틀 **/
@@ -34,6 +35,8 @@
 	}
 	.red{
 		color: red;
+		font-weight: bold;
+		font-size: 18px;
 		
 	}	
 	#regForm{
@@ -128,7 +131,8 @@
 					<input type="text" name="oQty" class="text" value="${clientDelivery.cdSno.oQty}"  readonly="readonly"><br>
 					
 					<label><span class="red">* </span>출고일자</label>
-					<input type="date" name="cdDate" class="text" value="${clientDelivery.cdDate}"><br>
+					<fmt:formatDate value="${clientDelivery.cdDate}" var="viewDt" pattern="yyyy-MM-dd" />
+					<input type="date" name="cdDate" class="text" value="${viewDt}"><br>
 				</div>
 			</div>
 			<div id="add">

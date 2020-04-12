@@ -87,7 +87,7 @@ public class ProductInsertHandler implements CommandHandler{
 				String pPicPath = multi.getFilesystemName("pPic");
 				
 				Product product = new Product(0, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
-			
+				
 				dao.insertProduct(conn, product);
 				res.sendRedirect(req.getContextPath()+"/product/productList2.do");
 				return null;
