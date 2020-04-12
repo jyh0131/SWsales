@@ -88,16 +88,6 @@ public class ProductInsertHandler implements CommandHandler{
 				
 				Product product = new Product(0, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
 				
-				System.out.println(pCate);
-				System.out.println(pName);
-				System.out.println(pCost);
-				System.out.println(pPrice);
-				System.out.println(pSno);
-				System.out.println(pQty);
-				System.out.println(pDate);
-				System.out.println(pPicPath);
-				System.out.println(product);
-				
 				dao.insertProduct(conn, product);
 				res.sendRedirect(req.getContextPath()+"/product/productList2.do");
 				return null;

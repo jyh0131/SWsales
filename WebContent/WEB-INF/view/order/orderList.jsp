@@ -232,7 +232,7 @@
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 					</a>
 					<div class="product_info">
-						<p><span id="cate">&nbsp${product.pCate}&nbsp</span> <span id="pName">${product.pName}</span></p>
+						<p><span id="cate">&nbsp;${product.pCate}&nbsp;</span> <span id="pName">${product.pName}</span></p>
 						<p><b>공급회사 : </b>${product.pSno.sName}</p>
 						<p><b>판매가격 : </b><fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${product.pCost}" pattern="\#,###.##"/>)</span></p>
 					</div>

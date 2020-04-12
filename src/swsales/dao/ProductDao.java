@@ -221,6 +221,7 @@ public class ProductDao {
 		
 		try {
 			String sql = "select p_no, p_name, p_cost, p_price, p_qty from product where p_name=?";
+			//String sql = "select p.p_no, p.p_name, p.p_cost, p.p_price, p.p_qty, iq.iq_pno, iq.iq_qty from product p left join inventory_quantity iq on p.p_no = iq.iq_pno where p_name=?";
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, Product.getpName());
 			rs = pstmt.executeQuery();
@@ -233,6 +234,7 @@ public class ProductDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+
 
 	private Product getProduct(ResultSet rs) throws SQLException {
 		int pNo = rs.getInt("p_no");
@@ -476,6 +478,27 @@ public class ProductDao {
 			}
 			return list;
 			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
+	
+	public Product selectProductQtyByPno(Connection conn, int no) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			//String sql = "select p_no, p_name, p_cost, p_price, p_qty from product where p_name=?";
+			String sql = "select p.p_no, p.p_name, p.p_cost, p.p_price, p.p_qty, iq.iq_pno, iq.iq_qty from product p left join inventory_quantity iq on p.p_no = iq.iq_pno where p.p_no=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, no);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				//return getProduct(rs);
+				return getProductJoin(rs);
+			}
+			return null;
 		} finally {
 			JDBCUtil.close(rs);
 			JDBCUtil.close(pstmt);
