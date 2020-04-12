@@ -22,6 +22,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}	
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -169,13 +176,13 @@
 	<div id="title">
 		<h1>Order Registration</h1>
 		<hr>
-		<h3>주문 관리 > <span id="k_title">주문 등록</span></h3>
+		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a> > <a href="${pageContext.request.contextPath}/order/orderAllList.do">주문 제품별 카테고리</a> > <span id="k_title">&nbsp;주문 등록&nbsp;</span></h3>
 	</div>
 	<div id="order_container">
 		<div class="order_box">
 			<img src="${pageContext.request.contextPath}/productIMG/${order.pPicPath}">
 			<div class = "product_info">
-				<p><span id="cate">&nbsp${order.pCate}&nbsp</span> <span id="pName">${order.pName}</span></p>
+				<p><span id="cate">&nbsp;${order.pCate}&nbsp;</span> <span id="pName">${order.pName}</span></p>
 				<p><b>공급회사 : </b>${order.pSno.sName}</p>
 				<p><b>판매가격 : </b><fmt:formatNumber value="${order.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${order.pCost}" pattern="\#,###.##"/>)</span></p>			
 			</div>
@@ -185,10 +192,10 @@
 				<label class="red">＊ 필수입력</label>
 			</div>
 			<form>
-				<label>&nbsp<span class="red">* </span>주문번호</label>
+				<label>&nbsp;<span class="red">* </span>주문번호</label>
 				<input type="text" name="oNo" class="text" readonly="readonly" value="POO${order.pNo}"><br>
 				
-				<label>&nbsp<span class="red">* </span>주문일자</label>
+				<label>&nbsp;<span class="red">* </span>주문일자</label>
 				<input type="date" name="oDate" class="text"><br>
 				
 				<label><span class="red">* </span>고객 상호명</label>
@@ -199,14 +206,14 @@
 					</c:forEach>
 				</select><br>				
 				
-				<label>&nbsp<span class="red">* </span>품목명</label>
+				<label>&nbsp;<span class="red">* </span>품목명</label>
 				<input type="text" name="oPname" class="text" readonly="readonly" value="${order.pName}"><br>
 				
-				<label>&nbsp<span class="red">* </span>주문수량</label>
+				<label>&nbsp;<span class="red">* </span>주문수량</label>
 				<input type="text" name="oQty" placeholder=" >> 재고조회 후 수량입력" class="text">
 				<input type="button" value="재고조회" id="btnQty" style="cursor: pointer"><br>
 				
-				<label>&nbsp&nbsp&nbsp고객요구사항</label>
+				<label>&nbsp;&nbsp;&nbsp;고객요구사항</label>
 				<textarea rows="10" cols="60"></textarea><br>
 				<div id="add">
 					<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
