@@ -51,10 +51,11 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				
 				SupplierPurchaseDao dao = SupplierPurchaseDao.getInstance();
 				
-				//품목명 - 번호(고쳐야할듯 - 4/10)
-				Product pName = new Product(req.getParameter("spPname"));
-				ProductDao dao2 = ProductDao.getInstance();
-				Product pNo = dao2.selectProductByName(conn, pName);
+				//품목명
+				String str = req.getParameter("pInfo");
+				String[] arr = str.split("/");
+				String no = arr[0];
+				Product pNo = new Product(Integer.parseInt(no));
 
 				//회사명 - 번호
 				Supplier sName = new Supplier(req.getParameter("spSname"));
