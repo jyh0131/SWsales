@@ -117,7 +117,7 @@
    td button#btnMod{
       background: #87cefa;
    }
-    td button#btnDel{
+    td button.btnDel{
       background: #f08080;
    }	
 	#btnAdd{
@@ -155,6 +155,16 @@
 		$("#btnTop").click(function() {
 			location.href="supplierOrderList2.do";
 		})
+		
+		//삭제버튼
+		$(".btnDel").click(function() {
+			var no = $(this).attr("data-spNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/product/supplierOrderDel2.do?no="+no;
+			}
+		})		
 	});
 </script>
 
@@ -208,7 +218,7 @@
 						<td><fmt:formatDate value="${SupplierPurchase.spDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
 							<a href="${pageContext.request.contextPath}/product/supplierOrderMod2.do?spNo=${SupplierPurchase.spNo}"><button id="btnMod" style="cursor: pointer">수정</button></a>
-							<a href="#"><button id="btnDel">삭제</button></a>
+							<button class="btnDel" style="cursor: pointer" data-spNo="${SupplierPurchase.spNo}">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>

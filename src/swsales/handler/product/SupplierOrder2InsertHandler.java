@@ -55,7 +55,9 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				String str = req.getParameter("pInfo");
 				String[] arr = str.split("/");
 				String no = arr[0];
-				Product pNo = new Product(Integer.parseInt(no));
+				int searchPno = Integer.parseInt(no);
+				Product pNo = new Product(searchPno);
+				
 
 				//회사명 - 번호
 				Supplier sName = new Supplier(req.getParameter("spSname"));
@@ -68,8 +70,20 @@ public class SupplierOrder2InsertHandler implements CommandHandler{
 				
 				//매입이력등록시 재고수량테이블 자동증가 시켜야함!
 				IQDao dao4 = IQDao.getInstance();
-				InventoryQuantity iq = new InventoryQuantity(pNo, spQty);
-				dao4.insertIQ(conn, iq);
+				InventoryQuantity iqPno = dao4.selectIqQtyByPno(conn, searchPno);
+				
+
+				if(iqPno != null) {
+					//System.out.println("재고테이블 - 번호O");
+					int nowQty = iqPno.getIqQty();
+					int total = spQty + nowQty; 
+					InventoryQuantity upIq = new InventoryQuantity(pNo, total);
+					dao4.updateIQ(conn, upIq);
+				}else {					
+					InventoryQuantity newIq = new InventoryQuantity(pNo, spQty);
+					//System.out.println("재고테이블 - 번호X");
+					dao4.insertIQ(conn, newIq);
+				}
 				
 				String sDate = req.getParameter("spDate");
 				SimpleDateFormat dt = new SimpleDateFormat("yyyy-MM-dd");
