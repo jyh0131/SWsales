@@ -206,8 +206,11 @@
 								<c:when test="${SupplierPurchase.spNo < 10 }">
 									SP000${SupplierPurchase.spNo }
 								</c:when>
-								<c:when test="${SupplierPurchase.spNo >= 10 }">
+								<c:when test="${SupplierPurchase.spNo > 9 && SupplierPurchase.spNo < 100}">
 									SP00${SupplierPurchase.spNo }
+								</c:when>
+								<c:when test="${SupplierPurchase.spNo > 99 && SupplierPurchase.spNo < 1000}">
+									SP0${SupplierPurchase.spNo }
 								</c:when>
 							</c:choose>
 						</td>
