@@ -213,7 +213,7 @@ $(function() {
 		<div id="title">
 			<h1>Software Product Registration</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 제품 리스트</a> > <a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}&pCate=${product.pCate.cateNo}">소프트웨어 제품 상세정보</a> > <span id="k_title">소프트웨어 제품 수정</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 제품 리스트</a> > <a href="${pageContext.request.contextPath}/product/productDetail.do?pNo=${product.pNo}&pCate=${product.pCate.cateNo}">소프트웨어 제품 상세정보</a> > <span id="k_title">&nbsp;소프트웨어 제품 수정&nbsp;</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">

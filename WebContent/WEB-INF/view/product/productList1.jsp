@@ -147,7 +147,7 @@
 		<div id="title">
 			<h1>Software Product All List</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 제품 리스트</a> > <span id="k_title">소프트웨어 제품 전체 리스트</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/productList2.do">소프트웨어 제품 리스트</a> > <span id="k_title">&nbsp;소프트웨어 제품 전체 리스트&nbsp;</span></h3>
 		</div>
 		<div id="list_container">
 			<form action="productSearch.do" method="post">

@@ -197,7 +197,7 @@
 	<div id="title">
 		<h1>Product Order Category</h1>
 		<hr>
-		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a> > <span id="k_title">주문 제품별 카테고리</span></h3>
+		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a> > <span id="k_title">&nbsp;주문 제품별 카테고리&nbsp;</span></h3>
 	</div>
 	<div id="icon_dummy">
 		<ul>

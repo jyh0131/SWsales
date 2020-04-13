@@ -204,7 +204,7 @@ $(function() {
 		<div id="title">
 			<h1>Software Product Purchase Registration</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">매입 이력 등록</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <a href="${pageContext.request.contextPath}/product/supplierOrderList2.do">매입 이력 리스트</a> > <span id="k_title">&nbsp;매입 이력 수정&nbsp;</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">

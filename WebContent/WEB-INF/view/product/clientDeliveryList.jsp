@@ -23,6 +23,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}	
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -162,7 +169,7 @@
 		<div id="title">
 			<h1>Client Delivery List</h1>
 			<hr>
-			<h3>제품 관리 > 출고 > <span id="k_title">출고 리스트</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <span id="k_title">&nbsp;출고 리스트&nbsp;</span></h3>
 		</div>
 		<div id="list_container">
 <!-- 			<form action="clientDeliverySearch.do" method="post">

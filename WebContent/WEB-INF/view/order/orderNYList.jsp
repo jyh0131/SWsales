@@ -171,7 +171,7 @@
 	<div id="title">
 		<h1>Confirm Order Of Customer</h1>
 		<hr>
-		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문관리</a> > <span id="k_title">주문 확인 / 처리</span></h3>
+		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문관리</a> > <span id="k_title">&nbsp;주문 확인 / 처리&nbsp;</span></h3>
 	</div>
 	<!-- <button id="btn">체크</button> -->
 	<div id="proAdd">

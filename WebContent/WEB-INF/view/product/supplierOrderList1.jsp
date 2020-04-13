@@ -172,7 +172,7 @@
 		<div id="title">
 			<h1>Software Product Order List</h1>
 			<hr>
-			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">발주 이력 리스트</span></h3>
+			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <span id="k_title">&nbsp;발주 이력 리스트&nbsp;</span></h3>
 		</div>
 		<div id="list_container">
 <!-- 			<form action="supplierOrder1Search.do" method="post">
