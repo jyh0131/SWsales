@@ -225,7 +225,7 @@
 		 	/*** 주문수량 : 재고조회 버튼 ***/	
 			$("#btnQty").click(function () {
 				var qty = $("#Qty").val();
-				if(qty == ""){
+				if(qty == "" || qty ==0){
 					alert("재고가 없습니다. 제품 주문이 필요합니다.");
 				}else{
 					alert("재고수량은"+qty+"개 입니다.");
