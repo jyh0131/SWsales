@@ -20,6 +20,11 @@ public class InventoryQuantity {
 		this.iqNo = iqNo;
 	}
 
+	
+	public InventoryQuantity(Product iqPno) {
+		this.iqPno = iqPno;
+	}
+
 	public InventoryQuantity(int iqNo,  SupplierPurchase spPno, int iqQty) {
 		this.iqNo = iqNo;
 		this.iqQty = iqQty;

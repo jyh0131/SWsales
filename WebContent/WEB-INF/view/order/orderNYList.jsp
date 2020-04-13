@@ -4,115 +4,115 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <%@ include file="../include/header.jsp"%>
 <style>
-/** form 타이틀 **/
-div#title {
-	width: 100%;
-	height: 200px;
-	line-height: 100px;
-	margin-top: 50px;
-	background: url("${pageContext.request.contextPath}/images/title/oTitle.png") no-repeat;
-	background-size: 100%, 200px;
-}
-
-div#title h1 {
-	font-size: 40px;
-	letter-spacing: 8px;
-	padding-left: 60px;
-}
-
-div#title h3 {
-	letter-spacing: 3px;
-	padding-left: 60px;
-}
-
-div#title h3 a{
-	text-decoration: none;
-	color: black;
-}
-div#title h3 a:hover{
-	border-bottom: 3px solid black;
-}
-span#k_title {
-	color: red;
-	background-color: white;
-}
-
-div#proAdd{
-	width: 100%;
-	height: 40px;
-	text-align: right;
-	margin-top: 100px;
-}
-button#btnOk{
-	width: 130px;
-	height: 40px;
-	background-color: #384D75;
-	color: white;
-	border: 1px solid white;
-	border-radius: 5px;
-	margin-right: 10px;
-	margin-top: 5px;
-}
-#list_container {
-	width: 100%;
-	margin: 0 auto;
-	position: relative;
-	margin-top: 30px;
-}
-
-table {
-	width: 100%;
-	border-collapse: collapse;
-}
-
-table tr:nth-child(2n+1) {
-	background: #F9FAFB;
-}
-
-table tr:nth-child(2n) {
-	background: #eee;
-}
-
-th, td {
-	border: 1px solid #ccc;
-	text-align: center;
-	height: 46px;
-}
-
-th{
-	border-top: 3px solid #747474;/* #878787; */
-	border-bottom: 5px double #747474;/* #878787; */
-	background-color: #BDBDBD;/* #F9FAFB; */
-	font-size: 17px;
-	height: 55px;
-}
-
-tr.tbl_point:hover {
-		background: #5D5D5D;
-		color: yellow;
-}
-
-#btnAdd {
-	width: 130px;
-	height: 40px;
-	background-color: #384D75;
-	color: white;
-	margin: 10px 0;
-	position: absolute;
-	right: 0;
-	border: 1px solid white;
-	border-radius: 5px;
-}
-
-span#y {
-	font-weight: bold;
-	color: blue;
-}
-
-.n {
-	font-weight: bold;
-	color: red;
-}
+	/** form 타이틀 **/
+	div#title {
+		width: 100%;
+		height: 200px;
+		line-height: 100px;
+		margin-top: 50px;
+		background: url("${pageContext.request.contextPath}/images/title/oTitle.png") no-repeat;
+		background-size: 100%, 200px;
+	}
+	
+	div#title h1 {
+		font-size: 40px;
+		letter-spacing: 8px;
+		padding-left: 60px;
+	}
+	
+	div#title h3 {
+		letter-spacing: 3px;
+		padding-left: 60px;
+	}
+	
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}
+	span#k_title {
+		color: red;
+		background-color: white;
+	}
+	
+	div#proAdd{
+		width: 100%;
+		height: 40px;
+		text-align: right;
+		margin-top: 100px;
+	}
+	#btnOk{
+		width: 130px;
+		height: 40px;
+		background-color: #384D75;
+		color: white;
+		border: 1px solid white;
+		border-radius: 5px;
+		margin-right: 10px;
+		margin-top: 5px;
+	}
+	#list_container {
+		width: 100%;
+		margin: 0 auto;
+		position: relative;
+		margin-top: 30px;
+	}
+	
+	table {
+		width: 100%;
+		border-collapse: collapse;
+	}
+	
+	table tr:nth-child(2n+1) {
+		background: #F9FAFB;
+	}
+	
+	table tr:nth-child(2n) {
+		background: #eee;
+	}
+	
+	th, td {
+		border: 1px solid #ccc;
+		text-align: center;
+		height: 46px;
+	}
+	
+	th{
+		border-top: 3px solid #747474;/* #878787; */
+		border-bottom: 5px double #747474;/* #878787; */
+		background-color: #BDBDBD;/* #F9FAFB; */
+		font-size: 17px;
+		height: 55px;
+	}
+	
+	tr.tbl_point:hover {
+			background: #5D5D5D;
+			color: yellow;
+	}
+	
+	#btnAdd {
+		width: 130px;
+		height: 40px;
+		background-color: #384D75;
+		color: white;
+		margin: 10px 0;
+		position: absolute;
+		right: 0;
+		border: 1px solid white;
+		border-radius: 5px;
+	}
+	
+	span#y {
+		font-weight: bold;
+		color: blue;
+	}
+	
+	.n {
+		font-weight: bold;
+		color: red;
+	}
 	div#bottom_btns{
 		width: 100%;
 		height: 50px;
@@ -134,6 +134,36 @@ span#y {
 		$("#btnTop").click(function() {
 			location.href = "orderNYList.do";
 		})
+		
+		$("#btnOk").click(function() {
+			var checkedBox = [];
+			var uncheckedBox = [];
+			
+			$("input[name=box]:checked").each(function() {
+				var checkedNo = $(this).val();
+				checkedBox.push(checkedNo);
+			});
+			
+			$("input[name=box]:not(:checked)").each(function() {
+				var checkedNo = $(this).val();
+				uncheckedBox.push(checkedNo);
+				console.log(uncheckedBox)
+			});
+			
+			jQuery.ajaxSettings.traditional = true;
+			
+			$.ajax({
+				url:"${pageContext.request.contextPath}/order/orderNYList.do",
+				type:"post",
+				data:{"checkedBox":checkedBox, "uncheckedBox":uncheckedBox},
+				dataType:"json",
+				success:function(res){
+					console.log(res);
+					location.href = "orderNYList.do";
+				}
+			})
+		});
+		
 	});
 </script>
 
@@ -143,22 +173,11 @@ span#y {
 		<hr>
 		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문관리</a> > <span id="k_title">주문 확인 / 처리</span></h3>
 	</div>
+	<!-- <button id="btn">체크</button> -->
 	<div id="proAdd">
-		<a href="#"><button id="btnOk">확인</button></a>	
+		<button id="btnOk" style="cursor: pointer">확인</button>	
 	</div>
 	<div id="list_container">
-<!-- 		<form action="orderSearch.do" method="post">
-			<div id="search">
-				<select id="selSearch" name="selSearch">
-					<option selected>선택해주세요</option>
-					<option value="pName">품목명</option>
-					<option value="pCno">고객 상호명</option>
-				</select> <input type="text" name="search" id="ipSearch"> <input
-					type="submit" value="검색" id="btnSearch"> <input
-					type="reset" value="초기화" id="btnClear"> <input
-					type="button" value="전체" id="btnAll">
-			</div>
-		</form> -->
 		<table id="tbl">
 			<tr>
 				<th>주문번호</th>
@@ -233,14 +252,15 @@ span#y {
 						</c:if>
 						<c:if test="${Order.oOk == '1'}">
 							${Order.oMemo}
-						</c:if>															
+							</c:if>															
 					</td>
 					
-					<td><c:if test="${Order.oDps == 1}">
-							<input type="checkbox" checked>
+					<td>
+						<c:if test="${Order.oDps == 1}">
+							<input type="checkbox" name="box" value="${Order.oNo }" checked>
 						</c:if>
-						<c:if test="${Order.oDps == 0}">
-							<input type="checkbox">
+							<c:if test="${Order.oDps == 0}">
+							<input type="checkbox" name="box" value="${Order.oNo }">
 						</c:if>
 					</td>
 					<td><c:if test="${Order.oOk == '1'}">
@@ -281,7 +301,6 @@ span#y {
 		</table>
 		<div id="bottom_btns">
 				<input type="image" src="${pageContext.request.contextPath}/images/main/ico_topList.png" id="btnTop">
-			</div>			
 		</div>			
 	</div>
 </section>

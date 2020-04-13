@@ -247,4 +247,26 @@ public class SupplierDao {
 			JDBCUtil.close(pstmt);
 		}
 	}
+	
+	
+	//회사명 가나다순 정렬
+	public List<Supplier> selectSupplierByAllOrderByName(Connection conn) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select s_no, s_name, s_bln, s_address, s_tel, s_fax from supplier order by s_name";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			List<Supplier> list = new ArrayList<Supplier>();
+			while (rs.next()) {
+				list.add(getSupplier(rs));
+			}
+			return list;
+			
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(pstmt);
+		}
+	}
 }

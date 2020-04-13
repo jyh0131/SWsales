@@ -102,7 +102,7 @@
 </script>
 <section>
 	<div id="title">
-			<h1>Notice List</h1>
+			<h1>Notice Detail</h1>
 			<hr>
 			<h3>공지사항</h3>
 		</div>

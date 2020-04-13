@@ -20,7 +20,25 @@ public class CategoryDao {
 	private CategoryDao() {
 	}
 
-
+	public Category selectCategoryByCateName(Connection conn, String cateName) throws SQLException {
+		PreparedStatement pstmt = null;
+		ResultSet rs = null;
+		
+		try {
+			String sql = "select cate_no, cate_name from category where cate_name=?";
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, cateName);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				return new Category(rs.getInt(1), rs.getString(2));
+			}
+		} finally {
+			JDBCUtil.close(rs);
+			JDBCUtil.close(conn);
+		}
+		return null;
+	}
+	
 	public List<Category> selectCategoryByAll(Connection conn) throws SQLException {
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;

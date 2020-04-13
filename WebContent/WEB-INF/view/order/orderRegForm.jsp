@@ -22,6 +22,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color: black;
+	}
+	div#title h3 a:hover{
+		border-bottom: 3px solid black;
+	}	
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -158,62 +165,151 @@
 	}
 	input[name*='oQty']{
 		font-weight: bold;
+		position: relative;
 	}
+	div#checkOk{
+		width: 180px;
+		font-size: 14px;
+		color: red;
+		font-weight: bold;
+		position: absolute;
+		right: 100px;
+		top: 800px;
+	}	
 	input::placeholder{
 		color:red;
 		letter-spacing: 6px;		
 	}	
 </style>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script>
+	$(function() {
+		/*** 등록막기 ***/
+	 	$("form").submit(function() {
+			//주문 등록일자
+			var date = $("#oDate").val();
+			if(date == ""){
+				alert("주문일자를 입력하세요.");
+				$("#oDate").focus();
+				return false;				
+			}
+			
+			var cName = $("select[name='oCname']").val(); //선택해주세요
+			if(cName == "선택해주세요"){
+				alert("고객상호명을 선택해주세요.");
+			 	$("#oCname").focus(); //포커스
+				return false;
+			}
+			
+			var oQty = $("#oQty").val();
+			var qtyReg = /^[0-9]*$/;
+			
+			if(oQty == ""){
+				alert("주문수량을 입력하세요.");
+				$("#oQty").focus();
+				return false;
+			}
+			
+	  		if(qtyReg.test(oQty) == false){
+				alert("(주문수량) 숫자만 입력하세요.");
+				$("#oQty").focus();
+				return false;
+			}			
+			
+			var check = $("#checkOk").html();
+			if(check != "재고수량이 확인되었습니다."){
+				alert("재고조회 확인이 필요합니다.");
+				return false;
+			}
+		})			
+		 	/*** 주문수량 : 재고조회 버튼 ***/	
+			$("#btnQty").click(function () {
+				var qty = $("#Qty").val();
+				if(qty == ""){
+					alert("재고가 없습니다. 제품 주문이 필요합니다.");
+				}else{
+					alert("재고수량은"+qty+"개 입니다.");
+					$("#btnQty").hide();
+					$("#checkOk").html("재고수량이 확인되었습니다.");					
+				}
+			})
+			
+
+	 	
+	/*** 취소버튼 ***/
+	$("#btnReset").click(function() {
+		location.href="${pageContext.request.contextPath}/order/orderAllList.do";
+	})
+	
+	/*** 품목번호 입력창에 출력되는 형식***/
+	var ono = $("#oNo").val();
+	console.log(ono); // ex : 98
+	if(ono < 10){
+		$("input[name=no]").val("O000"+ono); //O0001
+	}else if(ono > 9 && ono < 100){
+		$("input[name=no]").val("O00"+ono); //O0010
+	}else if(ono > 99 && ono < 1000){
+		$("input[name=no]").val("O0"+ono); //O0100
+	}		
+	
+})
+</script>
 <section>
 	<!-- form 타이틀 -->
 	<div id="title">
 		<h1>Order Registration</h1>
 		<hr>
-		<h3>주문 관리 > <span id="k_title">주문 등록</span></h3>
+		<h3><a href="${pageContext.request.contextPath}/order/oSubMenu.do">주문 관리</a> > <a href="${pageContext.request.contextPath}/order/orderAllList.do">주문 제품별 카테고리</a> > <span id="k_title">&nbsp;주문 등록&nbsp;</span></h3>
 	</div>
 	<div id="order_container">
 		<div class="order_box">
-			<img src="${pageContext.request.contextPath}/productIMG/${order.pPicPath}">
+			<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 			<div class = "product_info">
-				<p><span id="cate">&nbsp${order.pCate}&nbsp</span> <span id="pName">${order.pName}</span></p>
-				<p><b>공급회사 : </b>${order.pSno.sName}</p>
-				<p><b>판매가격 : </b><fmt:formatNumber value="${order.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${order.pCost}" pattern="\#,###.##"/>)</span></p>			
+				<p><span id="cate">&nbsp;${product.pCate}&nbsp;</span> <span id="pName">${product.pName}</span></p>
+				<p><b>공급회사 : </b>${product.pSno.sName}</p>
+				<p><b>판매가격 : </b><fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${product.pCost}" pattern="\#,###.##"/>)</span></p>			
 			</div>
 		</div>
 		<div class="order_box">
 			<div id="point">
 				<label class="red">＊ 필수입력</label>
 			</div>
-			<form>
-				<label>&nbsp<span class="red">* </span>주문번호</label>
-				<input type="text" name="oNo" class="text" readonly="readonly" value="POO${order.pNo}"><br>
+			<form action="${pageContext.request.contextPath}/order/orderAdd.do" method="post">
+				<label>&nbsp;<span class="red">* </span>주문번호</label>
+				<input type="text" name="oNo" class="text" readonly="readonly" value="OOO${order.oNo}" id="oNo"><br>
 				
-				<label>&nbsp<span class="red">* </span>주문일자</label>
-				<input type="date" name="oDate" class="text"><br>
+				
+				<label>&nbsp;<span class="red">* </span>주문일자</label>
+				<input type="date" name="oDate" class="text" id="oDate"><br>
 				
 				<label><span class="red">* </span>고객 상호명</label>
-				<select name="oCname" class="text">
-						<option selected>선택해주세요</option>
+				<select name="oCname" class="text" id="oCname">
+						<option selected="selected" value="선택해주세요">선택해주세요</option>
 					<c:forEach var="client" items="${list}">
 						<option value="${client.cNo}">${client.cName}</option>
 					</c:forEach>
 				</select><br>				
 				
-				<label>&nbsp<span class="red">* </span>품목명</label>
-				<input type="text" name="oPname" class="text" readonly="readonly" value="${order.pName}"><br>
+				<label>&nbsp;<span class="red">* </span>품목명</label>
+				<input type="text" name="oPname" class="text" readonly="readonly" value="${product.pName}" id="oPname"><br>
+				<input type="hidden" name="pNo" value="${product.pNo}" id="pNo">
 				
-				<label>&nbsp<span class="red">* </span>주문수량</label>
-				<input type="text" name="oQty" placeholder=" >> 재고조회 후 수량입력" class="text">
-				<input type="button" value="재고조회" id="btnQty" style="cursor: pointer"><br>
+				<label>&nbsp;<span class="red">* </span>주문수량</label>
+				<input type="text" name="oQty" placeholder=" >> 재고조회 후 수량입력" class="text" id="oQty">
+				<input type="hidden" name="Qty" value="${Qty.iqQty}" id="Qty">
+				<input type="button" value="재고조회" id="btnQty" style="cursor: pointer">
+				<div id="checkOk"></div><br>
 				
-				<label>&nbsp&nbsp&nbsp고객요구사항</label>
-				<textarea rows="10" cols="60"></textarea><br>
+				<label>&nbsp;&nbsp;&nbsp;고객요구사항</label>
+				<textarea rows="10" cols="60" name="oMemo" id="oMemo"></textarea><br>
+				
+				<input type="hidden" name="emp" value="${Auth.empNo}" id="emp">
 				<div id="add">
 					<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
 					<input type="button" value="취소" id="btnReset" style="cursor: pointer">			
 				</div>
 			</form>
 		</div>
-	</div>	
+	</div>
 </section>
 <%@ include file="../include/footer.jsp" %>

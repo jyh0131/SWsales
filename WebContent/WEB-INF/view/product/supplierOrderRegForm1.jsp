@@ -69,6 +69,7 @@
 		width: 500px;
     	height: 40px;
     	margin-right: 20px;
+    	outline-color: red;
 	}
 	#btnPname{
 	    width: 130px;
@@ -111,10 +112,20 @@
 		outline: none;
 		background: #eee;
 	}
-	select[name*='soPname']{
+	select[name*='pInfo']{
 		font-weight: bold;
 		color: #336600;
+		position: relative;
 	}
+	div#checkOk{
+		width: 200px;
+		font-size: 14px;
+		color: red;
+		font-weight: bold;
+		position: absolute;
+		right: 500px;
+		top: 640px;
+	}	
 	input[name*='soSname']{
 		font-weight: bold;
 		color: #990000;	
@@ -138,11 +149,84 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function() {
+		/*** 등록막기 ***/
+	 	$("form").submit(function() {
+	 		//품목명
+	 		var pName = $("select[name='pInfo']").val();
+			if(pName == "선택해주세요"){
+				alert("품목명을 선택해주세요.");
+				$("#soPname").focus();
+				return false;
+			}
+			
+			var check = $("#checkOk").html();
+			if(check != "품목명 조회가 완료되었습니다."){
+				alert("품목명 조회가 필요합니다.");
+				return false;
+			}
+			
+			//공급회사명, 발주가격
+			var sName = $("#soSname").val();
+			var cost = $("#soPcost").val();
+			if(sName == "" && cost == ""){
+				alert("품목명 조회가 필요합니다.");
+				$("#soPname").focus();
+				$("#soPcost").focus();
+				return false;				
+			}
+			
+			//발주수량
+			var qty = $("#soQty").val();
+			var qtyReg = /^[0-9]*$/;
+			if(qty == ""){
+				alert("발주수량을 입력하세요.");
+				$("#soQty").focus();
+				return false;				
+			}
+			
+			if(qtyReg.test(qty) == false){
+				alert("(발주수량) 숫자만 입력하세요.");
+				$("#soQty").focus();
+				return false;			
+			}
+			
+			//발주 등록일자
+			var date = $("#soDate").val();
+			if(date == ""){
+				alert("발주 등록일자를 입력하세요.");
+				$("#soDate").focus();
+				return false;				
+			}
+	 	})
+	 	
+		/*** 품목명 조회 버튼 ***/
 		$("#btnPname").click(function() {
-			var pName = $("select[name='soPname']").val(); //품목번호를 가져옴
-			alert(pName);
+			var pName = $("select[name='pInfo']").val(); //품목번호를 가져옴
+			if(pName == "선택해주세요"){
+				alert("품목명을 선택해주세요.");
+				$("#soPname").focus();
+			}else{
+				$.ajax({
+					url:"${pageContext.request.contextPath}/product/productSearchNo.do",
+					type:"get",
+					data:{"pInfo":pName},
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+						if(res.result == "success"){
+							/* alert(pName); */
+							var arr = pName.split("/"); // arr[0] : 번호/ arr[1] / arr[2]
+							$("#soSname").val(arr[1]);
+							$("#soPcost").val(arr[2]);
+							$("#btnPname").hide();
+							$("#checkOk").html("품목명 조회가 완료되었습니다.");
+						}
+					}
+				})
+			}
 			
 		})
+		
 	})
 </script>
 <section>
@@ -163,27 +247,26 @@
 					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
 					
 					<!-- 품목명 조회후 공급회사명, 발주가격 자동입력 -->
-					<form action="so1InputSearch.do" method="post">
 						<label><span class="red">* </span>품목명</label>
-						<select name="soPname" class="text">
-							<option selected>선택해주세요</option>					
+						<select name="pInfo" class="text" id="soPname">
+							<option selected="selected" value="선택해주세요">선택해주세요</option>					
 								<c:forEach var="product" items="${list}">
-									<option value="${product.pNo}">[${product.pCate}] ${product.pName}</option>
+									<option value="${product.pNo}/${product.pSno.sName}/${product.pCost}">[${product.pCate}] ${product.pName}</option>
 								</c:forEach>
 						</select>
-						<input type="submit" value="조회" id="btnPname" style="cursor: pointer"><br>
+						<input type="button" value="조회" id="btnPname" style="cursor: pointer">
+						<div id="checkOk"></div><br>
 						
-						<label><span class="red">* </span>공급 회사명</label>
-						<input type="text" name="soSname" class="text" readonly="readonly" ><br>
-						
-						<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
-						<input type="text" name="soPcost" class="text"  readonly="readonly"><br>
-					</form>
+							<label><span class="red">* </span>공급 회사명</label>
+							<input type="text" name="soSname" class="text" readonly="readonly" id="soSname" placeholder=" >> 품목명 조회가 필요합니다(자동입력)"><br>
+							<label><span class="red">* </span>발주가격 <span class="cnt">(1개당)</span></label>
+							<input type="text" name="soPcost" class="text"  readonly="readonly" id="soPcost" placeholder=" >> 품목명 조회가 필요합니다(자동입력)"><br>				
+					
 					<label><span class="red">* </span>발주수량</label>
-					<input type="text" name="soQty" class="text"><br>
+					<input type="text" name="soQty" class="text" id="soQty"><br>
 					
 					<label><span class="red">* </span>발주 등록일자</label>
-					<input type="date" name="soDate" class="text"><br>
+					<input type="date" name="soDate" class="text" id="soDate"><br>
 				</div>
 			</div>
 			<div id="add">

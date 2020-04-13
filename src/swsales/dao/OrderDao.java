@@ -235,7 +235,10 @@ public class OrderDao {
 		Product oPname = new Product(rs.getString("p_name"), rs.getInt("p_cost"), rs.getInt("p_price"));
 		int oQty = rs.getInt("o_qty");
 		String oMemo = rs.getString("o_memo");
-		return new Order(oNo, oDate, oCname, oPname, oQty, oMemo);
+		Order order = new Order(oNo, oDate, oCname, oPname, oQty, oMemo);
+		order.setoDps(rs.getInt("o_dps"));
+		order.setoOk(rs.getInt("o_ok"));
+		return order;
 	}
 
 
