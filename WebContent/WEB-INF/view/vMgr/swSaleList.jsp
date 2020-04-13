@@ -117,7 +117,7 @@
 <script>
 	$(function (){
 		$("#All").click(function(){
-			location.href="clientSale.do";
+			location.href="swSale.do";
 		})
 	});
 </script>
