@@ -40,7 +40,7 @@ public class SupplierOrder1UpdateHandler implements CommandHandler{
 			try {
 				conn = JDBCUtil.getConnection();
 				
-				int soNo = Integer.parseInt(req.getParameter("no"));
+				int soNo = Integer.parseInt(req.getParameter("soNo"));
 				
 				Product pName = new Product(req.getParameter("soPname"));
 				ProductDao dao2 = ProductDao.getInstance();
