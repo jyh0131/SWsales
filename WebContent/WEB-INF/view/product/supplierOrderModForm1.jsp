@@ -200,7 +200,7 @@
 <section>
 		<!-- form 타이틀 -->
 		<div id="title">
-			<h1>Software Product Order Registration</h1>
+			<h1>Software Product Order Modification</h1>
 			<hr>
 			<h3><a href="${pageContext.request.contextPath}/product/pSubMenu.do">제품 관리</a> > <a href="${pageContext.request.contextPath}/product/soSubMenu.do">발주/매입</a> > <a href="${pageContext.request.contextPath}/product/supplierOrderList1.do">발주 이력 리스트</a> > <span id="k_title">&nbsp;발주 이력 수정&nbsp;</span></h3>
 		</div>
