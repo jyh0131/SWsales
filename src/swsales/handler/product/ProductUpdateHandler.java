@@ -12,6 +12,7 @@ import com.oreilly.servlet.MultipartRequest;
 import com.oreilly.servlet.multipart.DefaultFileRenamePolicy;
 
 import swsales.dao.ProductDao;
+import swsales.dao.SupplierDao;
 import swsales.jdbc.JDBCUtil;
 import swsales.model.Category;
 import swsales.model.Product;
@@ -55,9 +56,6 @@ public class ProductUpdateHandler implements CommandHandler{
 			int pCost = Integer.parseInt(multi.getParameter("pCost"));
 			int pPrice = Integer.parseInt(multi.getParameter("pPrice"));
 			
-			
-			Supplier pSno = new Supplier(Integer.parseInt(multi.getParameter("pSno")));
-			
 			int pQty = Integer.parseInt(multi.getParameter("pQty"));
 			
 			String sDate = multi.getParameter("pDate");
@@ -70,6 +68,10 @@ public class ProductUpdateHandler implements CommandHandler{
 			
 			try {
 				conn = JDBCUtil.getConnection();
+				SupplierDao sDao = SupplierDao.getInstance();
+				Supplier supplier = new Supplier(multi.getParameter("pSno"));
+				Supplier pSno = sDao.selectSupplierByName(conn, supplier);
+				
 				ProductDao dao = ProductDao.getInstance();
 				Product product = new Product(pNo, pCate, pName, pCost, pPrice, pSno, pQty, pDate, pPicPath);
 				dao.updateProduct(conn, product);
