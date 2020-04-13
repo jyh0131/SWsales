@@ -37,7 +37,7 @@
 	.btnMenu{
 		width: 150px;
 		height: 36px;
-		background-color: #4C4C4C;
+		background-color: #5D5D5D;
 		border: 1px solid white;
 		color: white;
 		border-radius: 5px;

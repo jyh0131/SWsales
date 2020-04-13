@@ -95,11 +95,11 @@
 		margin-left:10px;
 	}
 	.btnMenu{
-		width: 140px;
+		width: 130px;
 		height: 36px;
-		background-color: #FFCD12;
+		background-color: #008000;
 		border: 1px solid white;
-		color: black;
+		color: white;
 		border-radius: 5px;
 		margin:0 1px;
 		margin-bottom:10px;
