@@ -196,9 +196,12 @@
 								<c:when test="${supplier.sNo < 10 }">
 									S000${supplier.sNo }
 								</c:when>
-								<c:when test="${supplier.sNo >= 10 }">
+								<c:when test="${supplier.sNo > 9 && supplier.sNo < 100 }">
 									S00${supplier.sNo }
 								</c:when>
+								<c:when test="${supplier.sNo > 99 && supplier.sNo < 1000}">
+									SO0${supplier.sNo }
+								</c:when>								
 							</c:choose>
 						</td>
 						<td>${supplier.sName }</td>

@@ -196,9 +196,12 @@
 								<c:when test="${client.cNo < 10 }">
 									C000${client.cNo }
 								</c:when>
-								<c:when test="${client.cNo >= 10 }">
+								<c:when test="${client.cNo > 9 && client.cNo < 100 }">
 									C00${client.cNo }
 								</c:when>
+								<c:when test="${client.cNo > 99 &&  client.cNo < 1000}">
+									C0${client.cNo }
+								</c:when>								
 							</c:choose>
 						</td>
 						<td>${client.cName }</td>
