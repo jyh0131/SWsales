@@ -228,6 +228,20 @@ $(function() {
 		
 	})
 	
+	$("#btnReset").click(function() {
+		location.href="${pageContext.request.contextPath}/product/supplierOrderList2.do"
+	})
+	
+	var spNo = $("input[name=no]").val();
+	console.log(spNo);
+	if(spNo < 10){
+		$("input[name=spNo]").val("SP000"+spNo);
+	}else if(spNo > 9 && spNo < 100){
+		$("input[name=spNo]").val("SP00"+spNo);
+	}else if(spNo > 99 && spNo < 1000){
+		$("input[name=spNo]").val("SP0"+spNo);
+	}
+	
 })
 </script>
 <section>
@@ -245,7 +259,8 @@ $(function() {
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>매입번호</label>
-					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo+1 }" readonly="readonly"><br>
+					<input type="text" name="spNo" class="text" readonly="readonly"><br>
+					<input type="hidden" name="no" value="${SupplierPurchase.spNo+1 }">
 					
 					<!-- 품목명 조회후 공급회사명, 매입가격 자동입력 -->					
 					<label><span class="red">* </span>품목명</label>

@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ include file="../include/header.jsp" %>
 <style>
 	/** form 타이틀 **/
@@ -138,7 +139,41 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function() {
+		$("#btnPname").click(function () {
+			var pName = $("#pName").val();
+			if(pName == ""){
+				alert("품목명을 입력해주세요.");
+			}else{
+				$.ajax({
+					url:"${pageContext.request.contextPath}/product/productSearchName.do",
+					type:"get",
+					data:{"pName":pName},
+					dataType:"json",
+					success:function(res){
+						console.log(res);
+						if(res.result == "success"){
+							alert("존재하는 품목입니다.");
+						}else if(res.result == "fail"){
+							alert("존재하지 않는 품목입니다.");
+						}
+					}
+				})
+			}
+		})
 		
+		$("#btnReset").click(function() {
+			location.href="${pageContext.request.contextPath}/product/supplierOrderList1.do"
+		})
+		
+		var soNo = $("input[name=soNo]").val();
+		console.log(soNo);
+		if(soNo < 10){
+			$("input[name=no]").val("SO000"+soNo);
+		}else if(soNo > 9 && soNo < 100){
+			$("input[name=no]").val("SO00"+soNo);
+		}else if(soNo > 99 && soNo < 1000){
+			$("input[name=no]").val("SO0"+soNo);
+		}
 	})
 </script>
 <section>
@@ -156,11 +191,11 @@
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>발주번호</label>
-					<input type="text" name="soNo" class="text" value="SO00${SupplierOrder.soNo}" readonly="readonly"><br>
-					<input type="hidden" name="no" value="${SupplierOrder.soNo}">
+					<input type="text" name="no" class="text" readonly="readonly"><br>
+					<input type="hidden" name="soNo" value="${SupplierOrder.soNo}">
 					
 					<label><span class="red">* </span>품목명</label>
-					<input type="text" name="soPname" class="text" placeholder=" >> 품목명 조회" value="${SupplierOrder.soPname.pName}">
+					<input type="text" name="soPname" class="text" id="pName" placeholder=" >> 품목명 조회" value="${SupplierOrder.soPname.pName}">
 					<input type="button" value="조회" id="btnPname" style="cursor: pointer"><br>
 					
 					<label><span class="red">* </span>공급 회사명</label>
@@ -173,11 +208,11 @@
 					<input type="text" name="soQty" class="text" value="${SupplierOrder.soQty}"><br>
 					
 					<label><span class="red">* </span>발주 등록일자</label>
-					<input type="date" name="soDate" class="text" value="${SupplierOrder.soDate}"><br>
+					<input type="date" name="soDate" class="text" value='<fmt:formatDate  value="${SupplierOrder.soDate}" pattern="yyyy-MM-dd"/>'><br>
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd" style="cursor: pointer">
+			<input type="submit" value="수정" id="btnAdd" style="cursor: pointer">
 			<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
 			</div>
 		</form>

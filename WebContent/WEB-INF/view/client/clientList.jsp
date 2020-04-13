@@ -101,9 +101,11 @@
 		height: 46px;
 	}
 	th{
-		border-top: 2px solid #878787;
-		background-color: #F9FAFB;
+		border-top: 3px solid #747474;/* #878787; */
+		border-bottom: 5px double #747474;/* #878787; */
+		background-color: #BDBDBD;/* #F9FAFB; */
 		font-size: 17px;
+		height: 55px;
 	}
 	tr.tbl_point:hover{
 		background: #5D5D5D;

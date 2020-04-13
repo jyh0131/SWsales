@@ -227,6 +227,20 @@
 			
 		})
 		
+	$("#btnReset").click(function() {
+		location.href="${pageContext.request.contextPath}/product/supplierOrderList1.do"
+	})
+		
+		var soNo = $("input[name=no]").val();
+		console.log(soNo);
+		if(soNo < 10){
+			$("input[name=soNo]").val("SO000"+soNo);
+		}else if(soNo > 9 && soNo < 100){
+			$("input[name=soNo]").val("SO00"+soNo);
+		}else if(soNo > 99 && soNo < 1000){
+			$("input[name=soNo]").val("SO0"+soNo);
+		}
+		
 	})
 </script>
 <section>
@@ -244,7 +258,8 @@
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>발주번호</label>
-					<input type="text" name="soNo" class="text" value=" SO00${SupplierOrder.soNo+1 }" readonly="readonly"><br>
+					<input type="text" name="soNo" class="text" readonly="readonly"><br>
+					<input type="hidden" name="no" value="${SupplierOrder.soNo+1 }">
 					
 					<!-- 품목명 조회후 공급회사명, 발주가격 자동입력 -->
 						<label><span class="red">* </span>품목명</label>
