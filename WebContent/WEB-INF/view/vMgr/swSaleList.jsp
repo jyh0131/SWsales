@@ -74,8 +74,11 @@
 		height: 46px;
 	}
 	th{
-		border-top: 2px solid #878787;
-		background-color: #F9FAFB;
+		border-top: 3px solid #747474;/* #878787; */
+		border-bottom: 5px double #747474;/* #878787; */
+		background-color: #BDBDBD;/* #F9FAFB; */
+		font-size: 17px;
+		height: 55px;
 	}
 	tr:nth-child(even){
 		background-color: #eee;
@@ -84,8 +87,8 @@
 		background-color: #F9FAFB;
 	}
 	tr.tbl_point:hover{
-		background: black;
-		color: red;
+		background: #5D5D5D;
+		color: yellow;
 	}
 	.price{
 		text-align: right;
@@ -128,13 +131,13 @@
 			</fieldset>
 			<table>
 				<tr>
-					<td>품목명</td>
-					<td>분류</td>
-					<td>공급회사명</td>
-					<td>공급금액</td>
-					<td>판매금액</td>
-					<td>할인금액</td>
-					<td>판매이윤</td>
+					<th>품목명</th>
+					<th>분류</th>
+					<th>공급회사명</th>
+					<th>공급금액</th>
+					<th>판매금액</th>
+					<th>할인금액</th>
+					<th>판매이윤</th>
 				</tr>
 				<c:forEach var="sw" items="${list }">
 						<tr class="tbl_point">
