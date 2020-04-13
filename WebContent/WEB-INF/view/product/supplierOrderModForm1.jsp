@@ -105,7 +105,7 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
-	input[name*='soNo']{
+	input[name*='no']{
 		font-weight: bold;
 		color: #000080;
 		font-size: 16px;
@@ -139,6 +139,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 	$(function() {
+		/*** 수정막기 ***/
+	 	$("form").submit(function () {
+			var soPname = $("input[name='soPname']").val();
+			if(soPname == ""){
+				alert("품목명을 입력하세요.");
+				return false;
+			}
+			
+			var soQty = $("input[name='soQty']").val();
+			if(soQty == ""){
+				alert("발주수량을 입력하세요.");
+				return false;
+			}
+			
+			var soDate = $("input[name='soDate']").val();
+			if(soDate == ""){
+				alert("발주 등록일자를 입력하세요.");
+				return false;
+			}
+		})
+		
 		$("#btnPname").click(function () {
 			var pName = $("#pName").val();
 			if(pName == ""){
@@ -212,8 +233,8 @@
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="수정" id="btnAdd" style="cursor: pointer">
-			<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
+				<input type="submit" value="수정" id="btnAdd" style="cursor: pointer">
+				<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
 			</div>
 		</form>
 </section>

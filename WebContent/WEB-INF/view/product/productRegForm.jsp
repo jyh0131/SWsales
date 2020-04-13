@@ -280,7 +280,7 @@ $(function () {
 	})
 	
 	/*** 품목번호 입력창에 출력되는 형식***/
-	var pno = $("#pNo").val();
+	var pno = $("input[name=pNo]").val();
 	console.log(pno); // ex : 98
 	if(pno < 10){
 		$("input[name=no]").val("P000"+pno); //P0001
@@ -307,7 +307,7 @@ $(function () {
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
-					<input type="text" name="no" class="text" value=" P00${product.pNo+1 }" readonly="readonly" id="no"><br>
+					<input type="text" name="no" class="text" readonly="readonly" id="no"><br>
 					<input type="hidden" name="pNo" value="${product.pNo+1 }" id="pNo">
 					
 					<label><span class="red">* </span>분류명</label>

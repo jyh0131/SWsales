@@ -194,6 +194,17 @@ $(function() {
 	$("#btnReset").click(function() {
 		location.href="${pageContext.request.contextPath}/product/productList2.do";
 	})
+	
+	/*** 품목번호 입력창에 출력되는 형식***/
+	var no = $("input[name=no]").val();
+	console.log(no); // ex : 98
+	if(no < 10){
+		$("input[name=pNo]").val("P000"+no); //P0001
+	}else if(no > 9 && no < 100){
+		$("input[name=pNo]").val("P00"+no); //P0010
+	}else if(no > 99 && no < 1000){
+		$("input[name=pNo]").val("P0"+no); //P0100
+	}
 })
 </script>
 <section>
@@ -211,7 +222,7 @@ $(function() {
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
-					<input type="text" name="pNo" class="text" value="P00${product.pNo }" readonly="readonly"><br>
+					<input type="text" name="pNo" class="text" readonly="readonly"><br>
 					<input type="hidden" name="no" value="${product.pNo}">
 					
  					<label><span class="red">* </span>분류명</label>

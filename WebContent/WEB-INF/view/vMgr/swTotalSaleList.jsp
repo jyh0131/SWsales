@@ -22,6 +22,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color:black;
+	}
+	div#title h3 a:hover{
+		text-decoration: underline;
+	}
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -38,7 +45,7 @@
 	.btnMenu{
 		width: 150px;
 		height: 36px;
-		background-color: #4C4C4C;
+		background-color: #5D5D5D;
 		border: 1px solid white;
 		color: white;
 		border-radius: 5px;
@@ -105,7 +112,6 @@
 	}
 	.total{
 		text-align: right;
-		font-size: 20px;
 	}
 	.total input{
 		text-align: right;
@@ -129,7 +135,7 @@
 	<div id="title">
 		<h1>S/W Overall Sales</h1>
 		<hr>
-		<h3>현황조회 / 보고 > <span id="k_title">S/W 전체 판매현황</span></h3>
+		<h3><a href="vSubMenu.do">현황조회 / 보고 ></a> <span id="k_title">S/W 전체 판매현황</span></h3>
 	</div>
 	<div id="list_container">
 		<div id="menu">
