@@ -194,9 +194,12 @@
 								<c:when test="${clientDelivery.cdNo < 10 }">
 									CD000${clientDelivery.cdNo }
 								</c:when>
-								<c:when test="${clientDelivery.cdNo >= 10 }">
+								<c:when test="${clientDelivery.cdNo > 9 && clientDelivery.cdNo < 100}">
 									CD00${clientDelivery.cdNo }
 								</c:when>
+								<c:when test="${clientDelivery.cdNo > 99 && clientDelivery.cdNo < 1000}">
+									CD0${clientDelivery.cdNo }
+								</c:when>	
 							</c:choose> 
 						</td>
 					
