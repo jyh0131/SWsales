@@ -242,14 +242,14 @@
 	})
 	
 	/*** 품목번호 입력창에 출력되는 형식***/
-	var ono = $("#oNo").val();
+	var ono = $("input[name=no]").val();
 	console.log(ono); // ex : 98
 	if(ono < 10){
-		$("input[name=no]").val("O000"+ono); //O0001
+		$("input[name=oNo]").val("O000"+ono); //O0001
 	}else if(ono > 9 && ono < 100){
-		$("input[name=no]").val("O00"+ono); //O0010
+		$("input[name=oNo]").val("O00"+ono); //O0010
 	}else if(ono > 99 && ono < 1000){
-		$("input[name=no]").val("O0"+ono); //O0100
+		$("input[name=oNo]").val("O0"+ono); //O0100
 	}		
 	
 })
@@ -276,7 +276,8 @@
 			</div>
 			<form action="${pageContext.request.contextPath}/order/orderAdd.do" method="post">
 				<label>&nbsp;<span class="red">* </span>주문번호</label>
-				<input type="text" name="oNo" class="text" readonly="readonly" value="OOO${order.oNo}" id="oNo"><br>
+				<input type="text" name="oNo" class="text" readonly="readonly" id="oNo"><br>
+				<input type="hidden" name="no" value="${order.oNo+1}">
 				
 				
 				<label>&nbsp;<span class="red">* </span>주문일자</label>

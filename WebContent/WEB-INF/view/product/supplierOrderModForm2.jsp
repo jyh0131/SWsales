@@ -141,6 +141,27 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
 $(function() {
+	/*** 수정막기 ***/
+	$("form").submit(function () {
+		var spPname = $("input[name='spPname']").val();
+		if(spPname == ""){
+			alert("품목명을 입력하세요.");
+			return false;
+		}
+		
+		var spQty = $("input[name='spQty']").val();
+		if(spQty == ""){
+			alert("매입수량을 입력하세요.");
+			return false;
+		}
+		
+		var spDate = $("input[name='spDate']").val();
+		if(spDate == ""){
+			alert("매입 등록일자를 입력하세요.");
+			return false;
+		}
+	})
+	
 	$("#btnPname").click(function () {
 		var pName = $("#pName").val();
 		if(pName == ""){
@@ -193,7 +214,7 @@ $(function() {
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>매입번호</label>
-					<input type="text" name="spNo" class="text" value=" SP00${SupplierPurchase.spNo}" readonly="readonly"><br>
+					<input type="text" name="spNo" class="text" readonly="readonly"><br>
 					<input type="hidden" name="no" value="${SupplierPurchase.spNo}">
 					
 					<label><span class="red">* </span>품목명</label>
