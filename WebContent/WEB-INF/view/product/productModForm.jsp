@@ -169,7 +169,11 @@ $(function() {
 		}
 	})
 	
-	
+	var pCateName = $("input[name=cate]").val();
+	console.log(pCateName);
+	$("#pCate").val(pCateName).prop("selected", true);
+		
+		
 	$("#btnSname").click(function() {
 		var sName = $("#sName").val();
 		if(sName == ""){
@@ -227,14 +231,15 @@ $(function() {
 					<input type="hidden" name="no" value="${product.pNo}">
 					
  					<label><span class="red">* </span>분류명</label>
-					<select name="pCate" class="text">
+ 					<input type="hidden" name="cate" value="${product.pCate.cateNo }">
+					<select name="pCate" class="text" id="pCate">
 						<option selected>선택해주세요</option>
-						<option value="${product.pCate.cateNo}">사무</option>
-						<option value="${product.pCate.cateNo}">개발</option>
-						<option value="${product.pCate.cateNo}">전문분야</option>
-						<option value="${product.pCate.cateNo}">멀티미디어</option>
-						<option value="${product.pCate.cateNo}">기업업무</option>
-						<option value="${product.pCate.cateNo}">서버</option>						
+						<option value=1>사무</option>
+						<option value=2>개발</option>
+						<option value=3>전문분야</option>
+						<option value=4>멀티미디어</option>
+						<option value=5>기업업무</option>
+						<option value=6>서버</option>						
 					</select>
 					<br>
 					

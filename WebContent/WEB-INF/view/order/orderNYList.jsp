@@ -278,10 +278,30 @@
 					</td>
 					<td>
 						<c:if test="${Order.oOk == '0'}">
-							<span class="n">${Order.oEname.empName}(EE00${Order.oEno.empNo})</span>
+							<c:choose>
+								<c:when test="${Order.oEno.empNo < 10 }">
+									<span class="n">${Order.oEname.empName}(EE000${Order.oEno.empNo })</span>
+								</c:when>
+								<c:when test="${Order.oEno.empNo > 9 && Order.oEno.empNo < 100}">
+									<span class="n">${Order.oEname.empName}(EE00${Order.oEno.empNo })</span>
+								</c:when>
+								<c:when test="${Order.oEno.empNo > 99 && Order.oEno.empNo < 1000}">
+									<span class="n">${Order.oEname.empName}(EE0${Order.oEno.empNo })</span>
+								</c:when>
+							</c:choose>															
 						</c:if>
 						<c:if test="${Order.oOk == '1'}">
-							${Order.oEname.empName}(EE00${Order.oEno.empNo})
+							<c:choose>
+								<c:when test="${Order.oEno.empNo < 10 }">
+									${Order.oEname.empName}(EE000${Order.oEno.empNo })
+								</c:when>
+								<c:when test="${Order.oEno.empNo > 9 && Order.oEno.empNo < 100}">
+									${Order.oEname.empName}(EE00${Order.oEno.empNo })
+								</c:when>
+								<c:when test="${Order.oEno.empNo > 99 && Order.oEno.empNo < 1000}">
+									${Order.oEname.empName}(EE0${Order.oEno.empNo })
+								</c:when>
+							</c:choose>
 						</c:if>															
 					</td>
 					<%-- 						<td>

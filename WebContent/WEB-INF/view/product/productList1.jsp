@@ -183,8 +183,11 @@
 								<c:when test="${product.pNo < 10 }">
 									P000${product.pNo }
 								</c:when>
-								<c:when test="${product.pNo >= 10 }">
+								<c:when test="${product.pNo > 9 && product.pNo < 100}">
 									P00${product.pNo }
+								</c:when>
+								<c:when test="${product.pNo > 99 && product.pNo < 1000}">
+									P0${product.pNo }
 								</c:when>
 							</c:choose>
 						</td>
