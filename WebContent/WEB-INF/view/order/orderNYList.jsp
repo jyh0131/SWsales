@@ -191,44 +191,50 @@
 				<th>주문담당자</th>
 			</tr>
 			<c:forEach var="Order" items="${list }">
-					<tr class="tbl_point">			
+				<tr class="tbl_point">			
 					<td class="tbl_point">
-					<c:if test="${Order.oOk == '0'}">
-						<c:choose>
+						<c:if test="${Order.oOk == '0'}">
+							<c:choose>
 								<c:when test="${Order.oNo < 10 }">
-										<span class="n">O000${Order.oNo }</span>
-									</c:when>
-								<c:when test="${Order.oNo >= 10 }">
-										<span class="n">O00${Order.oNo }</span>
-									</c:when>
+									<span class="n">O000${Order.oNo }</span>
+								</c:when>
+								<c:when test="${Order.oNo >= 10 && Order.oNo < 100}">
+									<span class="n">O00${Order.oNo }</span>
+								</c:when>
+								<c:when test="${Order.oNo >= 100 && Order.oNo < 1000 }">
+									<span class="n">O0${Order.oNo }</span>
+								</c:when>
 							</c:choose>
-					</c:if>
-					<c:if test="${Order.oOk == '1'}">
-						<c:choose>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">
+							<c:choose>
 								<c:when test="${Order.oNo < 10 }">
-										O000${Order.oNo }
-									</c:when>
-								<c:when test="${Order.oNo >= 10 }">
-										O00${Order.oNo }
-									</c:when>
+									O000${Order.oNo }
+								</c:when>
+								<c:when test="${Order.oNo >= 10 && Order.oNo < 100}">
+									O00${Order.oNo }
+								</c:when>
+								<c:when test="${Order.oNo >= 100 && Order.oNo < 1000 }">
+									O0${Order.oNo }
+								</c:when>
 							</c:choose>
-					</c:if>					
+						</c:if>					
 					</td>
 					<td>
-					<c:if test="${Order.oOk == '0'}">
-						<span class="n"><fmt:formatDate value="${Order.oDate}" type="both" pattern="yyyy-MM-dd" /></span>
-					</c:if>
-					<c:if test="${Order.oOk == '1'}">
-						<fmt:formatDate value="${Order.oDate}" type="both" pattern="yyyy-MM-dd" />
-					</c:if>					
+						<c:if test="${Order.oOk == '0'}">
+							<span class="n"><fmt:formatDate value="${Order.oDate}" type="both" pattern="yyyy-MM-dd" /></span>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">
+							<fmt:formatDate value="${Order.oDate}" type="both" pattern="yyyy-MM-dd" />
+						</c:if>					
 					</td>
 					<td>
-					<c:if test="${Order.oOk == '0'}">
-						<span class="n">${Order.oCname.cName}</span>
-					</c:if>
-					<c:if test="${Order.oOk == '1'}">
-						${Order.oCname.cName}
-					</c:if>
+						<c:if test="${Order.oOk == '0'}">
+							<span class="n">${Order.oCname.cName}</span>
+						</c:if>
+						<c:if test="${Order.oOk == '1'}">
+							${Order.oCname.cName}
+						</c:if>
 					</td>
 					<td>
 						<c:if test="${Order.oOk == '0'}">					
@@ -252,14 +258,14 @@
 						</c:if>
 						<c:if test="${Order.oOk == '1'}">
 							${Order.oMemo}
-							</c:if>															
+						</c:if>															
 					</td>
 					
 					<td>
 						<c:if test="${Order.oDps == 1}">
 							<input type="checkbox" name="box" value="${Order.oNo }" checked>
 						</c:if>
-							<c:if test="${Order.oDps == 0}">
+						<c:if test="${Order.oDps == 0}">
 							<input type="checkbox" name="box" value="${Order.oNo }">
 						</c:if>
 					</td>
