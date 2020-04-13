@@ -108,6 +108,14 @@
 		border:2px solid #384D75;
 		padding-right:8px;
 	}
+	span#red{
+		font-weight: bold;
+		color: red;
+	}
+	span#blue{
+		font-weight: bold;
+		color: blue;	
+	}	
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -146,7 +154,14 @@
 							<td>${cs.c_name }</td>
 							<td>${cs.p_name }</td>
 							<td>${cs.o_qty }</td>
-							<td>${cs.o_dps }</td>
+							<td>
+							<c:if test="${cs.o_dps == '완료'}">
+								<span id="blue">Y</span>
+							</c:if>
+							<c:if test="${cs.o_dps == '미입금'}">
+								<span id="red">N</span>
+							</c:if>							
+							</td>
 							<td class="price"><fmt:formatNumber value="${cs.p_price}" pattern="#,###,###"/>　</td>
 							<td class="price"><fmt:formatNumber value="${cs.salesMoney }" pattern="#,###,###"/>　</td>
 							<td class="price"><fmt:formatNumber value="${cs.uncollected }" pattern="#,###,###"/>　</td>

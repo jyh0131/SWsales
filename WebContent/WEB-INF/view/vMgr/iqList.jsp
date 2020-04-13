@@ -126,6 +126,17 @@
 	.total{
 		text-align: right;
 	}
+	span#red{
+		font-weight: bold;
+		color: red;
+	}
+	span#blue{
+		font-weight: bold;
+		color: blue;	
+	}
+	span#black{
+		color: black
+	}
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -173,12 +184,72 @@
 			</tr>
 			<c:forEach var="iq" items="${list }">
 					<tr class="tbl_point">
-						<td>${iq.p_name }</td>
-						<td>${iq.s_name }</td>
-						<td>${iq.iq_qty }</td>
-						<td class="price"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</td>
-						<td class="price"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</td>
-						<td>${iq.evaluation }</td>
+						<td>
+						<c:if test="${iq.evaluation == '재고과다'}">
+							<span id= "blue">${iq.p_name }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '재고부족'}">
+							<span id= "red">${iq.p_name }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '적정재고'}">
+							<span id= "black">${iq.p_name }</span>
+						</c:if>
+						</td>
+						<td>
+						<c:if test="${iq.evaluation == '재고과다'}">
+							<span id= "blue">${iq.s_name }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '재고부족'}">
+							<span id= "red">${iq.s_name }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '적정재고'}">
+							<span id= "black">${iq.s_name }</span>
+						</c:if>						
+						</td>
+						<td>
+						<c:if test="${iq.evaluation == '재고과다'}">
+							<span id= "blue">${iq.iq_qty }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '재고부족'}">
+							<span id= "red">${iq.iq_qty }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '적정재고'}">
+							<span id= "black">${iq.iq_qty }</span>
+						</c:if>						
+						</td>
+						<td class="price">
+						<c:if test="${iq.evaluation == '재고과다'}">
+							<span id= "blue"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '재고부족'}">
+							<span id= "red"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '적정재고'}">
+							<span id= "black"><fmt:formatNumber value="${iq.p_price}" pattern="#,###,###"/>　</span>
+						</c:if>							
+						</td>
+						<td class="price">
+						<c:if test="${iq.evaluation == '재고과다'}">
+							<span id= "blue"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '재고부족'}">
+							<span id= "red"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '적정재고'}">
+							<span id= "black"><fmt:formatNumber value="${iq.p_cost }" pattern="#,###,###"/>　</span>
+						</c:if>							
+						</td>
+						<td>
+						<c:if test="${iq.evaluation == '재고과다'}">
+							<span id= "blue">${iq.evaluation }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '재고부족'}">
+							<span id= "red">${iq.evaluation }</span>
+						</c:if>
+						<c:if test="${iq.evaluation == '적정재고'}">
+							<span id= "black">${iq.evaluation }</span>
+						</c:if>
+						</td>
 					</tr>
 				</c:forEach>
 		</table>
