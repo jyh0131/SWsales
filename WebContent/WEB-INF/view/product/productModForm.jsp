@@ -69,6 +69,7 @@
 		width: 500px;
     	height: 40px;
     	margin-right: 20px;
+ 	    outline-color: red;
 	}
 	#btnPname, #btnSname{
 	    width: 130px;
