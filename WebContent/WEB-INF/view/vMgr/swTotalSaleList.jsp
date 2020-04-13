@@ -27,7 +27,7 @@
 		color:black;
 	}
 	div#title h3 a:hover{
-		text-decoration: underline;
+		border-bottom: 3px solid black;
 	}
 	span#k_title{
 		color: red;
@@ -135,7 +135,7 @@
 	<div id="title">
 		<h1>S/W Overall Sales</h1>
 		<hr>
-		<h3><a href="vSubMenu.do">현황조회 / 보고 ></a> <span id="k_title">S/W 전체 판매현황</span></h3>
+		<h3><a href="vSubMenu.do">현황조회 / 보고</a> > <span id="k_title">S/W 전체 판매현황</span></h3>
 	</div>
 	<div id="list_container">
 		<div id="menu">
