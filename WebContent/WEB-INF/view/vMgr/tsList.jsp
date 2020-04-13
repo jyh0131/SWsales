@@ -83,8 +83,11 @@
 		height: 46px;
 	}
 	th{
-		border-top: 2px solid #878787;
-		background-color: #F9FAFB;
+		border-top: 3px solid #747474;/* #878787; */
+		border-bottom: 5px double #747474;/* #878787; */
+		background-color: #BDBDBD;/* #F9FAFB; */
+		font-size: 17px;
+		height: 55px;
 	}
 	tr:nth-child(even){
 		background-color: #eee;
@@ -93,14 +96,15 @@
 		background-color: #F9FAFB;
 	}
 	tr.tbl_point:hover{
-		background: black;
-		color: red;
+		background: #5D5D5D;
+		color: yellow;
 	}
 	.price{
 		text-align: right;
 	}
 	.total{
 		text-align: right;
+		font-size: 20px;
 	}
 	.total input{
 		text-align: right;

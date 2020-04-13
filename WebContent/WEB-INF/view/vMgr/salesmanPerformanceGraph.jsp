@@ -109,7 +109,7 @@
 		padding:3px 10px;
 		margin:10px 0;
 		font-size: 17px;
-		height:38px;
+		height:100px;
 		line-height: 38px;
 		border:none;
 		text-align: center;
@@ -163,6 +163,7 @@
 				<input type="text" id="datepickerStart" name="startDate">
 				<input type="text" id="datepickerEnd" name="endDate">
 				<input type="submit" value="검색" id="Search" style="cursor:pointer">
+				<div id="text">${dateText }</div>
 			</fieldset>
 			<div id="piechart">
 			
