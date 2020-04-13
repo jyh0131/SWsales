@@ -22,6 +22,13 @@
 		letter-spacing: 3px;
 		padding-left: 60px;
 	}
+	div#title h3 a{
+		text-decoration: none;
+		color:black;
+	}
+	div#title h3 a:hover{
+		text-decoration: underline;
+	}
 	span#k_title{
 		color: red;
 		background-color: white;
@@ -128,7 +135,7 @@
 	<div id="title">
 		<h1>Transaction Specification</h1>
 		<hr>
-		<h3>현황조회 / 보고 > <span id="k_title">거래명세</span></h3>
+		<h3><a href="vSubMenu.do">현황조회 / 보고 ></a> <span id="k_title">거래명세</span></h3>
 	</div>
 	<div id="list_container">
 		<div id="menu">
