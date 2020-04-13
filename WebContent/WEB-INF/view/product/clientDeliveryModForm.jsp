@@ -83,6 +83,16 @@
     	margin-top: 30px;
     	font-size: 18px;
 	}
+	#btnReset{
+		width: 160px;
+   		height: 45px;
+    	background-color: #bbb;
+   		color: white;
+    	border: 1px solid white;
+    	border-radius: 5px;
+    	margin-top: 30px;
+    	font-size: 18px;
+	}
 	input[name*='cdNo'], input[name*='cName'], input[name*='pName'], input[name*='oQty']{
 		font-weight: bold;
 		outline: none;
@@ -101,14 +111,28 @@
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
-
+	$(function() {
+		$("#btnReset").click(function() {
+			location.href="${pageContext.request.contextPath}/product/clientDeliveryList.do"
+		})
+		
+		var no = $("input[name=no]").val();
+		console.log(no);
+		if(no < 10){
+			$("input[name=cdNo]").val("CD000"+no);
+		}else if(no > 9 && no < 100){
+			$("input[name=cdNo]").val("CD00"+no);
+		}else if(no > 99 && no < 1000){
+			$("input[name=cdNo]").val("CD0"+no);
+		}
+	})
 </script>
 <section>
 		<!-- form 타이틀 -->
 		<div id="title">
-			<h1>Software Product Registration</h1>
+			<h1>Client Delivery Modification</h1>
 			<hr>
-			<h3>제품 관리 > 제품 등록 > <span id="k_title">소프트웨어 상품 등록</span></h3>
+			<h3>제품 관리 > 출고 > <span id="k_title">출고 정보 수정</span></h3>
 		</div>
 		<!-- form -->		
 		<div id="point">
@@ -118,8 +142,8 @@
 			<div id="regForm">
 				<div id="form">
 					<label><span class="red">* </span>품목번호</label>
-					<input type="text" name="cdNo" class="text" value="CD00${clientDelivery.cdNo}" readonly="readonly"><br>
-					<input type="hidden" name="no" class="text" value="${clientDelivery.cdNo}">
+					<input type="text" name="cdNo" class="text" readonly="readonly"><br>
+					<input type="hidden" name="no" value="${clientDelivery.cdNo}">
 					
 					<label><span class="red">* </span>고객 상호명</label>
 					<input type="text" name="cName" class="text" value="${clientDelivery.cName.cName}" readonly="readonly"><br>
@@ -136,7 +160,8 @@
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="등록" id="btnAdd">
+				<input type="submit" value="수정" id="btnAdd">
+				<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
 			</div>
 		</form>
 </section>

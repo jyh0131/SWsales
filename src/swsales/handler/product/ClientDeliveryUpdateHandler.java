@@ -8,10 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import swsales.dao.ClientDeliveryDao;
-import swsales.dao.OrderDao;
 import swsales.jdbc.JDBCUtil;
 import swsales.model.ClientDelivery;
-import swsales.model.Order;
 import swsales.mvc.CommandHandler;
 
 public class ClientDeliveryUpdateHandler implements CommandHandler{

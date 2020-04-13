@@ -123,7 +123,7 @@
 	td button#btnMod{
 		background: #87cefa;
 	}
- 	td button#btnDel{
+ 	td button.btnDel{
 		background: #f08080;
 	}
 	div#bottom_btns{
@@ -145,6 +145,15 @@
 		
 		$("#btnTop").click(function() {
 			location.href="clientDeliveryList.do";
+		})
+		
+		$(".btnDel").click(function() {
+			var no = $(this).attr("data-cdNo");
+			console.log(no);
+			var result = confirm("정말 삭제하시겠습니까?");
+			if(result){
+				location.href="${pageContext.request.contextPath}/product/cDeliveryDel.do?cdNo="+no;
+			}
 		})
 	});
 </script>
@@ -197,7 +206,7 @@
 						<td><fmt:formatDate value="${clientDelivery.cdDate }" type="both" pattern="yyyy-MM-dd"/></td> <!-- yyyy-MM-dd(E) -->	
 						<td>
 							<a href="${pageContext.request.contextPath}/product/cDeliveryMod.do?cdNo=${clientDelivery.cdNo}"><button id="btnMod">수정</button></a>
-							<a href="#"><button id="btnDel">삭제</button></a>
+							<button class="btnDel" style="cursor: pointer" data-cdNo="${clientDelivery.cdNo }">삭제</button>
 						</td>
 					</tr>
 				</c:forEach>

@@ -233,8 +233,8 @@
 				</div>
 			</div>
 			<div id="add">
-			<input type="submit" value="수정" id="btnAdd" style="cursor: pointer">
-			<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
+				<input type="submit" value="수정" id="btnAdd" style="cursor: pointer">
+				<input type="button" value="취소" id="btnReset" style="cursor: pointer">		
 			</div>
 		</form>
 </section>
