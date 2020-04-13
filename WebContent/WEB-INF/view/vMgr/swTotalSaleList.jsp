@@ -112,7 +112,6 @@
 	}
 	.total{
 		text-align: right;
-		font-size: 20px;
 	}
 	.total input{
 		text-align: right;
