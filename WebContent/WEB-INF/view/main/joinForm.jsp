@@ -11,6 +11,10 @@
 		margin: 0;
 		padding: 0;
 	}
+	body{
+    	background-image: url("${pageContext.request.contextPath}/images/main/join1.jpg");
+    	background-size: cover;	
+	}
 	#imgDiv{
 		
 	}
@@ -25,8 +29,6 @@
 	    width: 100%;
     	height: 737px;
     	padding: 100px 0;
-    	background-image: url("${pageContext.request.contextPath}/images/main/join1.jpg");
-    	background-size: cover;
 	}
 	#login{
 		width: 290px;

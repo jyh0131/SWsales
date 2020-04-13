@@ -10,12 +10,14 @@
 		margin: 0;
 		padding: 0;
 	}
+	body{
+		background-image: url("${pageContext.request.contextPath}/images/main/join1.jpg");
+		background-size: cover;	
+	}
 	#section{
 		width: 100%;
 		height: 321px;
 		padding: 308px 0px;
-		background-image: url("${pageContext.request.contextPath}/images/main/join1.jpg");
-		background-size: cover;
 	}
 	#login{
 		width: 550px;

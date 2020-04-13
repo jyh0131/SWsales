@@ -11,6 +11,10 @@
 		margin: 0;
 		padding: 0;
 	}
+	body{
+		background-image: url("${pageContext.request.contextPath}/images/main/login.jpg");
+		background-size: cover;
+	}	
 	#imgDiv{
 		width: 100%;
 		margin: 0 auto;
@@ -26,8 +30,6 @@
 		width: 100%;
 		height: 397px;
 		padding: 270px 0px;
-		background-image: url("${pageContext.request.contextPath}/images/main/login.jpg");
-		background-size: cover;
 	}
 	#login{
 		width: 250px;
