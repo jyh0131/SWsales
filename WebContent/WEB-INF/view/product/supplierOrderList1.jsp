@@ -206,9 +206,12 @@
 								<c:when test="${SupplierOrder.soNo < 10 }">
 									SO000${SupplierOrder.soNo }
 								</c:when>
-								<c:when test="${SupplierOrder.soNo >= 10 }">
+								<c:when test="${SupplierOrder.soNo > 9 && SupplierOrder.soNo < 100}">
 									SO00${SupplierOrder.soNo }
 								</c:when>
+								<c:when test="${SupplierOrder.soNo > 99 && SupplierOrder.soNo < 1000}">
+									SO0${SupplierOrder.soNo }
+								</c:when>								
 							</c:choose>
 						</td>
 						<td>${SupplierOrder.soPname.pName}</td>

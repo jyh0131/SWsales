@@ -227,6 +227,7 @@
 				var qty = $("#Qty").val();
 				if(qty == "" || qty ==0){
 					alert("재고가 없습니다. 제품 주문이 필요합니다.");
+					location.href="${pageContext.request.contextPath}/product/sOrderAdd1.do"; //발주이력등록으로 이동
 				}else{
 					alert("재고수량은"+qty+"개 입니다.");
 					$("#btnQty").hide();

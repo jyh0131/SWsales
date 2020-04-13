@@ -177,6 +177,19 @@
 				location.href="${pageContext.request.contextPath}/product/productDelete.do?no="+no;
 			}
 		})
+		
+		
+		
+		/*** 품목번호 입력창에 출력되는 형식***/
+		var no = $("input[name=no]").val();
+		console.log(no); // ex : 98
+		if(no < 10){
+			$("#pNo").html("P000"+no); //P0001
+		}else if(no > 9 && no < 100){
+			$("#pNo").html("P00"+no); //P0010
+		}else if(no > 99 && no < 1000){
+			$("#pNo").html("P0"+no); //P0100
+		}		
 	});
 </script>
 	<section>
@@ -198,7 +211,8 @@
 					<td rowspan="8" id="pro_img"><img src="${pageContext.request.contextPath}/productIMG/${detail.pPicPath}"></td>
 					<th>품목번호</th>
 					<td>
-						<p id="pNo">P00${detail.pNo}</p>
+						<p id="pNo"></p>
+						<input type="hidden" name="no" value="${detail.pNo}">
 					</td>
 				</tr>
 				<tr>
