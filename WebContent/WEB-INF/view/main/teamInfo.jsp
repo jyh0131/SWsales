@@ -18,7 +18,6 @@
 	div#teamImg div#teamTitle{
 		width: 700px;
 		height: 300px;
-		border: 1px solid red;
 		position: absolute;
 		left: 30px;
 		top: 70px;
@@ -59,11 +58,17 @@
 	div.pTitle h1{
 		font-size: 35px;
 		font-family: 'Playball';
-	}	
+	}
+	div.pTitle p.line{
+		width: 100px;
+		height: 15px;
+		border-bottom: 3px solid black;
+		margin: 0 auto;
+	}		
 	div#teamInfo{
 		width: 100%;
 		height: 300px;
-		margin-top: 50px;
+		margin-top: 80px;
 	}
 	div#teamInfo p{
 		width: 50%;
@@ -89,9 +94,9 @@
 	div.pBox{
 		width: 100%;
 		height: 600px;
-		margin-top: 30px;
+		margin-top: 80px;
 		text-align: center;
-		border: 1px solid red;
+		border: 1px dashed lightgray;
 	}
 	div.pBox img{
 		width: 150px;
@@ -122,6 +127,7 @@ $(document).ready(function() {
 	</div>
 	<div class="pTitle">
 	<h1>x&nbsp;x &nbsp;&nbsp;Team Nam Bawon&nbsp;&nbsp; x&nbsp;x</h1>
+	<p class="line"></p>
 	</div>
 	<div id="teamInfo">
 		<p>본 프로젝트는 영남인재교육원 JAVA기반 스마트 웹&컨텐츠 응용SW 전문가(3기) 팀 Nam Bawan의 자산입니다.</p>
@@ -158,6 +164,7 @@ $(document).ready(function() {
 	</div>
 	<div class="pTitle">
 		<h1> &nbsp;&nbsp;P r o j e c t&nbsp;&nbsp; </h1>
+		<p class="line"></p>		
 	</div>
 	<div class="pBox">
 		<a href="${pageContext.request.contextPath}/images/teamInfo/1.jpg" data-lightbox="image-1" data-title="회의"><img src ="${pageContext.request.contextPath}/images/teamInfo/1.jpg"></a>
