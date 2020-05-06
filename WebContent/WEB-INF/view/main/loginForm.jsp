@@ -117,9 +117,9 @@
 			<div id="loginbox">
 				<form action="${pageContext.request.contextPath}/main/login.do" method="post">
 					<label class="text">사용자ID</label><br>
-					<input type="text" name="id" class="box"><br>
+					<input type="text" name="id" class="box" value="qwer12345"><br>
 					<label class="text">비밀번호</label><br>
-					<input type="password" name="password" class="box"><br>
+					<input type="password" name="password" class="box" value="qwer1234!"><br>
 					<a href="${pageContext.request.contextPath}/main/searchId.do" id="wantId">아이디와 비밀번호를 잊으셨나요?</a>
 					<input type="submit" value="로그인" id="btnLogin" style="cursor: pointer">
 				</form>
