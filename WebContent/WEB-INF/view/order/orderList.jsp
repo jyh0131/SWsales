@@ -158,7 +158,55 @@
 	span#pCost{
 		font-size: 10px;
 		color: #747474;
-	}		
+	}
+	/* 사무 */
+	span.cate1{
+		background: #3DB7CC;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 개발 */
+	span.cate2{
+		background: #EDA900;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 전문분야 */
+	span.cate3{
+		background: #002266;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 멀티미디어 */
+	span.cate4{
+		background: #CD3B3B;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 기업업무 */
+	span.cate5{
+		background: #2F9D27;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 서버 */
+	span.cate6{
+		background: #5D5D5D;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}								
 </style>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script>
@@ -232,7 +280,28 @@
 						<img src="${pageContext.request.contextPath}/productIMG/${product.pPicPath}">
 					</a>
 					<div class="product_info">
-						<p><span id="cate">&nbsp;${product.pCate}&nbsp;</span> <span id="pName">${product.pName}</span></p>
+						<p>
+	 						<c:choose>
+								<c:when test="${product.pCate == '사무'}">
+									<span class="cate1">&nbsp;${product.pCate}&nbsp;</span> 
+								</c:when>
+								<c:when test="${product.pCate == '개발'}">
+									<span class="cate2">&nbsp;${product.pCate}&nbsp;</span> 
+								</c:when>
+								<c:when test="${product.pCate == '전문분야'}">
+									<span class="cate3">&nbsp;${product.pCate}&nbsp;</span> 
+								</c:when>
+								<c:when test="${product.pCate == '멀티미디어'}">
+									<span class="cate4">&nbsp;${product.pCate}&nbsp;</span> 
+								</c:when>
+								<c:when test="${product.pCate == '기업업무'}">
+									<span class="cate5">&nbsp;${product.pCate}&nbsp;</span> 
+								</c:when>
+								<c:when test="${product.pCate == '서버'}">
+									<span class="cate6">&nbsp;${product.pCate}&nbsp;</span> 
+								</c:when>																																			
+							</c:choose> 
+							<span id="pName">${product.pName}</span></p>
 						<p><b>공급회사 : </b>${product.pSno.sName}</p>
 						<p><b>판매가격 : </b><fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/> <span id="pCost">(공급가격: <fmt:formatNumber value="${product.pCost}" pattern="\#,###.##"/>)</span></p>
 					</div>

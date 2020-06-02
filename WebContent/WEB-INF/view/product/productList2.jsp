@@ -114,6 +114,54 @@
 		border-radius:5px;
 		font-size: 16px; 
 	}
+	/* 사무 */
+	span.cate1{
+		background: #3DB7CC;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 개발 */
+	span.cate2{
+		background: #EDA900;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 전문분야 */
+	span.cate3{
+		background: #002266;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 멀티미디어 */
+	span.cate4{
+		background: #CD3B3B;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 기업업무 */
+	span.cate5{
+		background: #2F9D27;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}
+	/* 서버 */
+	span.cate6{
+		background: #5D5D5D;
+		color: white;
+		font-weight: bold;
+		border-radius:5px;
+		font-size: 16px; 	
+	}					
 	
 	div.caption{
 		width: 300px;
@@ -200,7 +248,28 @@
 							<p>판매가격 : <fmt:formatNumber value="${product.pPrice}" pattern="#,###.##원"/></p>
 						</div>
 					</a>
-					<p class="category"><span id="cate">&nbsp;${product.pCate}&nbsp;</span> ${product.pName}</p>
+					<p class="category">
+ 						<c:choose>
+							<c:when test="${product.pCate == '사무'}">
+								<span class="cate1">&nbsp;${product.pCate}&nbsp;</span> 
+							</c:when>
+							<c:when test="${product.pCate == '개발'}">
+								<span class="cate2">&nbsp;${product.pCate}&nbsp;</span> 
+							</c:when>
+							<c:when test="${product.pCate == '전문분야'}">
+								<span class="cate3">&nbsp;${product.pCate}&nbsp;</span> 
+							</c:when>
+							<c:when test="${product.pCate == '멀티미디어'}">
+								<span class="cate4">&nbsp;${product.pCate}&nbsp;</span> 
+							</c:when>
+							<c:when test="${product.pCate == '기업업무'}">
+								<span class="cate5">&nbsp;${product.pCate}&nbsp;</span> 
+							</c:when>
+							<c:when test="${product.pCate == '서버'}">
+								<span class="cate6">&nbsp;${product.pCate}&nbsp;</span> 
+							</c:when>																																			
+						</c:choose> 
+						${product.pName}</p>
 				</div>
 			</c:forEach>
 		</div>		
